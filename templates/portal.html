@@ -159,8 +159,8 @@
         <span class="clock-time" id="clock-gmt">00:00:00</span>
       </div>
       <div class="clock-widget">
-        <span class="clock-label">IND (IST)</span>
-        <span class="clock-time" id="clock-ist">00:00:00</span>
+        <span class="clock-label">US (EST)</span>
+        <span class="clock-time" id="clock-est">00:00:00</span>
       </div>
     </div>
   </div>
@@ -234,9 +234,9 @@
     const gmtOptions = { timeZone: 'Europe/London', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
     document.getElementById('clock-gmt').innerText = now.toLocaleTimeString('en-US', gmtOptions);
     
-    // IST (UTC+5:30)
-    const istOptions = { timeZone: 'Asia/Kolkata', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
-    document.getElementById('clock-ist').innerText = now.toLocaleTimeString('en-US', istOptions);
+    // EST (UTC-5 / UTC-4)
+    const estOptions = { timeZone: 'America/New_York', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    document.getElementById('clock-est').innerText = now.toLocaleTimeString('en-US', estOptions);
   }
 
   // Initial call

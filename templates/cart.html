@@ -306,6 +306,10 @@
             paypalLoaded = true;
             renderPayPalButtons();
           };
+          script.onerror = () => {
+            document.getElementById('paypal-button-container').innerHTML = '<div style="text-align:center;padding:20px;color:#ff4d4d;font-family:Space Grotesk;">PayPal failed to load. Please disable ad-blockers and try again.</div>';
+            console.error('PayPal SDK failed to load. Client ID:', data.paypal_client_id);
+          };
           document.head.appendChild(script);
         } else {
           renderPayPalButtons();
