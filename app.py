@@ -14,7 +14,7 @@ app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'agentos-dev-secret-key-change-in-prod')
 
 # PayPal Configuration (Sandbox keys — switch to live when ready)
-PAYPAL_CLIENT_ID = os.environ.get('PAYPAL_CLIENT_ID', 'YOUR_PAYPAL_CLIENT_ID_HERE')
+PAYPAL_CLIENT_ID = os.environ.get('PAYPAL_CLIENT_ID', 'Af9wZg_O8vJIARumOvVa-VE8ER2vpKOJ4YDVhFp4GGD0PNCg3QvATL_qNHvHRA33JojiLqcoOvffv5Ht')
 PAYPAL_CLIENT_SECRET = os.environ.get('PAYPAL_CLIENT_SECRET', '')
 PAYPAL_MODE = os.environ.get('PAYPAL_MODE', 'sandbox')  # 'sandbox' or 'live'
 PAYPAL_API_BASE = 'https://api-m.sandbox.paypal.com' if PAYPAL_MODE == 'sandbox' else 'https://api-m.paypal.com'
