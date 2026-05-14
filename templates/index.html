@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentOS — The AI Automation Agency Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://gumroad.com/js/gumroad.js"></script>
+<style>
+  :root {
+    --bg-void: #000000;
+    --card-surface: rgba(12, 12, 14, 0.7);
+    --border-dim: rgba(255, 255, 255, 0.08);
+    --border-bright: rgba(255, 255, 255, 0.25);
+    
+    --neon-blue: #00e5ff;
+    --neon-purple: #b537f2;
+    --neon-green: #00ff66;
+    --neon-orange: #ff4b1f;
+    
+    --text-primary: #ffffff;
+    --text-secondary: #8892b0;
+    --text-tertiary: #64748b;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: var(--bg-void);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  /* ───── DYNAMIC BACKGROUNDS ───── */
+  .grid-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -3;
+    background-image: 
+      linear-gradient(var(--border-dim) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border-dim) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+  }
+
+  .glow-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -2;
+    opacity: 0.15;
+    animation: drift 20s infinite alternate linear;
+  }
+  .orb-blue { width: 50vw; height: 50vw; background: var(--neon-blue); top: -20%; left: -10%; }
+  .orb-purple { width: 40vw; height: 40vw; background: var(--neon-purple); bottom: -10%; right: -10%; }
+  
+  @keyframes drift {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(10%, 10%) scale(1.1); }
+  }
+
+  /* ───── NAV ───── */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%;
+    padding: 24px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-dim);
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -1px;
+  }
+  .nav-logo span { color: var(--neon-blue); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #fff; }
+
+  /* ───── BUTTONS ───── */
+  .btn-neon {
+    background: transparent;
+    color: #fff;
+    border: 1px solid var(--border-bright);
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .btn-neon::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  .btn-neon:hover::before { left: 100%; }
+  .btn-neon:hover {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+    background: rgba(0, 229, 255, 0.05);
+  }
+
+  .btn-solid {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: transform 0.2s;
+  }
+  .btn-solid:hover { transform: scale(1.03); }
+
+  /* ───── HERO SECTION ───── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    padding: 160px 24px 80px;
+  }
+  
+  .terminal-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--neon-green);
+    background: rgba(0, 255, 102, 0.05);
+    border: 1px solid rgba(0, 255, 102, 0.2);
+    padding: 6px 16px;
+    border-radius: 4px;
+    margin-bottom: 32px;
+    display: inline-block;
+    animation: fadeDown 1s ease both;
+  }
+
+  .hero-title {
+    font-size: clamp(48px, 8vw, 100px);
+    line-height: 1.0;
+    font-weight: 900;
+    max-width: 1000px;
+    margin-bottom: 24px;
+    animation: fadeUp 1s 0.1s ease both;
+  }
+  .text-glow {
+    background: linear-gradient(180deg, #fff, #8892b0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .text-accent { color: var(--neon-blue); text-shadow: 0 0 40px rgba(0, 229, 255, 0.4); }
+
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 48px;
+    font-weight: 400;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero-metrics {
+    display: flex; gap: 48px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+  .metric { display: flex; flex-direction: column; align-items: center; }
+  .metric-val { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #fff; }
+  .metric-lbl { font-size: 12px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 2px; }
+
+  .hero-cta-group { display: flex; gap: 16px; animation: fadeUp 1s 0.4s ease both; }
+
+  /* ───── COMMON SECTION ───── */
+  section { padding: 120px 24px; max-width: 1200px; margin: 0 auto; width: 100%; }
+  
+  .section-header { text-align: left; margin-bottom: 64px; }
+  .sec-tag { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--neon-purple); letter-spacing: 2px; margin-bottom: 16px; display: block; text-transform: uppercase;}
+  .sec-title { font-size: 48px; font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 24px;}
+  .sec-desc { font-size: 18px; color: var(--text-secondary); max-width: 600px; }
+
+  /* ───── BENTO BOX GRIDS ───── */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 320px;
+    gap: 24px;
+  }
+  
+  .bento-card {
+    background: var(--card-surface);
+    border: 1px solid var(--border-dim);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    display: flex; flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s;
+  }
+  .bento-card:hover { transform: translateY(-4px); border-color: var(--border-bright); }
+  
+  /* The Laser Sweep Effect */
+  .bento-card::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
+  .bento-card:hover::before { transform: translateX(100%); transition: transform 1s ease infinite;}
+
+  .bento-icon { font-size: 32px; margin-bottom: 24px; }
+  .bento-title { font-size: 24px; font-weight: 700; margin-bottom: 12px; color: #fff; }
+  .bento-desc { color: var(--text-secondary); font-size: 15px; }
+  
+  /* Asymmetrical Sizing */
+  .col-span-2 { grid-column: span 2; }
+  .row-span-2 { grid-row: span 2; }
+
+  /* ───── TIMELINE (BLUEPRINT) ───── */
+  .blueprint-list {
+    display: flex; flex-direction: column; gap: 32px;
+    border-left: 1px solid var(--border-dim);
+    padding-left: 32px;
+    margin-left: 16px;
+  }
+  .bp-step { position: relative; }
+  .bp-step::before {
+    content: ''; position: absolute; left: -36.5px; top: 8px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--neon-blue);
+    box-shadow: 0 0 10px var(--neon-blue);
+  }
+  .bp-num { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-tertiary); margin-bottom: 8px;}
+  .bp-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .bp-desc { color: var(--text-secondary); font-size: 15px; max-width: 600px; }
+
+  /* ───── PRODUCT STORE (GLASS CARDS) ───── */
+  .store-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+  }
+  .product-card {
+    background: linear-gradient(145deg, rgba(20,20,22,0.8), rgba(10,10,12,0.8));
+    border: 1px solid var(--border-dim);
+    border-radius: 24px;
+    padding: 32px;
+    display: flex; flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .prod-tag { font-family: 'JetBrains Mono'; font-size: 11px; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 16px; background: rgba(255,255,255,0.05); }
+  .prod-price { font-family: 'Space Grotesk'; font-size: 36px; font-weight: 700; margin: 16px 0 24px; color: #fff;}
+  .prod-price strike { font-size: 16px; color: var(--text-tertiary); font-weight: 400; }
+  
+  /* ───── MARQUEE (CASE STUDIES) ───── */
+  .marquee-wrapper { overflow: hidden; width: 100vw; position: relative; left: calc(-50vw + 50%); padding: 40px 0; }
+  .marquee-wrapper::before, .marquee-wrapper::after {
+    content: ""; position: absolute; top: 0; width: 200px; height: 100%; z-index: 2; pointer-events: none;
+  }
+  .marquee-wrapper::before { left: 0; background: linear-gradient(90deg, var(--bg-void), transparent); }
+  .marquee-wrapper::after { right: 0; background: linear-gradient(-90deg, var(--bg-void), transparent); }
+  
+  .marquee-track { display: flex; width: max-content; animation: scrollLeft 40s linear infinite; }
+  .marquee-track:hover { animation-play-state: paused; }
+  
+  .review-card {
+    width: 380px; margin: 0 16px; padding: 32px;
+    background: var(--card-surface); border: 1px solid var(--border-dim); border-radius: 16px;
+  }
+  .rev-head { display: flex; justify-content: space-between; margin-bottom: 16px; align-items: center;}
+  .rev-user { display: flex; align-items: center; gap: 12px; }
+  .rev-avatar { width: 40px; height: 40px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; font-size: 20px;}
+  .rev-name { font-weight: 600; color: #fff; font-size: 15px;}
+  .rev-niche { font-family: 'JetBrains Mono'; font-size: 11px; color: var(--neon-green); }
+  .rev-quote { font-size: 14px; color: var(--text-secondary); font-style: italic; margin-bottom: 16px;}
+  .rev-result { font-family: 'Space Grotesk'; font-size: 24px; font-weight: 700; color: #fff; }
+
+  @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  
+  /* ───── FOOTER ───── */
+  footer { text-align: center; padding: 80px 24px; border-top: 1px solid var(--border-dim); margin-top: 80px; }
+
+  /* ───── ANIMATIONS ───── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* RESPONSIVE */
+  @media(max-width: 900px) {
+    .bento-grid { grid-template-columns: 1fr; }
+    .col-span-2 { grid-column: span 1; }
+    .row-span-2 { grid-row: span 1; }
+    .hero-title { font-size: 48px; }
+    .nav-links { display: none; }
+  }
+  
+  /* MODAL */
+  .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(10px); justify-content: center; align-items: center; }
+  .modal-content { background: #111; border: 1px solid var(--border-bright); padding: 40px; border-radius: 24px; max-width: 500px; width: 90%; color: #fff; position: relative; }
+  .close-btn { position: absolute; top: 20px; right: 24px; color: #aaa; font-size: 28px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="glow-orb orb-blue"></div>
+<div class="glow-orb orb-purple"></div>
+
+<nav>
+  <a href="#" class="nav-logo" style="display: flex; align-items: center; gap: 12px;">
+    <img src="/static/logo.png" alt="AgentOS Logo" style="width: 32px; height: 32px; border-radius: 6px; box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);">
+    Agent<span>OS</span>
+  </a>
+  <div class="nav-links">
+    <a href="#mindset">The Opportunity</a>
+    <a href="#services">Services</a>
+    <a href="#blueprint">Blueprint</a>
+    <a href="#products" style="color: var(--text-primary);">Store</a>
+    <a href="/portal">Portal</a>
+    <a href="/cart" style="color: var(--neon-green);">
+      Cart <span id="cartCount" style="background: var(--neon-green); color: #000; padding: 2px 6px; border-radius: 100px; font-size: 10px; font-weight: bold;">0</span>
+    </a>
+  </div>
+  <a href="#products" class="btn-neon" style="padding: 8px 20px; font-size: 12px;">Get Started</a>
+</nav>
+
+<section id="hero">
+  <div class="terminal-badge">> sudo initiate ai_agency</div>
+  <h1 class="hero-title"><span class="text-glow">Build a $10k/mo</span> <br> <span class="text-accent">AI Automation</span> Agency</h1>
+  <p class="hero-sub">Local businesses are desperate for AI. Learn how to build simple chatbots and automated workflows with zero coding experience, and charge $2,000+ per client.</p>
+  
+  <div class="hero-metrics">
+    <div class="metric"><span class="metric-val">$2k+</span><span class="metric-lbl">Per Client</span></div>
+    <div class="metric"><span class="metric-val">$0</span><span class="metric-lbl">Capital</span></div>
+    <div class="metric"><span class="metric-val">2hrs</span><span class="metric-lbl">Build Time</span></div>
+    <div class="metric"><span class="metric-val">∞</span><span class="metric-lbl">Demand</span></div>
+  </div>
+  
+  <div class="hero-cta-group">
+    <a href="#blueprint" class="btn-solid">Read The Blueprint</a>
+    <a href="#products" class="btn-neon">View AI Templates</a>
+  </div>
+</section>
+
+<!-- THE OPPORTUNITY (BENTO) -->
+<section id="mindset">
+  <div class="section-header reveal">
+    <span class="sec-tag">01 // The Opportunity</span>
+    <h2 class="sec-title">Why AI Automation?</h2>
+    <p class="sec-desc">We are entering the biggest technological shift since the internet. Businesses that don't adapt will die. You are the bridge.</p>
+  </div>
+  
+  <div class="bento-grid">
+    <div class="bento-card col-span-2 reveal">
+      <div class="bento-icon">🎯</div>
+      <h3 class="bento-title">High Ticket Offers</h3>
+      <p class="bento-desc" style="max-width: 400px;">Stop selling $20 ebooks. When you save a real estate agent 20 hours a week with an automated lead qualification bot, they will gladly pay you $2,000 upfront. B2B logic operates on ROI, not price tags.</p>
+    </div>
+    <div class="bento-card reveal" style="transition-delay: 0.1s;">
+      <div class="bento-icon">⏳</div>
+      <h3 class="bento-title">Zero Code</h3>
+      <p class="bento-desc">You don't need to be a software engineer. We use visual, drag-and-drop builders like Voiceflow and Make.com to orchestrate powerful AI systems.</p>
+    </div>
+    <div class="bento-card reveal" style="transition-delay: 0.2s;">
+      <div class="bento-icon">🛠️</div>
+      <h3 class="bento-title">Recurring Revenue</h3>
+      <p class="bento-desc">Don't just charge for the setup. Pitch a $500/month "AI Hosting & Maintenance" retainer to keep the bot updated. 5 clients = $2,500/mo passive income.</p>
+    </div>
+    <div class="bento-card col-span-2 reveal" style="transition-delay: 0.3s; background: linear-gradient(145deg, rgba(0, 229, 255, 0.1), transparent);">
+      <div class="bento-icon">🚀</div>
+      <h3 class="bento-title">The First Mover Advantage</h3>
+      <p class="bento-desc" style="max-width: 500px;">Local businesses know they need "AI", but they have no idea what it is. If you are the first person to walk into a dental clinic and show them a bot that books appointments automatically, you win the contract instantly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES (BENTO) -->
+<section id="services">
+  <div class="section-header reveal">
+    <span class="sec-tag">02 // Services</span>
+    <h2 class="sec-title">The Core AAA Services</h2>
+    <p class="sec-desc">The four fundamental AI integrations you will sell to businesses.</p>
+  </div>
+
+  <div class="bento-grid" style="grid-template-columns: repeat(4, 1fr); grid-auto-rows: auto;">
+    <div class="bento-card col-span-2 reveal">
+      <div class="bento-icon">💬</div>
+      <h3 class="bento-title">Lead Gen Chatbots</h3>
+      <p class="bento-desc">Build web bots that qualify leads and book appointments directly to calendars using Voiceflow.</p>
+      <div style="margin-top: auto; padding-top: 24px; font-family: 'JetBrains Mono'; color: var(--neon-blue);">Avg Value: $1,500</div>
+    </div>
+    
+    <div class="bento-card col-span-2 reveal" style="transition-delay: 0.1s;">
+      <div class="bento-icon">📞</div>
+      <h3 class="bento-title">AI Voice Agents</h3>
+      <p class="bento-desc">Use Vapi or Bland AI to create phone bots that handle inbound customer service calls 24/7 with human-like latency.</p>
+      <div style="margin-top: auto; padding-top: 24px; font-family: 'JetBrains Mono'; color: var(--neon-purple);">Avg Value: $3,000</div>
+    </div>
+    
+    <div class="bento-card col-span-2 reveal" style="transition-delay: 0.2s;">
+      <div class="bento-icon">📧</div>
+      <h3 class="bento-title">Automated Email Replies</h3>
+      <p class="bento-desc">Connect Gmail to ChatGPT via Make.com to instantly read and reply to routine client inquiries, drafting perfect responses.</p>
+      <div style="margin-top: auto; padding-top: 24px; font-family: 'JetBrains Mono'; color: var(--neon-green);">Avg Value: $800</div>
+    </div>
+    
+    <div class="bento-card col-span-2 reveal" style="transition-delay: 0.3s;">
+      <div class="bento-icon">⚙️</div>
+      <h3 class="bento-title">CRM Automations</h3>
+      <p class="bento-desc">Sync GoHighLevel or HubSpot with lead forms to automate follow-ups, SMS drips, and invoicing completely hands-free.</p>
+      <div style="margin-top: auto; padding-top: 24px; font-family: 'JetBrains Mono'; color: var(--neon-orange);">Avg Value: $2,500</div>
+    </div>
+  </div>
+</section>
+
+<!-- BLUEPRINT TIMELINE -->
+<section id="blueprint">
+  <div class="section-header reveal">
+    <span class="sec-tag">03 // Execution</span>
+    <h2 class="sec-title">The Agency Blueprint</h2>
+    <p class="sec-desc">How to go from zero experience to a $2,000 client in 30 days.</p>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 64px;">
+    <div class="blueprint-list" style="flex: 2; min-width: 300px;">
+      <div class="bp-step reveal">
+        <div class="bp-num">PHASE 01 (DAYS 1-5)</div>
+        <h3 class="bp-title">Skill Acquisition</h3>
+        <p class="bp-desc">Create free accounts on Voiceflow and Make.com. Spend 5 days learning the interface. You don't need to code; just learn how to drag and drop nodes to create conversational logic flows.</p>
+      </div>
+      <div class="bp-step reveal">
+        <div class="bp-num">PHASE 02 (DAYS 6-10)</div>
+        <h3 class="bp-title">The Core Offer & Demo</h3>
+        <p class="bp-desc">Pick one specific niche (e.g., Real Estate). Build a demo bot tailored specifically for them (e.g., an Open House scheduler). This demo link is your ultimate sales tool.</p>
+      </div>
+      <div class="bp-step reveal">
+        <div class="bp-num">PHASE 03 (DAYS 11-20)</div>
+        <h3 class="bp-title">Hyper-Targeted Outreach</h3>
+        <p class="bp-desc">Use LinkedIn, cold email, or Instagram DMs to send short Loom video messages to business owners. Don't sell "AI"; show them their custom demo bot in action.</p>
+      </div>
+      <div class="bp-step reveal">
+        <div class="bp-num">PHASE 04 (DAYS 21-30)</div>
+        <h3 class="bp-title">Closing & Fulfillment</h3>
+        <p class="bp-desc">Close your first $2,000 deal. Fulfill the service by simply duplicating your template and changing the branding. Pitch a $500/mo retainer for maintenance. Repeat.</p>
+      </div>
+    </div>
+
+    <!-- Revenue Tracker -->
+    <div class="bento-card reveal" style="flex: 1; min-width: 300px; padding: 32px;">
+      <h3 style="font-size: 20px; margin-bottom: 24px;">30-Day Goal Tracker</h3>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; color: var(--text-secondary);">
+        <span>Outreach (0/100)</span><span>0%</span>
+      </div>
+      <div style="width: 100%; background: var(--border-dim); height: 6px; border-radius: 3px; margin-bottom: 24px;"></div>
+      
+      <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; color: var(--text-secondary);">
+        <span>Meetings Booked (0/5)</span><span>0%</span>
+      </div>
+      <div style="width: 100%; background: var(--border-dim); height: 6px; border-radius: 3px; margin-bottom: 24px;"></div>
+
+      <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; color: var(--neon-blue);">
+        <span>Clients Closed (0/1)</span><span>0%</span>
+      </div>
+      <div style="width: 100%; background: var(--border-dim); height: 6px; border-radius: 3px; margin-bottom: 32px;"></div>
+
+      <div style="padding: 16px; background: rgba(0, 229, 255, 0.05); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 8px; text-align: center;">
+        <div style="font-size: 12px; color: var(--neon-blue); letter-spacing: 1px; margin-bottom: 4px;">POTENTIAL MRR</div>
+        <div style="font-size: 32px; font-weight: 700; color: #fff;">$2,500</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS (STORE) -->
+<section id="products">
+  <div class="section-header reveal">
+    <span class="sec-tag">04 // Accelerator</span>
+    <h2 class="sec-title">Premium Agency Assets</h2>
+    <p class="sec-desc">Skip the trial and error. Get instant access to our proven blueprints, pre-built bot templates, and client acquisition scripts.</p>
+  </div>
+  
+  <div class="store-grid">
+    <!-- Item 1 -->
+    <div class="product-card reveal">
+      <div class="prod-tag" style="color: var(--neon-blue);">BLUEPRINT</div>
+      <h3 class="bento-title">The AAA Full Blueprint</h3>
+      <p class="bento-desc">Get the exact step-by-step roadmap, JSON templates, and curated video training to launch an AI Agency from scratch.</p>
+      <div class="prod-price">$99 <strike>$299</strike></div>
+      <div style="display: flex; gap: 12px; margin-top: auto;">
+        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px; background: transparent; color: #fff; border: 1px solid var(--border-bright);" onclick="viewDetails('masterclass', 'The AAA Full Blueprint', 99, 'BLUEPRINT', 'var(--neon-blue)', 'Learn the exact step-by-step strategy to go from $0 to your first $10k/month AI Automation Agency. Includes downloadable Voiceflow templates and curated HD video tutorials.', '🎥')">Details</button>
+        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px;" onclick="addToCart('The AAA Video Masterclass', 99, '🎥', 'A complete video masterclass on building an AI Agency.')">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="product-card reveal" style="transition-delay: 0.1s; border-color: rgba(181, 55, 242, 0.4);">
+      <div class="prod-tag" style="color: var(--neon-purple); background: rgba(181, 55, 242, 0.1);">BEST SELLER</div>
+      <h3 class="bento-title">Plug & Play Bot Templates</h3>
+      <p class="bento-desc">10+ pre-built, high-converting chatbot templates for Voiceflow. Just upload, change the logo, and sell for $2,000.</p>
+      <div class="prod-price">$29 <strike>$149</strike></div>
+      <div style="display: flex; gap: 12px; margin-top: auto;">
+        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px; background: transparent; color: #fff; border: 1px solid var(--border-bright);" onclick="viewDetails('templates', 'Plug & Play Bot Templates', 29, 'BEST SELLER', 'var(--neon-purple)', 'Stop building from scratch. This bundle includes pre-built templates for real estate, dental clinics, e-commerce, and more. 1-click import into Voiceflow.', '🤖')">Details</button>
+        <button class="btn-neon" style="flex:1; padding:10px; font-size:13px; border-color: var(--neon-purple); color: var(--neon-purple);" onclick="addToCart('Plug & Play Bot Templates', 29, '🤖', '10+ pre-built chatbot templates for local businesses.')">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="product-card reveal" style="transition-delay: 0.2s;">
+      <div class="prod-tag" style="color: var(--neon-green);">SCRIPTS</div>
+      <h3 class="bento-title">Client Acquisition Toolkit</h3>
+      <p class="bento-desc">Get the exact Cold Email templates and LinkedIn DM sequences used to close B2B clients on high-ticket AI retainers.</p>
+      <div class="prod-price">$49 <strike>$149</strike></div>
+      <div style="display: flex; gap: 12px; margin-top: auto;">
+        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px; background: transparent; color: #fff; border: 1px solid var(--border-bright);" onclick="viewDetails('acquisition', 'Client Acquisition Toolkit', 49, 'SCRIPTS', 'var(--neon-green)', 'Not sure what to say to business owners? Use these fill-in-the-blank scripts to close deals. Includes curated video recordings of live sales calls.', '🎥')">Details</button>
+        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px;" onclick="addToCart('Client Acquisition Masterclass', 49, '🎥', 'Video masterclass on closing AI Agency clients.')">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Item 4 -->
+    <div class="product-card reveal" style="transition-delay: 0.3s;">
+      <div class="prod-tag" style="color: var(--neon-orange);">BLUEPRINT</div>
+      <h3 class="bento-title">Advanced Make.com Workflows</h3>
+      <p class="bento-desc">15 downloadable JSON automations connecting ChatGPT to CRMs and Google Sheets. Import and deploy instantly.</p>
+      <div class="prod-price">$149 <strike>$399</strike></div>
+      <div style="display: flex; gap: 12px; margin-top: auto;">
+        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px; background: transparent; color: #fff; border: 1px solid var(--border-bright);" onclick="viewDetails('makecom', 'Advanced Make.com Workflows', 149, 'BLUEPRINT', 'var(--neon-orange)', 'Automations are where the real money is made. Download 15 complex Make.com workflows in JSON format, paired with curated HD video walkthroughs on how to deploy them.', '🎥')">Details</button>
+        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px;" onclick="addToCart('Advanced Make.com Video Guide', 149, '🎥', 'Advanced video training on Make.com automations.')">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="cases" style="max-width: 100vw; padding: 120px 0;">
+  <div class="section-header reveal" style="padding: 0 24px; max-width: 1200px; margin: 0 auto 64px;">
+    <span class="sec-tag">05 // Proof of Concept</span>
+    <h2 class="sec-title">System Verified</h2>
+  </div>
+  
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <!-- SET 1 -->
+      <div class="review-card">
+        <div class="rev-head">
+          <div class="rev-user"><div class="rev-avatar">👨‍💻</div><div><div class="rev-name">Alex M.</div><div class="rev-niche">Dental Clinics</div></div></div>
+          <div style="font-weight:700;">$2,100/mo</div>
+        </div>
+        <p class="rev-quote">"I used the template to build an appointment bot for local dentists. Sold my first one for $1,800 plus a $300/mo retainer. I literally just changed the logo and colors."</p>
+      </div>
+      
+      <div class="review-card">
+        <div class="rev-head">
+          <div class="rev-user"><div class="rev-avatar">👩‍🎨</div><div><div class="rev-name">Sarah J.</div><div class="rev-niche">Real Estate AI</div></div></div>
+          <div style="font-weight:700;">$6,000/mo</div>
+        </div>
+        <p class="rev-quote">"Realtors are obsessed with AI right now. I connected Make.com to their CRM so leads from FB ads get an instant text. I charge $2k per setup."</p>
+      </div>
+      
+      <div class="review-card">
+        <div class="rev-head">
+          <div class="rev-user"><div class="rev-avatar">📈</div><div><div class="rev-name">David K.</div><div class="rev-niche">Voice Agents</div></div></div>
+          <div style="font-weight:700;">$4,000/mo</div>
+        </div>
+        <p class="rev-quote">"The Vapi integration blew my mind. I set up an inbound phone agent for a plumbing company that takes calls at 3 AM. They pay me $1,000 a month just to keep it running."</p>
+      </div>
+
+      <div class="review-card">
+        <div class="rev-head">
+          <div class="rev-user"><div class="rev-avatar">🔍</div><div><div class="rev-name">Marcus T.</div><div class="rev-niche">Law Firm Automation</div></div></div>
+          <div style="font-weight:700;">$9,000/mo</div>
+        </div>
+        <p class="rev-quote">"Lawyers have the highest budgets. I built a simple document-intake bot. Took me 4 hours on Voiceflow. Sold it for $4,500. This blueprint is a cheat code."</p>
+      </div>
+
+      <!-- SET 2 (DUPLICATE FOR INFINITE LOOP) -->
+      <div class="review-card">
+        <div class="rev-head">
+          <div class="rev-user"><div class="rev-avatar">👨‍💻</div><div><div class="rev-name">Alex M.</div><div class="rev-niche">Dental Clinics</div></div></div>
+          <div style="font-weight:700;">$2,100/mo</div>
+        </div>
+        <p class="rev-quote">"I used the template to build an appointment bot for local dentists. Sold my first one for $1,800 plus a $300/mo retainer. I literally just changed the logo and colors."</p>
+      </div>
+      
+      <div class="review-card">
+        <div class="rev-head">
+          <div class="rev-user"><div class="rev-avatar">👩‍🎨</div><div><div class="rev-name">Sarah J.</div><div class="rev-niche">Real Estate AI</div></div></div>
+          <div style="font-weight:700;">$6,000/mo</div>
+        </div>
+        <p class="rev-quote">"Realtors are obsessed with AI right now. I connected Make.com to their CRM so leads from FB ads get an instant text. I charge $2k per setup."</p>
+      </div>
+      
+      <div class="review-card">
+        <div class="rev-head">
+          <div class="rev-user"><div class="rev-avatar">📈</div><div><div class="rev-name">David K.</div><div class="rev-niche">Voice Agents</div></div></div>
+          <div style="font-weight:700;">$4,000/mo</div>
+        </div>
+        <p class="rev-quote">"The Vapi integration blew my mind. I set up an inbound phone agent for a plumbing company that takes calls at 3 AM. They pay me $1,000 a month just to keep it running."</p>
+      </div>
+
+      <div class="review-card">
+        <div class="rev-head">
+          <div class="rev-user"><div class="rev-avatar">🔍</div><div><div class="rev-name">Marcus T.</div><div class="rev-niche">Law Firm Automation</div></div></div>
+          <div style="font-weight:700;">$9,000/mo</div>
+        </div>
+        <p class="rev-quote">"Lawyers have the highest budgets. I built a simple document-intake bot. Took me 4 hours on Voiceflow. Sold it for $4,500. This blueprint is a cheat code."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="border-top: 1px solid var(--border-dim); padding: 80px 24px 40px; margin-top: 80px; position: relative; overflow: hidden; background: rgba(0,0,0,0.3); z-index: 10;">
+  <!-- glowing top border -->
+  <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);"></div>
+  
+  <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 64px;">
+    
+    <!-- Brand & Newsletter -->
+    <div style="grid-column: span 2;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+        <img src="/static/logo.png" alt="AgentOS Logo" style="width: 32px; height: 32px; border-radius: 6px; box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);">
+        <h2 style="font-size: 24px; font-weight: 900;">Agent<span style="color: var(--neon-blue);">OS</span></h2>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; max-width: 350px;">
+        The ultimate blueprint for building, scaling, and automating a high-ticket AI Agency. Join 10,000+ agency owners learning to sell chatbots and workflow automations.
+      </p>
+      
+      <!-- Newsletter Form -->
+      <form action="/subscribe" method="POST" style="display: flex; gap: 8px; max-width: 350px;">
+        <input type="email" name="email" placeholder="Enter your email" required style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-dim); padding: 12px 16px; border-radius: 6px; color: #fff; width: 100%; outline: none; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; transition: border-color 0.2s;">
+        <button type="submit" class="btn-neon" style="padding: 10px 20px; font-size: 12px; border-radius: 6px; white-space: nowrap;">Join Waitlist</button>
+      </form>
+    </div>
+
+    <!-- Links 1: Platform -->
+    <div>
+      <h4 style="color: #fff; font-size: 16px; margin-bottom: 24px;">Platform</h4>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
+        <li><a href="#services" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Services</a></li>
+        <li><a href="#blueprint" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">The Blueprint</a></li>
+        <li><a href="#products" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Templates</a></li>
+        <li><a href="#cases" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Success Stories</a></li>
+      </ul>
+    </div>
+
+    <!-- Links 2: Resources -->
+    <div>
+      <h4 style="color: #fff; font-size: 16px; margin-bottom: 24px;">Resources</h4>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
+        <li><a href="/blog" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">AI Agency Blog</a></li>
+        <li><a href="/portal" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Customer Portal</a></li>
+        <li><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Make.com Guide</a></li>
+        <li><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Voiceflow Basics</a></li>
+      </ul>
+    </div>
+
+    <!-- Links 3: Connect -->
+    <div>
+      <h4 style="color: #fff; font-size: 16px; margin-bottom: 24px;">Connect</h4>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
+        <li><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Twitter / X</a></li>
+        <li><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">LinkedIn</a></li>
+        <li><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Discord Community</a></li>
+        <li><a href="mailto:amritgupta0412@gmail.com" style="color: var(--neon-blue); text-decoration: none; font-size: 14px; transition: color 0.2s;">amritgupta0412@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="max-width: 1200px; margin: 64px auto 0; padding-top: 24px; border-top: 1px solid var(--border-dim); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+    <p style="color: var(--text-tertiary); font-size: 14px;">© 2026 AgentOS Inc. All rights reserved.</p>
+    <div style="display: flex; gap: 24px;">
+      <a href="/privacy" style="color: var(--text-tertiary); text-decoration: none; font-size: 12px; transition: color 0.2s;">Privacy Policy</a>
+      <a href="/terms" style="color: var(--text-tertiary); text-decoration: none; font-size: 12px; transition: color 0.2s;">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<!-- LIVE CHATBOT DEMO WIDGET -->
+<div id="ai-chat-widget" style="position: fixed; bottom: 24px; right: 24px; z-index: 9999;">
+  <div id="chat-window" style="display: none; width: 350px; height: 500px; background: var(--card-surface); border: 1px solid var(--border-bright); border-radius: 16px; backdrop-filter: blur(20px); flex-direction: column; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+    <div style="background: linear-gradient(90deg, rgba(0, 229, 255, 0.1), transparent); padding: 16px; border-bottom: 1px solid var(--border-dim); display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 10px; height: 10px; background: var(--neon-green); border-radius: 50%; box-shadow: 0 0 10px var(--neon-green);"></div>
+        <span style="font-family: 'Space Grotesk'; font-weight: 700;">AgentOS Lead Bot</span>
+      </div>
+      <button onclick="toggleChat()" style="background: none; border: none; color: #aaa; cursor: pointer; font-size: 20px;">&times;</button>
+    </div>
+    
+    <div id="chat-messages" style="flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
+      <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px 12px 12px 0; max-width: 80%; border: 1px solid var(--border-dim);">
+        👋 Hi! I'm an AI Lead Generation bot. I'm exactly the type of bot you will learn how to build and sell for $2,000+ in the Masterclass.
+      </div>
+      <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px 12px 12px 0; max-width: 80%; border: 1px solid var(--border-dim);">
+        Are you ready to start your AI Automation Agency today?
+      </div>
+    </div>
+    
+    <div style="padding: 16px; border-top: 1px solid var(--border-dim); display: flex; gap: 8px;">
+      <input type="text" id="chat-input" placeholder="Type your answer..." style="flex: 1; background: rgba(0,0,0,0.5); border: 1px solid var(--border-dim); padding: 10px 12px; border-radius: 8px; color: #fff; font-family: 'Plus Jakarta Sans'; outline: none;">
+      <button onclick="sendChatMessage()" style="background: var(--neon-blue); color: #000; border: none; padding: 10px 16px; border-radius: 8px; font-family: 'Space Grotesk'; font-weight: 700; cursor: pointer;">Send</button>
+    </div>
+  </div>
+  
+  <button id="chat-toggle-btn" onclick="toggleChat()" style="position: absolute; bottom: 0; right: 0; width: 60px; height: 60px; border-radius: 50%; background: var(--neon-blue); border: none; cursor: pointer; box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); display: flex; justify-content: center; align-items: center; transition: transform 0.2s;">
+    <span style="font-size: 24px;">💬</span>
+  </button>
+</div>
+
+<!-- PRODUCT DETAILS MODAL -->
+<div id="productModal" class="modal">
+  <div class="modal-content" style="max-width: 500px;">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <div id="modalTag" class="prod-tag"></div>
+    <h2 id="modalTitle" style="font-size: 28px; margin-bottom: 12px; color: #fff;"></h2>
+    <p id="modalDesc" style="color: var(--text-secondary); margin-bottom: 24px; font-size: 15px;"></p>
+    
+    <div style="margin-bottom: 24px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-dim); border-radius: 8px; padding: 16px;">
+      <h4 style="font-family: 'Space Grotesk'; font-size: 14px; color: var(--neon-blue); margin: 0 0 12px 0; text-transform: uppercase;">What's Included</h4>
+      <ul id="modalFeatures" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
+      </ul>
+    </div>
+    
+    <div id="modalPrice" style="font-family: 'JetBrains Mono'; font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 32px;"></div>
+    <button class="btn-solid" style="width: 100%;" id="modalAddBtn">Add to Cart</button>
+  </div>
+</div>
+
+<script>
+  // Reveal Animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Cart Logic
+  let cart = JSON.parse(localStorage.getItem('wealthweb_cart')) || [];
+  
+  function updateCartCount() {
+    const countEl = document.getElementById('cartCount');
+    countEl.innerText = cart.length;
+    countEl.style.transform = 'scale(1.3)';
+    setTimeout(() => countEl.style.transform = 'scale(1)', 200);
+  }
+  
+  function addToCart(name, price, icon, desc) {
+    cart.push({ id: Date.now().toString(), name, price, icon, desc });
+    localStorage.setItem('wealthweb_cart', JSON.stringify(cart));
+    updateCartCount();
+    closeModal();
+    
+    // Fancy notification
+    const notification = document.createElement('div');
+    notification.innerText = `Added ${name} to Cart!`;
+    notification.style.position = 'fixed';
+    notification.style.bottom = '20px';
+    notification.style.right = '20px';
+    notification.style.background = 'var(--neon-blue)';
+    notification.style.color = '#000';
+    notification.style.padding = '12px 24px';
+    notification.style.borderRadius = '8px';
+    notification.style.fontFamily = 'Space Grotesk';
+    notification.style.fontWeight = '700';
+    notification.style.zIndex = '2000';
+    notification.style.boxShadow = '0 0 20px rgba(0, 229, 255, 0.4)';
+    document.body.appendChild(notification);
+    setTimeout(() => notification.remove(), 3000);
+  }
+
+  // Modal Logic
+  const courseFeatures = {
+    'masterclass': [
+      '✓ 4 Hours of HD Video Streaming',
+      '✓ Build a real estate bot from scratch',
+      '✓ High-ticket pricing frameworks',
+      '✓ Downloadable .vf Blueprint Files'
+    ],
+    'templates': [
+      '✓ 10+ Pre-built Voiceflow Templates',
+      '✓ Dental, E-Commerce, and Real Estate',
+      '✓ 1-Click Import into your account',
+      '✓ Includes fallback and escalation logic'
+    ],
+    'acquisition': [
+      '✓ Live recorded cold calls (HD)',
+      '✓ 5 Proven Cold Email Scripts',
+      '✓ LinkedIn DM automated sequences',
+      '✓ Objection handling cheat sheet'
+    ],
+    'makecom': [
+      '✓ 15 Complex Make.com Automations',
+      '✓ ChatGPT to Google Sheets Integration',
+      '✓ Webhook to CRM workflows',
+      '✓ Downloadable JSON import files'
+    ]
+  };
+
+  function viewDetails(id, title, price, tag, tagColor, desc, icon) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalPrice').innerText = `$${price}`;
+    document.getElementById('modalDesc').innerText = desc;
+    
+    const tagEl = document.getElementById('modalTag');
+    tagEl.innerText = tag;
+    tagEl.style.color = tagColor;
+    tagEl.style.background = `rgba(255,255,255,0.05)`;
+
+    const featContainer = document.getElementById('modalFeatures');
+    featContainer.innerHTML = '';
+    if(courseFeatures[id]) {
+      courseFeatures[id].forEach(f => {
+        const li = document.createElement('li');
+        li.innerText = f;
+        li.style.marginBottom = '4px';
+        featContainer.appendChild(li);
+      });
+    }
+
+    const addBtn = document.getElementById('modalAddBtn');
+    addBtn.onclick = function() { addToCart(title, price, icon, desc); };
+    
+    document.getElementById('productModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('productModal').style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('productModal');
+    if (event.target == modal) { modal.style.display = "none"; }
+  }
+
+  // Chatbot Logic
+  let chatStep = 0;
+  let leadData = { name: '', phone: '' };
+
+  function toggleChat() {
+    const chatWin = document.getElementById('chat-window');
+    const toggleBtn = document.getElementById('chat-toggle-btn');
+    if (chatWin.style.display === 'none') {
+      chatWin.style.display = 'flex';
+      toggleBtn.style.display = 'none';
+    } else {
+      chatWin.style.display = 'none';
+      toggleBtn.style.display = 'flex';
+    }
+  }
+
+  function appendBotMessage(text) {
+    const msgsContainer = document.getElementById('chat-messages');
+    const botDiv = document.createElement('div');
+    botDiv.style.cssText = 'background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px 12px 12px 0; max-width: 80%; border: 1px solid var(--border-dim);';
+    botDiv.innerHTML = text;
+    msgsContainer.appendChild(botDiv);
+    msgsContainer.scrollTop = msgsContainer.scrollHeight;
+  }
+
+  function sendChatMessage() {
+    const input = document.getElementById('chat-input');
+    const msg = input.value.trim();
+    if(!msg) return;
+    
+    const msgsContainer = document.getElementById('chat-messages');
+    
+    // User msg
+    const userDiv = document.createElement('div');
+    userDiv.style.cssText = 'background: rgba(0, 229, 255, 0.1); padding: 12px; border-radius: 12px 12px 0 12px; max-width: 80%; border: 1px solid rgba(0, 229, 255, 0.3); align-self: flex-end; color: #fff;';
+    userDiv.innerText = msg;
+    msgsContainer.appendChild(userDiv);
+    input.value = '';
+    msgsContainer.scrollTop = msgsContainer.scrollHeight;
+
+    // Bot response logic
+    setTimeout(() => {
+      if(chatStep === 0) {
+        appendBotMessage("Awesome! 🚀 To get you started, what is your first name?");
+        chatStep++;
+      } else if (chatStep === 1) {
+        leadData.name = msg;
+        appendBotMessage(`Nice to meet you, ${msg}! 👋 What is your phone number so my team can text you the Masterclass link?`);
+        chatStep++;
+      } else if (chatStep === 2) {
+        leadData.phone = msg;
+        
+        // POST to backend
+        fetch('/api/capture_lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(leadData)
+        });
+
+        appendBotMessage("Perfect! I've sent your info to our live agents. They will reach out shortly. In the meantime, check out our Video Store! 🎥");
+        chatStep++;
+      } else {
+        appendBotMessage("Click the 'Store' link in the top right to view our Video Masterclasses and learn how to build me!");
+      }
+    }, 800);
+  }
+
+  document.getElementById('chat-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') sendChatMessage();
+  });
+
+  // Init
+  updateCartCount();
+</script>
+</body>
+</html>

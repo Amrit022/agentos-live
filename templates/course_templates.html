@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plug & Play Bot Templates — AgentOS</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg-void: #000000; --card-surface: rgba(12, 12, 14, 0.9); --border-dim: rgba(255, 255, 255, 0.08); --neon-blue: #00e5ff; --neon-purple: #b537f2; --neon-green: #39ff14; --text-primary: #ffffff; --text-secondary: #8892b0; }
+  body { background-color: var(--bg-void); color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; border-bottom: 1px solid var(--border-dim); background: #000; z-index: 10; }
+  .nav-left { display: flex; align-items: center; gap: 24px; }
+  .nav h1 { font-family: 'Space Grotesk'; margin: 0; font-size: 20px; font-weight: 900; }
+  .btn-outline { background: transparent; color: #fff; border: 1px solid var(--border-dim); padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; transition: border-color 0.2s;}
+  .btn-outline:hover { border-color: var(--neon-purple); }
+  .lms-container { display: flex; flex: 1; overflow: hidden; }
+  .sidebar { width: 350px; background: #050505; border-right: 1px solid var(--border-dim); display: flex; flex-direction: column; overflow-y: auto; }
+  .module-group { border-bottom: 1px solid var(--border-dim); }
+  .module-title { padding: 20px 24px; font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; background: #020202; }
+  .lesson { padding: 16px 24px; display: flex; align-items: flex-start; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.02); cursor: pointer; transition: background 0.2s; }
+  .lesson:hover { background: rgba(255,255,255,0.02); }
+  .lesson.active { background: rgba(181, 55, 242, 0.05); border-left: 3px solid var(--neon-purple); }
+  .lesson-icon { font-size: 16px; margin-top: 2px; }
+  .lesson.active .lesson-icon { color: var(--neon-purple); }
+  .lesson-info { flex: 1; }
+  .lesson-name { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+  .lesson.active .lesson-name { color: var(--neon-purple); font-weight: 700;}
+  .lesson-time { font-size: 12px; color: var(--text-secondary); font-family: 'JetBrains Mono';}
+  .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; background: var(--bg-void); }
+  .video-wrapper { width: 100%; background: #000; position: relative; padding-top: 56.25%; border-bottom: 1px solid var(--border-dim); overflow: hidden; }
+  .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  .video-brand-top { position: absolute; top: 0; left: 0; right: 0; padding: 14px 20px; z-index: 10; height: 52px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; background: linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 60%, transparent 100%); }
+  .video-brand-top img { width: 28px; height: 28px; border-radius: 6px; box-shadow: 0 0 10px rgba(181,55,242,0.3); }
+  .video-brand-top span { font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
+  .video-brand-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 50px; z-index: 10; background: linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%); display: flex; align-items: flex-end; justify-content: space-between; padding: 0 20px 10px 20px; }
+  .video-brand-bottom span { font-family: 'JetBrains Mono'; font-size: 11px; color: rgba(181,55,242,0.6); letter-spacing: 1.5px; text-transform: uppercase; }
+  .video-details { padding: 48px; max-width: 1000px; }
+  .video-details h2 { font-family: 'Space Grotesk'; font-size: 32px; margin: 0 0 16px 0; }
+  .video-details p { color: var(--text-secondary); font-size: 16px; line-height: 1.8; margin-bottom: 32px; }
+  .resource-box { background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim); padding: 24px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .resource-box h3 { font-family: 'Space Grotesk'; margin: 0 0 4px 0; font-size: 18px; }
+  .resource-box p { margin: 0; font-size: 14px; }
+  .btn-download { background: var(--neon-purple); color: #fff; padding: 10px 20px; border-radius: 6px; font-family: 'Space Grotesk'; font-weight: 700; text-decoration: none; font-size: 14px; white-space: nowrap; cursor: pointer; border: none; }
+  .completion-bar { display: flex; align-items: center; gap: 12px; padding: 16px 24px; background: #020202; border-bottom: 1px solid var(--border-dim); }
+  .completion-bar span { font-family: 'JetBrains Mono'; font-size: 12px; color: var(--text-secondary); }
+  .completion-track { flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .completion-fill { height: 100%; background: var(--neon-purple); border-radius: 2px; transition: width 0.3s; }
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="nav-left">
+    <a href="/portal" class="btn-outline">← Dashboard</a>
+    <h1>Agent<span style="color: var(--neon-purple);">OS</span></h1>
+  </div>
+  <div style="font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700; color: var(--neon-purple);">PLUG & PLAY BOT TEMPLATES</div>
+</div>
+<div class="lms-container">
+  <div class="sidebar">
+    <div class="completion-bar">
+      <span id="progressText">1/5 Complete</span>
+      <div class="completion-track"><div class="completion-fill" id="progressFill" style="width: 20%;"></div></div>
+    </div>
+    <div class="module-group">
+      <div class="module-title">Module 1: Lead Generation Bots</div>
+      <div class="lesson active" onclick="loadLesson(0)"><div class="lesson-icon">▶️</div><div class="lesson-info"><div class="lesson-name">1. AI Lead Gen Chatbot (Full Build)</div><div class="lesson-time">18:30</div></div></div>
+      <div class="lesson" onclick="loadLesson(1)"><div class="lesson-icon">⬜</div><div class="lesson-info"><div class="lesson-name">2. Real Estate Booking Bot ($2,000 Template)</div><div class="lesson-time">22:15</div></div></div>
+    </div>
+    <div class="module-group">
+      <div class="module-title">Module 2: Industry-Specific Bots</div>
+      <div class="lesson" onclick="loadLesson(2)"><div class="lesson-icon">⬜</div><div class="lesson-info"><div class="lesson-name">3. Dental Clinic AI Assistant</div><div class="lesson-time">16:40</div></div></div>
+      <div class="lesson" onclick="loadLesson(3)"><div class="lesson-icon">⬜</div><div class="lesson-info"><div class="lesson-name">4. Advanced Knowledge Base Setup</div><div class="lesson-time">18:05</div></div></div>
+    </div>
+    <div class="module-group">
+      <div class="module-title">Module 3: Client Delivery</div>
+      <div class="lesson" onclick="loadLesson(4)"><div class="lesson-icon">⬜</div><div class="lesson-info"><div class="lesson-name">5. Outreach & Selling Your Templates</div><div class="lesson-time">14:20</div></div></div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="video-wrapper">
+      <iframe id="videoPlayer" src="https://www.youtube-nocookie.com/embed/jI6nGbkFrDg?modestbranding=1&rel=0&showinfo=0&color=white&iv_load_policy=3" title="Lesson Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="video-brand-top"><img src="/static/logo.png" alt="AgentOS"><span>AgentOS Academy</span></div>
+      <div class="video-brand-bottom"><span>Powered by AgentOS™</span></div>
+    </div>
+    <div class="video-details">
+      <h2 id="lessonTitle">1. AI Lead Gen Chatbot (Full Build)</h2>
+      <p id="lessonDesc">Learn how to build a complete AI-powered lead generation chatbot that captures names, emails, and phone numbers for local businesses. This is your highest-value template — sell it for $1,500-$2,000 per client.</p>
+      <div class="resource-box" style="border-color: var(--neon-purple); box-shadow: 0 0 20px rgba(181,55,242,0.1);">
+        <div>
+          <h3 id="resourceTitle" style="color: var(--neon-purple);">Template: Lead Gen Bot (.vf Import File)</h3>
+          <p id="resourceDesc" style="margin:0; color: var(--text-secondary);">Download and import directly into Voiceflow. Customize the business name, colors, and questions for each client.</p>
+        </div>
+        <button class="btn-download" onclick="alert('Downloading template...')">Download</button>
+      </div>
+      <div class="resource-box">
+        <div>
+          <h3 style="color: var(--neon-purple);">📝 Lesson Notes</h3>
+          <p id="lessonNotes" style="margin:0; color: var(--text-secondary);">Key blocks used: Welcome Message → Capture (Name) → Capture (Email) → Capture (Phone) → AI Response → End. Average build time: 30 minutes per client.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const lessons = [
+    { videoId: 'jI6nGbkFrDg', title: '1. AI Lead Gen Chatbot (Full Build)', desc: 'Learn how to build a complete AI-powered lead generation chatbot that captures names, emails, and phone numbers for local businesses. This is your highest-value template — sell it for $1,500-$2,000 per client.', resourceTitle: 'Template: Lead Gen Bot (.vf Import File)', resourceDesc: 'Download and import directly into Voiceflow. Customize the business name, colors, and questions for each client.', notes: 'Key blocks used: Welcome Message → Capture (Name) → Capture (Email) → Capture (Phone) → AI Response → End. Average build time: 30 minutes per client.' },
+    { videoId: 'DFyVP7JRqic', title: '2. Real Estate Booking Bot ($2,000 Template)', desc: 'Build a high-ticket real estate appointment scheduling bot. This template handles property inquiries, qualifies leads by budget and location, and books viewings automatically.', resourceTitle: 'Template: Real Estate Bot (.vf Import File)', resourceDesc: 'Pre-configured for real estate agents. Includes property inquiry flow, budget qualifier, and appointment scheduler.', notes: 'Selling this to one real estate agent for $2,000 pays for the entire course 20x over. Customize: Agent name, property types, service areas, booking calendar link.' },
+    { videoId: 'wxvJ61F23ic', title: '3. Dental Clinic AI Assistant', desc: 'A complete AI assistant for dental clinics that handles appointment booking, answers common questions about procedures, insurance, and pricing, and captures patient contact information.', resourceTitle: 'Template: Dental Clinic Bot (.vf Import File)', resourceDesc: 'Pre-loaded with dental FAQ knowledge base covering cleanings, crowns, whitening, insurance, and emergency care.', notes: 'This template works for ANY healthcare niche. Duplicate and modify for: Chiropractors, Med Spas, Veterinarians, Physiotherapists. Average price to sell: $1,500-$3,000.' },
+    { videoId: '83LVdmf9hqQ', title: '4. Advanced Knowledge Base Setup', desc: 'Learn how to supercharge any bot template by connecting a Knowledge Base. Upload your client\'s website, FAQ documents, and product catalogs so the bot can answer ANY question about their business.', resourceTitle: 'Knowledge Base Setup Checklist', resourceDesc: 'A structured checklist for gathering and formatting client data before uploading to Voiceflow Knowledge Base.', notes: 'Upload sources: Client website URL, PDF brochures, FAQ document, pricing sheets. Use temperature 0.3 for factual answers. Always set a fallback for unknown questions.' },
+    { videoId: 'lwC8QHaKX5I', title: '5. Outreach & Selling Your Templates', desc: 'Now that you have the templates, learn how to find clients and close deals. This lesson covers LinkedIn outreach, positioning your offer, and the exact messages that convert prospects into paying clients.', resourceTitle: 'Outreach Scripts: LinkedIn DM Templates', resourceDesc: '5 proven LinkedIn DM scripts designed specifically for selling AI chatbot services to local businesses.', notes: 'Best niches for bot templates: Real Estate, Dental, Legal, E-Commerce, Restaurants. Average close rate with templates: 15-25% (much higher than selling from scratch because you can demo immediately).' }
+  ];
+  let currentLesson = 0;
+  let completedLessons = new Set([0]);
+  function loadLesson(index) {
+    currentLesson = index; completedLessons.add(index);
+    const lesson = lessons[index];
+    document.getElementById('videoPlayer').src = `https://www.youtube-nocookie.com/embed/${lesson.videoId}?modestbranding=1&rel=0&showinfo=0&color=white&autoplay=1&iv_load_policy=3`;
+    document.getElementById('lessonTitle').innerText = lesson.title;
+    document.getElementById('lessonDesc').innerText = lesson.desc;
+    document.getElementById('resourceTitle').innerText = lesson.resourceTitle;
+    document.getElementById('resourceDesc').innerText = lesson.resourceDesc;
+    document.getElementById('lessonNotes').innerText = lesson.notes;
+    const allLessons = document.querySelectorAll('.lesson');
+    allLessons.forEach((el, i) => { el.classList.remove('active'); const icon = el.querySelector('.lesson-icon'); if (i === index) { el.classList.add('active'); icon.innerText = '▶️'; } else if (completedLessons.has(i)) { icon.innerText = '✅'; } else { icon.innerText = '⬜'; } });
+    const pct = Math.round((completedLessons.size / lessons.length) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').innerText = `${completedLessons.size}/${lessons.length} Complete`;
+    document.querySelector('.main-content').scrollTop = 0;
+  }
+</script>
+</body>
+</html>

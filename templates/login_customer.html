@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Node Authentication — AgentOS</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-void: #000000;
+    --card-surface: rgba(12, 12, 14, 0.8);
+    --border-dim: rgba(255, 255, 255, 0.1);
+    --neon-blue: #00e5ff;
+    --text-primary: #ffffff;
+    --text-secondary: #8892b0;
+  }
+  body {
+    background-color: var(--bg-void); color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0; display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; overflow: hidden;
+  }
+  /* GRID BG */
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: -2;
+    background-image: linear-gradient(var(--border-dim) 1px, transparent 1px), linear-gradient(90deg, var(--border-dim) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at center, black, transparent 70%);
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 70%);
+  }
+
+  .login-container {
+    background: var(--card-surface); border: 1px solid var(--border-dim);
+    border-radius: 16px; padding: 48px; width: 100%; max-width: 400px;
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.1); backdrop-filter: blur(20px);
+    position: relative;
+  }
+  
+  .brand { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 32px; }
+  .brand h1 { font-family: 'Space Grotesk'; margin: 0; font-size: 28px; font-weight: 900; }
+  
+  .auth-title { font-family: 'JetBrains Mono'; font-size: 13px; color: var(--neon-blue); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 32px;}
+
+  .form-group { margin-bottom: 24px; }
+  label { display: block; margin-bottom: 8px; color: var(--text-secondary); font-size: 13px; text-transform: uppercase; font-weight: 600; letter-spacing: 1px;}
+  input { 
+    width: 100%; padding: 14px; background: rgba(0,0,0,0.5); 
+    border: 1px solid var(--border-dim); color: #fff; border-radius: 8px; 
+    font-family: 'JetBrains Mono'; box-sizing: border-box; transition: border-color 0.3s;
+  }
+  input:focus { border-color: var(--neon-blue); outline: none; box-shadow: 0 0 15px rgba(0,229,255,0.2); }
+  
+  .btn { 
+    background: var(--neon-blue); color: #000; padding: 16px; border: none; 
+    border-radius: 8px; font-family: 'Space Grotesk'; font-weight: 700; 
+    cursor: pointer; width: 100%; font-size: 16px; transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(0, 229, 255, 0.5); }
+  
+  .error { background: rgba(255, 77, 77, 0.1); color: #ff4d4d; border: 1px solid #ff4d4d; padding: 12px; border-radius: 8px; text-align: center; margin-bottom: 24px; font-size: 14px;}
+  
+  .footer-links { margin-top: 32px; text-align: center; font-size: 14px;}
+  .footer-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s;}
+  .footer-links a:hover { color: #fff; }
+</style>
+</head>
+<body>
+
+<div class="login-container">
+  <div class="brand">
+    <img src="/static/logo.png" alt="AgentOS" style="width: 40px; height: 40px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,229,255,0.4);">
+    <h1>Agent<span style="color: var(--neon-blue);">OS</span></h1>
+  </div>
+  
+  <div class="auth-title">Node Authentication</div>
+
+  {% if error %}
+    <div class="error">{{ error }}</div>
+  {% endif %}
+
+  <form method="POST">
+    <div class="form-group">
+      <label>Encrypted Email ID</label>
+      <input type="email" name="email" required placeholder="agent@network.com">
+    </div>
+    <div class="form-group">
+      <label>Passphrase</label>
+      <input type="password" name="password" required placeholder="••••••••">
+    </div>
+    <button type="submit" class="btn">Initialize Connection</button>
+  </form>
+  
+  <div class="footer-links">
+    <a href="/">← Return to Public Matrix</a>
+  </div>
+</div>
+
+</body>
+</html>

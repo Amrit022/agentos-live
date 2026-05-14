@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Command Center — AgentOS</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-void: #000000;
+    --card-surface: rgba(12, 12, 14, 0.7);
+    --border-dim: rgba(255, 255, 255, 0.08);
+    --border-bright: rgba(255, 255, 255, 0.25);
+    --neon-blue: #00e5ff;
+    --neon-purple: #b537f2;
+    --neon-green: #00ff66;
+    --text-primary: #ffffff;
+    --text-secondary: #8892b0;
+  }
+
+  body {
+    background-color: var(--bg-void); color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0; padding: 0; display: flex; height: 100vh; overflow: hidden;
+  }
+  
+  /* GRID BG */
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: -2;
+    background-image: linear-gradient(var(--border-dim) 1px, transparent 1px), linear-gradient(90deg, var(--border-dim) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at top left, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at top left, black, transparent 80%);
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 280px; background: rgba(5, 5, 5, 0.95); border-right: 1px solid var(--border-dim);
+    display: flex; flex-direction: column; padding: 32px 0; backdrop-filter: blur(20px);
+  }
+  .brand {
+    padding: 0 32px 32px 32px; border-bottom: 1px solid var(--border-dim);
+    display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+  }
+  .brand h1 { font-family: 'Space Grotesk'; margin: 0; font-size: 24px; font-weight: 900; }
+  
+  .nav-menu { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 0 16px;}
+  .nav-item {
+    padding: 14px 20px; border-radius: 8px; color: var(--text-secondary); text-decoration: none;
+    font-size: 15px; font-weight: 500; display: flex; align-items: center; gap: 12px;
+    transition: all 0.2s;
+  }
+  .nav-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
+  .nav-item.active { background: rgba(0, 229, 255, 0.1); color: var(--neon-blue); font-weight: 700; border-left: 3px solid var(--neon-blue); border-radius: 0 8px 8px 0;}
+  
+  .sidebar-footer { padding: 24px 32px 0 32px; border-top: 1px solid var(--border-dim); }
+
+  /* MAIN CONTENT */
+  .main-content { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+  
+  /* TOP BAR: CLOCKS */
+  .top-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 48px; border-bottom: 1px solid var(--border-dim); background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .world-clocks { display: flex; gap: 32px; }
+  .clock-widget { display: flex; flex-direction: column; gap: 4px; }
+  .clock-label { font-size: 11px; color: var(--text-secondary); text-transform: uppercase; font-weight: 700; letter-spacing: 1px;}
+  .clock-time { font-family: 'JetBrains Mono', monospace; font-size: 16px; color: var(--neon-blue); }
+
+  /* DASHBOARD CONTAINER */
+  .container { padding: 48px; max-width: 1400px; margin: 0 auto; width: 100%; box-sizing: border-box;}
+  
+  .header-area { margin-bottom: 40px; }
+  .header-area h2 { font-family: 'Space Grotesk'; font-size: 36px; margin: 0 0 8px 0; }
+  .header-area p { color: var(--text-secondary); font-size: 16px; margin: 0; }
+
+  /* HUD STATS */
+  .hud-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+  .hud-card {
+    background: var(--card-surface); border: 1px solid var(--border-dim); border-radius: 12px;
+    padding: 24px; backdrop-filter: blur(10px);
+  }
+  .hud-label { font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;}
+  .hud-value { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 700; color: #fff; }
+  .hud-value span { font-size: 18px; color: var(--neon-green); margin-left: 8px; }
+
+  /* VIDEO GRID */
+  .section-title { font-family: 'Space Grotesk'; font-size: 20px; border-bottom: 1px solid var(--border-dim); padding-bottom: 12px; margin-bottom: 24px;}
+  
+  .video-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;
+  }
+
+  .video-card {
+    background: var(--card-surface); border: 1px solid var(--border-dim); border-radius: 12px;
+    overflow: hidden; backdrop-filter: blur(10px); transition: transform 0.3s, border-color 0.3s;
+    text-decoration: none; color: inherit; display: block;
+  }
+  .video-card:hover { transform: translateY(-5px); border-color: var(--neon-blue); }
+  
+  .thumb-container {
+    height: 180px; background: #111; position: relative;
+    display: flex; justify-content: center; align-items: center;
+    border-bottom: 1px solid var(--border-dim);
+  }
+  .play-btn {
+    width: 50px; height: 50px; border-radius: 50%;
+    background: rgba(0, 229, 255, 0.2); border: 1px solid var(--neon-blue);
+    display: flex; justify-content: center; align-items: center;
+    font-size: 20px; padding-left: 4px; box-shadow: 0 0 20px rgba(0,229,255,0.4);
+  }
+  
+  .card-content { padding: 20px; }
+  .card-title { font-family: 'Space Grotesk'; font-size: 18px; font-weight: 700; margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+  
+  .progress-wrapper { margin-top: 16px; }
+  .progress-info { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; font-family: 'JetBrains Mono';}
+  .progress-bar { height: 4px; background: rgba(255,255,255,0.1); width: 100%; border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--neon-green); }
+  
+  .empty { text-align: center; padding: 80px 0; color: var(--text-secondary); border: 1px dashed var(--border-dim); border-radius: 12px; }
+
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="brand">
+    <img src="/static/logo.png" alt="AgentOS" style="width: 32px; height: 32px; border-radius: 6px;">
+    <h1>Agent<span style="color: var(--neon-blue);">OS</span></h1>
+  </div>
+  
+  <div class="nav-menu">
+    <a href="/portal" class="nav-item active"><span>📊</span> Dashboard</a>
+    <a href="/profile" class="nav-item"><span>👤</span> Profile Settings</a>
+    <a href="/api_keys" class="nav-item"><span>🔑</span> API Key Manager</a>
+    <a href="/discord" class="nav-item"><span>💬</span> Discord Community</a>
+    <a href="/support" class="nav-item"><span>📞</span> Contact Support</a>
+  </div>
+  
+  <div class="sidebar-footer">
+    <a href="/logout_customer" class="nav-item" style="color: #ff4d4d; padding: 14px 0;"><span>🚪</span> Secure Logout</a>
+  </div>
+</div>
+
+<div class="main-content">
+  <div class="top-bar">
+    <div style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 14px; letter-spacing: 2px; color: var(--text-secondary);">COMMAND CENTER</div>
+    
+    <div class="world-clocks">
+      <div class="clock-widget">
+        <span class="clock-label">US (PST)</span>
+        <span class="clock-time" id="clock-pst">00:00:00</span>
+      </div>
+      <div class="clock-widget">
+        <span class="clock-label">UK (GMT)</span>
+        <span class="clock-time" id="clock-gmt">00:00:00</span>
+      </div>
+      <div class="clock-widget">
+        <span class="clock-label">IND (IST)</span>
+        <span class="clock-time" id="clock-ist">00:00:00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="header-area">
+      <h2>Welcome Back, Agent.</h2>
+      <p>Your global node operations and training progress.</p>
+    </div>
+    
+    <!-- HUD -->
+    <div class="hud-grid">
+      <div class="hud-card">
+        <div class="hud-label">Courses Purchased</div>
+        <div class="hud-value">{{ items|length }}</div>
+      </div>
+      <div class="hud-card">
+        <div class="hud-label">Overall Completion</div>
+        <div class="hud-value">15<span>%</span></div>
+      </div>
+      <div class="hud-card">
+        <div class="hud-label">Global Active Nodes</div>
+        <div class="hud-value" style="color: var(--neon-blue);">3</div>
+      </div>
+    </div>
+
+    <!-- LIBRARY -->
+    <div class="section-title">Your Video Library</div>
+    
+    {% if items %}
+      <div class="video-grid">
+        {% for item in items %}
+        <a href="{% if 'Template' in item.name %}/course/templates{% elif 'Acquisition' in item.name %}/course/acquisition{% elif 'Make.com' in item.name %}/course/makecom{% else %}/course/blueprint{% endif %}" class="video-card">
+          <div class="thumb-container">
+            <div class="play-btn">▶</div>
+          </div>
+          <div class="card-content">
+            <div class="card-title">{{ item.name }}</div>
+            
+            <div class="progress-wrapper">
+              <div class="progress-info">
+                <span>IN PROGRESS</span>
+                <span style="color: var(--neon-green);">15%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" style="width: 15%;"></div></div>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty">
+        <div style="font-size: 40px; margin-bottom: 16px;">📂</div>
+        <p>No masterclasses detected in your node.</p>
+        <a href="/#products" style="display: inline-block; margin-top: 16px; padding: 10px 20px; background: rgba(0, 229, 255, 0.1); color: var(--neon-blue); border: 1px solid var(--neon-blue); border-radius: 6px; text-decoration: none; font-weight: 700;">Deploy Assets (Store)</a>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+<script>
+  function updateClocks() {
+    const now = new Date();
+    
+    // PST (UTC-8 / UTC-7)
+    const pstOptions = { timeZone: 'America/Los_Angeles', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    document.getElementById('clock-pst').innerText = now.toLocaleTimeString('en-US', pstOptions);
+    
+    // GMT (UTC)
+    const gmtOptions = { timeZone: 'Europe/London', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    document.getElementById('clock-gmt').innerText = now.toLocaleTimeString('en-US', gmtOptions);
+    
+    // IST (UTC+5:30)
+    const istOptions = { timeZone: 'Asia/Kolkata', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    document.getElementById('clock-ist').innerText = now.toLocaleTimeString('en-US', istOptions);
+  }
+
+  // Initial call
+  updateClocks();
+  // Update every second
+  setInterval(updateClocks, 1000);
+</script>
+
+</body>
+</html>

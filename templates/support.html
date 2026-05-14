@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Support — AgentOS</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg-void: #000000; --card-surface: rgba(12, 12, 14, 0.7); --border-dim: rgba(255, 255, 255, 0.08); --neon-blue: #00e5ff; --text-primary: #ffffff; --text-secondary: #8892b0; }
+  body { background-color: var(--bg-void); color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 48px; }
+  .container { max-width: 600px; margin: 0 auto; background: var(--card-surface); padding: 40px; border-radius: 16px; border: 1px solid var(--border-dim); }
+  h1 { font-family: 'Space Grotesk'; font-size: 32px; margin-top: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border-dim); padding-bottom: 16px;}
+  .form-group { margin-bottom: 24px; }
+  label { display: block; margin-bottom: 8px; color: var(--text-secondary); font-size: 14px; }
+  input, textarea { width: 100%; padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-dim); color: #fff; border-radius: 8px; font-family: 'Plus Jakarta Sans'; box-sizing: border-box;}
+  input:focus, textarea:focus { border-color: var(--neon-blue); outline: none; }
+  .btn { background: var(--neon-blue); color: #000; padding: 12px 24px; border: none; border-radius: 8px; font-family: 'Space Grotesk'; font-weight: 700; cursor: pointer; width: 100%; font-size: 16px;}
+  .btn-outline { display: inline-block; text-align: center; background: transparent; color: #fff; padding: 12px 24px; border: 1px solid var(--border-dim); border-radius: 8px; text-decoration: none; width: 100%; box-sizing: border-box; margin-top: 16px; font-family: 'Space Grotesk'; font-weight: 700;}
+  .msg { background: rgba(0, 229, 255, 0.1); color: var(--neon-blue); padding: 12px; border-radius: 8px; margin-bottom: 24px; text-align: center; border: 1px solid var(--neon-blue); }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Node Support Ticket</h1>
+    {% if msg %}
+      <div class="msg">{{ msg }}</div>
+    {% endif %}
+    <form method="POST">
+      <div class="form-group">
+        <label>Subject</label>
+        <input type="text" name="subject" placeholder="e.g., API Configuration Error" required>
+      </div>
+      <div class="form-group">
+        <label>Description of Issue</label>
+        <textarea name="message" rows="6" placeholder="Provide as much detail as possible so our engineers can assist you..." required></textarea>
+      </div>
+      <button type="submit" class="btn">Submit Ticket</button>
+      <a href="/portal" class="btn-outline">Return to Dashboard</a>
+    </form>
+  </div>
+</body>
+</html>

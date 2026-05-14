@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AAA Full Blueprint — AgentOS</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-void: #000000;
+    --card-surface: rgba(12, 12, 14, 0.9);
+    --border-dim: rgba(255, 255, 255, 0.08);
+    --neon-blue: #00e5ff;
+    --neon-purple: #b537f2;
+    --neon-green: #39ff14;
+    --text-primary: #ffffff;
+    --text-secondary: #8892b0;
+  }
+
+  body {
+    background-color: var(--bg-void); color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden;
+  }
+
+  .nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 32px; border-bottom: 1px solid var(--border-dim);
+    background: #000; z-index: 10;
+  }
+  .nav-left { display: flex; align-items: center; gap: 24px; }
+  .nav h1 { font-family: 'Space Grotesk'; margin: 0; font-size: 20px; font-weight: 900; }
+  .btn-outline { background: transparent; color: #fff; border: 1px solid var(--border-dim); padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; transition: border-color 0.2s;}
+  .btn-outline:hover { border-color: var(--neon-blue); }
+
+  .lms-container { display: flex; flex: 1; overflow: hidden; }
+  
+  .sidebar {
+    width: 350px; background: #050505; border-right: 1px solid var(--border-dim);
+    display: flex; flex-direction: column; overflow-y: auto;
+  }
+  .module-group { border-bottom: 1px solid var(--border-dim); }
+  .module-title {
+    padding: 20px 24px; font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700;
+    color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;
+    background: #020202;
+  }
+  .lesson {
+    padding: 16px 24px; display: flex; align-items: flex-start; gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.02); cursor: pointer; transition: background 0.2s;
+  }
+  .lesson:hover { background: rgba(255,255,255,0.02); }
+  .lesson.active { background: rgba(0, 229, 255, 0.05); border-left: 3px solid var(--neon-blue); }
+  .lesson-icon { font-size: 16px; margin-top: 2px; }
+  .lesson.active .lesson-icon { color: var(--neon-blue); }
+  .lesson-info { flex: 1; }
+  .lesson-name { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+  .lesson.active .lesson-name { color: var(--neon-blue); font-weight: 700;}
+  .lesson-time { font-size: 12px; color: var(--text-secondary); font-family: 'JetBrains Mono';}
+
+  .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; background: var(--bg-void); }
+  
+  .video-wrapper {
+    width: 100%; background: #000; position: relative;
+    padding-top: 56.25%;
+    border-bottom: 1px solid var(--border-dim);
+    overflow: hidden;
+  }
+  .video-wrapper iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+  }
+  /* Branded overlay to fully cover YouTube branding */
+  .video-brand-top {
+    position: absolute; top: 0; left: 0; right: 0;
+    padding: 14px 20px; z-index: 10; height: 52px; box-sizing: border-box;
+    display: flex; align-items: center; gap: 10px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+  }
+  .video-brand-top img { width: 28px; height: 28px; border-radius: 6px; box-shadow: 0 0 10px rgba(0,229,255,0.3); }
+  .video-brand-top span { font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
+  .video-brand-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 50px; z-index: 10;
+    background: linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+    display: flex; align-items: flex-end; justify-content: space-between;
+    padding: 0 20px 10px 20px;
+  }
+  .video-brand-bottom span { font-family: 'JetBrains Mono'; font-size: 11px; color: rgba(0,229,255,0.6); letter-spacing: 1.5px; text-transform: uppercase; }
+
+  .video-details { padding: 48px; max-width: 1000px; }
+  .video-details h2 { font-family: 'Space Grotesk'; font-size: 32px; margin: 0 0 16px 0; }
+  .video-details p { color: var(--text-secondary); font-size: 16px; line-height: 1.8; margin-bottom: 32px; }
+  
+  .resource-box {
+    background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim);
+    padding: 24px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .resource-box h3 { font-family: 'Space Grotesk'; margin: 0 0 4px 0; font-size: 18px; }
+  .resource-box p { margin: 0; font-size: 14px; }
+  .btn-download { background: var(--neon-blue); color: #000; padding: 10px 20px; border-radius: 6px; font-family: 'Space Grotesk'; font-weight: 700; text-decoration: none; font-size: 14px; white-space: nowrap; cursor: pointer; border: none; }
+
+  .completion-bar { display: flex; align-items: center; gap: 12px; padding: 16px 24px; background: #020202; border-bottom: 1px solid var(--border-dim); }
+  .completion-bar span { font-family: 'JetBrains Mono'; font-size: 12px; color: var(--text-secondary); }
+  .completion-track { flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .completion-fill { height: 100%; background: var(--neon-green); border-radius: 2px; transition: width 0.3s; }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-left">
+    <a href="/portal" class="btn-outline">← Dashboard</a>
+    <h1>Agent<span style="color: var(--neon-blue);">OS</span></h1>
+  </div>
+  <div style="font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700;">THE AAA FULL BLUEPRINT</div>
+</div>
+
+<div class="lms-container">
+  
+  <div class="sidebar">
+    <div class="completion-bar">
+      <span id="progressText">1/8 Complete</span>
+      <div class="completion-track"><div class="completion-fill" id="progressFill" style="width: 12.5%;"></div></div>
+    </div>
+
+    <div class="module-group">
+      <div class="module-title">Module 1: The Foundation</div>
+      <div class="lesson active" onclick="loadLesson(0)">
+        <div class="lesson-icon">▶️</div>
+        <div class="lesson-info">
+          <div class="lesson-name">1. Welcome to the Agency</div>
+          <div class="lesson-time">12:45</div>
+        </div>
+      </div>
+      <div class="lesson" onclick="loadLesson(1)">
+        <div class="lesson-icon">⬜</div>
+        <div class="lesson-info">
+          <div class="lesson-name">2. What is an AI Automation Agency?</div>
+          <div class="lesson-time">08:30</div>
+        </div>
+      </div>
+      <div class="lesson" onclick="loadLesson(2)">
+        <div class="lesson-icon">⬜</div>
+        <div class="lesson-info">
+          <div class="lesson-name">3. The 5 Core Services to Sell</div>
+          <div class="lesson-time">14:20</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-group">
+      <div class="module-title">Module 2: Building with Voiceflow</div>
+      <div class="lesson" onclick="loadLesson(3)">
+        <div class="lesson-icon">⬜</div>
+        <div class="lesson-info">
+          <div class="lesson-name">4. Your First Chatbot Build (Step by Step)</div>
+          <div class="lesson-time">28:15</div>
+        </div>
+      </div>
+      <div class="lesson" onclick="loadLesson(4)">
+        <div class="lesson-icon">⬜</div>
+        <div class="lesson-info">
+          <div class="lesson-name">5. Connecting the OpenAI API</div>
+          <div class="lesson-time">22:10</div>
+        </div>
+      </div>
+      <div class="lesson" onclick="loadLesson(5)">
+        <div class="lesson-icon">⬜</div>
+        <div class="lesson-info">
+          <div class="lesson-name">6. Advanced Knowledge Base & Logic</div>
+          <div class="lesson-time">18:05</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-group">
+      <div class="module-title">Module 3: Client Acquisition</div>
+      <div class="lesson" onclick="loadLesson(6)">
+        <div class="lesson-icon">⬜</div>
+        <div class="lesson-info">
+          <div class="lesson-name">7. Lead Generation with Apollo.io</div>
+          <div class="lesson-time">12:20</div>
+        </div>
+      </div>
+      <div class="lesson" onclick="loadLesson(7)">
+        <div class="lesson-icon">⬜</div>
+        <div class="lesson-info">
+          <div class="lesson-name">8. Cold Email & Outreach that Converts</div>
+          <div class="lesson-time">19:45</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="video-wrapper">
+      <iframe id="videoPlayer" src="https://www.youtube-nocookie.com/embed/nlaNGnix-us?modestbranding=1&rel=0&showinfo=0&color=white&iv_load_policy=3&disablekb=0" title="Lesson Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="video-brand-top">
+        <img src="/static/logo.png" alt="AgentOS">
+        <span>AgentOS Academy</span>
+      </div>
+      <div class="video-brand-bottom">
+        <span>Powered by AgentOS™</span>
+      </div>
+    </div>
+    
+    <div class="video-details">
+      <h2 id="lessonTitle">1. Welcome to the Agency</h2>
+      <p id="lessonDesc">This introductory lesson covers the full landscape of the AI Automation Agency model. You will learn what it takes to launch a profitable agency, the tools you need, and the exact roadmap we will follow throughout this blueprint.</p>
+      
+      <div class="resource-box" style="border-color: var(--neon-blue); box-shadow: 0 0 20px rgba(0,229,255,0.1);">
+        <div>
+          <h3 id="resourceTitle" style="color: var(--neon-blue);">AgentOS Blueprint: Agency Launch Checklist</h3>
+          <p id="resourceDesc" style="margin:0; color: var(--text-secondary);">A printable PDF checklist of every tool, account, and asset you need before launching your agency.</p>
+        </div>
+        <button class="btn-download" onclick="alert('Downloading asset...')">Download</button>
+      </div>
+
+      <div class="resource-box">
+        <div>
+          <h3 style="color: var(--neon-purple);">📝 Lesson Notes</h3>
+          <p id="lessonNotes" style="margin:0; color: var(--text-secondary);">Key tools mentioned: Voiceflow (chatbots), Make.com (automations), Apollo.io (lead gen), Stripe (payments). Recommended niches: Real Estate, Dental, E-Commerce, SaaS.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const lessons = [
+    {
+      videoId: 'nlaNGnix-us',
+      title: '1. Welcome to the Agency',
+      desc: 'This introductory lesson covers the full landscape of the AI Automation Agency model. You will learn what it takes to launch a profitable agency, the tools you need, and the exact roadmap we will follow throughout this blueprint.',
+      resourceTitle: 'AgentOS Blueprint: Agency Launch Checklist',
+      resourceDesc: 'A printable PDF checklist of every tool, account, and asset you need before launching your agency.',
+      notes: 'Key tools mentioned: Voiceflow (chatbots), Make.com (automations), Apollo.io (lead gen), Stripe (payments). Recommended niches: Real Estate, Dental, E-Commerce, SaaS.'
+    },
+    {
+      videoId: 'yH1GP2TqwU8',
+      title: '2. What is an AI Automation Agency?',
+      desc: 'Understand the core business model, how AAAs differ from traditional agencies, and why this is the best opportunity in 2025. This lesson breaks down the revenue streams, pricing models, and market demand.',
+      resourceTitle: 'AgentOS Blueprint: AAA Business Model Canvas',
+      resourceDesc: 'A fill-in-the-blank business model canvas designed specifically for AI Automation Agencies.',
+      notes: 'Revenue models: Monthly retainers ($1,500-$5,000/mo), project-based ($2,000-$10,000), and hybrid. Key differentiator: You sell "digital employees", not just software.'
+    },
+    {
+      videoId: 'wrmp5onIeV8',
+      title: '3. The 5 Core Services to Sell',
+      desc: 'Learn the exact 5 services that AI agencies are selling right now for $2,000-$10,000 per client. This lesson covers chatbots, workflow automation, AI voice agents, content systems, and lead generation bots.',
+      resourceTitle: 'AgentOS Blueprint: Service Menu Template',
+      resourceDesc: 'A copy-paste pricing menu you can send to prospects. Includes service descriptions, deliverables, and suggested pricing.',
+      notes: 'Top 5 services: 1) AI Chatbots, 2) CRM Automation, 3) AI Voice Agents, 4) Content Repurposing, 5) Lead Qualification Bots. Best beginner service: Chatbots (fastest to build and sell).'
+    },
+    {
+      videoId: 'HKn3IgmhZ_k',
+      title: '4. Your First Chatbot Build (Step by Step)',
+      desc: 'Follow along as we build a complete AI chatbot from scratch using Voiceflow. This hands-on lesson walks through every click, from project setup to a fully functional appointment-booking bot.',
+      resourceTitle: 'AgentOS Blueprint: Voiceflow Project File (.vf)',
+      resourceDesc: 'Download the exact Voiceflow project built in this lesson. Import it directly into your account and customize for your first client.',
+      notes: 'Steps covered: Create project → Add welcome message → Set up capture blocks (name, email, phone) → Connect to AI Response block → Test in preview → Export embed code.'
+    },
+    {
+      videoId: 'xP_ZON_P4Ks',
+      title: '5. Connecting the OpenAI API',
+      desc: 'Learn how to connect the OpenAI (ChatGPT) API to power your chatbot with real artificial intelligence. This lesson covers API keys, token management, and prompt engineering basics.',
+      resourceTitle: 'AgentOS Blueprint: API Integration Guide',
+      resourceDesc: 'Step-by-step guide with screenshots showing how to get your API key, set billing, and connect to Voiceflow.',
+      notes: 'Important: You need an OpenAI Platform account (not ChatGPT Plus). Start with gpt-3.5-turbo for cost efficiency. Average cost per chatbot conversation: $0.002-$0.01.'
+    },
+    {
+      videoId: '83LVdmf9hqQ',
+      title: '6. Advanced Knowledge Base & Logic',
+      desc: 'Take your chatbot to the next level by adding a Knowledge Base. Upload your client\'s website, FAQs, and documents so the bot can answer any question about their business accurately.',
+      resourceTitle: 'AgentOS Blueprint: Knowledge Base Setup Template',
+      resourceDesc: 'A structured template for organizing client data before uploading to Voiceflow. Includes FAQ formatting guide.',
+      notes: 'Pro tip: Upload the client\'s entire website URL + their top 20 FAQs. Use "temperature: 0.3" for factual answers. Set fallback responses for questions outside the knowledge base.'
+    },
+    {
+      videoId: 'RkKS4P8OoTI',
+      title: '7. Lead Generation with Apollo.io',
+      desc: 'Learn how to use Apollo.io to find thousands of potential clients for your AI agency. This lesson covers search filters, list building, and exporting verified business owner contacts.',
+      resourceTitle: 'AgentOS Blueprint: Apollo.io Search Filters Cheat Sheet',
+      resourceDesc: 'Pre-built search filter configurations for the top 5 niches. Copy these settings directly into Apollo to find qualified leads instantly.',
+      notes: 'Best filters: Job Title = Owner/Founder/CEO, Company Size = 2-50, Industry = your niche. Free plan gives 60 credits/month. Pro tip: Use "Verified Email" filter to reduce bounce rates.'
+    },
+    {
+      videoId: '6ITyod_JlhI',
+      title: '8. Cold Email & Outreach that Converts',
+      desc: 'The final piece: getting clients. Learn the exact cold email scripts, subject lines, and follow-up sequences that top agencies use to book 5-10 sales calls per week.',
+      resourceTitle: 'AgentOS Blueprint: 5 Cold Email Scripts (.txt)',
+      resourceDesc: 'Five proven, fill-in-the-blank cold email scripts. Just replace [NICHE] and [COMPANY] and send. Average reply rate: 8-15%.',
+      notes: 'Key framework: Hook (personalization) → Problem (their pain) → Value (your solution + proof) → CTA (low-friction ask). Keep emails under 100 words. Send 3-5 follow-ups spaced 3 days apart.'
+    }
+  ];
+
+  let currentLesson = 0;
+  let completedLessons = new Set([0]);
+
+  function loadLesson(index) {
+    currentLesson = index;
+    completedLessons.add(index);
+
+    const lesson = lessons[index];
+    
+    // Update video
+    document.getElementById('videoPlayer').src = `https://www.youtube-nocookie.com/embed/${lesson.videoId}?modestbranding=1&rel=0&showinfo=0&color=white&autoplay=1&iv_load_policy=3`;
+    
+    // Update details
+    document.getElementById('lessonTitle').innerText = lesson.title;
+    document.getElementById('lessonDesc').innerText = lesson.desc;
+    document.getElementById('resourceTitle').innerText = lesson.resourceTitle;
+    document.getElementById('resourceDesc').innerText = lesson.resourceDesc;
+    document.getElementById('lessonNotes').innerText = lesson.notes;
+
+    // Update sidebar active state
+    const allLessons = document.querySelectorAll('.lesson');
+    allLessons.forEach((el, i) => {
+      el.classList.remove('active');
+      const icon = el.querySelector('.lesson-icon');
+      const name = el.querySelector('.lesson-name');
+      if (i === index) {
+        el.classList.add('active');
+        icon.innerText = '▶️';
+        name.style.color = '';
+      } else if (completedLessons.has(i)) {
+        icon.innerText = '✅';
+        name.style.color = '';
+      } else {
+        icon.innerText = '⬜';
+        name.style.color = '';
+      }
+    });
+
+    // Update progress
+    const pct = Math.round((completedLessons.size / lessons.length) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').innerText = `${completedLessons.size}/${lessons.length} Complete`;
+
+    // Scroll main content to top
+    document.querySelector('.main-content').scrollTop = 0;
+  }
+</script>
+
+</body>
+</html>

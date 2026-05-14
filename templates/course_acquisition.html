@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Acquisition Toolkit — AgentOS</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg-void: #000000; --card-surface: rgba(12, 12, 14, 0.9); --border-dim: rgba(255, 255, 255, 0.08); --neon-green: #39ff14; --text-primary: #ffffff; --text-secondary: #8892b0; }
+  body { background-color: var(--bg-void); color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; border-bottom: 1px solid var(--border-dim); background: #000; z-index: 10; }
+  .nav-left { display: flex; align-items: center; gap: 24px; }
+  .nav h1 { font-family: 'Space Grotesk'; margin: 0; font-size: 20px; font-weight: 900; }
+  .btn-outline { background: transparent; color: #fff; border: 1px solid var(--border-dim); padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; }
+  .lms-container { display: flex; flex: 1; overflow: hidden; }
+  .sidebar { width: 350px; background: #050505; border-right: 1px solid var(--border-dim); display: flex; flex-direction: column; overflow-y: auto; }
+  .module-group { border-bottom: 1px solid var(--border-dim); }
+  .module-title { padding: 20px 24px; font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; background: #020202; }
+  .lesson { padding: 16px 24px; display: flex; align-items: flex-start; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.02); cursor: pointer; transition: background 0.2s; }
+  .lesson:hover { background: rgba(255,255,255,0.02); }
+  .lesson.active { background: rgba(57, 255, 20, 0.05); border-left: 3px solid var(--neon-green); }
+  .lesson-icon { font-size: 16px; margin-top: 2px; }
+  .lesson-info { flex: 1; }
+  .lesson-name { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+  .lesson.active .lesson-name { color: var(--neon-green); font-weight: 700;}
+  .lesson-time { font-size: 12px; color: var(--text-secondary); font-family: 'JetBrains Mono';}
+  .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; background: var(--bg-void); }
+  .video-wrapper { width: 100%; background: #000; position: relative; padding-top: 56.25%; border-bottom: 1px solid var(--border-dim); overflow: hidden; }
+  .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  .video-brand-top { position: absolute; top: 0; left: 0; right: 0; padding: 14px 20px; z-index: 10; height: 52px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; background: linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 60%, transparent 100%); }
+  .video-brand-top img { width: 28px; height: 28px; border-radius: 6px; box-shadow: 0 0 10px rgba(57,255,20,0.3); }
+  .video-brand-top span { font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
+  .video-brand-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 50px; z-index: 10; background: linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%); display: flex; align-items: flex-end; justify-content: space-between; padding: 0 20px 10px 20px; }
+  .video-brand-bottom span { font-family: 'JetBrains Mono'; font-size: 11px; color: rgba(57,255,20,0.6); letter-spacing: 1.5px; text-transform: uppercase; }
+  .video-details { padding: 48px; max-width: 1000px; }
+  .video-details h2 { font-family: 'Space Grotesk'; font-size: 32px; margin: 0 0 16px 0; }
+  .video-details p { color: var(--text-secondary); font-size: 16px; line-height: 1.8; margin-bottom: 32px; }
+  .resource-box { background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim); padding: 24px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .resource-box h3 { font-family: 'Space Grotesk'; margin: 0 0 4px 0; font-size: 18px; }
+  .btn-download { background: var(--neon-green); color: #000; padding: 10px 20px; border-radius: 6px; font-family: 'Space Grotesk'; font-weight: 700; text-decoration: none; font-size: 14px; white-space: nowrap; cursor: pointer; border: none; }
+  .completion-bar { display: flex; align-items: center; gap: 12px; padding: 16px 24px; background: #020202; border-bottom: 1px solid var(--border-dim); }
+  .completion-bar span { font-family: 'JetBrains Mono'; font-size: 12px; color: var(--text-secondary); }
+  .completion-track { flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .completion-fill { height: 100%; background: var(--neon-green); border-radius: 2px; transition: width 0.3s; }
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="nav-left">
+    <a href="/portal" class="btn-outline">← Dashboard</a>
+    <h1>Agent<span style="color: var(--neon-green);">OS</span></h1>
+  </div>
+  <div style="font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700; color: var(--neon-green);">CLIENT ACQUISITION TOOLKIT</div>
+</div>
+<div class="lms-container">
+  <div class="sidebar">
+    <div class="completion-bar">
+      <span id="progressText">1/4 Complete</span>
+      <div class="completion-track"><div class="completion-fill" id="progressFill" style="width: 25%;"></div></div>
+    </div>
+    <div class="module-group">
+      <div class="module-title">Module 1: Finding Leads</div>
+      <div class="lesson active" onclick="loadLesson(0)"><div class="lesson-icon">▶️</div><div class="lesson-info"><div class="lesson-name">1. Apollo.io Full Walkthrough</div><div class="lesson-time">12:20</div></div></div>
+      <div class="lesson" onclick="loadLesson(1)"><div class="lesson-icon">⬜</div><div class="lesson-info"><div class="lesson-name">2. Free Lead Gen + Email Outreach</div><div class="lesson-time">19:45</div></div></div>
+    </div>
+    <div class="module-group">
+      <div class="module-title">Module 2: Closing Clients</div>
+      <div class="lesson" onclick="loadLesson(2)"><div class="lesson-icon">⬜</div><div class="lesson-info"><div class="lesson-name">3. LinkedIn Outreach Strategy</div><div class="lesson-time">14:30</div></div></div>
+      <div class="lesson" onclick="loadLesson(3)"><div class="lesson-icon">⬜</div><div class="lesson-info"><div class="lesson-name">4. AI-Powered Agency Overview</div><div class="lesson-time">12:45</div></div></div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="video-wrapper">
+      <iframe id="videoPlayer" src="https://www.youtube-nocookie.com/embed/RkKS4P8OoTI?modestbranding=1&rel=0&showinfo=0&color=white&iv_load_policy=3" title="Lesson Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="video-brand-top"><img src="/static/logo.png" alt="AgentOS"><span>AgentOS Academy</span></div>
+      <div class="video-brand-bottom"><span>Powered by AgentOS™</span></div>
+    </div>
+    <div class="video-details">
+      <h2 id="lessonTitle">1. Apollo.io Full Walkthrough</h2>
+      <p id="lessonDesc">Master the #1 B2B lead generation tool. Learn how to use Apollo.io's powerful search filters to find thousands of business owners in any niche, export their verified emails, and build targeted outreach lists.</p>
+      <div class="resource-box" style="border-color: var(--neon-green); box-shadow: 0 0 20px rgba(57,255,20,0.1);">
+        <div>
+          <h3 id="resourceTitle" style="color: var(--neon-green);">Apollo.io Search Filter Presets</h3>
+          <p id="resourceDesc" style="margin:0; color: var(--text-secondary);">Pre-built search filter configs for Real Estate, Dental, Legal, E-Commerce, and SaaS niches. Copy-paste into Apollo.</p>
+        </div>
+        <button class="btn-download" onclick="alert('Downloading asset...')">Download</button>
+      </div>
+      <div class="resource-box">
+        <div>
+          <h3 style="color: var(--neon-green);">📝 Lesson Notes</h3>
+          <p id="lessonNotes" style="margin:0; color: var(--text-secondary);">Best filters: Job Title = Owner/Founder/CEO, Company Size = 2-50 employees, Industry = your target niche. Free plan: 60 credits/month. Always use "Verified Email" filter.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const lessons = [
+    { videoId: 'RkKS4P8OoTI', title: '1. Apollo.io Full Walkthrough', desc: 'Master the #1 B2B lead generation tool. Learn how to use Apollo.io\'s powerful search filters to find thousands of business owners in any niche, export their verified emails, and build targeted outreach lists.', resourceTitle: 'Apollo.io Search Filter Presets', resourceDesc: 'Pre-built search filter configs for Real Estate, Dental, Legal, E-Commerce, and SaaS niches. Copy-paste into Apollo.', notes: 'Best filters: Job Title = Owner/Founder/CEO, Company Size = 2-50 employees, Industry = your target niche. Free plan: 60 credits/month. Always use "Verified Email" filter.' },
+    { videoId: '6ITyod_JlhI', title: '2. Free Lead Gen + Email Outreach', desc: 'Learn how to generate unlimited leads for free and reach out to them using proven email outreach methods. This lesson covers the exact tools and scripts that top agencies use to book 5-10 sales calls per week.', resourceTitle: '5 Cold Email Scripts (.txt)', resourceDesc: 'Five proven, fill-in-the-blank cold email scripts. Replace [NICHE] and [COMPANY] and send. Average reply rate: 8-15%.', notes: 'Framework: Hook (personalization) → Problem (their pain) → Value (your solution + proof) → CTA (low-friction ask). Keep under 100 words. Send 3-5 follow-ups spaced 3 days apart.' },
+    { videoId: 'lwC8QHaKX5I', title: '3. LinkedIn Outreach Strategy', desc: 'LinkedIn is the #1 platform for B2B sales. Learn how to optimize your profile, connect with decision-makers, and send DM sequences that convert cold connections into paying clients.', resourceTitle: 'LinkedIn DM Sequence Templates', resourceDesc: '3 proven LinkedIn DM sequences: Connection Request → Value Message → Soft CTA → Follow-up. Customize for any niche.', notes: 'Optimize your headline: "I help [NICHE] businesses automate [TASK] with AI". Send 20-30 connection requests per day. Follow up within 24 hours of acceptance.' },
+    { videoId: 'nlaNGnix-us', title: '4. AI-Powered Agency Overview', desc: 'See the complete picture of how all the tools and strategies come together. This overview lesson connects lead generation, outreach, and service delivery into a single, repeatable system for your agency.', resourceTitle: 'Agency Launch Playbook (Complete)', resourceDesc: 'The full playbook combining all scripts, templates, and SOPs from this toolkit into one organized document.', notes: 'The complete flow: Apollo.io (find leads) → Cold Email/LinkedIn (reach out) → Demo Call (show bot template) → Close ($1,500-$5,000) → Deliver in Voiceflow (30 min build). Repeat.' }
+  ];
+  let currentLesson = 0; let completedLessons = new Set([0]);
+  function loadLesson(index) {
+    currentLesson = index; completedLessons.add(index);
+    const lesson = lessons[index];
+    document.getElementById('videoPlayer').src = `https://www.youtube-nocookie.com/embed/${lesson.videoId}?modestbranding=1&rel=0&showinfo=0&color=white&autoplay=1&iv_load_policy=3`;
+    document.getElementById('lessonTitle').innerText = lesson.title;
+    document.getElementById('lessonDesc').innerText = lesson.desc;
+    document.getElementById('resourceTitle').innerText = lesson.resourceTitle;
+    document.getElementById('resourceDesc').innerText = lesson.resourceDesc;
+    document.getElementById('lessonNotes').innerText = lesson.notes;
+    const allLessons = document.querySelectorAll('.lesson');
+    allLessons.forEach((el, i) => { el.classList.remove('active'); const icon = el.querySelector('.lesson-icon'); if (i === index) { el.classList.add('active'); icon.innerText = '▶️'; } else if (completedLessons.has(i)) { icon.innerText = '✅'; } else { icon.innerText = '⬜'; } });
+    const pct = Math.round((completedLessons.size / lessons.length) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').innerText = `${completedLessons.size}/${lessons.length} Complete`;
+    document.querySelector('.main-content').scrollTop = 0;
+  }
+</script>
+</body>
+</html>
