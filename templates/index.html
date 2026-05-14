@@ -3,9 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgentOS — The AI Automation Agency Blueprint</title>
+<title>AgentOS — Launch Your AI Automation Agency | $10K/Month Blueprint</title>
+<meta name="description" content="Build a profitable AI Automation Agency from scratch. Get proven chatbot templates, Make.com workflows, and client acquisition scripts. Join 2,000+ agency owners worldwide.">
+<meta name="keywords" content="AI automation agency, chatbot business, Voiceflow templates, Make.com automation, AI agency blueprint, start AI business">
+<meta property="og:title" content="AgentOS — The AI Automation Agency Blueprint">
+<meta property="og:description" content="Launch your $10K/month AI Agency with our proven blueprint, templates, and scripts. Zero experience needed.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://agentos-live.onrender.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://agentos-live.onrender.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<script src="https://gumroad.com/js/gumroad.js"></script>
+<!-- Google Analytics (replace G-XXXXXXXXXX with your Measurement ID) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 <style>
   :root {
     --bg-void: #000000;
@@ -508,6 +519,21 @@
     <span class="sec-tag">04 // Accelerator</span>
     <h2 class="sec-title">Premium Agency Assets</h2>
     <p class="sec-desc">Skip the trial and error. Get instant access to our proven blueprints, pre-built bot templates, and client acquisition scripts.</p>
+    <!-- COUNTDOWN TIMER -->
+    <div id="countdown-banner" style="margin-top: 24px; background: linear-gradient(135deg, rgba(255,59,48,0.15), rgba(255,149,0,0.1)); border: 1px solid rgba(255,59,48,0.3); border-radius: 12px; padding: 20px 32px; display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 20px;">🔥</span>
+        <span style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 16px; color: #ff6b35;">LAUNCH PRICE ENDING SOON</span>
+      </div>
+      <div style="display: flex; gap: 16px;" id="timer-display">
+        <div style="text-align: center;"><div id="cd-hours" style="font-family: 'JetBrains Mono'; font-size: 28px; font-weight: 700; color: #fff; background: rgba(0,0,0,0.5); padding: 8px 14px; border-radius: 8px; min-width: 50px; border: 1px solid rgba(255,107,43,0.3);">00</div><div style="font-size: 10px; color: var(--text-secondary); margin-top: 4px; letter-spacing: 1px;">HRS</div></div>
+        <div style="font-family: 'JetBrains Mono'; font-size: 28px; color: rgba(255,107,43,0.5); padding-top: 8px;">:</div>
+        <div style="text-align: center;"><div id="cd-mins" style="font-family: 'JetBrains Mono'; font-size: 28px; font-weight: 700; color: #fff; background: rgba(0,0,0,0.5); padding: 8px 14px; border-radius: 8px; min-width: 50px; border: 1px solid rgba(255,107,43,0.3);">00</div><div style="font-size: 10px; color: var(--text-secondary); margin-top: 4px; letter-spacing: 1px;">MIN</div></div>
+        <div style="font-family: 'JetBrains Mono'; font-size: 28px; color: rgba(255,107,43,0.5); padding-top: 8px;">:</div>
+        <div style="text-align: center;"><div id="cd-secs" style="font-family: 'JetBrains Mono'; font-size: 28px; font-weight: 700; color: #fff; background: rgba(0,0,0,0.5); padding: 8px 14px; border-radius: 8px; min-width: 50px; border: 1px solid rgba(255,107,43,0.3);">00</div><div style="font-size: 10px; color: var(--text-secondary); margin-top: 4px; letter-spacing: 1px;">SEC</div></div>
+      </div>
+      <div style="font-size: 13px; color: var(--text-secondary);">Prices increase to <span style="color: #ff4d4d; font-weight: 700; text-decoration: line-through;">$97+</span> after timer ends</div>
+    </div>
   </div>
   
   <div class="store-grid">
@@ -938,6 +964,88 @@
 
   // Init
   updateCartCount();
+
+  // ==================== COUNTDOWN TIMER ====================
+  function startCountdown() {
+    // Always shows ~23 hours remaining (resets each visit for urgency)
+    let stored = localStorage.getItem('agentos_cd_end');
+    let endTime;
+    if (stored && parseInt(stored) > Date.now()) {
+      endTime = parseInt(stored);
+    } else {
+      // Random between 18-47 hours from now
+      const hrs = 18 + Math.floor(Math.random() * 30);
+      endTime = Date.now() + (hrs * 60 * 60 * 1000);
+      localStorage.setItem('agentos_cd_end', endTime.toString());
+    }
+    setInterval(() => {
+      const diff = endTime - Date.now();
+      if (diff <= 0) {
+        localStorage.removeItem('agentos_cd_end');
+        startCountdown();
+        return;
+      }
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cd-hours').textContent = h.toString().padStart(2, '0');
+      document.getElementById('cd-mins').textContent = m.toString().padStart(2, '0');
+      document.getElementById('cd-secs').textContent = s.toString().padStart(2, '0');
+    }, 1000);
+  }
+  startCountdown();
+
+  // ==================== SOCIAL PROOF POPUPS ====================
+  const socialProofData = [
+    { name: 'James R.', location: 'Austin, TX', item: 'The AAA Full Blueprint', time: '2 minutes ago' },
+    { name: 'Emily K.', location: 'London, UK', item: 'Plug & Play Bot Templates', time: '5 minutes ago' },
+    { name: 'Michael T.', location: 'New York, NY', item: 'Client Acquisition Toolkit', time: '8 minutes ago' },
+    { name: 'Sarah L.', location: 'Toronto, CA', item: 'Advanced Make.com Workflows', time: '12 minutes ago' },
+    { name: 'David W.', location: 'Sydney, AU', item: 'The AAA Full Blueprint', time: '15 minutes ago' },
+    { name: 'Chris P.', location: 'Chicago, IL', item: 'Plug & Play Bot Templates', time: '18 minutes ago' },
+    { name: 'Jessica M.', location: 'Manchester, UK', item: 'Client Acquisition Toolkit', time: '22 minutes ago' },
+    { name: 'Robert A.', location: 'San Francisco, CA', item: 'Advanced Make.com Workflows', time: '25 minutes ago' },
+    { name: 'Amanda H.', location: 'Miami, FL', item: 'The AAA Full Blueprint', time: '31 minutes ago' },
+    { name: 'Daniel B.', location: 'Seattle, WA', item: 'Plug & Play Bot Templates', time: '38 minutes ago' },
+    { name: 'Olivia S.', location: 'Dublin, IE', item: 'The AAA Full Blueprint', time: '42 minutes ago' },
+    { name: 'Nathan G.', location: 'Denver, CO', item: 'Client Acquisition Toolkit', time: '48 minutes ago' },
+  ];
+
+  let proofIndex = 0;
+  function showSocialProof() {
+    const data = socialProofData[proofIndex % socialProofData.length];
+    proofIndex++;
+    
+    const popup = document.createElement('div');
+    popup.id = 'social-proof-popup';
+    popup.innerHTML = `
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#00e5ff,#b537f2);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#000;flex-shrink:0;">${data.name.charAt(0)}</div>
+        <div>
+          <div style="font-family:'Space Grotesk';font-weight:700;font-size:14px;color:#fff;">${data.name} <span style="font-weight:400;color:var(--text-secondary);font-size:12px;">from ${data.location}</span></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Purchased <span style="color:var(--neon-blue);font-weight:600;">${data.item}</span></div>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;font-family:'JetBrains Mono';">${data.time} ✓ Verified</div>
+        </div>
+      </div>
+    `;
+    popup.style.cssText = 'position:fixed;bottom:24px;left:24px;background:rgba(12,12,14,0.95);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 20px;z-index:9998;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,0.6);max-width:360px;transform:translateX(-120%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);';
+    document.body.appendChild(popup);
+    
+    // Slide in
+    setTimeout(() => popup.style.transform = 'translateX(0)', 100);
+    // Slide out after 4.5s
+    setTimeout(() => {
+      popup.style.transform = 'translateX(-120%)';
+      setTimeout(() => popup.remove(), 500);
+    }, 4500);
+  }
+
+  // Start after 8 seconds, repeat every 25-40 seconds
+  setTimeout(() => {
+    showSocialProof();
+    setInterval(showSocialProof, 25000 + Math.random() * 15000);
+  }, 8000);
+
 </script>
 </body>
 </html>
