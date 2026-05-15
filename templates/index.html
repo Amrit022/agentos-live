@@ -331,7 +331,7 @@
   .hamburger {
     display: none;
     background: none; border: none; cursor: pointer;
-    flex-direction: column; gap: 5px; padding: 8px; z-index: 200;
+    flex-direction: column; gap: 5px; padding: 8px; z-index: 100001;
   }
   .hamburger span {
     display: block; width: 24px; height: 2px; background: #fff;
@@ -375,16 +375,16 @@
     .hamburger { display: flex; }
     .nav-links {
       display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: #000;
+      background: #000 !important; /* NO transparency */
       flex-direction: column; justify-content: flex-start; align-items: flex-start;
-      gap: 0; z-index: 99999 !important;
-      padding: 100px 40px;
+      gap: 0; z-index: 100000 !important; /* Top of the world */
+      padding: 120px 40px;
     }
     .nav-links.open { display: flex; animation: fadeIn 0.3s ease forwards; }
     .nav-links a { 
-      font-size: 32px; font-family: 'Space Grotesk'; font-weight: 700; 
-      color: #fff; text-decoration: none; padding: 20px 0;
-      width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 36px; font-family: 'Space Grotesk'; font-weight: 700; 
+      color: #fff; text-decoration: none; padding: 24px 0;
+      width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1);
       opacity: 0; transform: translateY(20px);
       transition: color 0.3s;
     }
@@ -459,6 +459,10 @@
   </a>
   
   <div class="nav-links" id="navLinks">
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 20px;">
+      <span style="font-family: 'Space Grotesk'; font-size: 14px; color: var(--neon-blue); letter-spacing: 2px;">NAVIGATION</span>
+      <button onclick="closeNav()" style="background: none; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer;">✕ CLOSE</button>
+    </div>
     <a href="#mindset" onclick="closeNav()">The Opportunity</a>
     <a href="#services" onclick="closeNav()">Services</a>
     <a href="#blueprint" onclick="closeNav()">Blueprint</a>
