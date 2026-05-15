@@ -375,9 +375,9 @@
     .hamburger { display: flex; }
     .nav-links {
       display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: #000000;
+      background: #000000 !important; /* TOTAL BLACKOUT */
       flex-direction: column; justify-content: center; align-items: center;
-      gap: 32px; z-index: 150;
+      gap: 32px; z-index: 99999 !important; /* Top priority */
       padding-top: 80px;
     }
     .nav-links.open { display: flex; }
@@ -881,12 +881,15 @@
 <script>
   // ==================== MOBILE NAV ====================
   function toggleNav() {
+    const isOpening = !document.getElementById('navLinks').classList.contains('open');
     document.getElementById('navLinks').classList.toggle('open');
     document.getElementById('hamburgerBtn').classList.toggle('active');
+    document.body.style.overflow = isOpening ? 'hidden' : 'auto';
   }
   function closeNav() {
     document.getElementById('navLinks').classList.remove('open');
     document.getElementById('hamburgerBtn').classList.remove('active');
+    document.body.style.overflow = 'auto';
   }
 
   // Reveal Animations

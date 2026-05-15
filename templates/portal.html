@@ -120,11 +120,35 @@
   .progress-bar { height: 4px; background: rgba(255,255,255,0.1); width: 100%; border-radius: 2px; overflow: hidden; }
   .progress-fill { height: 100%; background: var(--neon-green); }
   
-  .empty { text-align: center; padding: 80px 0; color: var(--text-secondary); border: 1px dashed var(--border-dim); border-radius: 12px; }
-
+  /* RESPONSIVE DASHBOARD */
+  @media (max-width: 900px) {
+    body { display: block; height: auto; overflow-y: auto; }
+    .sidebar { 
+      position: fixed; top: 0; left: -280px; height: 100vh; z-index: 1000;
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sidebar.open { left: 0; }
+    
+    .top-bar { padding: 16px 20px; flex-direction: column; gap: 16px; align-items: flex-start; }
+    .world-clocks { display: grid; grid-template-columns: repeat(2, 1fr); width: 100%; gap: 12px; }
+    
+    .container { padding: 32px 20px; }
+    .header-area h2 { font-size: 28px; }
+    .hud-grid { grid-template-columns: 1fr; gap: 16px; }
+    
+    .video-grid { grid-template-columns: 1fr; }
+    
+    .mobile-nav-toggle {
+      display: flex; position: fixed; top: 16px; right: 16px; z-index: 1001;
+      background: var(--neon-blue); color: #000; padding: 10px; border-radius: 8px;
+      font-weight: 700; font-size: 12px; cursor: pointer;
+    }
+  }
 </style>
 </head>
 <body>
+
+<div class="mobile-nav-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">MENU</div>
 
 <div class="sidebar">
   <div class="brand">
