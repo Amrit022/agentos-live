@@ -375,13 +375,35 @@
     .hamburger { display: flex; }
     .nav-links {
       display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: #000000 !important; /* TOTAL BLACKOUT */
-      flex-direction: column; justify-content: center; align-items: center;
-      gap: 32px; z-index: 99999 !important; /* Top priority */
-      padding-top: 80px;
+      background: #000;
+      flex-direction: column; justify-content: flex-start; align-items: flex-start;
+      gap: 0; z-index: 99999 !important;
+      padding: 100px 40px;
     }
-    .nav-links.open { display: flex; }
-    .nav-links a { font-size: 24px; font-weight: 700; color: #fff; }
+    .nav-links.open { display: flex; animation: fadeIn 0.3s ease forwards; }
+    .nav-links a { 
+      font-size: 32px; font-family: 'Space Grotesk'; font-weight: 700; 
+      color: #fff; text-decoration: none; padding: 20px 0;
+      width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05);
+      opacity: 0; transform: translateY(20px);
+      transition: color 0.3s;
+    }
+    .nav-links.open a { animation: slideInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    
+    /* Staggered Delay for Links */
+    .nav-links a:nth-child(1) { animation-delay: 0.1s; }
+    .nav-links a:nth-child(2) { animation-delay: 0.15s; }
+    .nav-links a:nth-child(3) { animation-delay: 0.2s; }
+    .nav-links a:nth-child(4) { animation-delay: 0.25s; }
+    .nav-links a:nth-child(5) { animation-delay: 0.3s; }
+    .nav-links a:nth-child(6) { animation-delay: 0.35s; }
+
+    @keyframes slideInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
     
     .btn-neon.nav-cta-desktop { display: none; }
 
@@ -446,6 +468,14 @@
     <a href="/cart" class="nav-cart-link" style="color: var(--neon-green);" onclick="closeNav()">
       Cart <span id="cartCountMenu" class="cart-badge">0</span>
     </a>
+    <div style="margin-top: auto; padding-top: 40px; width: 100%; opacity: 0; animation: fadeIn 0.5s 0.6s forwards;">
+      <p style="color: var(--text-tertiary); font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px;">Support & Community</p>
+      <div style="display: flex; gap: 24px;">
+        <a href="#" style="font-size: 14px; color: var(--text-secondary); border: none; padding: 0; width: auto;">Discord</a>
+        <a href="#" style="font-size: 14px; color: var(--text-secondary); border: none; padding: 0; width: auto;">Twitter</a>
+        <a href="#" style="font-size: 14px; color: var(--text-secondary); border: none; padding: 0; width: auto;">Help Desk</a>
+      </div>
+    </div>
   </div>
 
   <div style="display: flex; align-items: center; gap: 16px;">
