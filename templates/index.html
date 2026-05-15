@@ -352,64 +352,60 @@
 
   /* ───── RESPONSIVE: MOBILE ───── */
   @media(max-width: 768px) {
-    nav { padding: 16px 20px; }
+    nav { padding: 12px 20px; }
     .hamburger { display: flex; }
     .nav-links {
       display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.97); backdrop-filter: blur(20px);
+      background: #000000; /* Solid black for readability */
       flex-direction: column; justify-content: center; align-items: center;
-      gap: 28px; z-index: 150;
+      gap: 32px; z-index: 150;
+      padding-top: 60px;
     }
     .nav-links.open { display: flex; }
-    .nav-links a { font-size: 20px; font-weight: 600; color: #fff; }
+    .nav-links a { font-size: 24px; font-weight: 700; color: #fff; }
+    
     .btn-neon.nav-cta-desktop { display: none; }
 
     #hero { padding: 120px 20px 60px; min-height: auto; }
-    .hero-title { font-size: 36px !important; }
-    .hero-sub { font-size: 15px; margin-bottom: 32px; }
-    .hero-metrics { gap: 24px; }
+    .hero-title { font-size: clamp(32px, 10vw, 48px) !important; line-height: 1.2; }
+    .hero-sub { font-size: 16px; margin-bottom: 32px; padding: 0 10px; }
+    .hero-metrics { gap: 20px; flex-wrap: wrap; justify-content: center; }
+    .metric { width: calc(50% - 20px); }
     .metric-val { font-size: 24px; }
-    .metric-lbl { font-size: 10px; }
-    .hero-cta-group { flex-direction: column; width: 100%; gap: 12px; }
-    .hero-cta-group a { width: 100%; text-align: center; }
+    .hero-cta-group { flex-direction: column; width: 100%; gap: 12px; padding: 0 20px; }
+    .hero-cta-group a { width: 100%; }
 
-    .bento-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
-    .bento-card { padding: 28px; min-height: auto; }
-    .bento-icon { font-size: 24px; margin-bottom: 16px; }
-    .bento-title { font-size: 20px; }
-    .bento-desc { font-size: 14px; }
-    .col-span-2 { grid-column: span 1; }
-    .row-span-2 { grid-row: span 1; }
+    .bento-grid { 
+      grid-template-columns: 1fr !important; 
+      grid-auto-rows: auto !important; 
+      gap: 16px; 
+    }
+    .bento-card { 
+      padding: 32px 24px; 
+      min-height: auto !important; 
+      grid-column: span 1 !important;
+      grid-row: span 1 !important;
+    }
+    
+    section { padding: 60px 20px; }
+    .section-header { margin-bottom: 40px; text-align: center; }
+    .sec-title { font-size: 32px; margin-bottom: 16px; }
+    .sec-desc { font-size: 16px; margin: 0 auto; }
 
-    section { padding: 60px 16px; }
-    .section-header { margin-bottom: 32px; }
-    .sec-title { font-size: 28px; }
-    .sec-desc { font-size: 15px; }
+    .blueprint-list { padding-left: 24px; margin-left: 0; border-left: 2px solid var(--border-dim); }
+    .bp-title { font-size: 18px; }
 
-    .blueprint-list { padding-left: 24px; margin-left: 8px; }
-    .bp-title { font-size: 17px; }
-    .bp-desc { font-size: 14px; }
+    .store-grid { grid-template-columns: 1fr !important; gap: 20px; }
+    .product-card { padding: 32px 20px; }
+    
+    #countdown-banner { padding: 24px 16px; gap: 20px; }
 
-    .store-grid { grid-template-columns: 1fr; }
-    .product-card { padding: 24px; }
-    .prod-price { font-size: 28px; }
-
-    .review-card { width: 280px; padding: 24px; }
-
-    footer { padding: 40px 16px; }
-
-    #countdown-banner { padding: 16px; gap: 16px; flex-direction: column; text-align: center; }
-    #countdown-banner #timer-display { gap: 10px; }
-    #countdown-banner #timer-display > div > div:first-child { font-size: 22px; padding: 6px 10px; min-width: 40px; }
-    #countdown-banner #timer-display > div:nth-child(2),
-    #countdown-banner #timer-display > div:nth-child(4) { font-size: 22px; }
-
-    #ai-chat-widget { bottom: 16px; right: 16px; }
-    #chat-window { width: calc(100vw - 32px) !important; height: 70vh !important; }
-
-    #social-proof-popup { max-width: calc(100vw - 32px) !important; left: 16px !important; bottom: 90px !important; }
-
-    .modal-content { padding: 24px; width: 95%; }
+    #social-proof-popup { 
+      width: calc(100% - 40px) !important; 
+      left: 20px !important; 
+      bottom: 100px !important; 
+      padding: 12px;
+    }
   }
 
   /* ───── RESPONSIVE: SMALL PHONES ───── */
