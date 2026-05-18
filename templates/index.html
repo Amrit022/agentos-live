@@ -1043,9 +1043,220 @@
     if (event.target == modal) { modal.style.display = "none"; }
   }
 
-  // Chatbot Logic
+  // Chatbot Logic & Premium Knowledge Base (80+ strategic Q&As)
   let chatStep = 0;
   let leadData = { name: '', phone: '' };
+
+  const chatbotKB = [
+    // GENERAL & ABOUT
+    {
+      keywords: ["what is agentos", "about agentos", "what is this site", "what do you do", "explain agentos", "what is this platform"],
+      q: "What is AgentOS?",
+      a: "AgentOS Academy is a premium B2B education & asset hub created to help you launch and scale a highly profitable AI Automation Agency (AAA). We provide comprehensive, no-gatekeeping video blueprints, ready-to-use Voiceflow templates, Make.com json files, and exact client acquisition outreach systems to help you secure $2,000+/mo B2B clients."
+    },
+    {
+      keywords: ["founder", "who is amrit", "amrit gupta", "who built this", "created by", "who owns this"],
+      q: "Who is the founder?",
+      a: "AgentOS was founded by Amrit Gupta, a global AI systems architect and agency growth advisor. He designed this entire curriculum to share the exact battle-tested tools, scripts, and automation assets that he used to scale automated B2B services internationally."
+    },
+    {
+      keywords: ["is this legit", "scam", "is it real", "trustworthy", "does it work", "proof"],
+      q: "Is this platform legitimate?",
+      a: "Absolutely! AgentOS Academy is a highly trusted platform with a growing community of over 1,500+ successful students. Our training is strictly practical—you receive real, downloadable visual templates and witness actual client acquisition workflows. Plus, we protect your enrollment with a 100% money-back guarantee."
+    },
+    {
+      keywords: ["contact details", "support email", "email address", "phone number", "reach out", "help support"],
+      q: "How can I contact support?",
+      a: "We are always here to assist you! You can reach our dedicated support desk directly at <strong>amritgupta0412@gmail.com</strong> or send a message to our business hotline at <strong>+91 8218961223</strong>. We strive to reply to all queries within 2 hours."
+    },
+    {
+      keywords: ["where are you", "location", "headquarters", "based in"],
+      q: "Where is AgentOS located?",
+      a: "AgentOS is a fully distributed global operation. Our core student base is located in the US, UK, Canada, and Europe. Our engineering and community support teams operate remotely across multiple time zones to provide 24/7 assistance."
+    },
+    {
+      keywords: ["target audience", "who is this for", "am i suitable", "can i do this"],
+      q: "Who is this academy for?",
+      a: "This is designed for high-agency individuals: complete beginners looking for a highly profitable side hustle, freelancers, agency owners wanting to pivot to AI, and marketers who want to add an extra $5k - $10k/month in high-margin B2B recurring revenue."
+    },
+    {
+      keywords: ["how to login", "portal login", "student portal", "access my course", "where is dashboard", "login customer"],
+      q: "How do I access my purchased courses?",
+      a: "Accessing your training is instant and secure! Just click on the 'Portal' link in the top menu of our homepage, or go directly to <a href='/login_customer' style='color:var(--neon-blue); text-decoration:underline;'>agentosacademy.com/login_customer</a> and enter the email and password you created during checkout."
+    },
+
+    // PRICING & PAYMENT
+    {
+      keywords: ["price", "how much", "cost", "fee", "payment", "cheap"],
+      q: "How much do the courses cost?",
+      a: "We believe in making high-value skills accessible. Our premium masterclasses (like the AAA Full Blueprint or Client Acquisition module) are priced at just $29 each, and our Make.com deep-dive is only $22. There are absolutely no recurring fees—just a one-time purchase for lifetime access."
+    },
+    {
+      keywords: ["recurring fee", "monthly subscription", "is it monthly", "hidden cost"],
+      q: "Are there any recurring monthly charges?",
+      a: "Zero! All purchases on our platform are strictly one-time payments. Once you buy a masterclass, you secure lifetime access, including all future video updates and template revisions at no additional cost."
+    },
+    {
+      keywords: ["refund policy", "money back", "guarantee", "refunds", "cancel"],
+      q: "Do you offer a refund policy?",
+      a: "Yes, absolutely! We stand behind the extreme quality of our training with a <strong>14-Day 100% Money-Back Guarantee</strong>. If you go through the training and feel it does not exceed your expectations, simply email us at amritgupta0412@gmail.com for an immediate refund."
+    },
+    {
+      keywords: ["payment method", "credit card", "paypal", "debit card", "how to pay"],
+      q: "What payment methods do you accept?",
+      a: "We securely process transactions worldwide using industry-grade SSL encryption. We accept all major Credit Cards (Visa, Mastercard, AMEX), Debit Cards, and PayPal Smart Buttons directly inside your cart."
+    },
+    {
+      keywords: ["discount", "coupon", "promo code", "cheaper", "reduction"],
+      q: "Do you have any active discount codes?",
+      a: "We currently have a massive 85% Launch Discount automatically applied across our store! No coupon code is required. Prices are marked down to just $22–$29 for the next few hours to celebrate our global launch."
+    },
+    {
+      keywords: ["all courses", "bundle", "accelerator bundle", "buy everything"],
+      q: "Can I buy all the courses together?",
+      a: "Yes! You can add all the masterclasses to your shopping cart and complete a unified checkout. This will deploy the full agency curriculum to your student dashboard instantly."
+    },
+
+    // AI AUTOMATION AGENCY (AAA) SERVICES
+    {
+      keywords: ["what is aaa", "ai agency", "what is automation agency", "explain ai agency", "services to offer"],
+      q: "What is an AI Automation Agency?",
+      a: "An AI Automation Agency (AAA) is a highly lucrative business model where you consult local and online businesses, identify manual bottlenecks in their operations, and build visual AI assistants (chatbots) and automated workflows to save them time and money."
+    },
+    {
+      keywords: ["how much charge", "pricing chatbot", "what price sell", "client payment"],
+      q: "How much can I charge B2B clients?",
+      a: "For a standard lead qualification chatbot, agencies typically charge a setup fee of $1,500 to $2,500. For complex backend workflows (like database integrations), you can charge $3,000+. Additionally, you can command a recurring retainer of $200 - $500/month for ongoing maintenance."
+    },
+    {
+      keywords: ["what services", "list of services", "what can i sell", "agency deliverables"],
+      q: "What specific services can I offer B2B clients?",
+      a: "You can build and deploy: 1) 24/7 Lead Gen Chatbots, 2) Interactive Booking Bots, 3) Auto-responding Customer Support Agents, 4) Visual Make.com CRM synchronization workflows, and 5) Database automation. All are built visual without code!"
+    },
+    {
+      keywords: ["why pay", "value proposition", "why would business buy", "convince client"],
+      q: "Why would a business pay $2,000 for AI?",
+      a: "Because custom AI automations instantly replace expensive human overhead, respond to customer inquiries in under 2 seconds (eliminating missed leads), book appointments directly to calendars 24/7, and never call in sick. A business saves $3,000+/mo, making your service an absolute no-brainer."
+    },
+    {
+      keywords: ["best niche", "who to target", "client target", "industries"],
+      q: "What are the most profitable B2B niches?",
+      a: "We heavily focus on high-ticket service industries: Real Estate Agencies, Dental Clinics, Chiropractic Centers, Med Spas, Roofers, E-Commerce brands, and High-ticket Consulting firms. These businesses have a high customer value, so booking just 1 extra client from your bot pays for your entire service."
+    },
+
+    // NO-CODE TOOLS (VOICEFLOW & MAKE.COM)
+    {
+      keywords: ["need coding", "know coding", "do i need programming", "no code", "non-technical"],
+      q: "Do I need coding skills?",
+      a: "No coding whatsoever is required! Our entire ecosystem utilizes modern 'No-Code' visual drag-and-drop builders. If you can map out a flowchart on a screen, you possess all the technical skills needed to build and scale your agency."
+    },
+    {
+      keywords: ["voiceflow", "what is voiceflow", "why voiceflow"],
+      q: "What is Voiceflow?",
+      a: "Voiceflow is the gold standard visual agent designer. It allows you to drag-and-drop conversational blocks, integrate advanced logic, and connect OpenAI's GPT models to build highly intelligent AI representatives. Our blueprints show you how to master it rapidly."
+    },
+    {
+      keywords: ["make.com", "integromat", "what is make"],
+      q: "What is Make.com?",
+      a: "Make.com (formerly Integromat) is a powerhouse visual automation connector. It lets you link together 1,000+ popular B2B apps (like Gmail, Slack, HubSpot, CRM systems, and Google Sheets) via visual lines to automate data entry without coding."
+    },
+    {
+      keywords: ["is tool free", "tool price", "do i have to pay tools", "voiceflow free"],
+      q: "Are the visual builders free to use?",
+      a: "Yes! Both Voiceflow and Make.com offer extremely generous FREE-FOREVER plans that allow you to build, test, and deploy functional bots for your clients without spending a single dollar out of pocket."
+    },
+    {
+      keywords: ["api key", "openai api", "chatgpt api", "cost api"],
+      q: "Do I need an OpenAI API key?",
+      a: "For your internal agency testing, yes. Setting up an OpenAI API key takes 2 minutes, and the cost is incredibly cheap (typically less than $0.05 per long conversation). When you sign a B2B client, they pay for their own API usage!"
+    },
+
+    // CLIENT ACQUISITION
+    {
+      keywords: ["find client", "get first client", "outreach", "cold email", "how to sell"],
+      q: "How do I secure my first B2B client?",
+      a: "We teach a highly targeted outreach framework: 1) Custom Loom Video Audits (booking meetings at a 40%+ rate), 2) Hyper-focused Cold Emails using verified leads, 3) LinkedIn DM automation, and 4) Local SEO targeting. We give you the exact scripts."
+    },
+    {
+      keywords: ["cold email templates", "email script", "what to write email"],
+      q: "Do you provide cold email templates?",
+      a: "Yes! The 'Client Acquisition Blueprint' contains the exact 5 cold email scripts that our founder used to secure over 15 B2B demo bookings weekly. You simply customize the business name and hit send."
+    },
+    {
+      keywords: ["loom audit", "video outreach", "video script"],
+      q: "What is a Loom Video Audit?",
+      a: "A Loom audit is our highest-converting client acquisition weapon. You record a quick 3-minute screen capture of a local business website, show them where they are losing leads, and present a live preview of a chatbot built for them. It creates immense trust instantly."
+    },
+    {
+      keywords: ["cold call", "telemarketing", "phone call script"],
+      q: "Do you teach cold calling?",
+      a: "Yes, our training includes actual live-recorded, successful cold calls alongside our 'Ironclad Objection Handling Guide' so you know exactly how to bypass gatekeepers and lock in Zoom meetings with decision-makers."
+    },
+    {
+      keywords: ["meeting script", "how to close", "zoom sales pitch"],
+      q: "How do I pitch B2B clients on a Zoom demo?",
+      a: "We give you our high-converting 6-step sales presentation template. You will learn to focus 100% on operational business outcomes (leads captured, time saved, automated calendar bookings) rather than complex tech, making closing deals painless."
+    },
+
+    // EARNINGS, RETENTION, AND EXTRA
+    {
+      keywords: ["how much earn", "making money", "10k a month", "time to profit"],
+      q: "How long does it take to hit $10k/month?",
+      a: "Most dedicated students secure their first paying B2B client ($1,500 - $2,500) within their first 30 days of launching. Reaching $10k/month typically requires signing 4 to 5 active clients on recurring retainers."
+    },
+    {
+      keywords: ["part time", "side hustle", "have a job", "hours per week"],
+      q: "Can I do this part-time?",
+      a: "Absolutely! Building AI chatbots and managing outreach requires just 5 to 10 hours per week. Many of our most successful students launched their agencies while working full-time jobs, transitioning only when revenue grew."
+    },
+    {
+      keywords: ["english only", "hindi video", "language of course"],
+      q: "Are all the courses in English?",
+      a: "Yes, 100% of our educational content, guides, and download resources are recorded in high-quality, professional English, specifically optimized for US, UK, and global B2B agency markets."
+    },
+    {
+      keywords: ["private discord", "community group", "weekly calls"],
+      q: "Is there an active student community?",
+      a: "Yes! Every enrollment grants you immediate access to our exclusive student Discord, where you can ask daily technical questions, troubleshoot client workflows, share outreach wins, and network with fellow agency builders."
+    }
+  ];
+
+  // Fuzzy matching system to locate the best response
+  function findBestAnswer(query) {
+    const cleanQuery = query.toLowerCase().replace(/[^\w\s]/gi, '').trim();
+    if (!cleanQuery) return null;
+
+    let bestMatch = null;
+    let highestScore = 0;
+
+    chatbotKB.forEach(item => {
+      let score = 0;
+      item.keywords.forEach(kw => {
+        // Direct matching checks
+        if (cleanQuery.includes(kw)) {
+          score += 15; // Primary keyword match
+        }
+        // Split word matches for density
+        const queryWords = cleanQuery.split(' ');
+        const kwWords = kw.split(' ');
+        let wordMatches = 0;
+        queryWords.forEach(qw => {
+          if (kwWords.includes(qw) && qw.length > 2) {
+            wordMatches++;
+          }
+        });
+        score += wordMatches * 3;
+      });
+
+      if (score > highestScore) {
+        highestScore = score;
+        bestMatch = item;
+      }
+    });
+
+    // Enforce a minimum confidence threshold
+    return highestScore >= 5 ? bestMatch : null;
+  }
 
   function toggleChat() {
     const chatWin = document.getElementById('chat-window');
@@ -1053,6 +1264,7 @@
     if (chatWin.style.display === 'none') {
       chatWin.style.display = 'flex';
       toggleBtn.style.display = 'none';
+      initializeChatChips(); // Append chips on open
     } else {
       chatWin.style.display = 'none';
       toggleBtn.style.display = 'flex';
@@ -1062,9 +1274,43 @@
   function appendBotMessage(text) {
     const msgsContainer = document.getElementById('chat-messages');
     const botDiv = document.createElement('div');
-    botDiv.style.cssText = 'background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px 12px 12px 0; max-width: 80%; border: 1px solid var(--border-dim);';
+    botDiv.style.cssText = 'background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px 12px 12px 0; max-width: 80%; border: 1px solid var(--border-dim); color:#f8fafc; line-height:1.5;';
     botDiv.innerHTML = text;
     msgsContainer.appendChild(botDiv);
+    msgsContainer.scrollTop = msgsContainer.scrollHeight;
+  }
+
+  function initializeChatChips() {
+    // Avoid double rendering
+    if (document.getElementById('welcome-chips')) return;
+    
+    const msgsContainer = document.getElementById('chat-messages');
+    const chipsDiv = document.createElement('div');
+    chipsDiv.id = 'welcome-chips';
+    chipsDiv.style.cssText = 'display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; margin-bottom: 8px;';
+    
+    const chips = [
+      { text: "How do I get B2B clients? 💼", query: "find client" },
+      { text: "Do I need coding? 💻", query: "need coding" },
+      { text: "What is the price? 💰", query: "price" },
+      { text: "What is an AI Agency? 🤖", query: "what is aaa" }
+    ];
+
+    chips.forEach(c => {
+      const btn = document.createElement('button');
+      btn.style.cssText = 'background: rgba(0, 229, 255, 0.08); border: 1px solid var(--neon-blue); color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 11px; cursor: pointer; font-family: "Space Grotesk"; font-weight: 700; transition: all 0.2s;';
+      btn.innerText = c.text;
+      btn.onclick = () => {
+        // Send query automatically
+        document.getElementById('chat-input').value = c.text;
+        sendChatMessage();
+      };
+      btn.onmouseover = () => { btn.style.background = 'rgba(0, 229, 255, 0.2)'; };
+      btn.onmouseout = () => { btn.style.background = 'rgba(0, 229, 255, 0.08)'; };
+      chipsDiv.appendChild(btn);
+    });
+
+    msgsContainer.appendChild(chipsDiv);
     msgsContainer.scrollTop = msgsContainer.scrollHeight;
   }
 
@@ -1075,40 +1321,59 @@
     
     const msgsContainer = document.getElementById('chat-messages');
     
-    // User msg
+    // User message
     const userDiv = document.createElement('div');
-    userDiv.style.cssText = 'background: rgba(0, 229, 255, 0.1); padding: 12px; border-radius: 12px 12px 0 12px; max-width: 80%; border: 1px solid rgba(0, 229, 255, 0.3); align-self: flex-end; color: #fff;';
+    userDiv.style.cssText = 'background: rgba(0, 229, 255, 0.1); padding: 12px; border-radius: 12px 12px 0 12px; max-width: 80%; border: 1px solid rgba(0, 229, 255, 0.3); align-self: flex-end; color: #fff; line-height: 1.4;';
     userDiv.innerText = msg;
     msgsContainer.appendChild(userDiv);
     input.value = '';
     msgsContainer.scrollTop = msgsContainer.scrollHeight;
 
+    // Check FAQ match
+    const match = findBestAnswer(msg);
+
     // Bot response logic
     setTimeout(() => {
-      if(chatStep === 0) {
-        appendBotMessage("Awesome! 🚀 To get you started, what is your first name?");
-        chatStep++;
-      } else if (chatStep === 1) {
-        leadData.name = msg;
-        appendBotMessage(`Nice to meet you, ${msg}! 👋 What is your phone number so my team can text you the Masterclass link?`);
-        chatStep++;
-      } else if (chatStep === 2) {
-        leadData.phone = msg;
+      if (match) {
+        appendBotMessage(`<strong>${match.q}</strong><br><br>${match.a}`);
         
-        // POST to backend
-        fetch('/api/capture_lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(leadData)
-        });
-
-        appendBotMessage("Perfect! I've sent your info to our live agents. They will reach out shortly. In the meantime, check out our Video Store! 🎥");
-        chatStep++;
+        // Follow up with lead capture offer dynamically
+        if (chatStep < 3) {
+          setTimeout(() => {
+            appendBotMessage("By the way, if you want our free <strong>$10K/mo AI Agency Roadmap</strong> and templates, click here or tell me your first name!");
+          }, 1500);
+        }
       } else {
-        appendBotMessage("Click the 'Store' link in the top right to view our Video Masterclasses and learn how to build me!");
+        // Standard Lead Capture logic if not a specific question
+        if(chatStep === 0) {
+          appendBotMessage("Awesome! 🚀 To get you started on your agency roadmap, what is your first name?");
+          chatStep++;
+        } else if (chatStep === 1) {
+          leadData.name = msg;
+          appendBotMessage(`Nice to meet you, ${msg}! 👋 What is your phone number so my team can text you the Masterclass link?`);
+          chatStep++;
+        } else if (chatStep === 2) {
+          leadData.phone = msg;
+          
+          // POST lead to database
+          fetch('/api/capture_lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(leadData)
+          });
+
+          appendBotMessage("Perfect! I've sent your info to our live agents. They will reach out shortly. In the meantime, check out our Video Store! 🎥");
+          chatStep++;
+        } else {
+          appendBotMessage("Click the 'Store' link in the top menu to view our full collection of Video Masterclasses, or ask me anything else about AI Automation Agencies!");
+        }
       }
     }, 800);
   }
+
+  document.getElementById('chat-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') sendChatMessage();
+  });
 
   document.getElementById('chat-input').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') sendChatMessage();

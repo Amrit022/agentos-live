@@ -427,6 +427,88 @@ def delete_post(post_id):
     conn.close()
     return jsonify({"success": True}), 200
 
+@app.route('/api/admin/send_campaign', methods=['POST'])
+def send_campaign():
+    if not session.get('logged_in'): 
+        return jsonify({"error": "Unauthorized"}), 401
+        
+    data = request.json
+    campaign_name = data.get('campaign_name')
+    subject = data.get('subject')
+    body = data.get('body')
+    
+    if not campaign_name or not subject or not body:
+        return jsonify({"error": "Missing parameters"}), 400
+        
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute("SELECT email FROM subscribers")
+    subs = [row[0] for row in c.fetchall()]
+    conn.close()
+    
+    if not subs:
+        return jsonify({"error": "No subscribers registered to send to."}), 400
+        
+    smtp_server = os.environ.get('SMTP_SERVER')
+    smtp_port = os.environ.get('SMTP_PORT', '587')
+    smtp_user = os.environ.get('SMTP_EMAIL')
+    smtp_pass = os.environ.get('SMTP_PASSWORD')
+    
+    sent_emails = []
+    failed_emails = []
+    mode = "simulated"
+    
+    if smtp_server and smtp_user and smtp_pass:
+        import smtplib
+        from email.mime.text import MIMEText
+        from email.mime.multipart import MIMEMultipart
+        
+        try:
+            server = smtplib.SMTP(smtp_server, int(smtp_port))
+            server.starttls()
+            server.login(smtp_user, smtp_pass)
+            
+            for email_addr in subs:
+                try:
+                    msg = MIMEMultipart()
+                    msg['From'] = smtp_user
+                    msg['To'] = email_addr
+                    msg['Subject'] = subject
+                    
+                    msg.attach(MIMEText(body, 'html'))
+                    server.sendmail(smtp_user, email_addr, msg.as_string())
+                    sent_emails.append(email_addr)
+                except Exception as e:
+                    failed_emails.append((email_addr, str(e)))
+            server.quit()
+            mode = "smtp"
+        except Exception as e:
+            mode = "simulated_fallback"
+            
+    if mode in ["simulated", "simulated_fallback"]:
+        log_dir = "scratch"
+        if not os.path.exists(log_dir):
+            os.makedirs(log_dir)
+        log_path = os.path.join(log_dir, "campaign_logs.txt")
+        
+        with open(log_path, "a", encoding="utf-8") as f:
+            f.write(f"\n========================================\n")
+            f.write(f"CAMPAIGN SENT: {campaign_name}\n")
+            f.write(f"TIMESTAMP: {datetime.now().isoformat()}\n")
+            f.write(f"SUBJECT: {subject}\n")
+            f.write(f"RECIPIENTS ({len(subs)}): {', '.join(subs)}\n")
+            f.write(f"BODY:\n{body}\n")
+            f.write(f"========================================\n")
+        sent_emails = subs
+        
+    return jsonify({
+        "success": True,
+        "mode": mode,
+        "recipients_count": len(sent_emails),
+        "failed_count": len(failed_emails),
+        "recipients": sent_emails
+    }), 200
+
 @app.route('/api/create-checkout-session', methods=['POST'])
 def create_checkout_session():
     data = request.json
