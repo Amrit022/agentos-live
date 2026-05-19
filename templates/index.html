@@ -116,7 +116,6 @@
     position: relative;
     left: 0;
     min-height: 100vh;
-    background-color: var(--bg-void);
   }
   
   #menu-overlay {
@@ -499,6 +498,10 @@
 </head>
 <body>
 
+<div class="grid-bg"></div>
+<div class="glow-orb orb-blue"></div>
+<div class="glow-orb orb-purple"></div>
+
 <!-- Mobile Side Navigation Drawer -->
 <div class="nav-links-mobile" id="navLinks">
   <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 20px;">
@@ -527,9 +530,6 @@
 <div id="menu-overlay" onclick="closeNav()"></div>
 
 <div id="site-wrapper">
-  <div class="grid-bg"></div>
-  <div class="glow-orb orb-blue"></div>
-  <div class="glow-orb orb-purple"></div>
 
   <nav>
     <a href="#" class="nav-logo" style="display: flex; align-items: center; gap: 12px;">
