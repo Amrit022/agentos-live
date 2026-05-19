@@ -9,6 +9,22 @@
   gtag('js', new Date());
 
   gtag('config', 'AW-18174625300');
+
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-18174625300/pd5rCIX88q8cEJSMq9pD',
+        'value': 1.0,
+        'currency': 'INR',
+        'transaction_id': '',
+        'event_callback': callback
+    });
+    return false;
+  }
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -374,11 +390,11 @@
             if (verifyData.success) {
               localStorage.removeItem('wealthweb_cart');
               container.innerHTML = '<div style="text-align: center; padding: 20px; color: var(--neon-green); font-family: Space Grotesk; font-weight: 700; font-size: 18px;">🚀 Account Created! Redirecting to Dashboard...</div>';
-              setTimeout(() => { window.location.href = verifyData.redirect; }, 2000);
+              setTimeout(() => { gtag_report_conversion(verifyData.redirect); }, 2000);
             }
           } catch (err) {
             container.innerHTML = '<div style="text-align: center; padding: 20px; color: var(--neon-green); font-family: Space Grotesk;">Payment received! Redirecting...</div>';
-            setTimeout(() => { window.location.href = '/portal'; }, 2000);
+            setTimeout(() => { gtag_report_conversion('/portal'); }, 2000);
           }
         },
         onCancel: function() {

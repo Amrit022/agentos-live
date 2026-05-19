@@ -1289,6 +1289,252 @@
       keywords: ["private discord", "community group", "weekly calls"],
       q: "Is there an active student community?",
       a: "Yes! Every enrollment grants you immediate access to our exclusive student Discord, where you can ask daily technical questions, troubleshoot client workflows, share outreach wins, and network with fellow agency builders."
+    },
+    // 50 ADDITIONAL TRICKY B2B OBJECTION & OPERATIONS Q&As
+    {
+      keywords: ["hallucinate", "bot lie", "wrong information", "ai mistake"],
+      q: "What if the chatbot hallucinates or gives wrong information?",
+      a: "We prevent this by implementing strict system prompts and utilizing Voiceflow's Knowledge Base settings. By turning down the LLM creativity (temperature) and enforcing a rule that says 'Only answer using the provided documents; if unknown, say you will transfer to a human', the bot remains 100% accurate."
+    },
+    {
+      keywords: ["why so cheap", "scam price", "only 29", "why not charge more"],
+      q: "Why are your courses only $29 if this business model is so profitable?",
+      a: "Our goal is to build the largest community of AI automation agency owners in the world. By keeping the entry barrier low, we democratize these high-income skills. We make our revenue when successful students scale and utilize our advanced developer templates and hosting partnerships."
+    },
+    {
+      keywords: ["client refund", "refuses to pay", "chargeback", "client unhappy"],
+      q: "What if a B2B client demands a refund after the bot is built?",
+      a: "To protect yourself, we teach you to use a 50% upfront and 50% upon completion payment structure. Additionally, our provided contracts state that setup fees are non-refundable once visual layout approval is signed off. This ensures your development hours are always compensated."
+    },
+    {
+      keywords: ["who pays", "software subscription", "voiceflow bill", "make subscription"],
+      q: "Who pays for the Voiceflow and Make.com subscriptions?",
+      a: "The client always pays! During onboarding, you help the client create their own Voiceflow and Make.com accounts and link their credit card. You are then added as an editor/collaborator. You should never pay for a client's monthly software hosting out of your own pocket."
+    },
+    {
+      keywords: ["data secure", "api leak", "hack bot", "security privacy"],
+      q: "How do you protect client API keys from leaking?",
+      a: "We never expose raw API keys (like OpenAI keys) in the chatbot's front-end code. All sensitive API calls and integrations are routed through secure backend Make.com webhooks or Voiceflow's secure server-side action blocks. The end-user can never inspect or download your credentials."
+    },
+    {
+      keywords: ["custom python", "why not code", "why use no code", "writing code"],
+      q: "Why shouldn't I just build bots using custom Python code?",
+      a: "Speed and hand-off. Building bots in Python takes weeks, requires complex hosting configurations, and makes ongoing maintenance hard. Visual flowcharts (Voiceflow/Make) allow you to deliver the solution in 2 hours, monitor transcripts visually, and easily hand over control to non-technical business clients."
+    },
+    {
+      keywords: ["white label", "remove branding", "my own logo", "hide voiceflow"],
+      q: "Can I white-label the chatbots and remove the builder's logo?",
+      a: "Yes! Voiceflow's hosting widget allows you to completely customize the colors, avatar, title, and launcher icon. On their pro plans, you can entirely hide the 'Powered by Voiceflow' branding, allowing you to present the chatbot as your own proprietary software."
+    },
+    {
+      keywords: ["client rejection", "no reply", "ignored email", "fear of rejection"],
+      q: "How do I handle clients rejecting my pitches or ignoring emails?",
+      a: "Rejection is just a numbers game. If you send generic 'Hey do you want AI?' emails, you will be ignored. We teach you to send highly customized 3-minute Loom video audits showing them exactly where their booking path fails. This value-first approach results in a 40%+ meeting book rate."
+    },
+    {
+      keywords: ["send emails automatically", "make email", "auto reply mail", "crm integration"],
+      q: "Can the chatbots trigger emails or CRM updates automatically?",
+      a: "Absolutely! By connecting your Voiceflow bot to a Make.com webhook, you can trigger email notifications (via Gmail or SendGrid), sync contact leads to HubSpot or Salesforce, or send real-time SMS alerts to the business owner the second a user finishes a chat."
+    },
+    {
+      keywords: ["transfer bot", "give bot to client", "handover"],
+      q: "How do I transfer the finished chatbot to my client?",
+      a: "It takes 10 seconds. You can export your Voiceflow workflow as a `.vf` file and send it to your client to upload to their dashboard. Alternatively, you can invite them directly to your workspace using their email address and transfer ownership."
+    },
+    {
+      keywords: ["multiple languages", "translate bot", "spanish bot", "foreign language"],
+      q: "Can the chatbot converse in languages other than English?",
+      a: "Yes! Voiceflow's built-in NLU and OpenAI's translation capabilities allow the chatbot to automatically detect the user's language (e.g., Spanish, German, French) and respond fluently in that same language, without you having to translate any nodes manually."
+    },
+    {
+      keywords: ["retainer work", "what do i do monthly", "maintenance fee"],
+      q: "What do I actually do to earn a monthly maintenance retainer?",
+      a: "Your retainer coverages: 1) Analyzing conversation history to patch gaps in the knowledge base, 2) Optimizing prompts for higher booking conversions, 3) Updating menu items, phone numbers, or service prices, and 4) Providing a monthly PDF analytics report on leads generated."
+    },
+    {
+      keywords: ["is it legal", "copyright", "lawsuit", "legal risk"],
+      q: "Is it legal to build and sell these AI automations?",
+      a: "Yes, 100%. You are operating as an independent software consultant. We provide you with standard B2B developer contracts that clearly outline liability limitations, intellectual property rights, and service scopes to ensure you are fully protected legally."
+    },
+    {
+      keywords: ["already has chatbot", "competitor bot", "existing bot"],
+      q: "What if a business already has a basic chatbot on their site?",
+      a: "Most existing bots are static, rule-based popups that annoy customers. You can show them how a modern AI agent uses custom knowledge bases to answer complex questions and syncs directly to their CRM in real-time. Pitching operational automation, not just a chat widget, is the key."
+    },
+    {
+      keywords: ["schedule zoom", "calendly integration", "book call chatbot"],
+      q: "Can the bot book appointments directly into Google Calendar or Calendly?",
+      a: "Yes! You can embed Calendly booking widgets directly inside the chatbot window, or call a Make.com webhook to dynamically check free times in their Google Calendar and book the slot instantly without the customer leaving the chat."
+    },
+    {
+      keywords: ["openai billing", "api cost client", "who pays api"],
+      q: "Who pays for the OpenAI API token usage?",
+      a: "The B2B client pays. During the onboarding phase, you help the client add their credit card to platform.openai.com. They are billed directly by OpenAI for their token usage (which is extremely cheap—typically under $10-$20 a month for hundreds of client chats)."
+    },
+    {
+      keywords: ["no crm", "small business crm", "client spreadsheet"],
+      q: "What if my client doesn't use a CRM or database?",
+      a: "No problem! You can set them up with a free Google Sheet that acts as their database CRM. Make.com will automatically append every new lead's name, email, phone number, and conversation summary to a new row in that sheet, sending them an email alert."
+    },
+    {
+      keywords: ["scrape leads", "lead generation list", "find emails free"],
+      q: "Can we find and scrape business leads for free?",
+      a: "Yes! We teach you how to use free web scraping tools and Google Maps queries to compile highly targeted lists of local service businesses (like Roofers, Chiropractors, or Med Spas) along with their emails, phone numbers, and website URLs."
+    },
+    {
+      keywords: ["stuck in loop", "bot freeze", "bad routing"],
+      q: "What if the chatbot gets stuck in an infinite loop during a conversation?",
+      a: "We design all templates with safety fallbacks. If the chatbot fails to understand a user's question twice in a row, the flow automatically exits the AI loop and triggers a human handoff block, prompting the user to leave their phone number for callback."
+    },
+    {
+      keywords: ["how paid", "invoice client", "receive money"],
+      q: "How do I charge and receive payments from my B2B clients?",
+      a: "You can use Stripe Billing or PayPal Invoicing to send professional, secure invoices to your clients. You can configure them to charge setup fees upfront, and automatically deduct recurring monthly retainer fees from their credit card."
+    },
+    {
+      keywords: ["any country", "global business", "india europe africa"],
+      q: "Can I run this agency model from any country in the world?",
+      a: "Yes! Because outreach, development, deployment, and billing are handled 100% digitally online, you can operate this business from anywhere. You can sit in Europe or India and close clients in the United States without issue."
+    },
+    {
+      keywords: ["legal contract", "agreement template", "service contract"],
+      q: "Do you provide legal contract templates for signing clients?",
+      a: "Yes! The 'AAA Full Blueprint' masterclass includes downloadable, attorney-reviewed B2B contract templates. You simply replace the placeholder fields with your agency name, the client's name, and the agreed pricing."
+    },
+    {
+      keywords: ["no website", "client has no site", "facebook only page"],
+      q: "What if a local business wants a chatbot but doesn't have a website?",
+      a: "You can offer to build them a clean, modern 1-page landing page on Carrd or Framer for an extra $500, embed the chatbot directly onto that landing page, and run their ads to it. This turns a single chatbot sale into a larger agency bundle!"
+    },
+    {
+      keywords: ["sms reminder", "twilio SMS", "text customer bot"],
+      q: "Can the bot send SMS reminders to customers automatically?",
+      a: "Yes! By integrating Twilio or Vonage nodes into Make.com, you can automatically send a customized text message to the customer confirming their booked appointment, and follow up with a reminder 2 hours before the meeting."
+    },
+    {
+      keywords: ["need llc", "register company", "business license"],
+      q: "Do I need to register an LLC or company before launching?",
+      a: "No. You can easily start as a sole proprietor under your personal name. Registering an LLC or local business entity is only recommended once you scale to multiple active clients and are generating consistent, high-margin monthly income."
+    },
+    {
+      keywords: ["roofers plumbers", "local contractors", "pitch contractors"],
+      q: "How do I pitch AI chatbots to local contractors like roofers or plumbers?",
+      a: "Focus 100% on missed phone calls. Local roofers are often on-site and miss 40% of calls. Explain that an automated web chatbot can capture lead names, issue budget quotes, and book emergency inspection slots 24/7, preventing them from losing jobs to competitors."
+    },
+    {
+      keywords: ["stop paying", "client cancels", "unpaid invoice"],
+      q: "What if a client stops paying their monthly retainer?",
+      a: "Since you host the bot credentials or manage the integration hook, you hold complete leverage. If an invoice remains unpaid after a 5-day grace period, you simply pause the webhook on Make.com or turn off the widget, taking the bot offline until payment clears."
+    },
+    {
+      keywords: ["how many clients", "5 clients", "10k math"],
+      q: "How many clients do I need to reach $10,000 per month?",
+      a: "Only 4 or 5! If you secure 5 clients paying a $1,500 setup fee + a $500 monthly recurring retainer, your initial month brings in $10,000, and you lock in $2,500/mo in pure passive MRR. Signing 1-2 new clients monthly scales you rapidly."
+    },
+    {
+      keywords: ["voice call agent", "vapi retell", "phone calling bot"],
+      q: "Can we build AI voice assistants that talk on the phone?",
+      a: "Yes! Tools like Vapi.ai and Retell AI allow you to build voice bots that dial customers or answer calls. Our advanced modules explain how to link these systems to Voiceflow logic templates for complete automation pipelines."
+    },
+    {
+      keywords: ["make vs zapier", "zapier cost", "why use make"],
+      q: "Why do you recommend Make.com over Zapier?",
+      a: "Zapier is extremely expensive (charging heavily per task) and has a rigid, linear dashboard. Make.com is 10x cheaper, allows multi-branch visual routing, and handles complex loops and data parsing much better for agencies."
+    },
+    {
+      keywords: ["free bot demo", "mockup bot", "free trial bot"],
+      q: "Should I build a free chatbot mockup to close clients?",
+      a: "Yes! Building a basic lead booking bot with the client's logo takes under 20 minutes using our pre-built vaults. Sending them a video of their own customized bot in action makes it almost impossible for them to say no."
+    },
+    {
+      keywords: ["read pdf", "read image", "multimodal bot"],
+      q: "Can the chatbots analyze images, PDFs, or uploaded files?",
+      a: "Yes! Voiceflow supports multimodal elements. You can configure your OpenAI-backed bots to let users upload PDF medical forms, invoice images, or text documents and have the AI extract and summarize the contents instantly."
+    },
+    {
+      keywords: ["older business owner", "explain to old business", "no tech jargon"],
+      q: "How do I explain AI automation to older, non-tech business owners?",
+      a: "Never say keywords like 'GPT-4', 'API Webhooks', or 'NLU Intent'. Instead, tell them: 'We build an online receptionist that answers customer queries on your site 24/7 and books appointments directly to your calendar.' Simple value beats tech jargon."
+    },
+    {
+      keywords: ["pay taxes", "agency tax", "write off expenses"],
+      q: "How do I handle taxes for my AI agency?",
+      a: "You report your agency revenue as self-employment income on your local tax returns. Keep track of all software subscriptions (Voiceflow, Make), domain hosting, and course expenses, as these can be written off to lower your tax bill."
+    },
+    {
+      keywords: ["facebook messenger bot", "whatsapp bot", "telegram bot"],
+      q: "Can we deploy these chatbots to Facebook Messenger and WhatsApp?",
+      a: "Yes! Voiceflow supports direct integrations and API extensions to route the chatbot conversations to WhatsApp, Facebook Messenger, Instagram DMs, and Telegram, allowing you to charge clients for omnichannel setup."
+    },
+    {
+      keywords: ["custom dashboard", "client portal sheets"],
+      q: "Can we build custom dashboards for clients to view their leads?",
+      a: "Yes! By routing Make.com leads to a Google Sheet, you can easily connect it to a free no-code app builder like Glide or Softr to give your client a beautiful, customized mobile app where they can view their bot analytics."
+    },
+    {
+      keywords: ["wrong price bot", "bot mistake price", "incorrect quote"],
+      q: "How do we prevent the AI bot from quoting the wrong price to a customer?",
+      a: "Never let the AI guess prices. We hardcode service prices as fixed parameters (variables) in the bot workflow. If a user asks for a price quote, the bot pulls the exact numbers from the variable, guaranteeing the quote is always correct."
+    },
+    {
+      keywords: ["dental chatbot", "chiropractor bot", "medical booking"],
+      q: "Why are dental clinics and chiropractors such high-converting niches?",
+      a: "Because service appointments are high-ticket. A dental clinic checkup or cosmetic session can be worth $500+. If your bot saves just 2 appointments a month that otherwise would have been lost after-hours, they easily make back their investment."
+    },
+    {
+      keywords: ["marketing experience", "never sold", "closing clients help"],
+      q: "Can I succeed if I have zero marketing or sales experience?",
+      a: "Yes. Our client acquisition training is built for introverts. You don't do high-pressure sales calls; you simply send value-first Loom screen recordings of mockup bots. The software sells itself when owners see it working."
+    },
+    {
+      keywords: ["hipaa compliant", "medical data safety", "privacy clinic"],
+      q: "How do I make my AI chatbot systems HIPAA compliant for medical clinics?",
+      a: "For dentists or chiropractors, we program the bot to answer general FAQ questions only. If a patient wants to book or share medical records, the bot passes them to a secure, HIPAA-compliant third-party portal link (like Phreesia or Kareo)."
+    },
+    {
+      keywords: ["intent detection", "bot understand customer", "nlu logic"],
+      q: "How does the bot understand what the user wants?",
+      a: "Voiceflow uses a visual Natural Language Understanding (NLU) engine. We set up 'Intents' (like booking, pricing, hours) and feed them example phrases. The AI automatically classifies what the customer is asking and routes them correctly."
+    },
+    {
+      keywords: ["bad website traffic", "no visitors", "client site bad traffic"],
+      q: "What if my client has a chatbot but has no website traffic?",
+      a: "A chatbot cannot generate leads if nobody visits the site. In our agency guides, we teach you how to upsell local SEO optimization, Google Business Profile setups, or simple Google Ads setup services to drive traffic to their bot."
+    },
+    {
+      keywords: ["learn make.com time", "time make com"],
+      q: "How long does it take to learn Make.com from scratch?",
+      a: "By following our step-by-step video workflows, you will understand the fundamentals of webhooks, routing, and modules in under 3 days. We give you downloadable JSON templates so you don't even have to start from scratch."
+    },
+    {
+      keywords: ["whatsapp api", "whatsapp business", "whatsapp cost"],
+      q: "Is it expensive to build chatbots for WhatsApp?",
+      a: "Building is free. Hosting requires a WhatsApp Business API account (typically through Twilio or 360dialog) which costs around $5-$15 a month. You simply package this fee into your client's monthly hosting retainer."
+    },
+    {
+      keywords: ["client interested", "client reply", "pitch response"],
+      q: "How do I know if a client is interested in my audit pitch?",
+      a: "When you send a Loom video audit, Loom tracks views. If the client opens the video, watches it, and replies to your email asking for a live demo within 24-48 hours, they are highly qualified and ready to be closed on Zoom."
+    },
+    {
+      keywords: ["mac or windows", "system specs developer"],
+      q: "Do I need a powerful computer or Mac to build chatbots?",
+      a: "No! All the development tools we use (Voiceflow, Make.com, OpenAI API, and Stripe) are 100% web-based. You can build and deploy everything on a basic Chromebook, a Mac, or a standard Windows laptop with an internet connection."
+    },
+    {
+      keywords: ["competitor steal client", "lose client"],
+      q: "How do I prevent competitors from stealing my B2B clients?",
+      a: "By building deep operations integrations. A competitor can copy a simple FAQ chatbot, but they cannot easily copy custom Make.com CRM synchronizations or database automations that run your client's backend business. Deep automations build high client loyalty."
+    },
+    {
+      keywords: ["refund purchase guarantee", "want refund"],
+      q: "Can I get a refund on my AgentOS Academy purchase?",
+      a: "Yes! We offer a no-questions-asked 14-Day Money-Back Guarantee. If the visual assets, blueprints, templates, and video masterclasses do not meet your expectations, email amritgupta0412@gmail.com and we will issue a full refund."
+    },
+    {
+      keywords: ["stuck coding", "coding support help"],
+      q: "Where do I get technical help if I get stuck while building a bot?",
+      a: "Our private student Discord is active 24/7. You can post screenshots of your Make.com routing errors or Voiceflow variables, and our community moderators or senior agency builders will jump in to debug your workflow."
     }
   ];
 
