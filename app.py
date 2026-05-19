@@ -7,7 +7,7 @@ import sqlite3
 import requests as http_requests
 from datetime import datetime
 from functools import wraps
-from flask import Flask, request, jsonify, render_template, session, redirect, url_for
+from flask import Flask, request, jsonify, render_template, session, redirect, url_for, send_file
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -707,6 +707,16 @@ def capture_lead():
         conn.close()
         return jsonify({"success": True}), 200
     return jsonify({"error": "Missing data"}), 400
+
+@app.route('/download-logo')
+def download_logo():
+    path = r'C:\Users\amrit\.gemini\antigravity\brain\10510dea-2a8a-4e68-8262-ab14bba164c3\agentos_avatar_1779199539294.png'
+    return send_file(path, mimetype='image/png', as_attachment=True, download_name='agentos_logo.png')
+
+@app.route('/download-banner')
+def download_banner():
+    path = r'C:\Users\amrit\.gemini\antigravity\brain\10510dea-2a8a-4e68-8262-ab14bba164c3\agentos_ads_landscape_1779204031308.png'
+    return send_file(path, mimetype='image/png', as_attachment=True, download_name='agentos_ads_landscape.png')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8000))
