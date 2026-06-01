@@ -1,20 +1,20 @@
 /* ===== CSS Variables & Reset ===== */
 :root {
-    --bg-primary: #080811;
-    --bg-secondary: #0d0d1f;
-    --bg-card: rgba(255, 255, 255, 0.03);
-    --bg-card-hover: rgba(255, 255, 255, 0.05);
-    --text-primary: #f8f8ff;
-    --text-secondary: #a1a1c1;
-    --accent-main: #3b82f6;
-    --accent-secondary: #8b5cf6;
-    --gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    --gradient-text: linear-gradient(to right, #60a5fa, #c084fc);
-    --border: rgba(255, 255, 255, 0.08);
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-card-hover: rgba(255, 255, 255, 0.95);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --accent-main: #1d4ed8;
+    --accent-secondary: #d97706;
+    --gradient: linear-gradient(135deg, #1d4ed8, #d97706);
+    --gradient-text: linear-gradient(to right, #1d4ed8, #d97706);
+    --border: rgba(15, 23, 42, 0.08);
     --radius-lg: 24px;
     --radius-md: 16px;
     --radius-sm: 8px;
-    --shadow-glow: 0 0 40px rgba(139, 92, 246, 0.2);
+    --shadow-glow: 0 0 20px rgba(29, 78, 216, 0.15);
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -139,7 +139,7 @@ img, svg { max-width: 100%; display: block; }
 }
 
 .glass-nav.scrolled {
-    background: rgba(8, 8, 17, 0.85);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
     padding: 12px 0;

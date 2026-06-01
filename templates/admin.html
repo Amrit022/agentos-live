@@ -6,20 +6,20 @@
 <title>Admin Dashboard — SafeFleet Academy</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --bg-dark: #0f172a; --bg-card: rgba(30, 41, 59, 0.85); --border: rgba(255, 255, 255, 0.08); --accent-cyan: #f59e0b; --accent-purple: #3b82f6; --text-main: #f1f5f9; --text-muted: #94a3b8; --accent-emerald: #22c55e;}
+  :root { --bg-dark: #f8fafc; --bg-card: #ffffff; --border: rgba(15, 23, 42, 0.08); --accent-cyan: #d97706; --accent-purple: #1d4ed8; --text-main: #0f172a; --text-muted: #475569; --accent-emerald: #15803d;}
   html { background-color: var(--bg-dark); }
   body { color: var(--text-main); font-family: 'Inter', sans-serif; margin: 0; padding: 40px; position: relative; min-height: 100vh; z-index: 1;}
   body::before {
     content: ''; position: fixed; inset: 0;
     background-image: url('https://images.unsplash.com/photo-1614064019958-38260bca42b4?auto=format&fit=crop&w=2500&q=80');
     background-size: cover; background-position: center;
-    opacity: 0.4; z-index: -1; pointer-events: none;
+    opacity: 0.02; z-index: -1; pointer-events: none;
   }
   .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 24px; }
   h1 { font-family: 'Outfit', sans-serif; margin: 0; font-size: 32px; }
   .text-gradient { background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .btn { background: rgba(255,255,255,0.05); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 8px; border: 1px solid var(--border); transition: background 0.3s; margin-left: 12px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 14px;}
-  .btn:hover { background: rgba(0, 240, 255, 0.1); border-color: var(--accent-cyan); }
+  .btn { background: rgba(15,23,42,0.05); color: var(--text-main); text-decoration: none; padding: 10px 20px; border-radius: 8px; border: 1px solid var(--border); transition: background 0.3s; margin-left: 12px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 14px;}
+  .btn:hover { background: rgba(217, 119, 6, 0.1); border-color: var(--accent-cyan); }
   .btn-sm { padding: 6px 12px; font-size: 12px; border-color: #ff4d4d; color: #ff4d4d; }
   .btn-sm:hover { background: rgba(255, 77, 77, 0.1); }
   
@@ -30,7 +30,7 @@
 
   h2 { font-family: 'Outfit', sans-serif; margin-bottom: 24px; font-size: 24px; color: var(--accent-cyan); display: flex; justify-content: space-between; align-items: center;}
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; margin-bottom: 60px; }
-  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
   .card-header { display: flex; justify-content: space-between; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
   .name { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 600; }
   .email { color: var(--accent-cyan); font-size: 14px; text-decoration: none; }
@@ -44,7 +44,7 @@
 </head>
 <body>
   <div class="header">
-    <h1>Wealth<span class="text-gradient">Web</span> Admin</h1>
+    <h1>SafeFleet<span class="text-gradient"> Academy</span> Admin</h1>
     <div>
       <a href="/" class="btn">← Back to Site</a>
       <a href="/logout" class="btn" style="border-color: #ff4d4d; color: #ff4d4d;">Logout</a>
@@ -53,8 +53,8 @@
   
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-value" id="stat-leads" style="color: var(--neon-blue);">0</div>
-      <div class="stat-label">AI Generated Leads</div>
+      <div class="stat-value" id="stat-leads" style="color: var(--accent-purple);">0</div>
+      <div class="stat-label">Inquiries</div>
     </div>
     <div class="stat-card">
       <div class="stat-value" id="stat-messages">0</div>
@@ -70,7 +70,7 @@
     </div>
   </div>
 
-  <h2 style="color: var(--neon-blue);">🤖 AI Leads Pipeline</h2>
+  <h2 style="color: var(--accent-purple);">📈 Inquiries Pipeline</h2>
   <div class="grid" id="leadsGrid">
     <div class="empty">Loading leads...</div>
   </div>
@@ -95,8 +95,8 @@
 
   <!-- ✉️ EMAIL & SOCIAL MARKETING COMMAND CENTER -->
   <h2 style="margin-top: 60px; color: var(--accent-cyan); display: flex; align-items: center; gap: 12px;">
-    <span>✉️ AI & Digital Marketing Command Center</span>
-    <span style="font-size: 11px; background: rgba(0, 240, 255, 0.1); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); padding: 4px 8px; border-radius: 20px; text-transform: uppercase;">Zero-Capital Suite</span>
+    <span>✉️ SafeFleet Marketing & Outreach Center</span>
+    <span style="font-size: 11px; background: rgba(217, 119, 6, 0.1); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); padding: 4px 8px; border-radius: 20px; text-transform: uppercase;">Outreach Suite</span>
   </h2>
   
   <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 60px;">
@@ -214,148 +214,148 @@
 </div>`
       },
       launch: {
-        subject: "🚀 WE ARE LIVE: The Zero-Capital B2B AI Revolution Begins!",
-        body: `<div style="background:#050505; color:#f8fafc; padding:40px; font-family:'Inter', sans-serif; border:1px solid rgba(255,255,255,0.1); border-radius:16px; max-width:600px; margin:0 auto;">
+        subject: "🚀 SafeFleet Academy: Prepare Your Fleet for HVNL 2026 Reforms",
+        body: `<div style="background:#f8fafc; color:#0f172a; padding:40px; font-family:'Inter', sans-serif; border:1px solid rgba(15,23,42,0.08); border-radius:16px; max-width:600px; margin:0 auto;">
   <div style="text-align:center; margin-bottom:30px;">
-    <h1 style="color:#00f0ff; font-family:'Outfit', sans-serif; margin:0; font-size:28px; letter-spacing:1px;">Agent<span style="color:#8a2be2;">OS</span> Academy</h1>
-    <p style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:2px; margin-top:4px;">Elite Operations & Automation</p>
+    <h1 style="color:#0f172a; font-family:'Space Grotesk', sans-serif; margin:0; font-size:28px;">SafeFleet<span style="color:#d97706;"> Academy</span></h1>
+    <p style="color:#475569; font-size:12px; text-transform:uppercase; letter-spacing:2px; margin-top:4px;">Heavy Vehicle Compliance Training</p>
   </div>
-  <h2 style="color:#ffffff; font-family:'Outfit', sans-serif; font-size:20px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:12px;">Global Launch is Officially LIVE! 🚀</h2>
-  <p>Hello Future Agency Owner,</p>
-  <p>The doors to the ultimate visual automation vault are officially open. You can now download and import actual Voiceflow templates and Make.com workflows that command $2,000+ per client integration.</p>
-  <p><strong>What is inside the elite vaults:</strong></p>
-  <ul style="line-height:1.8; color:#cbd5e1; padding-left:20px;">
-    <li><strong style="color:#8a2be2;">10+ Voiceflow Chatbots</strong> (Dental booking, Real estate pre-qualification, Spa lead capture).</li>
-    <li><strong style="color:#8a2be2;">Make.com Workflows</strong> (CRM integration and automated sync blueprints).</li>
-    <li><strong style="color:#8a2be2;">Acquisition blueprints</strong> featuring exact unedited cold calls and 5 copy-paste outreach sequences.</li>
+  <h2 style="color:#0f172a; font-family:'Space Grotesk', sans-serif; font-size:20px; border-bottom:1px solid rgba(15,23,42,0.08); padding-bottom:12px;">Transition Checklist for 1 August 2026 🚀</h2>
+  <p>Hello Transport Operator,</p>
+  <p>The largest regulatory reforms to Australia's Heavy Vehicle National Law (HVNL) in a decade commence on <strong>1 August 2026</strong>. Regulators have confirmed there will be <strong>no grace period</strong>.</p>
+  <p>Our online compliance courses are updated and ready to help you train your drivers, schedulers, and executives immediately.</p>
+  <p><strong>Core course paths available:</strong></p>
+  <ul style="line-height:1.8; color:#334155; padding-left:20px;">
+    <li>🛡️ <strong>Chain of Responsibility (CoR) Awareness</strong> (For drivers & warehouse staff)</li>
+    <li>⏱️ <strong>Fatigue Risk Management & BFM</strong> (For schedulers & supervisors)</li>
+    <li>⚖️ <strong>Executive Due Diligence</strong> (For officers, directors & owners)</li>
   </ul>
-  <p>For the next few hours, secure the entire accelerator program at our special launch pricing of just $29/module (down from $199 retail).</p>
+  <p>Get your entire team certified online. Bulk corporate discounts are available.</p>
   <div style="text-align:center; margin:32px 0;">
-    <a href="https://SafeFleetacademy.com#products" style="display:inline-block; background:linear-gradient(135deg, #00f0ff, #8a2be2); color:#000000; padding:14px 32px; text-decoration:none; font-family:'Outfit', sans-serif; font-weight:700; border-radius:8px; box-shadow:0 4px 15px rgba(0, 240, 255, 0.4); text-transform:uppercase; font-size:14px; letter-spacing:1px;">Access Global Launch Bundle</a>
+    <a href="https://SafeFleetacademy.com#courses" style="display:inline-block; background:#1d4ed8; color:#ffffff; padding:14px 32px; text-decoration:none; font-weight:700; border-radius:8px; text-transform:uppercase; font-size:14px; letter-spacing:1px;">Get Compliant Today</a>
   </div>
-  <p style="color:#94a3b8; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:16px; margin-top:30px;">
-    Support Desk: support@SafeFleetacademy.com // Hotline: +91 8218961223
+  <p style="color:#475569; font-size:12px; border-top:1px solid rgba(15,23,42,0.08); padding-top:16px; margin-top:30px;">
+    Support Desk: support@SafeFleetacademy.com
   </p>
 </div>`
       },
       casestudy: {
-        subject: "🦷 CASE STUDY: How a simple 2-hour chatbot made a dental clinic $4,200/mo",
-        body: `<div style="background:#050505; color:#f8fafc; padding:40px; font-family:'Inter', sans-serif; border:1px solid rgba(255,255,255,0.1); border-radius:16px; max-width:600px; margin:0 auto;">
+        subject: "⚖️ CASE STUDY: The Cost of CoR Failure (How one load cost $180,000)",
+        body: `<div style="background:#f8fafc; color:#0f172a; padding:40px; font-family:'Inter', sans-serif; border:1px solid rgba(15,23,42,0.08); border-radius:16px; max-width:600px; margin:0 auto;">
   <div style="text-align:center; margin-bottom:30px;">
-    <h1 style="color:#00f0ff; font-family:'Outfit', sans-serif; margin:0; font-size:28px; letter-spacing:1px;">Agent<span style="color:#8a2be2;">OS</span> Academy</h1>
-    <p style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:2px; margin-top:4px;">Elite Operations & Automation</p>
+    <h1 style="color:#0f172a; font-family:'Space Grotesk', sans-serif; margin:0; font-size:28px;">SafeFleet<span style="color:#d97706;"> Academy</span></h1>
+    <p style="color:#475569; font-size:12px; text-transform:uppercase; letter-spacing:2px; margin-top:4px;">Heavy Vehicle Compliance Training</p>
   </div>
-  <h2 style="color:#ffffff; font-family:'Outfit', sans-serif; font-size:20px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:12px;">Case Study: Dental Clinic Automation 🦷</h2>
-  <p>Hi Leader,</p>
-  <p>Today we are pulling back the curtain on how a visual B2B chatbot built in under 2 hours secured a local dental clinic $4,200/month in extra appointment bookings.</p>
-  <p><strong>The Operational Gaps:</strong></p>
-  <ul style="line-height:1.8; color:#cbd5e1; padding-left:20px;">
-    <li>The reception staff missed 30% of incoming phone calls after 5 PM.</li>
-    <li>Leads dropped off because of delayed booking follow-ups on contact forms.</li>
+  <h2 style="color:#0f172a; font-family:'Space Grotesk', sans-serif; font-size:20px; border-bottom:1px solid rgba(15,23,42,0.08); padding-bottom:12px;">Case Study: Chain of Responsibility Prosecution ⚖️</h2>
+  <p>Hi Team,</p>
+  <p>Today we are examining a recent NHVR prosecution that highlights why Chain of Responsibility (CoR) is a board-level issue. A mid-sized logistics firm was fined $180,000 after an unsecured load fell from a flatbed semi-trailer.</p>
+  <p><strong>The Safety Breaches:</strong></p>
+  <ul style="line-height:1.8; color:#334155; padding-left:20px;">
+    <li>The driver had not received formal load restraint training in 3 years.</li>
+    <li>The company's scheduler did not document safety checks before dispatch.</li>
+    <li>The executive officers could not prove due diligence systems were in place.</li>
   </ul>
-  <p><strong>The visual AI Solution:</strong> We connected a custom Voiceflow lead capture agent that qualifies visitors instantly, books appointments directly into their calendar 24/7, and automatically pushes SMS alerts.</p>
-  <p>We charge the dentist $2,000 setup plus a $300 recurring monthly retainer. Learn the exact step-by-step setup and download the exact templates inside the Academy.</p>
+  <p><strong>The SafeFleet Solution:</strong> We provide structured, documented, self-paced online compliance training. Every student gets a certificate of completion, creating a clear audit trail for the NHVR.</p>
+  <p>Protect your drivers, protect your board, and prevent massive fines. Enrol your staff in under 5 minutes.</p>
   <div style="text-align:center; margin:32px 0;">
-    <a href="https://SafeFleetacademy.com#products" style="display:inline-block; background:linear-gradient(135deg, #00f0ff, #00ff88); color:#000000; padding:14px 32px; text-decoration:none; font-family:'Outfit', sans-serif; font-weight:700; border-radius:8px; box-shadow:0 4px 15px rgba(0, 255, 136, 0.4); text-transform:uppercase; font-size:14px; letter-spacing:1px;">Learn B2B Automation Blueprints ($29)</a>
+    <a href="https://SafeFleetacademy.com#courses" style="display:inline-block; background:#1d4ed8; color:#ffffff; padding:14px 32px; text-decoration:none; font-weight:700; border-radius:8px; text-transform:uppercase; font-size:14px; letter-spacing:1px;">Browse Compliance Courses</a>
   </div>
 </div>`
       },
       tools: {
-        subject: "Stop coding. Build highly complex B2B systems visually in 10 minutes. 🛠️",
-        body: `<div style="background:#050505; color:#f8fafc; padding:40px; font-family:'Inter', sans-serif; border:1px solid rgba(255,255,255,0.1); border-radius:16px; max-width:600px; margin:0 auto;">
+        subject: "🛠️ Safety Management Systems (SMS) and PSOE Audits Explained",
+        body: `<div style="background:#f8fafc; color:#0f172a; padding:40px; font-family:'Inter', sans-serif; border:1px solid rgba(15,23,42,0.08); border-radius:16px; max-width:600px; margin:0 auto;">
   <div style="text-align:center; margin-bottom:30px;">
-    <h1 style="color:#00f0ff; font-family:'Outfit', sans-serif; margin:0; font-size:28px; letter-spacing:1px;">Agent<span style="color:#8a2be2;">OS</span> Academy</h1>
-    <p style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:2px; margin-top:4px;">Elite Operations & Automation</p>
+    <h1 style="color:#0f172a; font-family:'Space Grotesk', sans-serif; margin:0; font-size:28px;">SafeFleet<span style="color:#d97706;"> Academy</span></h1>
+    <p style="color:#475569; font-size:12px; text-transform:uppercase; letter-spacing:2px; margin-top:4px;">Heavy Vehicle Compliance Training</p>
   </div>
-  <h2 style="color:#ffffff; font-family:'Outfit', sans-serif; font-size:20px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:12px;">Visual Architectures > Manual Coding 🛠️</h2>
-  <p>Hello Leader,</p>
-  <p>Most traditional businesses don't need complex Python software developers—they need visual operations architects who can connect their calendar databases, customer lists, and web visitors instantly.</p>
-  <p>We teach you the two master no-code engines: <strong>Voiceflow</strong> (conversational AI design) and <strong>Make.com</strong> (visual backend flow connections).</p>
-  <p>Our courses show you how to leverage free tiers to launch, run, and scale without capital.</p>
+  <h2 style="color:#0f172a; font-family:'Space Grotesk', sans-serif; font-size:20px; border-bottom:1px solid rgba(15,23,42,0.08); padding-bottom:12px;">Visual Architectures for Safety Compliance 🛠️</h2>
+  <p>Hello Compliance Officer,</p>
+  <p>Under the new Heavy Vehicle Accreditation (HVA) scheme, a Safety Management System (SMS) is now mandatory. Regulators review systems using the <strong>PSOE</strong> audit method:</p>
+  <ul style="line-height:1.8; color:#334155; padding-left:20px;">
+    <li><strong>Present:</strong> Are safety policies documented in writing?</li>
+    <li><strong>Suitable:</strong> Are they right for your operations?</li>
+    <li><strong>Operating:</strong> Are workers actually using them?</li>
+    <li><strong>Effective:</strong> Do they reduce risk?</li>
+  </ul>
+  <p>Our SMS Implementation course provides download templates, safety checklist blueprints, and audit prep guides to ensure your business passes the PSOE audit with flying colors.</p>
   <div style="text-align:center; margin:32px 0;">
-    <a href="https://SafeFleetacademy.com#products" style="display:inline-block; background:linear-gradient(135deg, #00f0ff, #8a2be2); color:#000000; padding:14px 32px; text-decoration:none; font-family:'Outfit', sans-serif; font-weight:700; border-radius:8px; box-shadow:0 4px 15px rgba(0, 240, 255, 0.4); text-transform:uppercase; font-size:14px; letter-spacing:1px;">Master No-Code Tools ($22 - $29)</a>
+    <a href="https://SafeFleetacademy.com#courses" style="display:inline-block; background:#1d4ed8; color:#ffffff; padding:14px 32px; text-decoration:none; font-weight:700; border-radius:8px; text-transform:uppercase; font-size:14px; letter-spacing:1px;">Learn SMS Implementation ($299)</a>
   </div>
 </div>`
       },
       urgency: {
-        subject: "🚨 FINAL WARNING: 85% Global Launch Discount closes in 2 hours...",
-        body: `<div style="background:#050505; color:#f8fafc; padding:40px; font-family:'Inter', sans-serif; border:1px solid rgba(255,255,255,0.1); border-radius:16px; max-width:600px; margin:0 auto;">
+        subject: "🚨 HVNL 2026 Reforms: No Grace Period on 1 August 2026",
+        body: `<div style="background:#f8fafc; color:#0f172a; padding:40px; font-family:'Inter', sans-serif; border:1px solid rgba(15,23,42,0.08); border-radius:16px; max-width:600px; margin:0 auto;">
   <div style="text-align:center; margin-bottom:30px;">
-    <h1 style="color:#00f0ff; font-family:'Outfit', sans-serif; margin:0; font-size:28px; letter-spacing:1px;">Agent<span style="color:#8a2be2;">OS</span> Academy</h1>
-    <p style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:2px; margin-top:4px;">Elite Operations & Automation</p>
+    <h1 style="color:#0f172a; font-family:'Space Grotesk', sans-serif; margin:0; font-size:28px;">SafeFleet<span style="color:#d97706;"> Academy</span></h1>
+    <p style="color:#475569; font-size:12px; text-transform:uppercase; letter-spacing:2px; margin-top:4px;">Heavy Vehicle Compliance Training</p>
   </div>
-  <h2 style="color:#ffffff; font-family:'Outfit', sans-serif; font-size:20px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:12px;">Launch Offer Ending: Scarcity Warning 🚨</h2>
-  <p>Hi Leader,</p>
-  <p>This is your final direct notification. The 85% global launch pricing of just $29/module for our visual B2B automation vaults is returning to its regular retail price of $199 in exactly 2 hours.</p>
-  <p>If you've been waiting to start your AI automation agency with zero upfront capital, now is your absolute last chance to secure lifetime vault downloads for pennies on the dollar.</p>
+  <h2 style="color:#0f172a; font-family:'Space Grotesk', sans-serif; font-size:20px; border-bottom:1px solid rgba(15,23,42,0.08); padding-bottom:12px;">Final Compliance Warning: Scarcity of Time 🚨</h2>
+  <p>Hello Operator,</p>
+  <p>This is your final direct safety brief. The transition to the new Alternative Compliance Accreditation (ACA) rules and expanded "Unfit to Drive" safety duties is less than two months away.</p>
+  <p>Failing to demonstrate that your drivers and office staff are trained makes executive officers personally liable under the HVNL primary safety duty.</p>
   <div style="text-align:center; margin:32px 0;">
-    <a href="https://SafeFleetacademy.com#products" style="display:inline-block; background:linear-gradient(135deg, #ff4d4d, #8a2be2); color:#ffffff; padding:14px 32px; text-decoration:none; font-family:'Outfit', sans-serif; font-weight:700; border-radius:8px; box-shadow:0 4px 15px rgba(255, 77, 77, 0.4); text-transform:uppercase; font-size:14px; letter-spacing:1px;">Grab Launch Vaults Now ($29)</a>
+    <a href="https://SafeFleetacademy.com#courses" style="display:inline-block; background:#b91c1c; color:#ffffff; padding:14px 32px; text-decoration:none; font-weight:700; border-radius:8px; text-transform:uppercase; font-size:14px; letter-spacing:1px;">Train Your Staff Now</a>
   </div>
 </div>`
       },
       custom: {
         subject: "",
-        body: `<div style="background:#050505; color:#f8fafc; padding:40px; font-family:'Inter', sans-serif; border:1px solid rgba(255,255,255,0.1); border-radius:16px; max-width:600px; margin:0 auto;">
-  <h2 style="color:#ffffff; font-family:'Outfit', sans-serif;">Draft Your Subject Here</h2>
+        body: `<div style="background:#f8fafc; color:#0f172a; padding:40px; font-family:'Inter', sans-serif; border:1px solid rgba(15,23,42,0.08); border-radius:16px; max-width:600px; margin:0 auto;">
+  <h2 style="color:#0f172a; font-family:'Space Grotesk', sans-serif;">Draft Your Subject Here</h2>
   <p>Draft your email body here...</p>
 </div>`
       }
     };
 
     const socialContent = {
-      tiktok: `[VIRAL VIDEO SCRIPT: THE 2-HOUR CHATBOT METHOD]
-HOOK (0-3s): "Stop scrolling if you want to start a B2B business in 2026 with literally zero dollars. Watch this."
-VISUAL: Screen capture showing Voiceflow visual flow workspace, dragging and dropping a lead block.
-VOICEOVER: "This is Voiceflow. It's a free drag-and-drop tool that lets you build super-smart AI receptionists. I built this exact booking bot for a local med spa clinic in under 2 hours. Here is the best part: they pay me a $2,000 setup fee, plus $300 a month just to keep it running on their site. No code, no capital, and businesses are literally begging for this. I've left the full step-by-step blueprints and free visual templates inside the SafeFleet Academy. Head over to SafeFleetacademy.com to grab them."
-HASHTAGS: #aiautomation #sidehustle #nocode #agencyowner #earnonline #SafeFleet`,
+      tiktok: `[VIRAL SCRIPT: CHAIN OF RESPONSIBILITY EXPLAINED]
+HOOK (0-3s): "If you sched, load, or drive heavy trucks in Australia, you need to watch this. The law changed."
+VISUAL: Pointing at a truck graphic. Overlays: HVNL 2026, Fines up to $300k.
+VOICEOVER: "Chain of Responsibility means safety is not just the driver's problem. Schedulers, warehouse loaders, and business directors are all legally responsible. If a truck crashes because it was overloaded, or the driver was fatigued due to tight rostering, the NHVR will prosecute everyone in the chain. Get certified in Chain of Responsibility online today at SafeFleet Academy. Check out SafeFleetacademy.com to stay compliant."
+HASHTAGS: #trucking #heavyvehicle #compliance #cor #nhvr #driverlife #SafeFleet`,
       
-      twitter: `[HIGH-VALUE TWITTER THREAD: HOW TO LAND YOUR FIRST AI RETURNING CLIENT]
-1/ Local businesses are bleeding money because they take hours to respond to online inquiries. By setting up simple, visual lead gen bots, you can solve this gap and make $2k+ per setup. Here is the step-by-step zero-cost playbook: 👇
+      twitter: `[HIGH-VALUE TWITTER THREAD: 5 PILLARS OF HVNL 2026 REFORMS]
+1/ Australia's Heavy Vehicle National Law (HVNL) faces massive reforms starting 1 August 2026. If you're a transport manager or supervisor, here are the 5 pillars you must master to protect your board: 👇
 
-2/ Build the bot visually. Use Voiceflow (it has a great free tier). Create a logical flowchart: Greet visitor -> Qualify lead (Ask service needed, contact details) -> Direct calendar booking. Connecting OpenAI's GPT api takes under 2 minutes.
+2/ Fatigue & Working Hours. Standard and BFM hours are transitioning to the new Alternative Compliance Accreditation (ACA) framework. Schedulers face strict audits for compliant rosters.
 
-3/ Identify your warm targets. Search Google Maps for local high-ticket service niches (Real Estate, Chiropractors, Dental clinics) who lack a live booking option on their sites.
+3/ Load Restraint Performance. Restraints must satisfy the 0.8g forward, 0.5g lateral/rearward, and 0.2g vertical thresholds. Undocumented loading training is a direct path to prosecution.
 
-4/ The Loom Audit trick. Record a quick 3-minute video showing the owner where they are losing leads. Inside the video, show them a 1-minute live demo of the chatbot you pre-built specifically for their clinic. It converts like crazy!
+4/ Mass Limits & GML. GML is increasing to previous CML levels, but Higher Mass Limits (HML) still require formal accreditation.
 
-5/ Charge value-based pricing. Charge a $1,500 setup fee and $250/mo retainer to handle api updates, dashboard upkeep, and optimization. You only need 5 clients to hit a highly profitable, recurring $10k/mo.
-
-6/ Want to download our pre-built Voiceflow templates and copy-paste email templates to get started today? Check out the SafeFleet Academy live at SafeFleetacademy.com 🚀`,
+5/ SMS & PSOE Audits. A Safety Management System is now mandatory. Regulators will audit on: Present -> Suitable -> Operating -> Effective. Learn SMS implementation at SafeFleetacademy.com 🚀`,
       
-      linkedin: `[PROFESSIONAL POST: SYSTEM AUTOMATION CASE STUDY]
-Operational scaling is no longer about human headcounts. It is about visual B2B system architectures.
+      linkedin: `[PROFESSIONAL POST: COMPLIANCE IN AUSTRALIAN LOGISTICS]
+Heavy vehicle compliance is no longer just an operational checkbox. Under the new HVNL 2026 reforms, it is a personal liability issue for executives.
 
-In the past 30 days, we successfully audited and automated the client lead flow for a premium Real Estate brokerage firm.
+In recent audits, the NHVR has focused heavily on corporate due diligence.
 
 The Problem:
-Delayed response times (average of 4 hours to online form submissions) leading to high lead drop-off and lost opportunities.
+Many companies claim to have safety policies, but fail the "PSOE" audit standard (Present, Suitable, Operating, Effective) because their staff lack documented training.
 
-The visually designed No-Code solution:
-1. Deployed an intelligent AI conversational agent on their homepage built via Voiceflow.
-2. Formulated a real-time Make.com webhook syncing new inquiries instantly to their HubSpot CRM.
-3. Automatically pushed calendar bookings directly to the available broker's phone via SMS.
+The Solution:
+1. Structured, digital compliance training for drivers and warehouse workers.
+2. Compliant scheduling frameworks for fatigue risk management.
+3. Documented safety checklists and audit trails.
 
-The Impact:
-- Lead qualification time reduced from 4 hours to 4 seconds.
-- An immediate 35% increase in booked valuation meetings in month one.
-- 0 hours of manual data entry required from staff.
+Failing to train your staff makes executive officers personally liable for breaches under Section 26C.
 
-The future belongs to the operators who bridge traditional businesses with visual AI architectures.
+Learn the exact compliance requirements and get your team certified online at SafeFleet Academy.
 
-If you are a consultant or freelancer wanting to build, deploy, and monetize custom AI workflows for clients, we have launched the full visual blueprints at the SafeFleet Academy.
+👉 Discover our courses at SafeFleetacademy.com
 
-👉 Dive into our zero-capital modules at SafeFleetacademy.com
-
-#AIAgency #Operations #NoCode #BusinessAutomation #SystemsEngineering`
+#TruckingAustralia #Logistics #CoR #FleetManagement #Compliance #TransportSafety`
     };
 
     const viralIdeas = [
-      "Record a reaction video to a horrible local dentist site, build their solution live on screen, and explain the pricing model.",
-      "Show how visual Make.com nodes route leads to a Discord server instantly in 60 seconds with hyper-fast music.",
-      "Explain the $2,000/mo retainer structure: how to position chatbot hosting, performance tuning, and database analytics.",
-      "Recreate a famous chatbot using Voiceflow drag-and-drop to prove that B2B software is simple and fast to design.",
-      "Demonstrate Apollo.io scraper workflows: pulling 200 high-intent real estate emails in under 3 minutes.",
-      "Compare manual CRM typing against Make.com webhooks side-by-side using a visual timer split-screen."
+      "Explain the PSOE audit method (Present, Suitable, Operating, Effective) and why most transport firms fail it.",
+      "Detail the personal liability of executive officers under Section 26C of the Heavy Vehicle National Law.",
+      "Contrast Standard work hours against Basic Fatigue Management (BFM) limits side-by-side.",
+      "Show how to calculate minimum lashing capacity for heavy truck loads in under 60 seconds.",
+      "Share the transition timeline from NHVAS accreditation to the new HVA two-tier framework.",
+      "Compare a compliance check list vs an undocumented training structure using a penalty risk matrix."
     ];
 
     function loadEmailTemplate() {

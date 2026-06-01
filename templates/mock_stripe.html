@@ -7,13 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-void: #000000;
-    --card-surface: rgba(12, 12, 14, 0.8);
-    --border-dim: rgba(255, 255, 255, 0.1);
-    --border-bright: rgba(255, 255, 255, 0.3);
-    --neon-blue: #00e5ff;
-    --text-primary: #ffffff;
-    --text-secondary: #8892b0;
+    --bg-void: #f8fafc;
+    --card-surface: rgba(255, 255, 255, 0.9);
+    --border-dim: rgba(15, 23, 42, 0.08);
+    --border-bright: rgba(15, 23, 42, 0.15);
+    --neon-blue: #1a73e8;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
   }
   body {
     background-color: var(--bg-void); color: var(--text-primary);
@@ -34,14 +34,14 @@
     background: var(--card-surface);
     border: 1px solid var(--border-bright);
     border-radius: 16px;
-    box-shadow: 0 0 40px rgba(0, 229, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
     width: 100%;
     max-width: 420px;
     overflow: hidden;
     backdrop-filter: blur(20px);
   }
   .header {
-    background: rgba(0, 229, 255, 0.05);
+    background: rgba(26, 115, 232, 0.05);
     border-bottom: 1px solid var(--border-dim);
     padding: 32px;
     text-align: center;
@@ -53,13 +53,13 @@
     background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
   }
   
-  .header h2 { font-family: 'Space Grotesk', sans-serif; margin: 0 0 16px 0; font-weight: 700; font-size: 20px; color: #fff;}
-  .header .amount { font-family: 'JetBrains Mono', monospace; font-size: 40px; font-weight: 700; color: var(--neon-blue); margin: 0; text-shadow: 0 0 20px rgba(0, 229, 255, 0.4);}
+  .header h2 { font-family: 'Space Grotesk', sans-serif; margin: 0 0 16px 0; font-weight: 700; font-size: 20px; color: var(--text-primary);}
+  .header .amount { font-family: 'JetBrains Mono', monospace; font-size: 40px; font-weight: 700; color: var(--neon-blue); margin: 0; text-shadow: 0 0 10px rgba(26, 115, 232, 0.25);}
   
   .form-content { padding: 32px; }
   
   .test-badge {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(15, 23, 42, 0.03);
     color: var(--text-secondary);
     padding: 12px;
     border-radius: 8px;
@@ -68,36 +68,36 @@
     text-align: center;
     border: 1px dashed var(--border-dim);
   }
-
+ 
   .input-group { margin-bottom: 20px; }
   .input-group label {
     display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; color: var(--text-secondary);
   }
   .input-group input {
     width: 100%; padding: 14px;
-    background: rgba(0,0,0,0.5); border: 1px solid var(--border-dim);
-    border-radius: 8px; font-size: 15px; color: #fff;
+    background: #fff; border: 1px solid var(--border-dim);
+    border-radius: 8px; font-size: 15px; color: var(--text-primary);
     font-family: 'Plus Jakarta Sans', sans-serif;
     box-sizing: border-box; outline: none; transition: border-color 0.2s;
   }
   .input-group input:disabled { color: var(--text-secondary); cursor: not-allowed; }
-
+ 
   .btn {
     background: var(--neon-blue);
-    color: #000; border: none; border-radius: 8px;
+    color: #fff; border: none; border-radius: 8px;
     width: 100%; padding: 16px;
     font-size: 16px; font-weight: 700; font-family: 'Space Grotesk', sans-serif;
     cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
-    margin-top: 16px; box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+    margin-top: 16px; box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
   }
-  .btn:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(0, 229, 255, 0.5); }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26, 115, 232, 0.45); }
   .btn:active { transform: scale(0.98); }
   
   .btn-cancel {
     background: transparent; color: var(--text-secondary);
     margin-top: 16px; box-shadow: none; border: 1px solid var(--border-dim);
   }
-  .btn-cancel:hover { background: rgba(255,255,255,0.05); color: #fff; transform: none; box-shadow: none;}
+  .btn-cancel:hover { background: rgba(15, 23, 42, 0.05); color: var(--text-primary); transform: none; box-shadow: none;}
 
   .footer {
     text-align: center; margin-top: 24px; font-size: 12px; color: var(--text-secondary);

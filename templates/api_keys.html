@@ -7,12 +7,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-void: #000000;
-    --card-surface: rgba(12, 12, 14, 0.7);
-    --border-dim: rgba(255, 255, 255, 0.08);
-    --neon-blue: #00e5ff;
-    --text-primary: #ffffff;
-    --text-secondary: #8892b0;
+    --bg-void: #f8fafc;
+    --card-surface: rgba(255, 255, 255, 0.9);
+    --border-dim: rgba(15, 23, 42, 0.08);
+    --neon-blue: #1a73e8;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
   }
   body {
     background-color: var(--bg-void); color: var(--text-primary);
@@ -22,21 +22,23 @@
   .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-dim); padding-bottom: 24px; margin-bottom: 32px;}
   h1 { font-family: 'Space Grotesk'; font-size: 32px; margin: 0;}
   
-  .banner { background: rgba(0, 229, 255, 0.05); border: 1px solid var(--neon-blue); padding: 16px 24px; border-radius: 8px; margin-bottom: 32px; font-size: 14px; line-height: 1.6;}
+  .banner { background: rgba(26, 115, 232, 0.05); border: 1px solid var(--neon-blue); padding: 16px 24px; border-radius: 8px; margin-bottom: 32px; font-size: 14px; line-height: 1.6;}
   
-  .form-container { background: var(--card-surface); padding: 24px; border-radius: 12px; border: 1px solid var(--border-dim); margin-bottom: 40px; display: flex; gap: 16px; align-items: flex-end;}
+  .form-container { background: var(--card-surface); padding: 24px; border-radius: 12px; border: 1px solid var(--border-dim); margin-bottom: 40px; display: flex; gap: 16px; align-items: flex-end; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
   .form-group { flex: 1; }
   label { display: block; margin-bottom: 8px; color: var(--text-secondary); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;}
-  input { width: 100%; padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-dim); color: #fff; border-radius: 8px; font-family: 'Plus Jakarta Sans'; box-sizing: border-box;}
+  input { width: 100%; padding: 12px; background: #fff; border: 1px solid var(--border-dim); color: var(--text-primary); border-radius: 8px; font-family: 'Plus Jakarta Sans'; box-sizing: border-box;}
   input:focus { border-color: var(--neon-blue); outline: none; }
-  .btn { background: var(--neon-blue); color: #000; padding: 12px 24px; border: none; border-radius: 8px; font-family: 'Space Grotesk'; font-weight: 700; cursor: pointer; height: 43px;}
+  .btn { background: var(--neon-blue); color: #fff; padding: 12px 24px; border: none; border-radius: 8px; font-family: 'Space Grotesk'; font-weight: 700; cursor: pointer; height: 43px; box-shadow: 0 4px 10px rgba(26, 115, 232, 0.2); transition: background 0.2s, box-shadow 0.2s;}
+  .btn:hover { background: #1557b0; box-shadow: 0 6px 15px rgba(26, 115, 232, 0.3); }
   
   .key-table { width: 100%; border-collapse: collapse; }
   .key-table th { text-align: left; padding: 16px; border-bottom: 1px solid var(--border-dim); color: var(--text-secondary); font-size: 13px; text-transform: uppercase; font-weight: 600;}
-  .key-table td { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.02); }
-  .code { font-family: 'JetBrains Mono', monospace; color: var(--neon-blue); background: rgba(0, 229, 255, 0.1); padding: 4px 8px; border-radius: 4px; font-size: 14px;}
+  .key-table td { padding: 16px; border-bottom: 1px solid var(--border-dim); }
+  .code { font-family: 'JetBrains Mono', monospace; color: var(--neon-blue); background: rgba(26, 115, 232, 0.08); padding: 4px 8px; border-radius: 4px; font-size: 14px;}
   
-  .btn-outline { display: inline-block; background: transparent; color: #fff; padding: 8px 16px; border: 1px solid var(--border-dim); border-radius: 6px; text-decoration: none; font-family: 'Space Grotesk'; font-size: 14px;}
+  .btn-outline { display: inline-block; background: transparent; color: var(--text-primary); padding: 8px 16px; border: 1px solid var(--border-dim); border-radius: 6px; text-decoration: none; font-family: 'Space Grotesk'; font-size: 14px; transition: background 0.2s;}
+  .btn-outline:hover { background: rgba(15,23,42,0.05); }
 </style>
 </head>
 <body>

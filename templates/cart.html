@@ -32,16 +32,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-void: #0f172a;
-    --card-surface: rgba(15, 23, 42, 0.85);
-    --border-dim: rgba(255, 255, 255, 0.08);
-    --border-bright: rgba(255, 255, 255, 0.25);
-    --accent-amber: #f59e0b;
-    --accent-blue: #3b82f6;
-    --accent-green: #22c55e;
+    --bg-void: #f8fafc;
+    --card-surface: rgba(255, 255, 255, 0.9);
+    --border-dim: rgba(15, 23, 42, 0.08);
+    --border-bright: rgba(15, 23, 42, 0.15);
+    --accent-amber: #d97706;
+    --accent-blue: #1d4ed8;
+    --accent-green: #15803d;
     --accent-red: #ef4444;
-    --text-primary: #ffffff;
-    --text-secondary: #94a3b8;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
   }
 
   body {
@@ -61,17 +61,17 @@
 
   .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 1px solid var(--border-dim); padding-bottom: 24px; max-width: 1200px; margin: 0 auto 40px auto; }
   h1 { font-family: 'Space Grotesk', sans-serif; margin: 0; font-size: 32px; font-weight: 900; }
-  .btn-outline { background: transparent; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 8px; border: 1px solid var(--border-bright); transition: border-color 0.3s; cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 14px;}
-  .btn-outline:hover { border-color: var(--accent-amber); box-shadow: 0 0 15px rgba(245,158,11,0.2); }
+  .btn-outline { background: transparent; color: var(--text-primary); text-decoration: none; padding: 10px 20px; border-radius: 8px; border: 1px solid var(--border-bright); transition: border-color 0.3s; cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 14px;}
+  .btn-outline:hover { border-color: var(--accent-amber); box-shadow: 0 0 15px rgba(217,119,6,0.15); }
   
-  .btn-neon { background: var(--accent-amber); color: #000; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; padding: 16px 32px; border-radius: 8px; border: none; cursor: pointer; width: 100%; display: block; text-align: center; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);}
-  .btn-neon:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(245, 158, 11, 0.6); }
+  .btn-neon { background: var(--accent-amber); color: #fff; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; padding: 16px 32px; border-radius: 8px; border: none; cursor: pointer; width: 100%; display: block; text-align: center; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);}
+  .btn-neon:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4); }
   
   .cart-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
   @media (max-width: 900px) { .cart-container { grid-template-columns: 1fr; } }
   
   .cart-item { background: var(--card-surface); border: 1px solid var(--border-dim); border-radius: 16px; padding: 24px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; backdrop-filter: blur(20px); transition: border-color 0.3s; }
-  .cart-item:hover { border-color: rgba(245, 158, 11, 0.3); }
+  .cart-item:hover { border-color: rgba(217, 119, 6, 0.3); }
   .item-name { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 4px;}
   .item-price { font-family: 'JetBrains Mono', monospace; font-size: 24px; color: var(--accent-amber); font-weight: 700; }
   .remove-btn { color: var(--accent-red); background: none; border: none; cursor: pointer; font-size: 13px; margin-top: 12px; opacity: 0.8;}
@@ -80,16 +80,16 @@
   .summary-card, .billing-card { background: var(--card-surface); border: 1px solid var(--border-dim); border-radius: 16px; padding: 32px; backdrop-filter: blur(20px); }
   .summary-card { position: sticky; top: 40px; height: fit-content; }
   
-  .card-title { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 24px; border-bottom: 1px solid var(--border-dim); padding-bottom: 16px; color: #fff;}
+  .card-title { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 24px; border-bottom: 1px solid var(--border-dim); padding-bottom: 16px; color: var(--text-primary);}
   
   .summary-row { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 15px; color: var(--text-secondary); }
   .summary-total { display: flex; justify-content: space-between; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-dim); font-size: 18px; align-items: center; }
-  .total-value { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #fff; }
+  .total-value { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: var(--text-primary); }
   
   .promo-box { display: flex; gap: 8px; margin-bottom: 24px; }
-  .form-input { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-dim); border-radius: 8px; padding: 14px; color: #fff; font-family: 'Inter', sans-serif; outline: none; box-sizing: border-box; transition: border-color 0.2s;}
+  .form-input { width: 100%; background: #fff; border: 1px solid var(--border-dim); border-radius: 8px; padding: 14px; color: var(--text-primary); font-family: 'Inter', sans-serif; outline: none; box-sizing: border-box; transition: border-color 0.2s;}
   .form-input:focus { border-color: var(--accent-amber); }
-  .promo-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--border-bright); color: #fff; border-radius: 8px; padding: 0 16px; cursor: pointer; font-family: 'Space Grotesk', sans-serif;}
+  .promo-btn { background: rgba(15,23,42,0.05); border: 1px solid var(--border-bright); color: var(--text-primary); border-radius: 8px; padding: 0 16px; cursor: pointer; font-family: 'Space Grotesk', sans-serif;}
   .promo-btn:hover { border-color: var(--accent-amber); }
   .discount-row { color: var(--accent-green); display: none; }
   
@@ -113,7 +113,7 @@
       <img src="/static/logo.png" alt="SafeFleet Academy Logo" style="width: 32px; height: 32px; border-radius: 6px;">
       <h1>Secure <span style="color: var(--accent-amber);">Checkout</span></h1>
     </div>
-    <a href="/#products" class="btn-outline">← Back to Courses</a>
+    <a href="/#courses" class="btn-outline">← Back to Courses</a>
   </div>
   
   <div class="cart-container" id="mainContainer">

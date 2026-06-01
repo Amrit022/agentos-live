@@ -16,13 +16,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-void: #0f172a;
-    --card-surface: rgba(15, 23, 42, 0.85);
-    --border-dim: rgba(255, 255, 255, 0.1);
-    --accent-amber: #f59e0b;
-    --accent-red: #ef4444;
-    --text-primary: #ffffff;
-    --text-secondary: #94a3b8;
+    --bg-void: #f8fafc;
+    --card-surface: rgba(255, 255, 255, 0.9);
+    --border-dim: rgba(15, 23, 42, 0.08);
+    --accent-amber: #d97706;
+    --accent-red: #b91c1c;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
   }
   body {
     background-color: var(--bg-void); color: var(--text-primary);
@@ -42,7 +42,7 @@
   .login-container {
     background: var(--card-surface); border: 1px solid var(--border-dim);
     border-radius: 16px; padding: 48px; width: 100%; max-width: 400px;
-    box-shadow: 0 0 40px rgba(245, 158, 11, 0.1); backdrop-filter: blur(20px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05); backdrop-filter: blur(20px);
     position: relative;
   }
   
@@ -54,33 +54,33 @@
   .form-group { margin-bottom: 24px; }
   label { display: block; margin-bottom: 8px; color: var(--text-secondary); font-size: 13px; text-transform: uppercase; font-weight: 600; letter-spacing: 1px;}
   input { 
-    width: 100%; padding: 14px; background: rgba(0,0,0,0.3); 
-    border: 1px solid var(--border-dim); color: #fff; border-radius: 8px; 
+    width: 100%; padding: 14px; background: #fff; 
+    border: 1px solid var(--border-dim); color: var(--text-primary); border-radius: 8px; 
     font-family: 'JetBrains Mono'; box-sizing: border-box; transition: border-color 0.3s;
   }
-  input:focus { border-color: var(--accent-amber); outline: none; box-shadow: 0 0 15px rgba(245,158,11,0.2); }
+  input:focus { border-color: var(--accent-amber); outline: none; box-shadow: 0 0 15px rgba(217,119,6,0.15); }
   
   .btn { 
-    background: var(--accent-amber); color: #000; padding: 16px; border: none; 
+    background: var(--accent-amber); color: #fff; padding: 16px; border: none; 
     border-radius: 8px; font-family: 'Space Grotesk'; font-weight: 700; 
     cursor: pointer; width: 100%; font-size: 16px; transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+    box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
   }
-  .btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(245, 158, 11, 0.5); }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(217, 119, 6, 0.45); }
   
-  .error { background: rgba(239, 68, 68, 0.1); color: var(--accent-red); border: 1px solid var(--accent-red); padding: 12px; border-radius: 8px; text-align: center; margin-bottom: 24px; font-size: 14px;}
+  .error { background: rgba(239, 68, 68, 0.05); color: var(--accent-red); border: 1px solid var(--accent-red); padding: 12px; border-radius: 8px; text-align: center; margin-bottom: 24px; font-size: 14px;}
   
   .footer-links { margin-top: 32px; text-align: center; font-size: 14px;}
   .footer-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s;}
-  .footer-links a:hover { color: #fff; }
+  .footer-links a:hover { color: var(--text-primary); }
 </style>
 </head>
 <body>
 
 <div class="login-container">
   <div class="brand">
-    <img src="/static/logo.png" alt="SafeFleet Academy" style="width: 40px; height: 40px; border-radius: 8px; box-shadow: 0 0 15px rgba(245,158,11,0.4);">
-    <h1>SafeFleet<span style="color: #f59e0b;"> Academy</span></h1>
+    <img src="/static/logo.png" alt="SafeFleet Academy" style="width: 40px; height: 40px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+    <h1>SafeFleet<span style="color: var(--accent-amber);"> Academy</span></h1>
   </div>
   
   <div class="auth-title">Training Portal Login</div>

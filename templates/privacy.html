@@ -16,12 +16,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-void: #0f172a;
-    --border-dim: rgba(255, 255, 255, 0.08);
-    --accent-amber: #f59e0b;
-    --accent-blue: #3b82f6;
-    --text-primary: #ffffff;
-    --text-secondary: #94a3b8;
+    --bg-void: #f8fafc;
+    --border-dim: rgba(15, 23, 42, 0.08);
+    --accent-amber: #d97706;
+    --accent-blue: #1d4ed8;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
   }
   body {
     background-color: var(--bg-void);
@@ -41,7 +41,7 @@
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 900;
     font-size: 24px;
-    color: #fff;
+    color: var(--text-primary);
     text-decoration: none;
     display: flex; align-items: center; gap: 12px;
   }
@@ -62,7 +62,7 @@
 <nav>
   <a href="/" class="nav-logo">
     <img src="/static/logo.png" alt="SafeFleet Academy Logo" style="width: 32px; height: 32px; border-radius: 6px;">
-    SafeFleet<span style="color: #f59e0b;"> Academy</span>
+    SafeFleet<span style="color: var(--accent-amber);"> Academy</span>
   </a>
   <a href="/" style="color: var(--text-secondary); text-decoration: none;">Back to Home</a>
 </nav>

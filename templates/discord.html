@@ -6,23 +6,30 @@
 <title>Inner Circle Discord — SafeFleet</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
-  :root { --bg-void: #000000; --card-surface: rgba(12, 12, 14, 0.7); --border-dim: rgba(255, 255, 255, 0.08); --neon-purple: #b537f2; --text-primary: #ffffff; --text-secondary: #8892b0; }
+  :root {
+    --bg-void: #f8fafc;
+    --card-surface: rgba(255, 255, 255, 0.9);
+    --border-dim: rgba(15, 23, 42, 0.08);
+    --neon-blue: #1d4ed8;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+  }
   body { background-color: var(--bg-void); color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 48px; display: flex; justify-content: center; align-items: center; min-height: 80vh;}
-  .container { max-width: 500px; text-align: center; background: var(--card-surface); padding: 48px; border-radius: 16px; border: 1px solid var(--border-dim); box-shadow: 0 0 40px rgba(181, 55, 242, 0.1);}
-  .icon { font-size: 64px; margin-bottom: 24px; text-shadow: 0 0 20px rgba(181, 55, 242, 0.5); }
+  .container { max-width: 500px; text-align: center; background: var(--card-surface); padding: 48px; border-radius: 16px; border: 1px solid var(--border-dim); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);}
+  .icon { font-size: 64px; margin-bottom: 24px; }
   h1 { font-family: 'Space Grotesk'; font-size: 32px; margin-top: 0; margin-bottom: 16px;}
   p { color: var(--text-secondary); line-height: 1.6; margin-bottom: 32px; }
   .btn { display: inline-block; background: #5865F2; color: #fff; padding: 16px 32px; border: none; border-radius: 8px; font-family: 'Space Grotesk'; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 16px; width: 100%; box-sizing: border-box; transition: transform 0.2s;}
   .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4); }
-  .btn-outline { display: inline-block; text-align: center; background: transparent; color: var(--text-secondary); margin-top: 24px; text-decoration: none; font-size: 14px;}
-  .btn-outline:hover { color: #fff; }
+  .btn-outline { display: inline-block; text-align: center; background: transparent; color: var(--text-secondary); margin-top: 24px; text-decoration: none; font-size: 14px; transition: color 0.2s;}
+  .btn-outline:hover { color: var(--text-primary); }
 </style>
 </head>
 <body>
   <div class="container">
     <div class="icon">💬</div>
     <h1>The Inner Circle</h1>
-    <p>Join over 4,500+ Agency owners discussing lead generation, API configurations, and high-ticket closing strategies.</p>
+    <p>Join over 4,500+ Transport operators, safety managers, and fleet drivers discussing HVNL compliance, Chain of Responsibility, and transport safety management.</p>
     <a href="#" class="btn" onclick="alert('Simulated Discord Join Link!')">Join Discord Server</a>
     <br>
     <a href="/portal" class="btn-outline">← Back to Dashboard</a>
