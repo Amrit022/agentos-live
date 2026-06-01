@@ -830,7 +830,7 @@
       showNotification('Already in cart!', '#f59e0b');
       return;
     }
-    cart.push({ title, price: parseFloat(price), icon, desc });
+    cart.push({ title, name: title, price: parseFloat(price), icon, desc });
     localStorage.setItem('safefleet_cart', JSON.stringify(cart));
     updateCartCount();
     showNotification('✓ Added to cart: ' + title, '#22c55e');

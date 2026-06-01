@@ -206,14 +206,29 @@
       }
       
       currentSubtotal = 0;
+      
+      const iconMap = {
+        'CoR Awareness for Drivers': '🛡️',
+        'CoR for Supervisors & Schedulers': '📋',
+        'CoR Due Diligence for Executives': '⚖️',
+        'Fatigue Management (BFM)': '⏱️',
+        'Load Restraint Essentials': '📦',
+        'SMS Implementation & Audit Prep': '🔍',
+        'HVNL 2026 Reform Readiness Bundle': '🏆'
+      };
+      
       container.innerHTML = cart.map((item, index) => {
         currentSubtotal += item.price;
+        const name = item.name || item.title || 'Training Course';
+        const rawIcon = item.icon || '📦';
+        const icon = iconMap[name] || (rawIcon.length > 2 ? '📦' : rawIcon);
+        
         return `
           <div class="cart-item" id="item-${index}">
             <div style="display: flex; gap: 20px; align-items: center;">
-              <div style="font-size: 32px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-dim); width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; border-radius: 12px;">${item.icon || '📦'}</div>
+              <div style="font-size: 32px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-dim); width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; border-radius: 12px;">${icon}</div>
               <div>
-                <div class="item-name">${item.name}</div>
+                <div class="item-name">${name}</div>
                 <div style="color: var(--text-secondary); font-size: 14px; margin-top: 4px; max-width: 400px;">${item.desc || ''}</div>
                 <button class="remove-btn" onclick="removeItem(${index})">[x] Remove</button>
               </div>
