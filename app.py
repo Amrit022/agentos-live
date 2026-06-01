@@ -11,7 +11,7 @@ from flask import Flask, request, jsonify, render_template, session, redirect, u
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY', 'agentos-dev-secret-key-change-in-prod')
+app.secret_key = os.environ.get('SECRET_KEY', 'safefleet-dev-secret-key-change-in-prod')
 
 # PayPal Configuration (Sandbox keys — switch to live when ready)
 PAYPAL_CLIENT_ID = os.environ.get('PAYPAL_CLIENT_ID', 'Af9wZg_O8vJIARumOvVa-VE8ER2vpKOJ4YDVhFp4GGD0PNCg3QvATL_qNHvHRA33JojiLqcoOvffv5Ht')
@@ -23,82 +23,47 @@ DB_FILE = 'database.db'
 ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'password123')
 
 strategies = {
-    "free-saas-directory": {
-        "icon": "🌐", "num": "01", "title": "Free SaaS Directory", 
-        "desc": "Curate free alternatives to expensive software. Monetize via SaaS affiliate programs.", 
-        "earn": "$500 - $3k/mo", "platforms": ["PartnerStack", "Impact", "Framer"],
-        "plan": [
-            "Set up your free domain and hosting.",
-            "Curate or create the initial batch of content (30+ items).",
-            "Integrate affiliate links aggressively.",
-            "Drive traffic via Pinterest, Reddit, and SEO."
-        ]
+    "cor-drivers": {
+        "icon": "🛡️", "num": "01", "title": "CoR Awareness for Drivers",
+        "desc": "Understand your Chain of Responsibility obligations under the HVNL. Essential for every heavy vehicle driver in Australia.",
+        "earn": "Certificate of Completion", "platforms": ["NHVR", "HVNL", "CoR"],
+        "plan": ["Understand what CoR means for drivers", "Learn your primary safety duty under Section 26C", "Know the 5 key compliance areas: speed, fatigue, mass, load restraint, vehicle standards", "Recognise penalties for non-compliance"]
     },
-    "ai-prompts-library": {
-        "icon": "🤖", "num": "02", "title": "AI Prompts Library", 
-        "desc": "A hub for ChatGPT & Claude prompts. Insanely trending, monetizes via premium packs.", 
-        "earn": "$800 - $5k/mo", "platforms": ["Gumroad", "Notion", "ConvertKit"],
-        "plan": [
-            "Pick 3 AI tools to focus on.",
-            "Create a categorized prompts database.",
-            "Write prompt guides for SEO.",
-            "Sell a Premium Prompt Pack on Gumroad."
-        ]
+    "cor-supervisors": {
+        "icon": "📋", "num": "02", "title": "CoR for Supervisors & Schedulers",
+        "desc": "Advanced Chain of Responsibility training for those who schedule, manage, or direct transport activities.",
+        "earn": "Certificate of Completion", "platforms": ["TLIF0006", "TLIF0009", "NHVR"],
+        "plan": ["Understand scheduler duties under CoR", "Learn fatigue risk management for scheduling", "Implement compliant rostering practices", "Document and demonstrate due diligence"]
     },
-    "remote-job-board": {
-        "icon": "💼", "num": "03", "title": "Remote Job Board", 
-        "desc": "A trusted job board for remote work. Evergreen demand, monetizes via resume affiliates.", 
-        "earn": "$1k - $8k/mo", "platforms": ["RemoteOK API", "ShareASale", "Carrd"],
-        "plan": [
-            "Choose a remote work sub-niche.",
-            "Aggregate real jobs from free APIs.",
-            "Build your affiliate stack (resume builders, VPNs).",
-            "Launch a 'Remote Career' newsletter."
-        ]
+    "cor-executives": {
+        "icon": "⚖️", "num": "03", "title": "CoR Due Diligence for Executives",
+        "desc": "Executive officer duties, personal liability, and due diligence obligations under the HVNL.",
+        "earn": "Certificate of Completion", "platforms": ["HVNL", "Executive Duty", "Due Diligence"],
+        "plan": ["Understand personal liability as an executive officer", "Learn the 6 elements of due diligence", "Build a compliance governance framework", "Implement safety assurance systems"]
     },
-    "niche-calculators": {
-        "icon": "🧮", "num": "04", "title": "Niche Calculators", 
-        "desc": "Interactive tools that rank fast on Google. Generates AdSense revenue 24/7.", 
-        "earn": "$400 - $4k/mo", "platforms": ["AdSense", "Calconic", "GitHub Pages"],
-        "plan": [
-            "Pick a profitable calculator niche.",
-            "Build 20-50 calculators using free tools.",
-            "Apply for Google AdSense.",
-            "Optimize for featured snippets."
-        ]
+    "fatigue-management": {
+        "icon": "⏱️", "num": "04", "title": "Fatigue Management (BFM)",
+        "desc": "Comprehensive fatigue management training covering Standard Hours, BFM, work diaries, and the new ACA framework.",
+        "earn": "Certificate of Completion", "platforms": ["TLIF0005", "BFM", "EWD"],
+        "plan": ["Master Standard Hours and BFM hour limits", "Learn work diary and EWD requirements", "Understand rest break obligations", "Prepare for ACA transition under HVNL 2026"]
     },
-    "free-courses-hub": {
-        "icon": "🎓", "num": "05", "title": "Free Courses Hub", 
-        "desc": "Curate free certifications from Google/IBM. Students upskill, you earn via course upgrades.", 
-        "earn": "$600 - $4.5k/mo", "platforms": ["Coursera Aff", "Udemy Aff", "Mailchimp"],
-        "plan": [
-            "Niche down to a skill category.",
-            "Curate legitimate free courses.",
-            "Join course affiliate programs.",
-            "Create 'learning roadmaps'."
-        ]
+    "load-restraint": {
+        "icon": "📦", "num": "05", "title": "Load Restraint Essentials",
+        "desc": "Performance-based load restraint standards: 0.8g forward, 0.5g sideways/rearward, 0.2g vertical.",
+        "earn": "Certificate of Completion", "platforms": ["Load Restraint Guide", "NHVR", "Performance Standards"],
+        "plan": ["Understand the performance-based standards", "Learn lashing, blocking, and containment methods", "Calculate minimum restraint requirements", "Conduct pre-departure load inspections"]
     },
-    "lifetime-deals": {
-        "icon": "⚡", "num": "06", "title": "Lifetime Deals", 
-        "desc": "Track software lifetime deals. Visitors arrive with credit cards in hand.", 
-        "earn": "$2k - $12k/mo", "platforms": ["AppSumo", "Dealify", "WordPress"],
-        "plan": [
-            "Track all major deal platforms.",
-            "Join AppSumo's affiliate program.",
-            "Write 'Is It Worth It?' reviews.",
-            "Build a deal alert newsletter."
-        ]
+    "mass-dimension": {
+        "icon": "⚖️", "num": "06", "title": "Mass, Dimension & Loading",
+        "desc": "Gross and axle mass limits, dimension requirements, and the 2026 GML changes.",
+        "earn": "Certificate of Completion", "platforms": ["GML", "CML", "HML"],
+        "plan": ["Understand GML, CML, and HML mass limits", "Learn axle group mass distribution", "Know dimension limits (new 20m general access)", "Calculate compliant payload capacity"]
     },
-    "free-design-assets": {
-        "icon": "🎨", "num": "07", "title": "Free Design Assets", 
-        "desc": "Free Canva/Notion templates. Viral traffic from Pinterest converts to premium bundles.", 
-        "earn": "$300 - $5k/mo", "platforms": ["Pinterest", "Gumroad", "Canva"],
-        "plan": [
-            "Choose a template category.",
-            "Create 30 free templates to launch.",
-            "Set up your Gumroad store.",
-            "Dominate Pinterest with daily pins."
-        ]
+    "sms-audit": {
+        "icon": "🔍", "num": "07", "title": "SMS Implementation & Audit Prep",
+        "desc": "Build and audit Safety Management Systems using the PSOE methodology for the new HVA accreditation.",
+        "earn": "Certificate of Completion", "platforms": ["SMS", "PSOE", "HVA"],
+        "plan": ["Understand the 5 SMS outcomes", "Learn the PSOE audit methodology", "Build compliant safety documentation", "Prepare for GSA and ACA accreditation"]
     }
 }
 
@@ -702,7 +667,7 @@ def capture_lead():
         conn = sqlite3.connect(DB_FILE)
         c = conn.cursor()
         c.execute("INSERT INTO leads (name, phone, source, timestamp) VALUES (?, ?, ?, ?)",
-                  (name, phone, 'AgentOS Bot', datetime.now().isoformat()))
+                  (name, phone, 'SafeFleet Bot', datetime.now().isoformat()))
         conn.commit()
         conn.close()
         return jsonify({"success": True}), 200
@@ -710,13 +675,13 @@ def capture_lead():
 
 @app.route('/download-logo')
 def download_logo():
-    path = r'C:\Users\amrit\.gemini\antigravity\brain\10510dea-2a8a-4e68-8262-ab14bba164c3\agentos_avatar_1779199539294.png'
-    return send_file(path, mimetype='image/png', as_attachment=True, download_name='agentos_logo.png')
+    path = os.path.join('static', 'logo.png')
+    return send_file(path, mimetype='image/png', as_attachment=True, download_name='safefleet_logo.png')
 
 @app.route('/download-banner')
 def download_banner():
-    path = r'C:\Users\amrit\.gemini\antigravity\brain\10510dea-2a8a-4e68-8262-ab14bba164c3\agentos_ads_landscape_1779204031308.png'
-    return send_file(path, mimetype='image/png', as_attachment=True, download_name='agentos_ads_landscape.png')
+    path = os.path.join('static', 'logo.png')
+    return send_file(path, mimetype='image/png', as_attachment=True, download_name='safefleet_banner.png')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8000))

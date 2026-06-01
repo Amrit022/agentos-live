@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard — WealthWeb Hub</title>
+<title>Admin Dashboard — SafeFleet Academy</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --bg-dark: #050505; --bg-card: rgba(20, 20, 22, 0.85); --border: rgba(255, 255, 255, 0.1); --accent-cyan: #00f0ff; --accent-purple: #8a2be2; --text-main: #f8fafc; --text-muted: #94a3b8; --accent-emerald: #00ff88;}
+  :root { --bg-dark: #0f172a; --bg-card: rgba(30, 41, 59, 0.85); --border: rgba(255, 255, 255, 0.08); --accent-cyan: #f59e0b; --accent-purple: #3b82f6; --text-main: #f1f5f9; --text-muted: #94a3b8; --accent-emerald: #22c55e;}
   html { background-color: var(--bg-dark); }
   body { color: var(--text-main); font-family: 'Inter', sans-serif; margin: 0; padding: 40px; position: relative; min-height: 100vh; z-index: 1;}
   body::before {
@@ -112,7 +112,7 @@
         <label style="font-size: 12px; font-weight: 600; color: var(--accent-cyan); text-transform: uppercase;">Select Campaign Template</label>
         <select id="emailTemplateSelect" onchange="loadEmailTemplate()" style="background: rgba(0,0,0,0.5); border: 1px solid var(--border); padding: 12px; color: #fff; border-radius: 8px; font-family: 'Inter'; outline: none; width: 100%;">
           <option value="welcome">👋 Welcome Sequence (Deliver Free Agency Roadmap)</option>
-          <option value="launch">🚀 AgentOS Academy Global Launch (85% Discount Announcement)</option>
+          <option value="launch">🚀 SafeFleet Academy Global Launch (85% Discount Announcement)</option>
           <option value="casestudy">🦷 B2B Case Study (How we automated a Dental Clinic)</option>
           <option value="tools">🛠️ Tools Showcase (Stop Coding & Build AI Visually)</option>
           <option value="urgency">🚨 Scarcity Warning (85% Discount Closing in 2 Hours)</option>
@@ -190,28 +190,26 @@
     // ==================== EMAIL & SOCIAL MARKETING CENTER JS ====================
     const emailTemplates = {
       welcome: {
-        subject: "Your $10k/mo AI Automation Agency roadmap has arrived! 🚀",
-        body: `<div style="background:#050505; color:#f8fafc; padding:40px; font-family:'Inter', sans-serif; border:1px solid rgba(255,255,255,0.1); border-radius:16px; max-width:600px; margin:0 auto;">
+        subject: "Welcome to SafeFleet Academy — Your Compliance Training Portal 🛡️",
+        body: `<div style="background:#0f172a; color:#f1f5f9; padding:40px; font-family:'Inter', sans-serif; border:1px solid rgba(255,255,255,0.08); border-radius:16px; max-width:600px; margin:0 auto;">
   <div style="text-align:center; margin-bottom:30px;">
-    <h1 style="color:#00f0ff; font-family:'Outfit', sans-serif; margin:0; font-size:28px; letter-spacing:1px;">Agent<span style="color:#8a2be2;">OS</span> Academy</h1>
-    <p style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:2px; margin-top:4px;">Elite Operations & Automation</p>
+    <h1 style="color:#ffffff; font-family:'Space Grotesk', sans-serif; margin:0; font-size:28px;">SafeFleet<span style="color:#f59e0b;"> Academy</span></h1>
+    <p style="color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:2px; margin-top:4px;">Heavy Vehicle Compliance Training</p>
   </div>
-  <h2 style="color:#ffffff; font-family:'Outfit', sans-serif; font-size:20px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:12px;">Welcome to the Inner Circle! 👋</h2>
-  <p>Hi Leader,</p>
-  <p>Congratulations on taking the first major step towards building a highly profitable automated business. Local businesses are desperate for AI systems, and you are the bridge to deliver them.</p>
-  <p><strong>Here is your zero-capital roadmap to scale to $10,000/mo:</strong></p>
+  <h2 style="color:#ffffff; font-size:20px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:12px;">Welcome to SafeFleet Academy! 👋</h2>
+  <p>Hi there,</p>
+  <p>Thank you for enrolling in SafeFleet Academy's heavy vehicle compliance training. Your portal is now active.</p>
+  <p><strong>Getting started is easy:</strong></p>
   <ul style="line-height:1.8; color:#cbd5e1; padding-left:20px;">
-    <li><strong style="color:#00f0ff;">Step 1:</strong> Focus on high-ticket B2B niches (Real Estate, Chiropractors, Dental clinics).</li>
-    <li><strong style="color:#00f0ff;">Step 2:</strong> Master visual, drag-and-drop builders like Voiceflow & Make.com (No code!).</li>
-    <li><strong style="color:#00f0ff;">Step 3:</strong> Record 3-minute Loom video screen audits of target websites showing current gaps and offering your prototype bot.</li>
+    <li><strong style="color:#f59e0b;">Step 1:</strong> Log in to your portal at SafeFleetacademy.com/login_customer</li>
+    <li><strong style="color:#f59e0b;">Step 2:</strong> Access your enrolled compliance modules</li>
+    <li><strong style="color:#f59e0b;">Step 3:</strong> Complete at your own pace and download certificates</li>
   </ul>
-  <p>To celebrate your enrollment, we have deployed an early-bird <strong>85% launch discount</strong> across all our premium production assets and templates! Secure the elite blueprints bundle for just $29.</p>
   <div style="text-align:center; margin:32px 0;">
-    <a href="https://agentosacademy.com#products" style="display:inline-block; background:linear-gradient(135deg, #00f0ff, #8a2be2); color:#000000; padding:14px 32px; text-decoration:none; font-family:'Outfit', sans-serif; font-weight:700; border-radius:8px; box-shadow:0 4px 15px rgba(0, 240, 255, 0.4); text-transform:uppercase; font-size:14px; letter-spacing:1px;">Claim Visual Assets & Blueprints ($29)</a>
+    <a href="https://SafeFleetacademy.com/login_customer" style="display:inline-block; background:#f59e0b; color:#0f172a; padding:14px 32px; text-decoration:none; font-weight:700; border-radius:8px; text-transform:uppercase; font-size:14px; letter-spacing:1px;">Access Training Portal</a>
   </div>
-  <p style="color:#94a3b8; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:16px; margin-top:30px;">
-    You are receiving this email because you subscribed on our global hub.<br>
-    Support Desk: amritgupta0412@gmail.com // Hotline: +91 8218961223
+  <p style="color:#94a3b8; font-size:12px; border-top:1px solid rgba(255,255,255,0.08); padding-top:16px; margin-top:30px;">
+    Support: support@SafeFleetacademy.com
   </p>
 </div>`
       },
@@ -233,10 +231,10 @@
   </ul>
   <p>For the next few hours, secure the entire accelerator program at our special launch pricing of just $29/module (down from $199 retail).</p>
   <div style="text-align:center; margin:32px 0;">
-    <a href="https://agentosacademy.com#products" style="display:inline-block; background:linear-gradient(135deg, #00f0ff, #8a2be2); color:#000000; padding:14px 32px; text-decoration:none; font-family:'Outfit', sans-serif; font-weight:700; border-radius:8px; box-shadow:0 4px 15px rgba(0, 240, 255, 0.4); text-transform:uppercase; font-size:14px; letter-spacing:1px;">Access Global Launch Bundle</a>
+    <a href="https://SafeFleetacademy.com#products" style="display:inline-block; background:linear-gradient(135deg, #00f0ff, #8a2be2); color:#000000; padding:14px 32px; text-decoration:none; font-family:'Outfit', sans-serif; font-weight:700; border-radius:8px; box-shadow:0 4px 15px rgba(0, 240, 255, 0.4); text-transform:uppercase; font-size:14px; letter-spacing:1px;">Access Global Launch Bundle</a>
   </div>
   <p style="color:#94a3b8; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:16px; margin-top:30px;">
-    Support Desk: amritgupta0412@gmail.com // Hotline: +91 8218961223
+    Support Desk: support@SafeFleetacademy.com // Hotline: +91 8218961223
   </p>
 </div>`
       },
@@ -258,7 +256,7 @@
   <p><strong>The visual AI Solution:</strong> We connected a custom Voiceflow lead capture agent that qualifies visitors instantly, books appointments directly into their calendar 24/7, and automatically pushes SMS alerts.</p>
   <p>We charge the dentist $2,000 setup plus a $300 recurring monthly retainer. Learn the exact step-by-step setup and download the exact templates inside the Academy.</p>
   <div style="text-align:center; margin:32px 0;">
-    <a href="https://agentosacademy.com#products" style="display:inline-block; background:linear-gradient(135deg, #00f0ff, #00ff88); color:#000000; padding:14px 32px; text-decoration:none; font-family:'Outfit', sans-serif; font-weight:700; border-radius:8px; box-shadow:0 4px 15px rgba(0, 255, 136, 0.4); text-transform:uppercase; font-size:14px; letter-spacing:1px;">Learn B2B Automation Blueprints ($29)</a>
+    <a href="https://SafeFleetacademy.com#products" style="display:inline-block; background:linear-gradient(135deg, #00f0ff, #00ff88); color:#000000; padding:14px 32px; text-decoration:none; font-family:'Outfit', sans-serif; font-weight:700; border-radius:8px; box-shadow:0 4px 15px rgba(0, 255, 136, 0.4); text-transform:uppercase; font-size:14px; letter-spacing:1px;">Learn B2B Automation Blueprints ($29)</a>
   </div>
 </div>`
       },
@@ -275,7 +273,7 @@
   <p>We teach you the two master no-code engines: <strong>Voiceflow</strong> (conversational AI design) and <strong>Make.com</strong> (visual backend flow connections).</p>
   <p>Our courses show you how to leverage free tiers to launch, run, and scale without capital.</p>
   <div style="text-align:center; margin:32px 0;">
-    <a href="https://agentosacademy.com#products" style="display:inline-block; background:linear-gradient(135deg, #00f0ff, #8a2be2); color:#000000; padding:14px 32px; text-decoration:none; font-family:'Outfit', sans-serif; font-weight:700; border-radius:8px; box-shadow:0 4px 15px rgba(0, 240, 255, 0.4); text-transform:uppercase; font-size:14px; letter-spacing:1px;">Master No-Code Tools ($22 - $29)</a>
+    <a href="https://SafeFleetacademy.com#products" style="display:inline-block; background:linear-gradient(135deg, #00f0ff, #8a2be2); color:#000000; padding:14px 32px; text-decoration:none; font-family:'Outfit', sans-serif; font-weight:700; border-radius:8px; box-shadow:0 4px 15px rgba(0, 240, 255, 0.4); text-transform:uppercase; font-size:14px; letter-spacing:1px;">Master No-Code Tools ($22 - $29)</a>
   </div>
 </div>`
       },
@@ -291,7 +289,7 @@
   <p>This is your final direct notification. The 85% global launch pricing of just $29/module for our visual B2B automation vaults is returning to its regular retail price of $199 in exactly 2 hours.</p>
   <p>If you've been waiting to start your AI automation agency with zero upfront capital, now is your absolute last chance to secure lifetime vault downloads for pennies on the dollar.</p>
   <div style="text-align:center; margin:32px 0;">
-    <a href="https://agentosacademy.com#products" style="display:inline-block; background:linear-gradient(135deg, #ff4d4d, #8a2be2); color:#ffffff; padding:14px 32px; text-decoration:none; font-family:'Outfit', sans-serif; font-weight:700; border-radius:8px; box-shadow:0 4px 15px rgba(255, 77, 77, 0.4); text-transform:uppercase; font-size:14px; letter-spacing:1px;">Grab Launch Vaults Now ($29)</a>
+    <a href="https://SafeFleetacademy.com#products" style="display:inline-block; background:linear-gradient(135deg, #ff4d4d, #8a2be2); color:#ffffff; padding:14px 32px; text-decoration:none; font-family:'Outfit', sans-serif; font-weight:700; border-radius:8px; box-shadow:0 4px 15px rgba(255, 77, 77, 0.4); text-transform:uppercase; font-size:14px; letter-spacing:1px;">Grab Launch Vaults Now ($29)</a>
   </div>
 </div>`
       },
@@ -308,8 +306,8 @@
       tiktok: `[VIRAL VIDEO SCRIPT: THE 2-HOUR CHATBOT METHOD]
 HOOK (0-3s): "Stop scrolling if you want to start a B2B business in 2026 with literally zero dollars. Watch this."
 VISUAL: Screen capture showing Voiceflow visual flow workspace, dragging and dropping a lead block.
-VOICEOVER: "This is Voiceflow. It's a free drag-and-drop tool that lets you build super-smart AI receptionists. I built this exact booking bot for a local med spa clinic in under 2 hours. Here is the best part: they pay me a $2,000 setup fee, plus $300 a month just to keep it running on their site. No code, no capital, and businesses are literally begging for this. I've left the full step-by-step blueprints and free visual templates inside the AgentOS Academy. Head over to agentosacademy.com to grab them."
-HASHTAGS: #aiautomation #sidehustle #nocode #agencyowner #earnonline #agentos`,
+VOICEOVER: "This is Voiceflow. It's a free drag-and-drop tool that lets you build super-smart AI receptionists. I built this exact booking bot for a local med spa clinic in under 2 hours. Here is the best part: they pay me a $2,000 setup fee, plus $300 a month just to keep it running on their site. No code, no capital, and businesses are literally begging for this. I've left the full step-by-step blueprints and free visual templates inside the SafeFleet Academy. Head over to SafeFleetacademy.com to grab them."
+HASHTAGS: #aiautomation #sidehustle #nocode #agencyowner #earnonline #SafeFleet`,
       
       twitter: `[HIGH-VALUE TWITTER THREAD: HOW TO LAND YOUR FIRST AI RETURNING CLIENT]
 1/ Local businesses are bleeding money because they take hours to respond to online inquiries. By setting up simple, visual lead gen bots, you can solve this gap and make $2k+ per setup. Here is the step-by-step zero-cost playbook: 👇
@@ -322,7 +320,7 @@ HASHTAGS: #aiautomation #sidehustle #nocode #agencyowner #earnonline #agentos`,
 
 5/ Charge value-based pricing. Charge a $1,500 setup fee and $250/mo retainer to handle api updates, dashboard upkeep, and optimization. You only need 5 clients to hit a highly profitable, recurring $10k/mo.
 
-6/ Want to download our pre-built Voiceflow templates and copy-paste email templates to get started today? Check out the AgentOS Academy live at agentosacademy.com 🚀`,
+6/ Want to download our pre-built Voiceflow templates and copy-paste email templates to get started today? Check out the SafeFleet Academy live at SafeFleetacademy.com 🚀`,
       
       linkedin: `[PROFESSIONAL POST: SYSTEM AUTOMATION CASE STUDY]
 Operational scaling is no longer about human headcounts. It is about visual B2B system architectures.
@@ -344,9 +342,9 @@ The Impact:
 
 The future belongs to the operators who bridge traditional businesses with visual AI architectures.
 
-If you are a consultant or freelancer wanting to build, deploy, and monetize custom AI workflows for clients, we have launched the full visual blueprints at the AgentOS Academy.
+If you are a consultant or freelancer wanting to build, deploy, and monetize custom AI workflows for clients, we have launched the full visual blueprints at the SafeFleet Academy.
 
-👉 Dive into our zero-capital modules at agentosacademy.com
+👉 Dive into our zero-capital modules at SafeFleetacademy.com
 
 #AIAgency #Operations #NoCode #BusinessAutomation #SystemsEngineering`
     };

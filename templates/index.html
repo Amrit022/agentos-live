@@ -3,49 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgentOS — Launch Your AI Automation Agency | $10K/Month Blueprint</title>
-<meta name="description" content="Build a profitable AI Automation Agency from scratch. Get proven chatbot templates, Make.com workflows, and client acquisition scripts. Join 2,000+ agency owners worldwide.">
-<meta name="keywords" content="AI automation agency, chatbot business, Voiceflow templates, Make.com automation, AI agency blueprint, start AI business">
-<meta property="og:title" content="AgentOS — The AI Automation Agency Blueprint">
-<meta property="og:description" content="Launch your $10K/month AI Agency with our proven blueprint, templates, and scripts. Zero experience needed.">
+<title>SafeFleet Academy — Heavy Vehicle Compliance Training Australia | HVNL 2026 Ready</title>
+<meta name="description" content="Australia's trusted online heavy vehicle compliance training. Chain of Responsibility, Fatigue Management, Load Restraint, and SMS courses for drivers, supervisors, and fleet managers. HVNL 2026 reform ready.">
+<meta name="keywords" content="heavy vehicle compliance, chain of responsibility training, HVNL 2026, fatigue management, CoR training Australia, NHVR compliance, load restraint training, SMS implementation">
+<meta property="og:title" content="SafeFleet Academy — Heavy Vehicle Compliance Training Australia">
+<meta property="og:description" content="Get HVNL 2026 ready. Online compliance training for drivers, supervisors, and fleet managers. Trusted by 2,000+ transport professionals.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://agentosacademy.com">
+<meta property="og:url" content="https://SafeFleetacademy.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://agentosacademy.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://SafeFleetacademy.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18174625300"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'AW-18174625300');
 </script>
 <style>
   :root {
-    --bg-void: #000000;
-    --card-surface: rgba(12, 12, 14, 0.7);
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --card-surface: rgba(30, 41, 59, 0.7);
     --border-dim: rgba(255, 255, 255, 0.08);
-    --border-bright: rgba(255, 255, 255, 0.25);
-    
-    --neon-blue: #00e5ff;
-    --neon-purple: #b537f2;
-    --neon-green: #00ff66;
-    --neon-orange: #ff4b1f;
-    
-    --text-primary: #ffffff;
-    --text-secondary: #8892b0;
+    --border-bright: rgba(255, 255, 255, 0.2);
+    --amber: #f59e0b;
+    --amber-glow: rgba(245, 158, 11, 0.3);
+    --blue: #3b82f6;
+    --blue-glow: rgba(59, 130, 246, 0.3);
+    --green: #22c55e;
+    --red: #ef4444;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
     --text-tertiary: #64748b;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background-color: var(--bg-void);
+    background-color: var(--bg-primary);
     color: var(--text-primary);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
@@ -57,1531 +57,861 @@
     letter-spacing: -0.03em;
   }
 
-  /* ───── DYNAMIC BACKGROUNDS ───── */
+  /* ───── BACKGROUNDS ───── */
   .grid-bg {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    z-index: -3;
-    background-image: 
-      linear-gradient(var(--border-dim) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border-dim) 1px, transparent 1px);
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -3;
+    background-image: linear-gradient(var(--border-dim) 1px, transparent 1px), linear-gradient(90deg, var(--border-dim) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(circle at center, black, transparent 80%);
     -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
   }
+  .glow-orb { position: fixed; border-radius: 50%; filter: blur(120px); z-index: -2; opacity: 0.12; animation: drift 20s infinite alternate linear; }
+  .orb-amber { width: 50vw; height: 50vw; background: var(--amber); top: -20%; left: -10%; }
+  .orb-blue { width: 40vw; height: 40vw; background: var(--blue); bottom: -10%; right: -10%; }
 
-  .glow-orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(120px);
-    z-index: -2;
-    opacity: 0.15;
-    animation: drift 20s infinite alternate linear;
-  }
-  .orb-blue { width: 50vw; height: 50vw; background: var(--neon-blue); top: -20%; left: -10%; }
-  .orb-purple { width: 40vw; height: 40vw; background: var(--neon-purple); bottom: -10%; right: -10%; }
-  
-  @keyframes drift {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(10%, 10%) scale(1.1); }
-  }
+  @keyframes drift { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(10%, 10%) scale(1.1); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
   /* ───── NAV ───── */
   nav {
     position: fixed; top: 0; left: 0; width: 100%;
-    padding: 24px 48px;
+    padding: 16px 48px;
     display: flex; justify-content: space-between; align-items: center;
     z-index: 100;
-    background: rgba(0,0,0,0.5);
+    background: rgba(15, 23, 42, 0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-dim);
   }
   .nav-logo {
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 900;
-    font-size: 24px;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: -1px;
+    font-weight: 900; font-size: 22px; color: #fff;
+    text-decoration: none; display: flex; align-items: center; gap: 10px;
   }
-  .nav-logo span { color: var(--neon-blue); }
   .nav-links { display: flex; gap: 32px; align-items: center; }
-  .nav-links a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: #fff; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--amber); }
 
-  /* ───── OFF-CANVAS SLIDE LAYOUT ───── */
-  #site-wrapper {
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    width: 100%;
-    position: relative;
-    left: 0;
-    min-height: 100vh;
-  }
-  
-  #menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 99999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-  }
-  
-  body.menu-open #menu-overlay {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 8px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: 0.3s; }
 
-  .nav-links-mobile { display: none; }
+  .btn-amber {
+    background: var(--amber); color: #0f172a; padding: 10px 24px; border-radius: 8px;
+    font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
+    text-decoration: none; border: none; cursor: pointer;
+    box-shadow: 0 0 20px var(--amber-glow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-amber:hover { transform: translateY(-2px); box-shadow: 0 0 30px var(--amber-glow); }
 
-  /* ───── BUTTONS ───── */
-  .btn-neon {
-    background: transparent;
-    color: #fff;
-    border: 1px solid var(--border-bright);
-    padding: 12px 28px;
-    border-radius: 8px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s;
-    text-decoration: none;
-    display: inline-flex; align-items: center; justify-content: center;
+  .btn-outline {
+    background: transparent; color: var(--text-primary); padding: 10px 24px; border-radius: 8px;
+    font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
+    text-decoration: none; border: 1px solid var(--border-bright); cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
   }
-  .btn-neon::before {
-    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s;
-  }
-  .btn-neon:hover::before { left: 100%; }
-  .btn-neon:hover {
-    border-color: var(--neon-blue);
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
-    background: rgba(0, 229, 255, 0.05);
-  }
+  .btn-outline:hover { border-color: var(--amber); color: var(--amber); }
 
-  .btn-solid {
-    background: #fff;
-    color: #000;
-    border: none;
-    padding: 14px 32px;
-    border-radius: 8px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex; align-items: center; justify-content: center;
-    transition: transform 0.2s;
-  }
-  .btn-solid:hover { transform: scale(1.03); }
+  /* ───── MOBILE CART ───── */
+  .mobile-cart-btn { display: none; position: relative; text-decoration: none; }
+  .cart-badge { position: absolute; top: -6px; right: -8px; background: var(--red); color: #fff; font-size: 10px; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .nav-cart-link { display: none; }
 
-  /* ───── HERO SECTION ───── */
+  /* ───── HERO ───── */
   #hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    text-align: center;
-    padding: 160px 24px 80px;
+    min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 160px 24px 100px;
   }
-  
-  .terminal-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--neon-green);
-    background: rgba(0, 255, 102, 0.05);
-    border: 1px solid rgba(0, 255, 102, 0.2);
-    padding: 6px 16px;
-    border-radius: 4px;
-    margin-bottom: 32px;
-    display: inline-block;
-    animation: fadeDown 1s ease both;
+  .reform-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);
+    padding: 8px 20px; border-radius: 100px; font-size: 13px; font-weight: 600;
+    color: var(--red); margin-bottom: 32px; animation: fadeUp 0.8s ease both;
   }
+  .reform-badge .dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; animation: pulse 1.5s infinite; }
 
   .hero-title {
-    font-size: clamp(48px, 8vw, 100px);
-    line-height: 1.0;
-    font-weight: 900;
-    max-width: 1000px;
-    margin-bottom: 24px;
-    animation: fadeUp 1s 0.1s ease both;
+    font-size: clamp(42px, 7vw, 88px); line-height: 1.05; font-weight: 900;
+    max-width: 900px; margin-bottom: 24px; animation: fadeUp 1s 0.1s ease both;
   }
-  .text-glow {
-    background: linear-gradient(180deg, #fff, #8892b0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .text-gradient {
+    background: linear-gradient(180deg, #fff, #94a3b8);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
-  .text-accent { color: var(--neon-blue); text-shadow: 0 0 40px rgba(0, 229, 255, 0.4); }
+  .text-amber { color: var(--amber); -webkit-text-fill-color: var(--amber); text-shadow: 0 0 40px var(--amber-glow); }
 
   .hero-sub {
-    font-size: clamp(16px, 2vw, 20px);
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin-bottom: 48px;
-    font-weight: 400;
-    animation: fadeUp 1s 0.2s ease both;
+    font-size: clamp(16px, 2vw, 20px); color: var(--text-secondary);
+    max-width: 650px; margin-bottom: 48px; font-weight: 400; animation: fadeUp 1s 0.2s ease both;
   }
 
   .hero-metrics {
-    display: flex; gap: 48px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px;
+    display: flex; gap: 48px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px;
     animation: fadeUp 1s 0.3s ease both;
   }
   .metric { display: flex; flex-direction: column; align-items: center; }
   .metric-val { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #fff; }
   .metric-lbl { font-size: 12px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 2px; }
 
-  .hero-cta-group { display: flex; gap: 16px; animation: fadeUp 1s 0.4s ease both; }
+  .hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; animation: fadeUp 1s 0.4s ease both; }
 
-  /* ───── COMMON SECTION ───── */
-  section { padding: 120px 24px; max-width: 1200px; margin: 0 auto; width: 100%; }
-  
-  .section-header { text-align: left; margin-bottom: 64px; }
-  .sec-tag { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--neon-purple); letter-spacing: 2px; margin-bottom: 16px; display: block; text-transform: uppercase;}
-  .sec-title { font-size: 48px; font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 24px;}
-  .sec-desc { font-size: 18px; color: var(--text-secondary); max-width: 600px; }
+  /* ───── SECTIONS ───── */
+  section { padding: 100px 24px; max-width: 1200px; margin: 0 auto; width: 100%; }
 
-  /* ───── BENTO BOX GRIDS ───── */
-  .bento-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 320px;
-    gap: 24px;
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .sec-tag { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--amber); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; display: block; }
+  .sec-title { font-size: clamp(32px, 5vw, 48px); margin-bottom: 16px; }
+  .sec-desc { color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 17px; }
+
+  /* ───── REFORM ALERT ───── */
+  .reform-banner {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
+    border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 16px;
+    padding: 48px; text-align: center; margin-bottom: 80px;
   }
-  
+  .countdown { display: flex; gap: 24px; justify-content: center; margin: 32px 0; flex-wrap: wrap; }
+  .countdown-item { display: flex; flex-direction: column; align-items: center; }
+  .countdown-val { font-family: 'JetBrains Mono', monospace; font-size: 48px; font-weight: 700; color: var(--amber); }
+  .countdown-lbl { font-size: 12px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 2px; }
+
+  /* ───── CARDS ───── */
   .bento-card {
-    background: var(--card-surface);
-    border: 1px solid var(--border-dim);
-    border-radius: 24px;
-    padding: 40px;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(20px);
-    display: flex; flex-direction: column;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s;
-  }
-  .bento-card:hover { transform: translateY(-4px); border-color: var(--border-bright); }
-  
-  /* The Laser Sweep Effect */
-  .bento-card::before {
-    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.5s ease;
-  }
-  .bento-card:hover::before { transform: translateX(100%); transition: transform 1s ease infinite;}
-
-  .bento-icon { font-size: 32px; margin-bottom: 24px; }
-  .bento-title { font-size: 24px; font-weight: 700; margin-bottom: 12px; color: #fff; }
-  .bento-desc { color: var(--text-secondary); font-size: 15px; }
-  
-  /* Asymmetrical Sizing */
-  .col-span-2 { grid-column: span 2; }
-  .row-span-2 { grid-row: span 2; }
-
-  /* ───── TIMELINE (BLUEPRINT) ───── */
-  .blueprint-list {
-    display: flex; flex-direction: column; gap: 32px;
-    border-left: 1px solid var(--border-dim);
-    padding-left: 32px;
-    margin-left: 16px;
-  }
-  .bp-step { position: relative; }
-  .bp-step::before {
-    content: ''; position: absolute; left: -36.5px; top: 8px;
-    width: 10px; height: 10px; border-radius: 50%;
-    background: var(--neon-blue);
-    box-shadow: 0 0 10px var(--neon-blue);
-  }
-  .bp-num { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-tertiary); margin-bottom: 8px;}
-  .bp-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-  .bp-desc { color: var(--text-secondary); font-size: 15px; max-width: 600px; }
-
-  /* ───── PRODUCT STORE (GLASS CARDS) ───── */
-  .store-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
-  }
-  .product-card {
-    background: linear-gradient(145deg, rgba(20,20,22,0.8), rgba(10,10,12,0.8));
-    border: 1px solid var(--border-dim);
-    border-radius: 24px;
-    padding: 32px;
-    display: flex; flex-direction: column;
-    position: relative;
-    overflow: hidden;
-  }
-  .prod-tag { font-family: 'JetBrains Mono'; font-size: 11px; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 16px; background: rgba(255,255,255,0.05); }
-  .prod-price { font-family: 'Space Grotesk'; font-size: 36px; font-weight: 700; margin: 16px 0 24px; color: #fff;}
-  .prod-price strike { font-size: 16px; color: var(--text-tertiary); font-weight: 400; }
-  
-  /* ───── MARQUEE (CASE STUDIES) ───── */
-  .marquee-wrapper { overflow: hidden; width: 100vw; position: relative; left: calc(-50vw + 50%); padding: 40px 0; }
-  .marquee-wrapper::before, .marquee-wrapper::after {
-    content: ""; position: absolute; top: 0; width: 200px; height: 100%; z-index: 2; pointer-events: none;
-  }
-  .marquee-wrapper::before { left: 0; background: linear-gradient(90deg, var(--bg-void), transparent); }
-  .marquee-wrapper::after { right: 0; background: linear-gradient(-90deg, var(--bg-void), transparent); }
-  
-  .marquee-track { display: flex; width: max-content; animation: scrollLeft 40s linear infinite; }
-  .marquee-track:hover { animation-play-state: paused; }
-  
-  .review-card {
-    width: 380px; margin: 0 16px; padding: 32px;
     background: var(--card-surface); border: 1px solid var(--border-dim); border-radius: 16px;
+    padding: 32px; backdrop-filter: blur(8px);
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
   }
-  .rev-head { display: flex; justify-content: space-between; margin-bottom: 16px; align-items: center;}
-  .rev-user { display: flex; align-items: center; gap: 12px; }
-  .rev-avatar { width: 40px; height: 40px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; font-size: 20px;}
-  .rev-name { font-weight: 600; color: #fff; font-size: 15px;}
-  .rev-niche { font-family: 'JetBrains Mono'; font-size: 11px; color: var(--neon-green); }
-  .rev-quote { font-size: 14px; color: var(--text-secondary); font-style: italic; margin-bottom: 16px;}
-  .rev-result { font-family: 'Space Grotesk'; font-size: 24px; font-weight: 700; color: #fff; }
+  .bento-card:hover { border-color: var(--amber); transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); }
 
-  @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-  
+  .role-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  .role-card { text-align: center; padding: 40px 24px; }
+  .role-icon { font-size: 48px; margin-bottom: 16px; }
+  .role-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .role-desc { color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
+
+  /* ───── COURSE CATALOG ───── */
+  .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .course-card { position: relative; overflow: hidden; }
+  .course-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: inline-block; padding: 4px 12px; border-radius: 100px; }
+  .course-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .course-desc { color: var(--text-secondary); font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
+  .course-price { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; color: var(--amber); }
+  .course-price-note { font-size: 12px; color: var(--text-tertiary); }
+  .course-features { list-style: none; margin: 16px 0; }
+  .course-features li { color: var(--text-secondary); font-size: 13px; padding: 4px 0; }
+  .course-features li::before { content: "✓ "; color: var(--green); font-weight: 700; }
+
+  /* ───── HOW IT WORKS ───── */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; counter-reset: step; }
+  .step { text-align: center; counter-increment: step; }
+  .step::before {
+    content: counter(step); display: flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 16px;
+    background: var(--amber); color: #0f172a; font-family: 'JetBrains Mono', monospace;
+    font-size: 18px; font-weight: 700;
+  }
+  .step h4 { font-size: 16px; margin-bottom: 8px; }
+  .step p { color: var(--text-secondary); font-size: 14px; }
+
+  /* ───── COR EXPLAINER ───── */
+  .cor-chain { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin: 32px 0; }
+  .cor-party {
+    background: var(--card-surface); border: 1px solid var(--border-dim);
+    padding: 16px 24px; border-radius: 12px; text-align: center; min-width: 140px;
+    transition: border-color 0.3s;
+  }
+  .cor-party:hover { border-color: var(--amber); }
+  .cor-party .party-icon { font-size: 28px; margin-bottom: 8px; }
+  .cor-party .party-name { font-size: 13px; font-weight: 600; }
+
+  /* ───── FAQ ───── */
+  .faq-list { max-width: 800px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border-dim); }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: none; color: var(--text-primary);
+    font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600;
+    padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  }
+  .faq-q::after { content: "+"; font-size: 24px; color: var(--amber); transition: transform 0.3s; }
+  .faq-q.active::after { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+  .faq-a.open { max-height: 500px; padding-bottom: 20px; }
+
+  /* ───── NEWSLETTER ───── */
+  .newsletter-section {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(59, 130, 246, 0.08));
+    border: 1px solid var(--border-dim); border-radius: 24px;
+    padding: 64px 48px; text-align: center; margin: 80px auto; max-width: 800px;
+  }
+  .newsletter-input-group { display: flex; gap: 12px; max-width: 480px; margin: 24px auto 0; }
+  .newsletter-input-group input {
+    flex: 1; padding: 14px 20px; border-radius: 8px; border: 1px solid var(--border-dim);
+    background: var(--bg-secondary); color: #fff; font-size: 14px; font-family: 'Inter', sans-serif;
+  }
+  .newsletter-input-group input:focus { outline: none; border-color: var(--amber); }
+
   /* ───── FOOTER ───── */
-  footer { text-align: center; padding: 80px 24px; border-top: 1px solid var(--border-dim); margin-top: 80px; }
+  footer {
+    border-top: 1px solid var(--border-dim); padding: 64px 48px 32px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-col h4 { font-size: 13px; color: var(--amber); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 8px; }
+  .footer-col a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--amber); }
+  .footer-bottom { border-top: 1px solid var(--border-dim); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-bottom p { color: var(--text-tertiary); font-size: 13px; }
 
-  /* ───── ANIMATIONS ───── */
-  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
+  /* ───── CHATBOT ───── */
+  #chat-toggle-btn {
+    position: fixed; bottom: 24px; right: 24px; z-index: 999;
+    width: 60px; height: 60px; border-radius: 50%; border: none; cursor: pointer;
+    background: var(--amber); color: #0f172a;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px var(--amber-glow);
+    font-size: 28px; transition: transform 0.2s;
+  }
+  #chat-toggle-btn:hover { transform: scale(1.1); }
+
+  #chat-window {
+    position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+    width: 380px; height: 520px; border-radius: 16px; overflow: hidden;
+    background: var(--bg-secondary); border: 1px solid var(--border-dim);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    display: none; flex-direction: column;
+  }
+  .chat-header {
+    padding: 16px 20px; background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid var(--border-dim);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .chat-header-title { font-weight: 700; font-size: 15px; }
+  .chat-close { background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 20px; }
+  #chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .chat-input-area { padding: 12px; border-top: 1px solid var(--border-dim); display: flex; gap: 8px; }
+  .chat-input-area input {
+    flex: 1; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border-dim);
+    background: var(--bg-primary); color: #fff; font-size: 14px; font-family: 'Inter', sans-serif;
+  }
+  .chat-input-area input:focus { outline: none; border-color: var(--amber); }
+  .chat-input-area button {
+    background: var(--amber); color: #0f172a; border: none; border-radius: 8px;
+    padding: 10px 16px; cursor: pointer; font-weight: 700; font-size: 14px;
+  }
+  .chip-container { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 12px; }
+  .chip {
+    background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3);
+    color: var(--amber); padding: 6px 14px; border-radius: 100px; font-size: 12px;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .chip:hover { background: rgba(245, 158, 11, 0.2); }
+
+  /* ───── MODAL ───── */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+    z-index: 2000; display: none; align-items: center; justify-content: center; padding: 24px;
+  }
+  .modal-content {
+    background: var(--bg-secondary); border: 1px solid var(--border-dim); border-radius: 16px;
+    padding: 40px; max-width: 500px; width: 100%; position: relative;
+  }
+  .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 24px; }
+
+  /* ───── SCROLL REVEAL ───── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-  
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ───── HAMBURGER MENU ───── */
-  .hamburger {
-    display: none;
-    background: none; border: none; cursor: pointer;
-    flex-direction: column; gap: 5px; padding: 8px; z-index: 100001;
-  }
-  .hamburger span {
-    display: block; width: 24px; height: 2px; background: #fff;
-    border-radius: 2px; transition: all 0.3s;
-  }
-  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-  .hamburger.active span:nth-child(2) { opacity: 0; }
-  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-  /* ───── RESPONSIVE: TABLET ───── */
-  @media(max-width: 1024px) {
-    .bento-grid { grid-template-columns: 1fr 1fr; }
-    .col-span-2 { grid-column: span 1; }
-    .row-span-2 { grid-row: span 1; }
-    section { padding: 80px 20px; }
-    .sec-title { font-size: 36px; }
-  }
-
-  /* ───── CART STYLES ───── */
-  .cart-badge {
-    background: var(--neon-green); color: #000; padding: 2px 6px; 
-    border-radius: 100px; font-size: 10px; font-weight: bold;
-    display: inline-block; vertical-align: middle;
-  }
-  .mobile-cart-btn {
-    display: none; position: relative; padding: 8px;
-    transition: transform 0.2s;
-  }
-  .mobile-cart-btn .cart-badge {
-    position: absolute; top: 0; right: 0;
-  }
-
-  /* ───── RESPONSIVE: MOBILE ───── */
-  @media(max-width: 768px) {
-    nav { 
-      padding: env(safe-area-inset-top, 12px) 20px 12px; 
-      height: auto;
+  /* ───── RESPONSIVE ───── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { 
+      position: fixed; top: 0; left: -100%; width: 80%; height: 100vh;
+      background: var(--bg-primary); flex-direction: column; padding: 80px 32px 32px;
+      gap: 24px; transition: left 0.4s ease; z-index: 101;
+      border-right: 1px solid var(--border-dim);
     }
+    .nav-links.open { left: 0; }
+    .nav-links a { font-size: 18px; }
+    .hamburger { display: flex; z-index: 102; }
     .mobile-cart-btn { display: flex; }
-    .nav-cart-link { display: none; }
-    .hamburger { display: flex; }
-    
-    .nav-links { display: none !important; }
-    
-    /* Off-canvas mobile menu drawer */
-    .nav-links-mobile {
-      display: flex; position: fixed; top: 0; left: 0; bottom: 0;
-      width: 280px; background: #000;
-      flex-direction: column; justify-content: flex-start; align-items: flex-start;
-      gap: 0; z-index: 100000 !important;
-      padding: 40px 24px;
-      transform: translateX(-100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      overflow-y: auto;
-      box-shadow: 5px 0 25px rgba(0,0,0,0.5);
-      border-right: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    body.menu-open .nav-links-mobile {
-      transform: translateX(0);
-    }
-    
-    body.menu-open #site-wrapper {
-      transform: translateX(280px);
-    }
-    
-    body.menu-open {
-      overflow: hidden;
-    }
+    .nav-cta-desktop { display: none !important; }
+    .nav-cart-link { display: block !important; }
 
-    .nav-links-mobile a { 
-      font-size: 28px; font-family: 'Space Grotesk'; font-weight: 700; 
-      color: #fff; text-decoration: none; padding: 16px 0;
-      width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1);
-      opacity: 0; transform: translateY(20px);
-      transition: color 0.3s;
-    }
-    body.menu-open .nav-links-mobile a { animation: slideInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    
-    /* Staggered Delay for Links (starting from the 2nd child because 1st is the Navigation/Close header) */
-    body.menu-open .nav-links-mobile a:nth-child(2) { animation-delay: 0.1s; }
-    body.menu-open .nav-links-mobile a:nth-child(3) { animation-delay: 0.15s; }
-    body.menu-open .nav-links-mobile a:nth-child(4) { animation-delay: 0.2s; }
-    body.menu-open .nav-links-mobile a:nth-child(5) { animation-delay: 0.25s; }
-    body.menu-open .nav-links-mobile a:nth-child(6) { animation-delay: 0.3s; }
-    body.menu-open .nav-links-mobile a:nth-child(7) { animation-delay: 0.35s; }
-
-    @keyframes slideInUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
-    }
-    
-    .btn-neon.nav-cta-desktop { display: none; }
-
-    #hero { 
-      padding: calc(120px + env(safe-area-inset-top, 0px)) 20px 60px; 
-      min-height: auto; 
-    }
-    .hero-title { font-size: clamp(28px, 10vw, 42px) !important; line-height: 1.1; }
-    .hero-sub { font-size: 15px; margin-bottom: 24px; }
-    
-    .bento-grid { 
-      grid-template-columns: 1fr !important; 
-      grid-auto-rows: auto !important; 
-      gap: 20px; 
-    }
-    .bento-card { 
-      padding: 32px 20px; 
-      min-height: 280px !important; 
-    }
-    
-    section { padding: 80px 20px; overflow: hidden; }
-    .section-header { margin-bottom: 32px; }
-    .sec-title { font-size: 28px; }
+    #hero { padding: 140px 20px 80px; }
+    section { padding: 60px 20px; }
+    .hero-metrics { gap: 24px; }
+    .metric-val { font-size: 24px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .newsletter-section { padding: 40px 24px; }
+    .newsletter-input-group { flex-direction: column; }
+    .countdown-val { font-size: 32px; }
+    .reform-banner { padding: 32px 20px; }
+    #chat-window { width: calc(100vw - 32px); right: 16px; bottom: 16px; height: 70vh; }
   }
-
-  /* ───── RESPONSIVE: SMALL PHONES ───── */
-  @media(max-width: 400px) {
-    .hero-title { font-size: 28px !important; }
-    .hero-sub { font-size: 14px; }
-    .metric-val { font-size: 20px; }
-    .sec-title { font-size: 24px; }
-    nav { padding: 12px 16px; }
-    .nav-logo { font-size: 20px; }
-    .nav-logo img { width: 26px; height: 26px; }
+  @media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr; }
   }
-
-  /* MODAL */
-  .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(10px); justify-content: center; align-items: center; }
-  .modal-content { background: #111; border: 1px solid var(--border-bright); padding: 40px; border-radius: 24px; max-width: 500px; width: 90%; color: #fff; position: relative; }
-  .close-btn { position: absolute; top: 20px; right: 24px; color: #aaa; font-size: 28px; cursor: pointer; }
 </style>
 </head>
 <body>
 
 <div class="grid-bg"></div>
+<div class="glow-orb orb-amber"></div>
 <div class="glow-orb orb-blue"></div>
-<div class="glow-orb orb-purple"></div>
 
-<!-- Mobile Side Navigation Drawer -->
-<div class="nav-links-mobile" id="navLinks">
-  <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 20px;">
-    <span style="font-family: 'Space Grotesk'; font-size: 14px; color: var(--neon-blue); letter-spacing: 2px;">NAVIGATION</span>
-    <button onclick="closeNav()" style="background: none; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer;">✕ CLOSE</button>
-  </div>
-  <a href="#mindset" onclick="closeNav()">The Opportunity</a>
-  <a href="#services" onclick="closeNav()">Services</a>
-  <a href="#blueprint" onclick="closeNav()">Blueprint</a>
-  <a href="#products" style="color: var(--text-primary);" onclick="closeNav()">Store</a>
-  <a href="/portal" onclick="closeNav()">Portal</a>
-  <a href="/cart" style="color: var(--neon-green);" onclick="closeNav()">
-    Cart <span class="cart-badge">0</span>
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="/static/logo.png" alt="SafeFleet Academy Logo" style="width: 32px; height: 32px; border-radius: 6px;">
+    SafeFleet<span style="color: var(--amber);"> Academy</span>
   </a>
-  <div style="margin-top: auto; padding-top: 40px; width: 100%;">
-    <p style="color: var(--text-tertiary); font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px;">Support & Community</p>
-    <div style="display: flex; gap: 24px;">
-      <a href="#" style="font-size: 14px; color: var(--text-secondary); border: none; padding: 0; width: auto;">Discord</a>
-      <a href="#" style="font-size: 14px; color: var(--text-secondary); border: none; padding: 0; width: auto;">Twitter</a>
-      <a href="#" style="font-size: 14px; color: var(--text-secondary); border: none; padding: 0; width: auto;">Help Desk</a>
-    </div>
-  </div>
-</div>
 
-<!-- Dimmed overlay when menu is open -->
-<div id="menu-overlay" onclick="closeNav()"></div>
-
-<div id="site-wrapper">
-
-  <nav>
-    <a href="#" class="nav-logo" style="display: flex; align-items: center; gap: 12px;">
-      <img src="/static/logo.png" alt="AgentOS Logo" style="width: 32px; height: 32px; border-radius: 6px; box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);">
-      Agent<span>OS</span>
+  <div class="nav-links" id="navLinks">
+    <a href="#courses">Courses</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#cor">Chain of Responsibility</a>
+    <a href="#faq">FAQ</a>
+    <a href="/portal">My Portal</a>
+    <a href="/cart" class="nav-cart-link" style="color: var(--amber);">
+      Cart <span id="cartCountMenu" class="cart-badge">0</span>
     </a>
-    
-    <div class="nav-links">
-      <a href="#mindset">The Opportunity</a>
-      <a href="#services">Services</a>
-      <a href="#blueprint">Blueprint</a>
-      <a href="#products" style="color: var(--text-primary);">Store</a>
-      <a href="/portal">Portal</a>
-      <!-- Cart link inside menu for desktop -->
-      <a href="/cart" class="nav-cart-link" style="color: var(--neon-green);">
-        Cart <span id="cartCountMenu" class="cart-badge">0</span>
-      </a>
-    </div>
+  </div>
 
-    <div style="display: flex; align-items: center; gap: 16px;">
-      <!-- PERSISTENT MOBILE CART ICON -->
-      <a href="/cart" class="mobile-cart-btn">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--neon-green);"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        <span id="cartCountMobile" class="cart-badge">0</span>
-      </a>
-
-      <a href="#products" class="btn-neon nav-cta-desktop" style="padding: 8px 20px; font-size: 12px;">Get Started</a>
-      
-      <button class="hamburger" id="hamburgerBtn" onclick="toggleNav()">
+  <div style="display: flex; align-items: center; gap: 16px;">
+    <a href="/cart" class="mobile-cart-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--amber);"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span id="cartCountMobile" class="cart-badge">0</span>
+    </a>
+    <a href="#courses" class="btn-amber nav-cta-desktop" style="padding: 8px 20px; font-size: 12px;">Get Started</a>
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleNav()">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
-  <div class="terminal-badge">> sudo initiate ai_agency</div>
-  <h1 class="hero-title"><span class="text-glow">Build a $10k/mo</span> <br> <span class="text-accent">AI Automation</span> Agency</h1>
-  <p class="hero-sub">Local businesses are desperate for AI. Learn how to build simple chatbots and automated workflows with zero coding experience, and charge $2,000+ per client.</p>
-  
+  <div class="reform-badge"><span class="dot"></span> HVNL 2026 Reforms — 1 August 2026</div>
+  <h1 class="hero-title"><span class="text-gradient">Heavy vehicle compliance,</span> <br><span class="text-amber">made simple.</span></h1>
+  <p class="hero-sub">Stay compliant with Australia's HVNL 2026 reforms. Online training for drivers, supervisors, and fleet managers — trusted by transport professionals nationwide.</p>
+
   <div class="hero-metrics">
-    <div class="metric"><span class="metric-val">$2k+</span><span class="metric-lbl">Per Client</span></div>
-    <div class="metric"><span class="metric-val">$0</span><span class="metric-lbl">Capital</span></div>
-    <div class="metric"><span class="metric-val">2hrs</span><span class="metric-lbl">Build Time</span></div>
-    <div class="metric"><span class="metric-val">∞</span><span class="metric-lbl">Demand</span></div>
+    <div class="metric"><span class="metric-val">2000+</span><span class="metric-lbl">Trained</span></div>
+    <div class="metric"><span class="metric-val">18</span><span class="metric-lbl">Modules</span></div>
+    <div class="metric"><span class="metric-val">1 Aug</span><span class="metric-lbl">Deadline</span></div>
   </div>
-  
+
   <div class="hero-cta-group">
-    <a href="#blueprint" class="btn-solid">Read The Blueprint</a>
-    <a href="#products" class="btn-neon">View AI Templates</a>
+    <a href="#courses" class="btn-amber">View All Courses</a>
+    <a href="#cor" class="btn-outline">Learn About CoR</a>
   </div>
 </section>
 
-<!-- THE OPPORTUNITY (BENTO) -->
-<section id="mindset">
+<!-- REFORM COUNTDOWN -->
+<section>
+  <div class="reform-banner reveal">
+    <h2 style="font-size: 28px; margin-bottom: 8px;">⚠️ HVNL 2026 Reforms Are Coming</h2>
+    <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 24px;">The biggest regulatory change in a decade commences <strong style="color: var(--red);">1 August 2026</strong> with <strong>no grace period</strong>. New Safety Management Systems, expanded duties, and the Two-Tier HVA accreditation are now mandatory.</p>
+    <div class="countdown" id="countdown">
+      <div class="countdown-item"><span class="countdown-val" id="cd-days">--</span><span class="countdown-lbl">Days</span></div>
+      <div class="countdown-item"><span class="countdown-val" id="cd-hours">--</span><span class="countdown-lbl">Hours</span></div>
+      <div class="countdown-item"><span class="countdown-val" id="cd-mins">--</span><span class="countdown-lbl">Minutes</span></div>
+      <div class="countdown-item"><span class="countdown-val" id="cd-secs">--</span><span class="countdown-lbl">Seconds</span></div>
+    </div>
+    <a href="#courses" class="btn-amber">Get Compliant Now</a>
+  </div>
+</section>
+
+<!-- WHO IS THIS FOR -->
+<section id="roles">
   <div class="section-header reveal">
-    <span class="sec-tag">01 // The Opportunity</span>
-    <h2 class="sec-title">Why AI Automation?</h2>
-    <p class="sec-desc">We are entering the biggest technological shift since the internet. Businesses that don't adapt will die. You are the bridge.</p>
+    <span class="sec-tag">01 // Your Role</span>
+    <h2 class="sec-title">Training for Every Role in the Chain</h2>
+    <p class="sec-desc">From the driver's seat to the boardroom, everyone in the supply chain has legal compliance obligations.</p>
   </div>
-  
-  <div class="bento-grid">
-    <div class="bento-card col-span-2 reveal">
-      <div class="bento-icon">🎯</div>
-      <h3 class="bento-title">High Ticket Offers</h3>
-      <p class="bento-desc" style="max-width: 400px;">Stop selling $20 ebooks. When you save a real estate agent 20 hours a week with an automated lead qualification bot, they will gladly pay you $2,000 upfront. B2B logic operates on ROI, not price tags.</p>
+
+  <div class="role-cards">
+    <div class="bento-card role-card reveal">
+      <div class="role-icon">🚛</div>
+      <h3 class="role-title">Drivers</h3>
+      <p class="role-desc">CoR awareness, fatigue management, pre-trip inspections, work diary compliance, and fitness for duty obligations.</p>
     </div>
-    <div class="bento-card reveal" style="transition-delay: 0.1s;">
-      <div class="bento-icon">⏳</div>
-      <h3 class="bento-title">Zero Code</h3>
-      <p class="bento-desc">You don't need to be a software engineer. We use visual, drag-and-drop builders like Voiceflow and Make.com to orchestrate powerful AI systems.</p>
+    <div class="bento-card role-card reveal">
+      <div class="role-icon">📋</div>
+      <h3 class="role-title">Supervisors & Schedulers</h3>
+      <p class="role-desc">Fatigue risk management, compliant rostering, scheduling duties, and Chain of Responsibility for operational staff.</p>
     </div>
-    <div class="bento-card reveal" style="transition-delay: 0.2s;">
-      <div class="bento-icon">🛠️</div>
-      <h3 class="bento-title">Recurring Revenue</h3>
-      <p class="bento-desc">Don't just charge for the setup. Pitch a $500/month "AI Hosting & Maintenance" retainer to keep the bot updated. 5 clients = $2,500/mo passive income.</p>
+    <div class="bento-card role-card reveal">
+      <div class="role-icon">💼</div>
+      <h3 class="role-title">Fleet Managers & Executives</h3>
+      <p class="role-desc">Due diligence obligations, Safety Management Systems, internal auditing, and HVA accreditation preparation.</p>
     </div>
-    <div class="bento-card col-span-2 reveal" style="transition-delay: 0.3s; background: linear-gradient(145deg, rgba(0, 229, 255, 0.1), transparent);">
-      <div class="bento-icon">🚀</div>
-      <h3 class="bento-title">The First Mover Advantage</h3>
-      <p class="bento-desc" style="max-width: 500px;">Local businesses know they need "AI", but they have no idea what it is. If you are the first person to walk into a dental clinic and show them a bot that books appointments automatically, you win the contract instantly.</p>
+    <div class="bento-card role-card reveal">
+      <div class="role-icon">📦</div>
+      <h3 class="role-title">Loaders & Warehouse</h3>
+      <p class="role-desc">Load restraint performance standards, mass management, dimension compliance, and consignor/consignee duties.</p>
     </div>
   </div>
 </section>
 
-<!-- SERVICES (BENTO) -->
-<section id="services">
+<!-- COURSE CATALOG -->
+<section id="courses">
   <div class="section-header reveal">
-    <span class="sec-tag">02 // Services</span>
-    <h2 class="sec-title">The Core AAA Services</h2>
-    <p class="sec-desc">The four fundamental AI integrations you will sell to businesses.</p>
+    <span class="sec-tag">02 // Course Catalog</span>
+    <h2 class="sec-title">Compliance Training Modules</h2>
+    <p class="sec-desc">Self-paced online courses with certificates of completion. Updated for HVNL 2026 reforms.</p>
   </div>
 
-  <div class="bento-grid" style="grid-template-columns: repeat(4, 1fr); grid-auto-rows: auto;">
-    <div class="bento-card col-span-2 reveal">
-      <div class="bento-icon">💬</div>
-      <h3 class="bento-title">Lead Gen Chatbots</h3>
-      <p class="bento-desc">Build web bots that qualify leads and book appointments directly to calendars using Voiceflow.</p>
-      <div style="margin-top: auto; padding-top: 24px; font-family: 'JetBrains Mono'; color: var(--neon-blue);">Avg Value: $1,500</div>
-    </div>
-    
-    <div class="bento-card col-span-2 reveal" style="transition-delay: 0.1s;">
-      <div class="bento-icon">📞</div>
-      <h3 class="bento-title">AI Voice Agents</h3>
-      <p class="bento-desc">Use Vapi or Bland AI to create phone bots that handle inbound customer service calls 24/7 with human-like latency.</p>
-      <div style="margin-top: auto; padding-top: 24px; font-family: 'JetBrains Mono'; color: var(--neon-purple);">Avg Value: $3,000</div>
-    </div>
-    
-    <div class="bento-card col-span-2 reveal" style="transition-delay: 0.2s;">
-      <div class="bento-icon">📧</div>
-      <h3 class="bento-title">Automated Email Replies</h3>
-      <p class="bento-desc">Connect Gmail to ChatGPT via Make.com to instantly read and reply to routine client inquiries, drafting perfect responses.</p>
-      <div style="margin-top: auto; padding-top: 24px; font-family: 'JetBrains Mono'; color: var(--neon-green);">Avg Value: $800</div>
-    </div>
-    
-    <div class="bento-card col-span-2 reveal" style="transition-delay: 0.3s;">
-      <div class="bento-icon">⚙️</div>
-      <h3 class="bento-title">CRM Automations</h3>
-      <p class="bento-desc">Sync GoHighLevel or HubSpot with lead forms to automate follow-ups, SMS drips, and invoicing completely hands-free.</p>
-      <div style="margin-top: auto; padding-top: 24px; font-family: 'JetBrains Mono'; color: var(--neon-orange);">Avg Value: $2,500</div>
-    </div>
-  </div>
-</section>
-
-<!-- BLUEPRINT TIMELINE -->
-<section id="blueprint">
-  <div class="section-header reveal">
-    <span class="sec-tag">03 // Execution</span>
-    <h2 class="sec-title">The Agency Blueprint</h2>
-    <p class="sec-desc">How to go from zero experience to a $2,000 client in 30 days.</p>
-  </div>
-
-  <div style="display: flex; flex-wrap: wrap; gap: 64px;">
-    <div class="blueprint-list" style="flex: 2; min-width: 300px;">
-      <div class="bp-step reveal">
-        <div class="bp-num">PHASE 01 (DAYS 1-5)</div>
-        <h3 class="bp-title">Skill Acquisition</h3>
-        <p class="bp-desc">Create free accounts on Voiceflow and Make.com. Spend 5 days learning the interface. You don't need to code; just learn how to drag and drop nodes to create conversational logic flows.</p>
-      </div>
-      <div class="bp-step reveal">
-        <div class="bp-num">PHASE 02 (DAYS 6-10)</div>
-        <h3 class="bp-title">The Core Offer & Demo</h3>
-        <p class="bp-desc">Pick one specific niche (e.g., Real Estate). Build a demo bot tailored specifically for them (e.g., an Open House scheduler). This demo link is your ultimate sales tool.</p>
-      </div>
-      <div class="bp-step reveal">
-        <div class="bp-num">PHASE 03 (DAYS 11-20)</div>
-        <h3 class="bp-title">Hyper-Targeted Outreach</h3>
-        <p class="bp-desc">Use LinkedIn, cold email, or Instagram DMs to send short Loom video messages to business owners. Don't sell "AI"; show them their custom demo bot in action.</p>
-      </div>
-      <div class="bp-step reveal">
-        <div class="bp-num">PHASE 04 (DAYS 21-30)</div>
-        <h3 class="bp-title">Closing & Fulfillment</h3>
-        <p class="bp-desc">Close your first $2,000 deal. Fulfill the service by simply duplicating your template and changing the branding. Pitch a $500/mo retainer for maintenance. Repeat.</p>
-      </div>
-    </div>
-
-    <!-- Revenue Tracker -->
-    <div class="bento-card reveal" style="flex: 1; min-width: 300px; padding: 32px;">
-      <h3 style="font-size: 20px; margin-bottom: 24px;">30-Day Goal Tracker</h3>
-      <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; color: var(--text-secondary);">
-        <span>Outreach (0/100)</span><span>0%</span>
-      </div>
-      <div style="width: 100%; background: var(--border-dim); height: 6px; border-radius: 3px; margin-bottom: 24px;"></div>
-      
-      <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; color: var(--text-secondary);">
-        <span>Meetings Booked (0/5)</span><span>0%</span>
-      </div>
-      <div style="width: 100%; background: var(--border-dim); height: 6px; border-radius: 3px; margin-bottom: 24px;"></div>
-
-      <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; color: var(--neon-blue);">
-        <span>Clients Closed (0/1)</span><span>0%</span>
-      </div>
-      <div style="width: 100%; background: var(--border-dim); height: 6px; border-radius: 3px; margin-bottom: 32px;"></div>
-
-      <div style="padding: 16px; background: rgba(0, 229, 255, 0.05); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 8px; text-align: center;">
-        <div style="font-size: 12px; color: var(--neon-blue); letter-spacing: 1px; margin-bottom: 4px;">POTENTIAL MRR</div>
-        <div style="font-size: 32px; font-weight: 700; color: #fff;">$2,500</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRODUCTS (STORE) -->
-<section id="products">
-  <div class="section-header reveal">
-    <span class="sec-tag">04 // Accelerator</span>
-    <h2 class="sec-title">Premium Agency Assets</h2>
-    <p class="sec-desc">Skip the trial and error. Get instant access to our proven blueprints, pre-built bot templates, and client acquisition scripts.</p>
-    <!-- COUNTDOWN TIMER -->
-    <div id="countdown-banner" style="margin-top: 24px; background: linear-gradient(135deg, rgba(255,59,48,0.15), rgba(255,149,0,0.1)); border: 1px solid rgba(255,59,48,0.3); border-radius: 12px; padding: 20px 32px; display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap;">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <span style="font-size: 20px;">🔥</span>
-        <span style="font-family: 'Space Grotesk'; font-weight: 700; font-size: 16px; color: #ff6b35;">LAUNCH PRICE ENDING SOON</span>
-      </div>
-      <div style="display: flex; gap: 16px;" id="timer-display">
-        <div style="text-align: center;"><div id="cd-hours" style="font-family: 'JetBrains Mono'; font-size: 28px; font-weight: 700; color: #fff; background: rgba(0,0,0,0.5); padding: 8px 14px; border-radius: 8px; min-width: 50px; border: 1px solid rgba(255,107,43,0.3);">00</div><div style="font-size: 10px; color: var(--text-secondary); margin-top: 4px; letter-spacing: 1px;">HRS</div></div>
-        <div style="font-family: 'JetBrains Mono'; font-size: 28px; color: rgba(255,107,43,0.5); padding-top: 8px;">:</div>
-        <div style="text-align: center;"><div id="cd-mins" style="font-family: 'JetBrains Mono'; font-size: 28px; font-weight: 700; color: #fff; background: rgba(0,0,0,0.5); padding: 8px 14px; border-radius: 8px; min-width: 50px; border: 1px solid rgba(255,107,43,0.3);">00</div><div style="font-size: 10px; color: var(--text-secondary); margin-top: 4px; letter-spacing: 1px;">MIN</div></div>
-        <div style="font-family: 'JetBrains Mono'; font-size: 28px; color: rgba(255,107,43,0.5); padding-top: 8px;">:</div>
-        <div style="text-align: center;"><div id="cd-secs" style="font-family: 'JetBrains Mono'; font-size: 28px; font-weight: 700; color: #fff; background: rgba(0,0,0,0.5); padding: 8px 14px; border-radius: 8px; min-width: 50px; border: 1px solid rgba(255,107,43,0.3);">00</div><div style="font-size: 10px; color: var(--text-secondary); margin-top: 4px; letter-spacing: 1px;">SEC</div></div>
-      </div>
-      <div style="font-size: 13px; color: var(--text-secondary);">Prices increase to <span style="color: #ff4d4d; font-weight: 700; text-decoration: line-through;">$97+</span> after timer ends</div>
-    </div>
-  </div>
-  
-  <div class="store-grid">
-    <!-- Item 1 -->
-    <div class="product-card reveal">
-      <div class="prod-tag" style="color: var(--neon-blue);">BLUEPRINT</div>
-      <h3 class="bento-title">The AAA Full Blueprint</h3>
-      <p class="bento-desc">Get the exact step-by-step roadmap, JSON templates, and curated video training to launch an AI Agency from scratch.</p>
-      <div class="prod-price">$29 <strike>$97</strike></div>
-      <div style="display: flex; gap: 12px; margin-top: auto;">
-        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px; background: transparent; color: #fff; border: 1px solid var(--border-bright);" onclick="viewDetails('masterclass', 'The AAA Full Blueprint', 29, 'BLUEPRINT', 'var(--neon-blue)', 'Learn the exact step-by-step strategy to go from $0 to your first $10k/month AI Automation Agency. Includes downloadable Voiceflow templates and curated HD video tutorials.', '🎥')">Details</button>
-        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px;" onclick="addToCart('The AAA Video Masterclass', 29, '🎥', 'A complete video masterclass on building an AI Agency.')">Add to Cart</button>
-      </div>
-    </div>
-
-    <!-- Item 2 -->
-    <div class="product-card reveal" style="transition-delay: 0.1s; border-color: rgba(181, 55, 242, 0.4);">
-      <div class="prod-tag" style="color: var(--neon-purple); background: rgba(181, 55, 242, 0.1);">BEST SELLER</div>
-      <h3 class="bento-title">Plug & Play Bot Templates</h3>
-      <p class="bento-desc">10+ pre-built, high-converting chatbot templates for Voiceflow. Just upload, change the logo, and sell for $2,000.</p>
-      <div class="prod-price">$22 <strike>$79</strike></div>
-      <div style="display: flex; gap: 12px; margin-top: auto;">
-        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px; background: transparent; color: #fff; border: 1px solid var(--border-bright);" onclick="viewDetails('templates', 'Plug & Play Bot Templates', 22, 'BEST SELLER', 'var(--neon-purple)', 'Stop building from scratch. This bundle includes pre-built templates for real estate, dental clinics, e-commerce, and more. 1-click import into Voiceflow.', '🤖')">Details</button>
-        <button class="btn-neon" style="flex:1; padding:10px; font-size:13px; border-color: var(--neon-purple); color: var(--neon-purple);" onclick="addToCart('Plug & Play Bot Templates', 22, '🤖', '10+ pre-built chatbot templates for local businesses.')">Add to Cart</button>
-      </div>
-    </div>
-
-    <!-- Item 3 -->
-    <div class="product-card reveal" style="transition-delay: 0.2s;">
-      <div class="prod-tag" style="color: var(--neon-green);">SCRIPTS</div>
-      <h3 class="bento-title">Client Acquisition Toolkit</h3>
-      <p class="bento-desc">Get the exact Cold Email templates and LinkedIn DM sequences used to close B2B clients on high-ticket AI retainers.</p>
-      <div class="prod-price">$25 <strike>$89</strike></div>
-      <div style="display: flex; gap: 12px; margin-top: auto;">
-        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px; background: transparent; color: #fff; border: 1px solid var(--border-bright);" onclick="viewDetails('acquisition', 'Client Acquisition Toolkit', 25, 'SCRIPTS', 'var(--neon-green)', 'Not sure what to say to business owners? Use these fill-in-the-blank scripts to close deals. Includes curated video recordings of live sales calls.', '🎥')">Details</button>
-        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px;" onclick="addToCart('Client Acquisition Masterclass', 25, '🎥', 'Video masterclass on closing AI Agency clients.')">Add to Cart</button>
-      </div>
-    </div>
-
-    <!-- Item 4 -->
-    <div class="product-card reveal" style="transition-delay: 0.3s;">
-      <div class="prod-tag" style="color: var(--neon-orange);">BLUEPRINT</div>
-      <h3 class="bento-title">Advanced Make.com Workflows</h3>
-      <p class="bento-desc">15 downloadable JSON automations connecting ChatGPT to CRMs and Google Sheets. Import and deploy instantly.</p>
-      <div class="prod-price">$27 <strike>$97</strike></div>
-      <div style="display: flex; gap: 12px; margin-top: auto;">
-        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px; background: transparent; color: #fff; border: 1px solid var(--border-bright);" onclick="viewDetails('makecom', 'Advanced Make.com Workflows', 27, 'BLUEPRINT', 'var(--neon-orange)', 'Automations are where the real money is made. Download 15 complex Make.com workflows in JSON format, paired with curated HD video walkthroughs on how to deploy them.', '🎥')">Details</button>
-        <button class="btn-solid" style="flex:1; padding:10px; font-size:13px;" onclick="addToCart('Advanced Make.com Video Guide', 27, '🎥', 'Advanced video training on Make.com automations.')">Add to Cart</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CASE STUDIES -->
-<section id="cases" style="max-width: 100vw; padding: 120px 0;">
-  <div class="section-header reveal" style="padding: 0 24px; max-width: 1200px; margin: 0 auto 64px;">
-    <span class="sec-tag">05 // Proof of Concept</span>
-    <h2 class="sec-title">System Verified</h2>
-  </div>
-  
-  <div class="marquee-wrapper">
-    <div class="marquee-track">
-      <!-- SET 1 -->
-      <div class="review-card">
-        <div class="rev-head">
-          <div class="rev-user"><div class="rev-avatar">👨‍💻</div><div><div class="rev-name">Alex M.</div><div class="rev-niche">Dental Clinics</div></div></div>
-          <div style="font-weight:700;">$2,100/mo</div>
-        </div>
-        <p class="rev-quote">"I used the template to build an appointment bot for local dentists. Sold my first one for $1,800 plus a $300/mo retainer. I literally just changed the logo and colors."</p>
-      </div>
-      
-      <div class="review-card">
-        <div class="rev-head">
-          <div class="rev-user"><div class="rev-avatar">👩‍🎨</div><div><div class="rev-name">Sarah J.</div><div class="rev-niche">Real Estate AI</div></div></div>
-          <div style="font-weight:700;">$6,000/mo</div>
-        </div>
-        <p class="rev-quote">"Realtors are obsessed with AI right now. I connected Make.com to their CRM so leads from FB ads get an instant text. I charge $2k per setup."</p>
-      </div>
-      
-      <div class="review-card">
-        <div class="rev-head">
-          <div class="rev-user"><div class="rev-avatar">📈</div><div><div class="rev-name">David K.</div><div class="rev-niche">Voice Agents</div></div></div>
-          <div style="font-weight:700;">$4,000/mo</div>
-        </div>
-        <p class="rev-quote">"The Vapi integration blew my mind. I set up an inbound phone agent for a plumbing company that takes calls at 3 AM. They pay me $1,000 a month just to keep it running."</p>
-      </div>
-
-      <div class="review-card">
-        <div class="rev-head">
-          <div class="rev-user"><div class="rev-avatar">🔍</div><div><div class="rev-name">Marcus T.</div><div class="rev-niche">Law Firm Automation</div></div></div>
-          <div style="font-weight:700;">$9,000/mo</div>
-        </div>
-        <p class="rev-quote">"Lawyers have the highest budgets. I built a simple document-intake bot. Took me 4 hours on Voiceflow. Sold it for $4,500. This blueprint is a cheat code."</p>
-      </div>
-
-      <!-- SET 2 (DUPLICATE FOR INFINITE LOOP) -->
-      <div class="review-card">
-        <div class="rev-head">
-          <div class="rev-user"><div class="rev-avatar">👨‍💻</div><div><div class="rev-name">Alex M.</div><div class="rev-niche">Dental Clinics</div></div></div>
-          <div style="font-weight:700;">$2,100/mo</div>
-        </div>
-        <p class="rev-quote">"I used the template to build an appointment bot for local dentists. Sold my first one for $1,800 plus a $300/mo retainer. I literally just changed the logo and colors."</p>
-      </div>
-      
-      <div class="review-card">
-        <div class="rev-head">
-          <div class="rev-user"><div class="rev-avatar">👩‍🎨</div><div><div class="rev-name">Sarah J.</div><div class="rev-niche">Real Estate AI</div></div></div>
-          <div style="font-weight:700;">$6,000/mo</div>
-        </div>
-        <p class="rev-quote">"Realtors are obsessed with AI right now. I connected Make.com to their CRM so leads from FB ads get an instant text. I charge $2k per setup."</p>
-      </div>
-      
-      <div class="review-card">
-        <div class="rev-head">
-          <div class="rev-user"><div class="rev-avatar">📈</div><div><div class="rev-name">David K.</div><div class="rev-niche">Voice Agents</div></div></div>
-          <div style="font-weight:700;">$4,000/mo</div>
-        </div>
-        <p class="rev-quote">"The Vapi integration blew my mind. I set up an inbound phone agent for a plumbing company that takes calls at 3 AM. They pay me $1,000 a month just to keep it running."</p>
-      </div>
-
-      <div class="review-card">
-        <div class="rev-head">
-          <div class="rev-user"><div class="rev-avatar">🔍</div><div><div class="rev-name">Marcus T.</div><div class="rev-niche">Law Firm Automation</div></div></div>
-          <div style="font-weight:700;">$9,000/mo</div>
-        </div>
-        <p class="rev-quote">"Lawyers have the highest budgets. I built a simple document-intake bot. Took me 4 hours on Voiceflow. Sold it for $4,500. This blueprint is a cheat code."</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer style="border-top: 1px solid var(--border-dim); padding: 80px 24px 40px; margin-top: 80px; position: relative; overflow: hidden; background: rgba(0,0,0,0.3); z-index: 10;">
-  <!-- glowing top border -->
-  <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);"></div>
-  
-  <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 64px;">
-    
-    <!-- Brand & Newsletter -->
-    <div style="grid-column: span 2;">
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
-        <img src="/static/logo.png" alt="AgentOS Logo" style="width: 32px; height: 32px; border-radius: 6px; box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);">
-        <h2 style="font-size: 24px; font-weight: 900;">Agent<span style="color: var(--neon-blue);">OS</span></h2>
-      </div>
-      <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; max-width: 350px;">
-        The ultimate blueprint for building, scaling, and automating a high-ticket AI Agency. Join 10,000+ agency owners learning to sell chatbots and workflow automations.
-      </p>
-      
-      <!-- Newsletter Form -->
-      <form action="/subscribe" method="POST" style="display: flex; gap: 8px; max-width: 350px;">
-        <input type="email" name="email" placeholder="Enter your email" required style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-dim); padding: 12px 16px; border-radius: 6px; color: #fff; width: 100%; outline: none; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; transition: border-color 0.2s;">
-        <button type="submit" class="btn-neon" style="padding: 10px 20px; font-size: 12px; border-radius: 6px; white-space: nowrap;">Join Waitlist</button>
-      </form>
-    </div>
-
-    <!-- Links 1: Platform -->
-    <div>
-      <h4 style="color: #fff; font-size: 16px; margin-bottom: 24px;">Platform</h4>
-      <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
-        <li><a href="#services" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Services</a></li>
-        <li><a href="#blueprint" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">The Blueprint</a></li>
-        <li><a href="#products" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Templates</a></li>
-        <li><a href="#cases" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Success Stories</a></li>
+  <div class="course-grid">
+    <!-- CoR Drivers -->
+    <div class="bento-card course-card reveal">
+      <span class="course-tag" style="color: var(--amber); background: rgba(245, 158, 11, 0.1);">Drivers</span>
+      <h3 class="course-title">🛡️ CoR Awareness for Drivers</h3>
+      <p class="course-desc">Understand your Chain of Responsibility obligations under the HVNL. Essential for every heavy vehicle driver.</p>
+      <ul class="course-features">
+        <li>Primary safety duty (Section 26C)</li>
+        <li>5 key compliance areas</li>
+        <li>Penalties & enforcement</li>
+        <li>Practical case studies</li>
       </ul>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+        <div><span class="course-price">AUD $99</span><br><span class="course-price-note">One-time • Lifetime access</span></div>
+        <button class="btn-amber" style="padding: 8px 20px; font-size: 12px;" onclick="addToCart('CoR Awareness for Drivers', 99, '🛡️', 'Chain of Responsibility training for heavy vehicle drivers')">Enrol</button>
+      </div>
     </div>
 
-    <!-- Links 2: Resources -->
-    <div>
-      <h4 style="color: #fff; font-size: 16px; margin-bottom: 24px;">Resources</h4>
-      <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
-        <li><a href="/blog" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">AI Agency Blog</a></li>
-        <li><a href="/portal" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Customer Portal</a></li>
-        <li><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Make.com Guide</a></li>
-        <li><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Voiceflow Basics</a></li>
+    <!-- CoR Supervisors -->
+    <div class="bento-card course-card reveal">
+      <span class="course-tag" style="color: var(--blue); background: rgba(59, 130, 246, 0.1);">Supervisors</span>
+      <h3 class="course-title">📋 CoR for Supervisors & Schedulers</h3>
+      <p class="course-desc">Advanced CoR training for those who schedule, manage, or direct transport activities.</p>
+      <ul class="course-features">
+        <li>Scheduler duties under CoR</li>
+        <li>Fatigue risk management</li>
+        <li>Compliant rostering practices</li>
+        <li>Due diligence documentation</li>
       </ul>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+        <div><span class="course-price">AUD $149</span><br><span class="course-price-note">One-time • Lifetime access</span></div>
+        <button class="btn-amber" style="padding: 8px 20px; font-size: 12px;" onclick="addToCart('CoR for Supervisors & Schedulers', 149, '📋', 'CoR training for supervisors and schedulers')">Enrol</button>
+      </div>
     </div>
 
-    <!-- Links 3: Connect -->
-    <div>
-      <h4 style="color: #fff; font-size: 16px; margin-bottom: 24px;">Connect</h4>
-      <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
-        <li><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Twitter / X</a></li>
-        <li><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">LinkedIn</a></li>
-        <li><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s;">Discord Community</a></li>
-        <li><a href="mailto:amritgupta0412@gmail.com" style="color: var(--neon-blue); text-decoration: none; font-size: 14px; transition: color 0.2s;">amritgupta0412@gmail.com</a></li>
+    <!-- CoR Executives -->
+    <div class="bento-card course-card reveal">
+      <span class="course-tag" style="color: var(--red); background: rgba(239, 68, 68, 0.1);">Executives</span>
+      <h3 class="course-title">⚖️ CoR Due Diligence for Executives</h3>
+      <p class="course-desc">Executive officer duties, personal liability, and due diligence obligations under the HVNL.</p>
+      <ul class="course-features">
+        <li>Personal liability exposure</li>
+        <li>6 elements of due diligence</li>
+        <li>Governance framework</li>
+        <li>Safety assurance systems</li>
       </ul>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+        <div><span class="course-price">AUD $249</span><br><span class="course-price-note">One-time • Lifetime access</span></div>
+        <button class="btn-amber" style="padding: 8px 20px; font-size: 12px;" onclick="addToCart('CoR Due Diligence for Executives', 249, '⚖️', 'Executive due diligence training')">Enrol</button>
+      </div>
     </div>
+
+    <!-- Fatigue Management -->
+    <div class="bento-card course-card reveal">
+      <span class="course-tag" style="color: var(--amber); background: rgba(245, 158, 11, 0.1);">Drivers</span>
+      <h3 class="course-title">⏱️ Fatigue Management (BFM)</h3>
+      <p class="course-desc">Standard Hours, BFM limits, work diaries, EWD compliance, and the new ACA framework.</p>
+      <ul class="course-features">
+        <li>Standard & BFM hour limits</li>
+        <li>Work diary & EWD requirements</li>
+        <li>Rest break obligations</li>
+        <li>ACA transition guide</li>
+      </ul>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+        <div><span class="course-price">AUD $129</span><br><span class="course-price-note">One-time • Lifetime access</span></div>
+        <button class="btn-amber" style="padding: 8px 20px; font-size: 12px;" onclick="addToCart('Fatigue Management (BFM)', 129, '⏱️', 'Fatigue management training for drivers')">Enrol</button>
+      </div>
+    </div>
+
+    <!-- Load Restraint -->
+    <div class="bento-card course-card reveal">
+      <span class="course-tag" style="color: var(--green); background: rgba(34, 197, 94, 0.1);">All Workers</span>
+      <h3 class="course-title">📦 Load Restraint Essentials</h3>
+      <p class="course-desc">Performance-based load restraint: 0.8g forward, 0.5g sideways/rearward, 0.2g vertical.</p>
+      <ul class="course-features">
+        <li>Performance-based standards</li>
+        <li>Lashing, blocking & containment</li>
+        <li>Minimum restraint calculations</li>
+        <li>Pre-departure inspections</li>
+      </ul>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+        <div><span class="course-price">AUD $99</span><br><span class="course-price-note">One-time • Lifetime access</span></div>
+        <button class="btn-amber" style="padding: 8px 20px; font-size: 12px;" onclick="addToCart('Load Restraint Essentials', 99, '📦', 'Load restraint compliance training')">Enrol</button>
+      </div>
+    </div>
+
+    <!-- SMS & Audit -->
+    <div class="bento-card course-card reveal">
+      <span class="course-tag" style="color: var(--red); background: rgba(239, 68, 68, 0.1);">Managers</span>
+      <h3 class="course-title">🔍 SMS Implementation & Audit Prep</h3>
+      <p class="course-desc">Build and audit Safety Management Systems using the PSOE methodology for HVA accreditation.</p>
+      <ul class="course-features">
+        <li>5 SMS core outcomes</li>
+        <li>PSOE audit methodology</li>
+        <li>Safety documentation templates</li>
+        <li>GSA & ACA accreditation prep</li>
+      </ul>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+        <div><span class="course-price">AUD $299</span><br><span class="course-price-note">One-time • Lifetime access</span></div>
+        <button class="btn-amber" style="padding: 8px 20px; font-size: 12px;" onclick="addToCart('SMS Implementation & Audit Prep', 299, '🔍', 'Safety Management Systems training')">Enrol</button>
+      </div>
+    </div>
+
+    <!-- Reform Bundle -->
+    <div class="bento-card course-card reveal" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(59, 130, 246, 0.05)); border-color: rgba(245, 158, 11, 0.3);">
+      <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: space-between;">
+        <div style="flex: 1; min-width: 300px;">
+          <span class="course-tag" style="color: var(--amber); background: rgba(245, 158, 11, 0.15);">🏆 Best Value</span>
+          <h3 class="course-title" style="font-size: 24px; margin-top: 8px;">HVNL 2026 Reform Readiness Bundle</h3>
+          <p class="course-desc">Complete access to ALL compliance modules. Everything your team needs to be fully compliant before 1 August 2026.</p>
+          <ul class="course-features">
+            <li>All 6 individual courses included</li>
+            <li>Save over AUD $500 vs buying separately</li>
+            <li>Priority support & annual refresher updates</li>
+            <li>Bulk team pricing available</li>
+          </ul>
+        </div>
+        <div style="text-align: center;">
+          <div style="text-decoration: line-through; color: var(--text-tertiary); font-size: 14px;">AUD $1,024</div>
+          <span class="course-price" style="font-size: 36px;">AUD $499</span><br>
+          <span class="course-price-note">One-time • Lifetime access</span><br>
+          <button class="btn-amber" style="margin-top: 16px; padding: 12px 32px;" onclick="addToCart('HVNL 2026 Reform Readiness Bundle', 499, '🏆', 'Complete compliance training bundle — all modules included')">Enrol in Bundle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="section-header reveal">
+    <span class="sec-tag">03 // Process</span>
+    <h2 class="sec-title">How It Works</h2>
+    <p class="sec-desc">Get compliant in 4 simple steps.</p>
   </div>
 
-  <div style="max-width: 1200px; margin: 64px auto 0; padding-top: 24px; border-top: 1px solid var(--border-dim); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-    <p style="color: var(--text-tertiary); font-size: 14px;">© 2026 AgentOS Inc. All rights reserved.</p>
-    <div style="display: flex; gap: 24px;">
-      <a href="/privacy" style="color: var(--text-tertiary); text-decoration: none; font-size: 12px; transition: color 0.2s;">Privacy Policy</a>
-      <a href="/terms" style="color: var(--text-tertiary); text-decoration: none; font-size: 12px; transition: color 0.2s;">Terms of Service</a>
+  <div class="steps">
+    <div class="step reveal">
+      <h4>Choose Your Role</h4>
+      <p>Select courses based on your position: Driver, Supervisor, Manager, or Loader.</p>
+    </div>
+    <div class="step reveal">
+      <h4>Enrol Online</h4>
+      <p>Secure checkout with instant access to your training portal.</p>
+    </div>
+    <div class="step reveal">
+      <h4>Complete Training</h4>
+      <p>Self-paced interactive modules. Study on any device, anytime.</p>
+    </div>
+    <div class="step reveal">
+      <h4>Get Certified</h4>
+      <p>Download your Certificate of Completion and stay compliant.</p>
     </div>
   </div>
-</footer>
-</div> <!-- /#site-wrapper -->
+</section>
 
-<!-- LIVE CHATBOT DEMO WIDGET -->
-<div id="ai-chat-widget" style="position: fixed; bottom: 24px; right: 24px; z-index: 9999;">
-  <div id="chat-window" style="display: none; width: 350px; height: 500px; background: var(--card-surface); border: 1px solid var(--border-bright); border-radius: 16px; backdrop-filter: blur(20px); flex-direction: column; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
-    <div style="background: linear-gradient(90deg, rgba(0, 229, 255, 0.1), transparent); padding: 16px; border-bottom: 1px solid var(--border-dim); display: flex; justify-content: space-between; align-items: center;">
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <div style="width: 10px; height: 10px; background: var(--neon-green); border-radius: 50%; box-shadow: 0 0 10px var(--neon-green);"></div>
-        <span style="font-family: 'Space Grotesk'; font-weight: 700;">AgentOS Lead Bot</span>
-      </div>
-      <button onclick="toggleChat()" style="background: none; border: none; color: #aaa; cursor: pointer; font-size: 20px;">&times;</button>
+<!-- CHAIN OF RESPONSIBILITY -->
+<section id="cor">
+  <div class="section-header reveal">
+    <span class="sec-tag">04 // Understanding CoR</span>
+    <h2 class="sec-title">Chain of Responsibility</h2>
+    <p class="sec-desc">Under the HVNL, safety obligations extend to every party who influences or controls transport activities.</p>
+  </div>
+
+  <div class="cor-chain reveal">
+    <div class="cor-party"><div class="party-icon">👔</div><div class="party-name">Employers</div></div>
+    <div class="cor-party"><div class="party-icon">🚛</div><div class="party-name">Drivers</div></div>
+    <div class="cor-party"><div class="party-icon">📋</div><div class="party-name">Schedulers</div></div>
+    <div class="cor-party"><div class="party-icon">📦</div><div class="party-name">Loaders</div></div>
+    <div class="cor-party"><div class="party-icon">📤</div><div class="party-name">Consignors</div></div>
+    <div class="cor-party"><div class="party-icon">📥</div><div class="party-name">Consignees</div></div>
+    <div class="cor-party"><div class="party-icon">⚖️</div><div class="party-name">Executives</div></div>
+  </div>
+
+  <div class="bento-card reveal" style="max-width: 800px; margin: 32px auto; padding: 32px;">
+    <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--amber);">5 Key Compliance Areas</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px;">
+      <div style="text-align: center; padding: 16px;"><div style="font-size: 28px; margin-bottom: 8px;">⚡</div><div style="font-size: 13px; font-weight: 600;">Speed</div></div>
+      <div style="text-align: center; padding: 16px;"><div style="font-size: 28px; margin-bottom: 8px;">😴</div><div style="font-size: 13px; font-weight: 600;">Fatigue</div></div>
+      <div style="text-align: center; padding: 16px;"><div style="font-size: 28px; margin-bottom: 8px;">⚖️</div><div style="font-size: 13px; font-weight: 600;">Mass & Loading</div></div>
+      <div style="text-align: center; padding: 16px;"><div style="font-size: 28px; margin-bottom: 8px;">🔗</div><div style="font-size: 13px; font-weight: 600;">Load Restraint</div></div>
+      <div style="text-align: center; padding: 16px;"><div style="font-size: 28px; margin-bottom: 8px;">🔧</div><div style="font-size: 13px; font-weight: 600;">Vehicle Standards</div></div>
     </div>
-    
-    <div id="chat-messages" style="flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
-      <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px 12px 12px 0; max-width: 80%; border: 1px solid var(--border-dim);">
-        👋 Hi! I'm an AI Lead Generation bot. I'm exactly the type of bot you will learn how to build and sell for $2,000+ in the Masterclass.
-      </div>
-      <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px 12px 12px 0; max-width: 80%; border: 1px solid var(--border-dim);">
-        Are you ready to start your AI Automation Agency today?
-      </div>
+    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 16px; text-align: center;">Non-compliance can result in <strong style="color: var(--red);">substantial financial penalties, criminal prosecution, and imprisonment</strong>. The duty cannot be transferred, delegated, or contracted away.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-header reveal">
+    <span class="sec-tag">05 // FAQ</span>
+    <h2 class="sec-title">Frequently Asked Questions</h2>
+  </div>
+
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is Chain of Responsibility (CoR)?</button>
+      <div class="faq-a">CoR is the legal framework under the Heavy Vehicle National Law (HVNL) that extends safety obligations beyond the driver to ALL parties who influence or control transport activities — including employers, schedulers, loaders, consignors, consignees, and executive officers.</div>
     </div>
-    
-    <div style="padding: 16px; border-top: 1px solid var(--border-dim); display: flex; gap: 8px;">
-      <input type="text" id="chat-input" placeholder="Type your answer..." style="flex: 1; background: rgba(0,0,0,0.5); border: 1px solid var(--border-dim); padding: 10px 12px; border-radius: 8px; color: #fff; font-family: 'Plus Jakarta Sans'; outline: none;">
-      <button onclick="sendChatMessage()" style="background: var(--neon-blue); color: #000; border: none; padding: 10px 16px; border-radius: 8px; font-family: 'Space Grotesk'; font-weight: 700; cursor: pointer;">Send</button>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Are these courses nationally accredited?</button>
+      <div class="faq-a">Our courses are designed as awareness-level compliance training and provide a Certificate of Completion. They are not nationally accredited RTO qualifications. For nationally accredited units (e.g., TLIF0005, TLIF0009), we recommend pairing our training with an accredited RTO assessment.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What changes with the HVNL 2026 reforms?</button>
+      <div class="faq-a">Key changes include: mandatory Safety Management Systems (SMS), a new Two-Tier HVA accreditation replacing NHVAS, expanded "Unfit to Drive" duties covering illness and mental health, increased mass limits (GML raised to current CML levels), and extended length limits (19m → 20m). There is NO grace period — compliance is required from Day One (1 August 2026).</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How long do the courses take to complete?</button>
+      <div class="faq-a">Most individual modules take 2–4 hours to complete. They are fully self-paced, so you can pause and resume anytime. The complete Reform Readiness Bundle takes approximately 15–20 hours total.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I train my whole team?</button>
+      <div class="faq-a">Yes! We offer volume pricing for teams of 5 or more. Contact us at support@SafeFleetacademy.com for a custom corporate training quote with dedicated progress tracking and team dashboards.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you offer refunds?</button>
+      <div class="faq-a">Yes. We offer a 14-day money-back guarantee on all courses. If the training does not meet your expectations, email support@SafeFleetacademy.com for a full refund.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Which states and territories does this apply to?</button>
+      <div class="faq-a">The HVNL applies in ACT, NSW, QLD, SA, TAS, and VIC. Western Australia and the Northern Territory operate under their own legislation, though many CoR and fatigue management principles are similar.</div>
     </div>
   </div>
-  
-  <button id="chat-toggle-btn" onclick="toggleChat()" style="position: absolute; bottom: 0; right: 0; width: 60px; height: 60px; border-radius: 50%; background: var(--neon-blue); border: none; cursor: pointer; box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); display: flex; justify-content: center; align-items: center; transition: transform 0.2s;">
-    <span style="font-size: 24px;">💬</span>
-  </button>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter-section reveal">
+  <h3 style="font-size: 24px; margin-bottom: 8px;">Stay Compliant. Stay Informed.</h3>
+  <p style="color: var(--text-secondary);">Get the latest HVNL updates, reform alerts, and compliance tips delivered to your inbox.</p>
+  <div class="newsletter-input-group">
+    <input type="email" id="newsletterEmail" placeholder="Enter your work email">
+    <button class="btn-amber" onclick="subscribeNewsletter()">Subscribe</button>
+  </div>
+  <p id="subMsg" style="color: var(--green); font-size: 13px; margin-top: 12px; display: none;">✓ Subscribed successfully!</p>
 </div>
 
-<!-- PRODUCT DETAILS MODAL -->
-<div id="productModal" class="modal">
-  <div class="modal-content" style="max-width: 500px;">
-    <span class="close-btn" onclick="closeModal()">&times;</span>
-    <div id="modalTag" class="prod-tag"></div>
-    <h2 id="modalTitle" style="font-size: 28px; margin-bottom: 12px; color: #fff;"></h2>
-    <p id="modalDesc" style="color: var(--text-secondary); margin-bottom: 24px; font-size: 15px;"></p>
-    
-    <div style="margin-bottom: 24px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-dim); border-radius: 8px; padding: 16px;">
-      <h4 style="font-family: 'Space Grotesk'; font-size: 14px; color: var(--neon-blue); margin: 0 0 12px 0; text-transform: uppercase;">What's Included</h4>
-      <ul id="modalFeatures" style="list-style: none; padding: 0; margin: 0; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <a href="/" class="nav-logo" style="margin-bottom: 16px;">
+        <img src="/static/logo.png" alt="SafeFleet Academy Logo" style="width: 28px; height: 28px; border-radius: 4px;">
+        SafeFleet<span style="color: var(--amber);"> Academy</span>
+      </a>
+      <p style="color: var(--text-secondary); font-size: 14px; max-width: 280px;">Australia's trusted online heavy vehicle compliance training platform. HVNL 2026 reform ready.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Training</h4>
+      <ul>
+        <li><a href="#courses">CoR for Drivers</a></li>
+        <li><a href="#courses">Fatigue Management</a></li>
+        <li><a href="#courses">Load Restraint</a></li>
+        <li><a href="#courses">SMS & Audit Prep</a></li>
       </ul>
     </div>
-    
-    <div id="modalPrice" style="font-family: 'JetBrains Mono'; font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 32px;"></div>
-    <button class="btn-solid" style="width: 100%;" id="modalAddBtn">Add to Cart</button>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#cor">Chain of Responsibility</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="/portal">Student Portal</a></li>
+        <li><a href="/support">Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Service</a></li>
+        <li><a href="mailto:support@SafeFleetacademy.com" style="color: var(--amber);">support@SafeFleetacademy.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SafeFleet Academy. All rights reserved. ABN pending.</p>
+    <p style="color: var(--text-tertiary); font-size: 12px;">This training is for educational awareness purposes. It is not a substitute for legal advice or nationally accredited RTO certification.</p>
+  </div>
+</footer>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <span id="modalTag" class="course-tag"></span>
+    <h3 id="modalTitle" style="font-size: 22px; margin: 12px 0 8px;"></h3>
+    <p id="modalDesc" style="color: var(--text-secondary); font-size: 14px; margin-bottom: 16px;"></p>
+    <div id="modalPrice" style="font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; color: var(--amber); margin-bottom: 16px;"></div>
+    <ul id="modalFeatures" class="course-features"></ul>
+    <button id="modalAddBtn" class="btn-amber" style="width: 100%; padding: 14px; margin-top: 16px;">Add to Cart</button>
+  </div>
+</div>
+
+<!-- CHATBOT -->
+<button id="chat-toggle-btn" onclick="toggleChat()">💬</button>
+<div id="chat-window">
+  <div class="chat-header">
+    <span class="chat-header-title">🛡️ SafeFleet Academy Assistant</span>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div id="chat-messages"></div>
+  <div class="chip-container" id="chatChips"></div>
+  <div class="chat-input-area">
+    <input type="text" id="chatInput" placeholder="Ask about compliance..." onkeydown="if(event.key==='Enter')sendChat()">
+    <button onclick="sendChat()">Send</button>
   </div>
 </div>
 
 <script>
-  // ==================== MOBILE NAV ====================
+  // ───── NAV TOGGLE ─────
   function toggleNav() {
-    const body = document.body;
-    const isOpening = !body.classList.contains('menu-open');
-    if (isOpening) {
-      body.classList.add('menu-open');
-      document.getElementById('hamburgerBtn').classList.add('active');
-    } else {
-      body.classList.remove('menu-open');
-      document.getElementById('hamburgerBtn').classList.remove('active');
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('open');
+  }
+
+  // ───── COUNTDOWN TIMER ─────
+  function updateCountdown() {
+    const target = new Date('2026-08-01T00:00:00+10:00').getTime();
+    const now = new Date().getTime();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent = '00';
+      document.getElementById('cd-secs').textContent = '00';
+      return;
     }
-  }
-  function closeNav() {
-    document.body.classList.remove('menu-open');
-    const btn = document.getElementById('hamburgerBtn');
-    if (btn) btn.classList.remove('active');
-  }
 
-  // Reveal Animations
+    document.getElementById('cd-days').textContent = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+    document.getElementById('cd-mins').textContent = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+    document.getElementById('cd-secs').textContent = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ───── SCROLL REVEAL ─────
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+  // ───── FAQ TOGGLE ─────
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('active'));
+    if (!isOpen) { answer.classList.add('open'); btn.classList.add('active'); }
+  }
+
+  // ───── CART SYSTEM ─────
   function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('wealthweb_cart') || '[]');
-    document.querySelectorAll('.cart-badge').forEach(badge => {
-      badge.innerText = cart.length;
-      badge.style.transform = 'scale(1.3)';
-      setTimeout(() => badge.style.transform = 'scale(1)', 200);
-    });
+    const cart = JSON.parse(localStorage.getItem('safefleet_cart')) || [];
+    const count = cart.length;
+    const menuBadge = document.getElementById('cartCountMenu');
+    const mobileBadge = document.getElementById('cartCountMobile');
+    if (menuBadge) menuBadge.textContent = count;
+    if (mobileBadge) mobileBadge.textContent = count;
   }
-  
-  function addToCart(name, price, icon, desc) {
-    let cart = JSON.parse(localStorage.getItem('wealthweb_cart')) || [];
-    cart.push({ id: Date.now().toString(), name, price, icon, desc });
-    localStorage.setItem('wealthweb_cart', JSON.stringify(cart));
+
+  function addToCart(title, price, icon, desc) {
+    const cart = JSON.parse(localStorage.getItem('safefleet_cart')) || [];
+    if (cart.some(item => item.title === title)) {
+      showNotification('Already in cart!', '#f59e0b');
+      return;
+    }
+    cart.push({ title, price: parseFloat(price), icon, desc });
+    localStorage.setItem('safefleet_cart', JSON.stringify(cart));
     updateCartCount();
-    closeModal();
-    
-    // Fancy notification
-    const notification = document.createElement('div');
-    notification.innerText = `Added ${name} to Cart!`;
-    notification.style.position = 'fixed';
-    notification.style.bottom = '20px';
-    notification.style.right = '20px';
-    notification.style.background = 'var(--neon-blue)';
-    notification.style.color = '#000';
-    notification.style.padding = '12px 24px';
-    notification.style.borderRadius = '8px';
-    notification.style.fontFamily = 'Space Grotesk';
-    notification.style.fontWeight = '700';
-    notification.style.zIndex = '2000';
-    notification.style.boxShadow = '0 0 20px rgba(0, 229, 255, 0.4)';
-    document.body.appendChild(notification);
-    setTimeout(() => notification.remove(), 3000);
+    showNotification('✓ Added to cart: ' + title, '#22c55e');
   }
 
-  // Modal Logic
-  const courseFeatures = {
-    'masterclass': [
-      '✓ 4 Hours of HD Video Streaming',
-      '✓ Build a real estate bot from scratch',
-      '✓ High-ticket pricing frameworks',
-      '✓ Downloadable .vf Blueprint Files'
-    ],
-    'templates': [
-      '✓ 10+ Pre-built Voiceflow Templates',
-      '✓ Dental, E-Commerce, and Real Estate',
-      '✓ 1-Click Import into your account',
-      '✓ Includes fallback and escalation logic'
-    ],
-    'acquisition': [
-      '✓ Live recorded cold calls (HD)',
-      '✓ 5 Proven Cold Email Scripts',
-      '✓ LinkedIn DM automated sequences',
-      '✓ Objection handling cheat sheet'
-    ],
-    'makecom': [
-      '✓ 15 Complex Make.com Automations',
-      '✓ ChatGPT to Google Sheets Integration',
-      '✓ Webhook to CRM workflows',
-      '✓ Downloadable JSON import files'
-    ]
-  };
-
-  function viewDetails(id, title, price, tag, tagColor, desc, icon) {
-    document.getElementById('modalTitle').innerText = title;
-    document.getElementById('modalPrice').innerText = `$${price}`;
-    document.getElementById('modalDesc').innerText = desc;
-    
-    const tagEl = document.getElementById('modalTag');
-    tagEl.innerText = tag;
-    tagEl.style.color = tagColor;
-    tagEl.style.background = `rgba(255,255,255,0.05)`;
-
-    const featContainer = document.getElementById('modalFeatures');
-    featContainer.innerHTML = '';
-    if(courseFeatures[id]) {
-      courseFeatures[id].forEach(f => {
-        const li = document.createElement('li');
-        li.innerText = f;
-        li.style.marginBottom = '4px';
-        featContainer.appendChild(li);
-      });
-    }
-
-    const addBtn = document.getElementById('modalAddBtn');
-    addBtn.onclick = function() { addToCart(title, price, icon, desc); };
-    
-    document.getElementById('productModal').style.display = 'flex';
+  function showNotification(text, color) {
+    const n = document.createElement('div');
+    n.textContent = text;
+    n.style.cssText = `position: fixed; top: 80px; right: 24px; background: ${color}; color: #0f172a; padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 14px; z-index: 5000; animation: fadeUp 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.3);`;
+    document.body.appendChild(n);
+    setTimeout(() => n.remove(), 3000);
   }
 
-  function closeModal() {
-    document.getElementById('productModal').style.display = 'none';
+  updateCartCount();
+
+  // ───── NEWSLETTER ─────
+  async function subscribeNewsletter() {
+    const email = document.getElementById('newsletterEmail').value;
+    if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+    try {
+      const res = await fetch('/api/subscribe', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ email }) });
+      if (res.ok) { document.getElementById('subMsg').style.display = 'block'; document.getElementById('newsletterEmail').value = ''; }
+    } catch (e) { alert('Subscription error. Please try again.'); }
   }
 
-  window.onclick = function(event) {
-    const modal = document.getElementById('productModal');
-    if (event.target == modal) { modal.style.display = "none"; }
-  }
+  // ───── MODAL ─────
+  function closeModal() { document.getElementById('productModal').style.display = 'none'; }
+  window.onclick = function(event) { if (event.target === document.getElementById('productModal')) closeModal(); }
 
-  // Chatbot Logic & Premium Knowledge Base (80+ strategic Q&As)
-  let chatStep = 0;
-  let leadData = { name: '', phone: '' };
-
+  // ───── CHATBOT ─────
   const chatbotKB = [
-    // GENERAL & ABOUT
-    {
-      keywords: ["what is agentos", "about agentos", "what is this site", "what do you do", "explain agentos", "what is this platform"],
-      q: "What is AgentOS?",
-      a: "AgentOS Academy is a premium B2B education & asset hub created to help you launch and scale a highly profitable AI Automation Agency (AAA). We provide comprehensive, no-gatekeeping video blueprints, ready-to-use Voiceflow templates, Make.com json files, and exact client acquisition outreach systems to help you secure $2,000+/mo B2B clients."
-    },
-    {
-      keywords: ["founder", "who is amrit", "amrit gupta", "who built this", "created by", "who owns this"],
-      q: "Who is the founder?",
-      a: "AgentOS was founded by Amrit Gupta, a global AI systems architect and agency growth advisor. He designed this entire curriculum to share the exact battle-tested tools, scripts, and automation assets that he used to scale automated B2B services internationally."
-    },
-    {
-      keywords: ["is this legit", "scam", "is it real", "trustworthy", "does it work", "proof"],
-      q: "Is this platform legitimate?",
-      a: "Absolutely! AgentOS Academy is a highly trusted platform with a growing community of over 1,500+ successful students. Our training is strictly practical—you receive real, downloadable visual templates and witness actual client acquisition workflows. Plus, we protect your enrollment with a 100% money-back guarantee."
-    },
-    {
-      keywords: ["contact details", "support email", "email address", "phone number", "reach out", "help support"],
-      q: "How can I contact support?",
-      a: "We are always here to assist you! You can reach our dedicated support desk directly at <strong>amritgupta0412@gmail.com</strong> or send a message to our business hotline at <strong>+91 8218961223</strong>. We strive to reply to all queries within 2 hours."
-    },
-    {
-      keywords: ["where are you", "location", "headquarters", "based in"],
-      q: "Where is AgentOS located?",
-      a: "AgentOS is a fully distributed global operation. Our core student base is located in the US, UK, Canada, and Europe. Our engineering and community support teams operate remotely across multiple time zones to provide 24/7 assistance."
-    },
-    {
-      keywords: ["target audience", "who is this for", "am i suitable", "can i do this"],
-      q: "Who is this academy for?",
-      a: "This is designed for high-agency individuals: complete beginners looking for a highly profitable side hustle, freelancers, agency owners wanting to pivot to AI, and marketers who want to add an extra $5k - $10k/month in high-margin B2B recurring revenue."
-    },
-    {
-      keywords: ["how to login", "portal login", "student portal", "access my course", "where is dashboard", "login customer"],
-      q: "How do I access my purchased courses?",
-      a: "Accessing your training is instant and secure! Just click on the 'Portal' link in the top menu of our homepage, or go directly to <a href='/login_customer' style='color:var(--neon-blue); text-decoration:underline;'>agentosacademy.com/login_customer</a> and enter the email and password you created during checkout."
-    },
-
-    // PRICING & PAYMENT
-    {
-      keywords: ["price", "how much", "cost", "fee", "payment", "cheap"],
-      q: "How much do the courses cost?",
-      a: "We believe in making high-value skills accessible. Our premium masterclasses (like the AAA Full Blueprint or Client Acquisition module) are priced at just $29 each, and our Make.com deep-dive is only $22. There are absolutely no recurring fees—just a one-time purchase for lifetime access."
-    },
-    {
-      keywords: ["recurring fee", "monthly subscription", "is it monthly", "hidden cost"],
-      q: "Are there any recurring monthly charges?",
-      a: "Zero! All purchases on our platform are strictly one-time payments. Once you buy a masterclass, you secure lifetime access, including all future video updates and template revisions at no additional cost."
-    },
-    {
-      keywords: ["refund policy", "money back", "guarantee", "refunds", "cancel"],
-      q: "Do you offer a refund policy?",
-      a: "Yes, absolutely! We stand behind the extreme quality of our training with a <strong>14-Day 100% Money-Back Guarantee</strong>. If you go through the training and feel it does not exceed your expectations, simply email us at amritgupta0412@gmail.com for an immediate refund."
-    },
-    {
-      keywords: ["payment method", "credit card", "paypal", "debit card", "how to pay"],
-      q: "What payment methods do you accept?",
-      a: "We securely process transactions worldwide using industry-grade SSL encryption. We accept all major Credit Cards (Visa, Mastercard, AMEX), Debit Cards, and PayPal Smart Buttons directly inside your cart."
-    },
-    {
-      keywords: ["discount", "coupon", "promo code", "cheaper", "reduction"],
-      q: "Do you have any active discount codes?",
-      a: "We currently have a massive 85% Launch Discount automatically applied across our store! No coupon code is required. Prices are marked down to just $22–$29 for the next few hours to celebrate our global launch."
-    },
-    {
-      keywords: ["all courses", "bundle", "accelerator bundle", "buy everything"],
-      q: "Can I buy all the courses together?",
-      a: "Yes! You can add all the masterclasses to your shopping cart and complete a unified checkout. This will deploy the full agency curriculum to your student dashboard instantly."
-    },
-
-    // AI AUTOMATION AGENCY (AAA) SERVICES
-    {
-      keywords: ["what is aaa", "ai agency", "what is automation agency", "explain ai agency", "services to offer"],
-      q: "What is an AI Automation Agency?",
-      a: "An AI Automation Agency (AAA) is a highly lucrative business model where you consult local and online businesses, identify manual bottlenecks in their operations, and build visual AI assistants (chatbots) and automated workflows to save them time and money."
-    },
-    {
-      keywords: ["how much charge", "pricing chatbot", "what price sell", "client payment"],
-      q: "How much can I charge B2B clients?",
-      a: "For a standard lead qualification chatbot, agencies typically charge a setup fee of $1,500 to $2,500. For complex backend workflows (like database integrations), you can charge $3,000+. Additionally, you can command a recurring retainer of $200 - $500/month for ongoing maintenance."
-    },
-    {
-      keywords: ["what services", "list of services", "what can i sell", "agency deliverables"],
-      q: "What specific services can I offer B2B clients?",
-      a: "You can build and deploy: 1) 24/7 Lead Gen Chatbots, 2) Interactive Booking Bots, 3) Auto-responding Customer Support Agents, 4) Visual Make.com CRM synchronization workflows, and 5) Database automation. All are built visual without code!"
-    },
-    {
-      keywords: ["why pay", "value proposition", "why would business buy", "convince client"],
-      q: "Why would a business pay $2,000 for AI?",
-      a: "Because custom AI automations instantly replace expensive human overhead, respond to customer inquiries in under 2 seconds (eliminating missed leads), book appointments directly to calendars 24/7, and never call in sick. A business saves $3,000+/mo, making your service an absolute no-brainer."
-    },
-    {
-      keywords: ["best niche", "who to target", "client target", "industries"],
-      q: "What are the most profitable B2B niches?",
-      a: "We heavily focus on high-ticket service industries: Real Estate Agencies, Dental Clinics, Chiropractic Centers, Med Spas, Roofers, E-Commerce brands, and High-ticket Consulting firms. These businesses have a high customer value, so booking just 1 extra client from your bot pays for your entire service."
-    },
-
-    // NO-CODE TOOLS (VOICEFLOW & MAKE.COM)
-    {
-      keywords: ["need coding", "know coding", "do i need programming", "no code", "non-technical"],
-      q: "Do I need coding skills?",
-      a: "No coding whatsoever is required! Our entire ecosystem utilizes modern 'No-Code' visual drag-and-drop builders. If you can map out a flowchart on a screen, you possess all the technical skills needed to build and scale your agency."
-    },
-    {
-      keywords: ["voiceflow", "what is voiceflow", "why voiceflow"],
-      q: "What is Voiceflow?",
-      a: "Voiceflow is the gold standard visual agent designer. It allows you to drag-and-drop conversational blocks, integrate advanced logic, and connect OpenAI's GPT models to build highly intelligent AI representatives. Our blueprints show you how to master it rapidly."
-    },
-    {
-      keywords: ["make.com", "integromat", "what is make"],
-      q: "What is Make.com?",
-      a: "Make.com (formerly Integromat) is a powerhouse visual automation connector. It lets you link together 1,000+ popular B2B apps (like Gmail, Slack, HubSpot, CRM systems, and Google Sheets) via visual lines to automate data entry without coding."
-    },
-    {
-      keywords: ["is tool free", "tool price", "do i have to pay tools", "voiceflow free"],
-      q: "Are the visual builders free to use?",
-      a: "Yes! Both Voiceflow and Make.com offer extremely generous FREE-FOREVER plans that allow you to build, test, and deploy functional bots for your clients without spending a single dollar out of pocket."
-    },
-    {
-      keywords: ["api key", "openai api", "chatgpt api", "cost api"],
-      q: "Do I need an OpenAI API key?",
-      a: "For your internal agency testing, yes. Setting up an OpenAI API key takes 2 minutes, and the cost is incredibly cheap (typically less than $0.05 per long conversation). When you sign a B2B client, they pay for their own API usage!"
-    },
-
-    // CLIENT ACQUISITION
-    {
-      keywords: ["find client", "get first client", "outreach", "cold email", "how to sell"],
-      q: "How do I secure my first B2B client?",
-      a: "We teach a highly targeted outreach framework: 1) Custom Loom Video Audits (booking meetings at a 40%+ rate), 2) Hyper-focused Cold Emails using verified leads, 3) LinkedIn DM automation, and 4) Local SEO targeting. We give you the exact scripts."
-    },
-    {
-      keywords: ["cold email templates", "email script", "what to write email"],
-      q: "Do you provide cold email templates?",
-      a: "Yes! The 'Client Acquisition Blueprint' contains the exact 5 cold email scripts that our founder used to secure over 15 B2B demo bookings weekly. You simply customize the business name and hit send."
-    },
-    {
-      keywords: ["loom audit", "video outreach", "video script"],
-      q: "What is a Loom Video Audit?",
-      a: "A Loom audit is our highest-converting client acquisition weapon. You record a quick 3-minute screen capture of a local business website, show them where they are losing leads, and present a live preview of a chatbot built for them. It creates immense trust instantly."
-    },
-    {
-      keywords: ["cold call", "telemarketing", "phone call script"],
-      q: "Do you teach cold calling?",
-      a: "Yes, our training includes actual live-recorded, successful cold calls alongside our 'Ironclad Objection Handling Guide' so you know exactly how to bypass gatekeepers and lock in Zoom meetings with decision-makers."
-    },
-    {
-      keywords: ["meeting script", "how to close", "zoom sales pitch"],
-      q: "How do I pitch B2B clients on a Zoom demo?",
-      a: "We give you our high-converting 6-step sales presentation template. You will learn to focus 100% on operational business outcomes (leads captured, time saved, automated calendar bookings) rather than complex tech, making closing deals painless."
-    },
-
-    // EARNINGS, RETENTION, AND EXTRA
-    {
-      keywords: ["how much earn", "making money", "10k a month", "time to profit"],
-      q: "How long does it take to hit $10k/month?",
-      a: "Most dedicated students secure their first paying B2B client ($1,500 - $2,500) within their first 30 days of launching. Reaching $10k/month typically requires signing 4 to 5 active clients on recurring retainers."
-    },
-    {
-      keywords: ["part time", "side hustle", "have a job", "hours per week"],
-      q: "Can I do this part-time?",
-      a: "Absolutely! Building AI chatbots and managing outreach requires just 5 to 10 hours per week. Many of our most successful students launched their agencies while working full-time jobs, transitioning only when revenue grew."
-    },
-    {
-      keywords: ["english only", "hindi video", "language of course"],
-      q: "Are all the courses in English?",
-      a: "Yes, 100% of our educational content, guides, and download resources are recorded in high-quality, professional English, specifically optimized for US, UK, and global B2B agency markets."
-    },
-    {
-      keywords: ["private discord", "community group", "weekly calls"],
-      q: "Is there an active student community?",
-      a: "Yes! Every enrollment grants you immediate access to our exclusive student Discord, where you can ask daily technical questions, troubleshoot client workflows, share outreach wins, and network with fellow agency builders."
-    },
-    // 50 ADDITIONAL TRICKY B2B OBJECTION & OPERATIONS Q&As
-    {
-      keywords: ["hallucinate", "bot lie", "wrong information", "ai mistake"],
-      q: "What if the chatbot hallucinates or gives wrong information?",
-      a: "We prevent this by implementing strict system prompts and utilizing Voiceflow's Knowledge Base settings. By turning down the LLM creativity (temperature) and enforcing a rule that says 'Only answer using the provided documents; if unknown, say you will transfer to a human', the bot remains 100% accurate."
-    },
-    {
-      keywords: ["why so cheap", "scam price", "only 29", "why not charge more"],
-      q: "Why are your courses only $29 if this business model is so profitable?",
-      a: "Our goal is to build the largest community of AI automation agency owners in the world. By keeping the entry barrier low, we democratize these high-income skills. We make our revenue when successful students scale and utilize our advanced developer templates and hosting partnerships."
-    },
-    {
-      keywords: ["client refund", "refuses to pay", "chargeback", "client unhappy"],
-      q: "What if a B2B client demands a refund after the bot is built?",
-      a: "To protect yourself, we teach you to use a 50% upfront and 50% upon completion payment structure. Additionally, our provided contracts state that setup fees are non-refundable once visual layout approval is signed off. This ensures your development hours are always compensated."
-    },
-    {
-      keywords: ["who pays", "software subscription", "voiceflow bill", "make subscription"],
-      q: "Who pays for the Voiceflow and Make.com subscriptions?",
-      a: "The client always pays! During onboarding, you help the client create their own Voiceflow and Make.com accounts and link their credit card. You are then added as an editor/collaborator. You should never pay for a client's monthly software hosting out of your own pocket."
-    },
-    {
-      keywords: ["data secure", "api leak", "hack bot", "security privacy"],
-      q: "How do you protect client API keys from leaking?",
-      a: "We never expose raw API keys (like OpenAI keys) in the chatbot's front-end code. All sensitive API calls and integrations are routed through secure backend Make.com webhooks or Voiceflow's secure server-side action blocks. The end-user can never inspect or download your credentials."
-    },
-    {
-      keywords: ["custom python", "why not code", "why use no code", "writing code"],
-      q: "Why shouldn't I just build bots using custom Python code?",
-      a: "Speed and hand-off. Building bots in Python takes weeks, requires complex hosting configurations, and makes ongoing maintenance hard. Visual flowcharts (Voiceflow/Make) allow you to deliver the solution in 2 hours, monitor transcripts visually, and easily hand over control to non-technical business clients."
-    },
-    {
-      keywords: ["white label", "remove branding", "my own logo", "hide voiceflow"],
-      q: "Can I white-label the chatbots and remove the builder's logo?",
-      a: "Yes! Voiceflow's hosting widget allows you to completely customize the colors, avatar, title, and launcher icon. On their pro plans, you can entirely hide the 'Powered by Voiceflow' branding, allowing you to present the chatbot as your own proprietary software."
-    },
-    {
-      keywords: ["client rejection", "no reply", "ignored email", "fear of rejection"],
-      q: "How do I handle clients rejecting my pitches or ignoring emails?",
-      a: "Rejection is just a numbers game. If you send generic 'Hey do you want AI?' emails, you will be ignored. We teach you to send highly customized 3-minute Loom video audits showing them exactly where their booking path fails. This value-first approach results in a 40%+ meeting book rate."
-    },
-    {
-      keywords: ["send emails automatically", "make email", "auto reply mail", "crm integration"],
-      q: "Can the chatbots trigger emails or CRM updates automatically?",
-      a: "Absolutely! By connecting your Voiceflow bot to a Make.com webhook, you can trigger email notifications (via Gmail or SendGrid), sync contact leads to HubSpot or Salesforce, or send real-time SMS alerts to the business owner the second a user finishes a chat."
-    },
-    {
-      keywords: ["transfer bot", "give bot to client", "handover"],
-      q: "How do I transfer the finished chatbot to my client?",
-      a: "It takes 10 seconds. You can export your Voiceflow workflow as a `.vf` file and send it to your client to upload to their dashboard. Alternatively, you can invite them directly to your workspace using their email address and transfer ownership."
-    },
-    {
-      keywords: ["multiple languages", "translate bot", "spanish bot", "foreign language"],
-      q: "Can the chatbot converse in languages other than English?",
-      a: "Yes! Voiceflow's built-in NLU and OpenAI's translation capabilities allow the chatbot to automatically detect the user's language (e.g., Spanish, German, French) and respond fluently in that same language, without you having to translate any nodes manually."
-    },
-    {
-      keywords: ["retainer work", "what do i do monthly", "maintenance fee"],
-      q: "What do I actually do to earn a monthly maintenance retainer?",
-      a: "Your retainer coverages: 1) Analyzing conversation history to patch gaps in the knowledge base, 2) Optimizing prompts for higher booking conversions, 3) Updating menu items, phone numbers, or service prices, and 4) Providing a monthly PDF analytics report on leads generated."
-    },
-    {
-      keywords: ["is it legal", "copyright", "lawsuit", "legal risk"],
-      q: "Is it legal to build and sell these AI automations?",
-      a: "Yes, 100%. You are operating as an independent software consultant. We provide you with standard B2B developer contracts that clearly outline liability limitations, intellectual property rights, and service scopes to ensure you are fully protected legally."
-    },
-    {
-      keywords: ["already has chatbot", "competitor bot", "existing bot"],
-      q: "What if a business already has a basic chatbot on their site?",
-      a: "Most existing bots are static, rule-based popups that annoy customers. You can show them how a modern AI agent uses custom knowledge bases to answer complex questions and syncs directly to their CRM in real-time. Pitching operational automation, not just a chat widget, is the key."
-    },
-    {
-      keywords: ["schedule zoom", "calendly integration", "book call chatbot"],
-      q: "Can the bot book appointments directly into Google Calendar or Calendly?",
-      a: "Yes! You can embed Calendly booking widgets directly inside the chatbot window, or call a Make.com webhook to dynamically check free times in their Google Calendar and book the slot instantly without the customer leaving the chat."
-    },
-    {
-      keywords: ["openai billing", "api cost client", "who pays api"],
-      q: "Who pays for the OpenAI API token usage?",
-      a: "The B2B client pays. During the onboarding phase, you help the client add their credit card to platform.openai.com. They are billed directly by OpenAI for their token usage (which is extremely cheap—typically under $10-$20 a month for hundreds of client chats)."
-    },
-    {
-      keywords: ["no crm", "small business crm", "client spreadsheet"],
-      q: "What if my client doesn't use a CRM or database?",
-      a: "No problem! You can set them up with a free Google Sheet that acts as their database CRM. Make.com will automatically append every new lead's name, email, phone number, and conversation summary to a new row in that sheet, sending them an email alert."
-    },
-    {
-      keywords: ["scrape leads", "lead generation list", "find emails free"],
-      q: "Can we find and scrape business leads for free?",
-      a: "Yes! We teach you how to use free web scraping tools and Google Maps queries to compile highly targeted lists of local service businesses (like Roofers, Chiropractors, or Med Spas) along with their emails, phone numbers, and website URLs."
-    },
-    {
-      keywords: ["stuck in loop", "bot freeze", "bad routing"],
-      q: "What if the chatbot gets stuck in an infinite loop during a conversation?",
-      a: "We design all templates with safety fallbacks. If the chatbot fails to understand a user's question twice in a row, the flow automatically exits the AI loop and triggers a human handoff block, prompting the user to leave their phone number for callback."
-    },
-    {
-      keywords: ["how paid", "invoice client", "receive money"],
-      q: "How do I charge and receive payments from my B2B clients?",
-      a: "You can use Stripe Billing or PayPal Invoicing to send professional, secure invoices to your clients. You can configure them to charge setup fees upfront, and automatically deduct recurring monthly retainer fees from their credit card."
-    },
-    {
-      keywords: ["any country", "global business", "india europe africa"],
-      q: "Can I run this agency model from any country in the world?",
-      a: "Yes! Because outreach, development, deployment, and billing are handled 100% digitally online, you can operate this business from anywhere. You can sit in Europe or India and close clients in the United States without issue."
-    },
-    {
-      keywords: ["legal contract", "agreement template", "service contract"],
-      q: "Do you provide legal contract templates for signing clients?",
-      a: "Yes! The 'AAA Full Blueprint' masterclass includes downloadable, attorney-reviewed B2B contract templates. You simply replace the placeholder fields with your agency name, the client's name, and the agreed pricing."
-    },
-    {
-      keywords: ["no website", "client has no site", "facebook only page"],
-      q: "What if a local business wants a chatbot but doesn't have a website?",
-      a: "You can offer to build them a clean, modern 1-page landing page on Carrd or Framer for an extra $500, embed the chatbot directly onto that landing page, and run their ads to it. This turns a single chatbot sale into a larger agency bundle!"
-    },
-    {
-      keywords: ["sms reminder", "twilio SMS", "text customer bot"],
-      q: "Can the bot send SMS reminders to customers automatically?",
-      a: "Yes! By integrating Twilio or Vonage nodes into Make.com, you can automatically send a customized text message to the customer confirming their booked appointment, and follow up with a reminder 2 hours before the meeting."
-    },
-    {
-      keywords: ["need llc", "register company", "business license"],
-      q: "Do I need to register an LLC or company before launching?",
-      a: "No. You can easily start as a sole proprietor under your personal name. Registering an LLC or local business entity is only recommended once you scale to multiple active clients and are generating consistent, high-margin monthly income."
-    },
-    {
-      keywords: ["roofers plumbers", "local contractors", "pitch contractors"],
-      q: "How do I pitch AI chatbots to local contractors like roofers or plumbers?",
-      a: "Focus 100% on missed phone calls. Local roofers are often on-site and miss 40% of calls. Explain that an automated web chatbot can capture lead names, issue budget quotes, and book emergency inspection slots 24/7, preventing them from losing jobs to competitors."
-    },
-    {
-      keywords: ["stop paying", "client cancels", "unpaid invoice"],
-      q: "What if a client stops paying their monthly retainer?",
-      a: "Since you host the bot credentials or manage the integration hook, you hold complete leverage. If an invoice remains unpaid after a 5-day grace period, you simply pause the webhook on Make.com or turn off the widget, taking the bot offline until payment clears."
-    },
-    {
-      keywords: ["how many clients", "5 clients", "10k math"],
-      q: "How many clients do I need to reach $10,000 per month?",
-      a: "Only 4 or 5! If you secure 5 clients paying a $1,500 setup fee + a $500 monthly recurring retainer, your initial month brings in $10,000, and you lock in $2,500/mo in pure passive MRR. Signing 1-2 new clients monthly scales you rapidly."
-    },
-    {
-      keywords: ["voice call agent", "vapi retell", "phone calling bot"],
-      q: "Can we build AI voice assistants that talk on the phone?",
-      a: "Yes! Tools like Vapi.ai and Retell AI allow you to build voice bots that dial customers or answer calls. Our advanced modules explain how to link these systems to Voiceflow logic templates for complete automation pipelines."
-    },
-    {
-      keywords: ["make vs zapier", "zapier cost", "why use make"],
-      q: "Why do you recommend Make.com over Zapier?",
-      a: "Zapier is extremely expensive (charging heavily per task) and has a rigid, linear dashboard. Make.com is 10x cheaper, allows multi-branch visual routing, and handles complex loops and data parsing much better for agencies."
-    },
-    {
-      keywords: ["free bot demo", "mockup bot", "free trial bot"],
-      q: "Should I build a free chatbot mockup to close clients?",
-      a: "Yes! Building a basic lead booking bot with the client's logo takes under 20 minutes using our pre-built vaults. Sending them a video of their own customized bot in action makes it almost impossible for them to say no."
-    },
-    {
-      keywords: ["read pdf", "read image", "multimodal bot"],
-      q: "Can the chatbots analyze images, PDFs, or uploaded files?",
-      a: "Yes! Voiceflow supports multimodal elements. You can configure your OpenAI-backed bots to let users upload PDF medical forms, invoice images, or text documents and have the AI extract and summarize the contents instantly."
-    },
-    {
-      keywords: ["older business owner", "explain to old business", "no tech jargon"],
-      q: "How do I explain AI automation to older, non-tech business owners?",
-      a: "Never say keywords like 'GPT-4', 'API Webhooks', or 'NLU Intent'. Instead, tell them: 'We build an online receptionist that answers customer queries on your site 24/7 and books appointments directly to your calendar.' Simple value beats tech jargon."
-    },
-    {
-      keywords: ["pay taxes", "agency tax", "write off expenses"],
-      q: "How do I handle taxes for my AI agency?",
-      a: "You report your agency revenue as self-employment income on your local tax returns. Keep track of all software subscriptions (Voiceflow, Make), domain hosting, and course expenses, as these can be written off to lower your tax bill."
-    },
-    {
-      keywords: ["facebook messenger bot", "whatsapp bot", "telegram bot"],
-      q: "Can we deploy these chatbots to Facebook Messenger and WhatsApp?",
-      a: "Yes! Voiceflow supports direct integrations and API extensions to route the chatbot conversations to WhatsApp, Facebook Messenger, Instagram DMs, and Telegram, allowing you to charge clients for omnichannel setup."
-    },
-    {
-      keywords: ["custom dashboard", "client portal sheets"],
-      q: "Can we build custom dashboards for clients to view their leads?",
-      a: "Yes! By routing Make.com leads to a Google Sheet, you can easily connect it to a free no-code app builder like Glide or Softr to give your client a beautiful, customized mobile app where they can view their bot analytics."
-    },
-    {
-      keywords: ["wrong price bot", "bot mistake price", "incorrect quote"],
-      q: "How do we prevent the AI bot from quoting the wrong price to a customer?",
-      a: "Never let the AI guess prices. We hardcode service prices as fixed parameters (variables) in the bot workflow. If a user asks for a price quote, the bot pulls the exact numbers from the variable, guaranteeing the quote is always correct."
-    },
-    {
-      keywords: ["dental chatbot", "chiropractor bot", "medical booking"],
-      q: "Why are dental clinics and chiropractors such high-converting niches?",
-      a: "Because service appointments are high-ticket. A dental clinic checkup or cosmetic session can be worth $500+. If your bot saves just 2 appointments a month that otherwise would have been lost after-hours, they easily make back their investment."
-    },
-    {
-      keywords: ["marketing experience", "never sold", "closing clients help"],
-      q: "Can I succeed if I have zero marketing or sales experience?",
-      a: "Yes. Our client acquisition training is built for introverts. You don't do high-pressure sales calls; you simply send value-first Loom screen recordings of mockup bots. The software sells itself when owners see it working."
-    },
-    {
-      keywords: ["hipaa compliant", "medical data safety", "privacy clinic"],
-      q: "How do I make my AI chatbot systems HIPAA compliant for medical clinics?",
-      a: "For dentists or chiropractors, we program the bot to answer general FAQ questions only. If a patient wants to book or share medical records, the bot passes them to a secure, HIPAA-compliant third-party portal link (like Phreesia or Kareo)."
-    },
-    {
-      keywords: ["intent detection", "bot understand customer", "nlu logic"],
-      q: "How does the bot understand what the user wants?",
-      a: "Voiceflow uses a visual Natural Language Understanding (NLU) engine. We set up 'Intents' (like booking, pricing, hours) and feed them example phrases. The AI automatically classifies what the customer is asking and routes them correctly."
-    },
-    {
-      keywords: ["bad website traffic", "no visitors", "client site bad traffic"],
-      q: "What if my client has a chatbot but has no website traffic?",
-      a: "A chatbot cannot generate leads if nobody visits the site. In our agency guides, we teach you how to upsell local SEO optimization, Google Business Profile setups, or simple Google Ads setup services to drive traffic to their bot."
-    },
-    {
-      keywords: ["learn make.com time", "time make com"],
-      q: "How long does it take to learn Make.com from scratch?",
-      a: "By following our step-by-step video workflows, you will understand the fundamentals of webhooks, routing, and modules in under 3 days. We give you downloadable JSON templates so you don't even have to start from scratch."
-    },
-    {
-      keywords: ["whatsapp api", "whatsapp business", "whatsapp cost"],
-      q: "Is it expensive to build chatbots for WhatsApp?",
-      a: "Building is free. Hosting requires a WhatsApp Business API account (typically through Twilio or 360dialog) which costs around $5-$15 a month. You simply package this fee into your client's monthly hosting retainer."
-    },
-    {
-      keywords: ["client interested", "client reply", "pitch response"],
-      q: "How do I know if a client is interested in my audit pitch?",
-      a: "When you send a Loom video audit, Loom tracks views. If the client opens the video, watches it, and replies to your email asking for a live demo within 24-48 hours, they are highly qualified and ready to be closed on Zoom."
-    },
-    {
-      keywords: ["mac or windows", "system specs developer"],
-      q: "Do I need a powerful computer or Mac to build chatbots?",
-      a: "No! All the development tools we use (Voiceflow, Make.com, OpenAI API, and Stripe) are 100% web-based. You can build and deploy everything on a basic Chromebook, a Mac, or a standard Windows laptop with an internet connection."
-    },
-    {
-      keywords: ["competitor steal client", "lose client"],
-      q: "How do I prevent competitors from stealing my B2B clients?",
-      a: "By building deep operations integrations. A competitor can copy a simple FAQ chatbot, but they cannot easily copy custom Make.com CRM synchronizations or database automations that run your client's backend business. Deep automations build high client loyalty."
-    },
-    {
-      keywords: ["refund purchase guarantee", "want refund"],
-      q: "Can I get a refund on my AgentOS Academy purchase?",
-      a: "Yes! We offer a no-questions-asked 14-Day Money-Back Guarantee. If the visual assets, blueprints, templates, and video masterclasses do not meet your expectations, email amritgupta0412@gmail.com and we will issue a full refund."
-    },
-    {
-      keywords: ["stuck coding", "coding support help"],
-      q: "Where do I get technical help if I get stuck while building a bot?",
-      a: "Our private student Discord is active 24/7. You can post screenshots of your Make.com routing errors or Voiceflow variables, and our community moderators or senior agency builders will jump in to debug your workflow."
-    }
+    { keywords: ["what is cor", "chain of responsibility", "explain cor", "cor meaning"], q: "What is Chain of Responsibility?", a: "Chain of Responsibility (CoR) is the legal framework under Australia's Heavy Vehicle National Law (HVNL) that extends safety obligations beyond the driver to ALL parties who influence or control transport activities — including employers, schedulers, loaders, consignors, consignees, and executive officers." },
+    { keywords: ["hvnl 2026", "reform", "what changes", "new law", "august 2026"], q: "What changes with the HVNL 2026 reforms?", a: "Major changes include: mandatory Safety Management Systems (SMS), new Two-Tier HVA accreditation replacing NHVAS, expanded 'Unfit to Drive' duties covering illness and mental health, increased mass limits, extended length limits (19m → 20m), and a new PSOE audit standard. There is <strong>no grace period</strong> — compliance is required from Day One (1 August 2026)." },
+    { keywords: ["fatigue", "hours", "rest break", "how long drive", "standard hours"], q: "What are the fatigue management rules?", a: "Under Standard Hours: max 12 hours work in 24 hours, 7 continuous hours rest, and max 72 hours in 7 days. Under BFM: max 14 hours in 24 hours, with specific break thresholds at 6.25h, 9h, and 12h. A 24-hour rest break is required after 84 hours of work." },
+    { keywords: ["bfm", "basic fatigue management", "afm", "advanced fatigue"], q: "What is BFM and AFM?", a: "BFM (Basic Fatigue Management) allows extended driving hours (up to 14h/day) with NHVAS accreditation and TLIF0005 training. AFM (Advanced Fatigue Management) uses a custom risk-based safety case. Under the 2026 reforms, both are being replaced by the new Alternative Compliance Accreditation (ACA) framework." },
+    { keywords: ["load restraint", "how secure load", "tie down", "lashing"], q: "What are the load restraint requirements?", a: "Loads must be restrained to withstand: <strong>0.8g forward</strong>, <strong>0.5g sideways and rearward</strong>, and <strong>0.2g vertically upward</strong>. Methods include lashing (tie-downs), blocking, containing, and combinations. All loads must be inspected before departure." },
+    { keywords: ["penalty", "fine", "jail", "prosecution", "consequences"], q: "What are the penalties for non-compliance?", a: "Penalties include substantial financial fines for both individuals and businesses, criminal prosecution, and potential imprisonment. Executive officers face personal liability. The duty <strong>cannot be transferred, delegated, or contracted away</strong>." },
+    { keywords: ["mass limit", "gml", "cml", "hml", "weight limit", "axle"], q: "What are the mass limits?", a: "Under the 2026 reforms, General Mass Limits (GML) are being increased to current Concessional Mass Limits (CML) levels. Higher Mass Limits (HML) require additional accreditation. Axle group limits vary by configuration. Our Mass Management course covers all limits in detail." },
+    { keywords: ["sms", "safety management system", "psoe", "audit"], q: "What is a Safety Management System (SMS)?", a: "An SMS is now mandatory under the new HVA accreditation. It must demonstrate 5 core outcomes: Leadership & Commitment, Risk Management, People, Assurance & Improvement, and Safety Systems. Audits use the PSOE methodology: Present → Suitable → Operating → Effective." },
+    { keywords: ["work diary", "ewd", "electronic work diary", "logbook"], q: "Do I need a work diary?", a: "You must carry a work diary if you travel more than 100km from your base under Standard Hours, or at all times under BFM. Electronic Work Diaries (EWDs) are approved as an alternative to paper work diaries and are becoming the industry standard." },
+    { keywords: ["certificate", "accredited", "rto", "qualification"], q: "Are your courses nationally accredited?", a: "Our courses provide awareness-level compliance training with a Certificate of Completion. They are not nationally accredited RTO qualifications. For units like TLIF0005 or TLIF0009, we recommend pairing our training with an accredited RTO assessment for formal certification." },
+    { keywords: ["price", "cost", "how much", "fee", "payment"], q: "How much do the courses cost?", a: "Individual courses range from <strong>AUD $79 to $299</strong>. Our best value is the HVNL 2026 Reform Readiness Bundle at <strong>AUD $499</strong> (saving over $500 vs buying separately). All purchases are one-time with lifetime access." },
+    { keywords: ["refund", "money back", "guarantee", "cancel"], q: "Do you offer refunds?", a: "Yes! We offer a <strong>14-day money-back guarantee</strong> on all courses. If the training doesn't meet your expectations, email support@SafeFleetacademy.com for a full refund." },
+    { keywords: ["contact", "email", "phone", "support", "help"], q: "How can I contact support?", a: "You can reach us at <strong>support@SafeFleetacademy.com</strong>. We aim to respond within 24 hours on business days." },
+    { keywords: ["team", "corporate", "bulk", "company training", "enterprise"], q: "Do you offer team/corporate training?", a: "Yes! We offer volume pricing for teams of 5 or more, with dedicated progress tracking and team dashboards. Contact support@SafeFleetacademy.com for a custom corporate training quote." },
+    { keywords: ["which states", "western australia", "northern territory", "wa", "nt"], q: "Which states does the HVNL apply to?", a: "The HVNL applies in ACT, NSW, QLD, SA, TAS, and VIC. Western Australia and the Northern Territory operate under their own legislation, though many core principles (CoR, fatigue, load restraint) are similar." },
+    { keywords: ["unfit to drive", "fitness for duty", "illness", "drugs", "alcohol"], q: "What is the 'Unfit to Drive' duty?", a: "Under the 2026 reforms, the 'Unfit to Drive' duty has been expanded beyond just fatigue. It now covers illness, injury, mental health impairment, and the effects of drugs or alcohol. Both drivers and their employers share this duty." },
+    { keywords: ["nhvas", "hva", "accreditation", "transition"], q: "What happens to NHVAS accreditation?", a: "NHVAS is being replaced by the new Heavy Vehicle Accreditation (HVA) scheme under the 2026 reforms. It has two tiers: General Safety Accreditation (GSA) as the new baseline, and Alternative Compliance Accreditation (ACA) replacing BFM/AFM. Existing NHVAS operators have up to 3 years to transition." },
+    { keywords: ["how long", "duration", "time to complete"], q: "How long do courses take?", a: "Most individual modules take 2–4 hours to complete. They are fully self-paced — study on any device, anytime. The complete Reform Readiness Bundle takes approximately 15–20 hours total." },
+    { keywords: ["login", "portal", "access course", "dashboard"], q: "How do I access my courses?", a: "After purchasing, click 'My Portal' in the top menu or go directly to the login page. Enter the email and password you created during checkout to access your training dashboard." },
+    { keywords: ["driver shortage", "industry", "jobs", "career"], q: "Is there a driver shortage in Australia?", a: "Yes! Australia currently has approximately 28,000 unfilled heavy vehicle driver positions, projected to reach 78,000 by 2029. Compliance training strengthens your credentials and career prospects in this high-demand industry." },
+    { keywords: ["us dot", "fmcsa", "american", "united states"], q: "Do you cover US DOT compliance?", a: "Our primary focus is Australian HVNL compliance. However, many safety principles (fatigue management, load restraint, chain of responsibility) align with US DOT/FMCSA regulations. We are developing US-specific modules — contact us for early access." }
   ];
 
-  // Fuzzy matching system to locate the best response
   function findBestAnswer(query) {
     const cleanQuery = query.toLowerCase().replace(/[^\w\s]/gi, '').trim();
     if (!cleanQuery) return null;
-
-    let bestMatch = null;
-    let highestScore = 0;
-
+    let bestMatch = null, highestScore = 0;
     chatbotKB.forEach(item => {
       let score = 0;
       item.keywords.forEach(kw => {
-        // Direct matching checks
-        if (cleanQuery.includes(kw)) {
-          score += 15; // Primary keyword match
-        }
-        // Split word matches for density
+        if (cleanQuery.includes(kw)) score += 15;
         const queryWords = cleanQuery.split(' ');
         const kwWords = kw.split(' ');
-        let wordMatches = 0;
-        queryWords.forEach(qw => {
-          if (kwWords.includes(qw) && qw.length > 2) {
-            wordMatches++;
-          }
-        });
-        score += wordMatches * 3;
+        queryWords.forEach(qw => { if (kwWords.includes(qw) && qw.length > 2) score += 3; });
       });
-
-      if (score > highestScore) {
-        highestScore = score;
-        bestMatch = item;
-      }
+      if (score > highestScore) { highestScore = score; bestMatch = item; }
     });
-
-    // Enforce a minimum confidence threshold
     return highestScore >= 5 ? bestMatch : null;
   }
 
   function toggleChat() {
     const chatWin = document.getElementById('chat-window');
     const toggleBtn = document.getElementById('chat-toggle-btn');
-    if (chatWin.style.display === 'none') {
+    if (chatWin.style.display === 'none' || !chatWin.style.display) {
       chatWin.style.display = 'flex';
       toggleBtn.style.display = 'none';
-      initializeChatChips(); // Append chips on open
+      initializeChatChips();
+      if (document.getElementById('chat-messages').children.length === 0) {
+        appendBotMessage("G'day! 👋 I'm your SafeFleet Academy assistant. Ask me anything about heavy vehicle compliance, HVNL 2026 reforms, or our training courses.");
+      }
     } else {
       chatWin.style.display = 'none';
       toggleBtn.style.display = 'flex';
@@ -1589,197 +919,52 @@
   }
 
   function appendBotMessage(text) {
-    const msgsContainer = document.getElementById('chat-messages');
-    const botDiv = document.createElement('div');
-    botDiv.style.cssText = 'background: rgba(255,255,255,0.05); padding: 12px; border-radius: 12px 12px 12px 0; max-width: 80%; border: 1px solid var(--border-dim); color:#f8fafc; line-height:1.5;';
-    botDiv.innerHTML = text;
-    msgsContainer.appendChild(botDiv);
-    msgsContainer.scrollTop = msgsContainer.scrollHeight;
+    const container = document.getElementById('chat-messages');
+    const div = document.createElement('div');
+    div.style.cssText = 'background: rgba(245, 158, 11, 0.08); padding: 12px; border-radius: 12px 12px 12px 0; max-width: 85%; border: 1px solid rgba(245, 158, 11, 0.15); color: #f1f5f9; line-height: 1.5; font-size: 14px;';
+    div.innerHTML = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function appendUserMessage(text) {
+    const container = document.getElementById('chat-messages');
+    const div = document.createElement('div');
+    div.style.cssText = 'background: var(--amber); color: #0f172a; padding: 10px 14px; border-radius: 12px 12px 0 12px; max-width: 75%; align-self: flex-end; font-size: 14px; font-weight: 500;';
+    div.textContent = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function sendChat() {
+    const input = document.getElementById('chatInput');
+    const query = input.value.trim();
+    if (!query) return;
+    appendUserMessage(query);
+    input.value = '';
+
+    setTimeout(() => {
+      const match = findBestAnswer(query);
+      if (match) {
+        appendBotMessage(match.a);
+      } else {
+        appendBotMessage("I don't have a specific answer for that, but our support team can help! Reach out at <strong>support@SafeFleetacademy.com</strong> or browse our <a href='#faq' style='color: var(--amber);'>FAQ section</a>.");
+      }
+    }, 600);
   }
 
   function initializeChatChips() {
-    // Avoid double rendering
-    if (document.getElementById('welcome-chips')) return;
-    
-    const msgsContainer = document.getElementById('chat-messages');
-    const chipsDiv = document.createElement('div');
-    chipsDiv.id = 'welcome-chips';
-    chipsDiv.style.cssText = 'display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; margin-bottom: 8px;';
-    
-    const chips = [
-      { text: "How do I get B2B clients? 💼", query: "find client" },
-      { text: "Do I need coding? 💻", query: "need coding" },
-      { text: "What is the price? 💰", query: "price" },
-      { text: "What is an AI Agency? 🤖", query: "what is aaa" }
-    ];
-
-    chips.forEach(c => {
-      const btn = document.createElement('button');
-      btn.style.cssText = 'background: rgba(0, 229, 255, 0.08); border: 1px solid var(--neon-blue); color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 11px; cursor: pointer; font-family: "Space Grotesk"; font-weight: 700; transition: all 0.2s;';
-      btn.innerText = c.text;
-      btn.onclick = () => {
-        // Send query automatically
-        document.getElementById('chat-input').value = c.text;
-        sendChatMessage();
-      };
-      btn.onmouseover = () => { btn.style.background = 'rgba(0, 229, 255, 0.2)'; };
-      btn.onmouseout = () => { btn.style.background = 'rgba(0, 229, 255, 0.08)'; };
-      chipsDiv.appendChild(btn);
+    const container = document.getElementById('chatChips');
+    if (container.children.length > 0) return;
+    const chips = ['What is CoR?', 'HVNL 2026 changes', 'Course pricing', 'Fatigue rules', 'Load restraint'];
+    chips.forEach(text => {
+      const chip = document.createElement('span');
+      chip.className = 'chip';
+      chip.textContent = text;
+      chip.onclick = () => { document.getElementById('chatInput').value = text; sendChat(); };
+      container.appendChild(chip);
     });
-
-    msgsContainer.appendChild(chipsDiv);
-    msgsContainer.scrollTop = msgsContainer.scrollHeight;
   }
-
-  function sendChatMessage() {
-    const input = document.getElementById('chat-input');
-    const msg = input.value.trim();
-    if(!msg) return;
-    
-    const msgsContainer = document.getElementById('chat-messages');
-    
-    // User message
-    const userDiv = document.createElement('div');
-    userDiv.style.cssText = 'background: rgba(0, 229, 255, 0.1); padding: 12px; border-radius: 12px 12px 0 12px; max-width: 80%; border: 1px solid rgba(0, 229, 255, 0.3); align-self: flex-end; color: #fff; line-height: 1.4;';
-    userDiv.innerText = msg;
-    msgsContainer.appendChild(userDiv);
-    input.value = '';
-    msgsContainer.scrollTop = msgsContainer.scrollHeight;
-
-    // Check FAQ match
-    const match = findBestAnswer(msg);
-
-    // Bot response logic
-    setTimeout(() => {
-      if (match) {
-        appendBotMessage(`<strong>${match.q}</strong><br><br>${match.a}`);
-        
-        // Follow up with lead capture offer dynamically
-        if (chatStep < 3) {
-          setTimeout(() => {
-            appendBotMessage("By the way, if you want our free <strong>$10K/mo AI Agency Roadmap</strong> and templates, click here or tell me your first name!");
-          }, 1500);
-        }
-      } else {
-        // Standard Lead Capture logic if not a specific question
-        if(chatStep === 0) {
-          appendBotMessage("Awesome! 🚀 To get you started on your agency roadmap, what is your first name?");
-          chatStep++;
-        } else if (chatStep === 1) {
-          leadData.name = msg;
-          appendBotMessage(`Nice to meet you, ${msg}! 👋 What is your phone number so my team can text you the Masterclass link?`);
-          chatStep++;
-        } else if (chatStep === 2) {
-          leadData.phone = msg;
-          
-          // POST lead to database
-          fetch('/api/capture_lead', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(leadData)
-          });
-
-          appendBotMessage("Perfect! I've sent your info to our live agents. They will reach out shortly. In the meantime, check out our Video Store! 🎥");
-          chatStep++;
-        } else {
-          appendBotMessage("Click the 'Store' link in the top menu to view our full collection of Video Masterclasses, or ask me anything else about AI Automation Agencies!");
-        }
-      }
-    }, 800);
-  }
-
-  document.getElementById('chat-input').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') sendChatMessage();
-  });
-
-  document.getElementById('chat-input').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') sendChatMessage();
-  });
-
-  // Init
-  updateCartCount();
-
-  // ==================== COUNTDOWN TIMER ====================
-  function startCountdown() {
-    // Always shows ~23 hours remaining (resets each visit for urgency)
-    let stored = localStorage.getItem('agentos_cd_end');
-    let endTime;
-    if (stored && parseInt(stored) > Date.now()) {
-      endTime = parseInt(stored);
-    } else {
-      // Random between 18-47 hours from now
-      const hrs = 18 + Math.floor(Math.random() * 30);
-      endTime = Date.now() + (hrs * 60 * 60 * 1000);
-      localStorage.setItem('agentos_cd_end', endTime.toString());
-    }
-    setInterval(() => {
-      const diff = endTime - Date.now();
-      if (diff <= 0) {
-        localStorage.removeItem('agentos_cd_end');
-        startCountdown();
-        return;
-      }
-      const h = Math.floor(diff / 3600000);
-      const m = Math.floor((diff % 3600000) / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
-      document.getElementById('cd-hours').textContent = h.toString().padStart(2, '0');
-      document.getElementById('cd-mins').textContent = m.toString().padStart(2, '0');
-      document.getElementById('cd-secs').textContent = s.toString().padStart(2, '0');
-    }, 1000);
-  }
-  startCountdown();
-
-  // ==================== SOCIAL PROOF POPUPS ====================
-  const socialProofData = [
-    { name: 'James R.', location: 'Austin, TX', item: 'The AAA Full Blueprint', time: '2 minutes ago' },
-    { name: 'Emily K.', location: 'London, UK', item: 'Plug & Play Bot Templates', time: '5 minutes ago' },
-    { name: 'Michael T.', location: 'New York, NY', item: 'Client Acquisition Toolkit', time: '8 minutes ago' },
-    { name: 'Sarah L.', location: 'Toronto, CA', item: 'Advanced Make.com Workflows', time: '12 minutes ago' },
-    { name: 'David W.', location: 'Sydney, AU', item: 'The AAA Full Blueprint', time: '15 minutes ago' },
-    { name: 'Chris P.', location: 'Chicago, IL', item: 'Plug & Play Bot Templates', time: '18 minutes ago' },
-    { name: 'Jessica M.', location: 'Manchester, UK', item: 'Client Acquisition Toolkit', time: '22 minutes ago' },
-    { name: 'Robert A.', location: 'San Francisco, CA', item: 'Advanced Make.com Workflows', time: '25 minutes ago' },
-    { name: 'Amanda H.', location: 'Miami, FL', item: 'The AAA Full Blueprint', time: '31 minutes ago' },
-    { name: 'Daniel B.', location: 'Seattle, WA', item: 'Plug & Play Bot Templates', time: '38 minutes ago' },
-    { name: 'Olivia S.', location: 'Dublin, IE', item: 'The AAA Full Blueprint', time: '42 minutes ago' },
-    { name: 'Nathan G.', location: 'Denver, CO', item: 'Client Acquisition Toolkit', time: '48 minutes ago' },
-  ];
-
-  let proofIndex = 0;
-  function showSocialProof() {
-    const data = socialProofData[proofIndex % socialProofData.length];
-    proofIndex++;
-    
-    const popup = document.createElement('div');
-    popup.id = 'social-proof-popup';
-    popup.innerHTML = `
-      <div style="display:flex;align-items:center;gap:12px;">
-        <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#00e5ff,#b537f2);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#000;flex-shrink:0;">${data.name.charAt(0)}</div>
-        <div>
-          <div style="font-family:'Space Grotesk';font-weight:700;font-size:14px;color:#fff;">${data.name} <span style="font-weight:400;color:var(--text-secondary);font-size:12px;">from ${data.location}</span></div>
-          <div style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Purchased <span style="color:var(--neon-blue);font-weight:600;">${data.item}</span></div>
-          <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;font-family:'JetBrains Mono';">${data.time} ✓ Verified</div>
-        </div>
-      </div>
-    `;
-    popup.style.cssText = 'position:fixed;bottom:24px;left:24px;background:rgba(12,12,14,0.95);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 20px;z-index:9998;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,0.6);max-width:360px;transform:translateX(-120%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);';
-    document.body.appendChild(popup);
-    
-    // Slide in
-    setTimeout(() => popup.style.transform = 'translateX(0)', 100);
-    // Slide out after 4.5s
-    setTimeout(() => {
-      popup.style.transform = 'translateX(-120%)';
-      setTimeout(() => popup.remove(), 500);
-    }, 4500);
-  }
-
-  // Start after 8 seconds, repeat every 25-40 seconds
-  setTimeout(() => {
-    showSocialProof();
-    setInterval(showSocialProof, 25000 + Math.random() * 15000);
-  }, 8000);
-
 </script>
 </body>
 </html>

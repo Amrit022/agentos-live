@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18174625300"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18174625300');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms of Service — AgentOS</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
+<title>Terms of Service — SafeFleet Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-void: #000000;
+    --bg-void: #0f172a;
     --border-dim: rgba(255, 255, 255, 0.08);
-    --neon-blue: #00e5ff;
+    --accent-amber: #f59e0b;
+    --accent-blue: #3b82f6;
     --text-primary: #ffffff;
-    --text-secondary: #8892b0;
+    --text-secondary: #94a3b8;
   }
   body {
     background-color: var(--bg-void);
     color: var(--text-primary);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 1.8;
     margin: 0;
@@ -41,52 +51,70 @@
     padding: 0 24px;
   }
   h1 { font-family: 'Space Grotesk', sans-serif; font-size: 48px; margin-bottom: 24px; }
-  h2 { font-family: 'Space Grotesk', sans-serif; font-size: 24px; margin-top: 48px; margin-bottom: 16px; color: var(--neon-blue); }
+  h2 { font-family: 'Space Grotesk', sans-serif; font-size: 24px; margin-top: 48px; margin-bottom: 16px; color: var(--accent-amber); }
   p { color: var(--text-secondary); margin-bottom: 16px; }
   ul { color: var(--text-secondary); margin-bottom: 16px; padding-left: 24px; }
   li { margin-bottom: 8px; }
+  .disclaimer-box {
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 32px 0;
+    color: var(--text-secondary);
+  }
+  .disclaimer-box strong { color: var(--accent-amber); }
 </style>
 </head>
 <body>
 
 <nav>
   <a href="/" class="nav-logo">
-    <img src="/static/logo.png" alt="AgentOS Logo" style="width: 32px; height: 32px; border-radius: 6px;">
-    Agent<span style="color: var(--neon-blue);">OS</span>
+    <img src="/static/logo.png" alt="SafeFleet Academy Logo" style="width: 32px; height: 32px; border-radius: 6px;">
+    SafeFleet<span style="color: #f59e0b;"> Academy</span>
   </a>
   <a href="/" style="color: var(--text-secondary); text-decoration: none;">Back to Home</a>
 </nav>
 
 <div class="container">
   <h1>Terms of Service</h1>
-  <p><strong>Last Updated: May 2026</strong></p>
+  <p><strong>Last Updated: June 2026</strong></p>
   
-  <p>Welcome to AgentOS. By accessing our platform, purchasing our templates, or enrolling in our Masterclass, you agree to be bound by these Terms of Service.</p>
+  <p>Welcome to SafeFleet Academy (operated via SafeFleetacademy.com). By accessing our platform, purchasing training modules, or enrolling in our compliance courses, you agree to be bound by these Terms of Service.</p>
 
-  <h2>1. AI Liability & Accuracy (Hallucinations)</h2>
-  <p>Our training materials teach you how to integrate powerful Large Language Models (LLMs) via APIs. You acknowledge that:</p>
+  <div class="disclaimer-box">
+    <strong>⚠️ Important Training Disclaimer:</strong> SafeFleet Academy courses are <strong>awareness-level training</strong> designed for educational purposes. They are <strong>not</strong> nationally accredited Registered Training Organisation (RTO) certification courses. Completion of our modules does not replace any mandatory accreditation, licensing, or certification requirements under the Heavy Vehicle National Law (HVNL) or any state/territory regulations.
+  </div>
+
+  <h2>1. Nature of Training Content</h2>
+  <p>Our training materials cover heavy vehicle compliance topics including Chain of Responsibility (CoR), Fatigue Management, Mass/Dimension/Loading, Load Restraint, Safety Management Systems, and HVNL 2026 reforms. You acknowledge that:</p>
   <ul>
-    <li>AI models are prone to generating inaccurate information, commonly known as "hallucinations."</li>
-    <li>AgentOS is not liable for any financial, reputational, or business losses incurred by you or your clients resulting from the actions, responses, or failures of the AI bots you build.</li>
-    <li>You are solely responsible for testing and implementing safety guardrails on your AI deployments.</li>
+    <li>All content is provided for <strong>educational awareness only</strong> and does not constitute legal, regulatory, or professional advice.</li>
+    <li>SafeFleet Academy is not liable for any penalties, fines, enforcement actions, or losses arising from your reliance on our training content as a substitute for professional legal counsel or accredited training.</li>
+    <li>You are solely responsible for ensuring your operations meet all applicable regulatory requirements under the HVNL and relevant state/territory laws.</li>
+    <li>Regulatory requirements may change. While we endeavour to keep content current, you should always verify information against official NHVR and state/territory transport authority publications.</li>
   </ul>
 
-  <h2>2. Compliance and Anti-Spam (TCPA/GDPR)</h2>
-  <p>When utilizing our CRM automation blueprints or AI voice agent guides, you agree to comply with all local and international communications laws, including but not limited to the TCPA (Telephone Consumer Protection Act) and GDPR.</p>
-  <p>AgentOS strictly prohibits the use of our templates to generate spam, unauthorized robocalls, or unsolicited marketing sequences.</p>
+  <h2>2. Compliance Obligations</h2>
+  <p>Our training is designed to improve your awareness of compliance obligations under Australian heavy vehicle law. However:</p>
+  <ul>
+    <li>Completing our courses does <strong>not</strong> guarantee compliance with any regulatory framework.</li>
+    <li>You remain responsible for implementing appropriate compliance systems, policies, and procedures within your organisation.</li>
+    <li>SafeFleet Academy does not act as a compliance auditor, legal advisor, or regulatory body.</li>
+  </ul>
 
   <h2>3. Intellectual Property</h2>
-  <p>When you purchase digital products from AgentOS:</p>
+  <p>When you purchase training modules from SafeFleet Academy:</p>
   <ul>
-    <li><strong>Templates:</strong> You are granted a commercial license to use, modify, and resell the customized *output* (i.e., selling a finished bot to a client).</li>
-    <li><strong>Masterclass Content:</strong> You are strictly prohibited from redistributing, ripping, or repackaging the Masterclass videos, guides, or core code architectures as a competing educational product.</li>
+    <li><strong>Training Content:</strong> You are granted a personal, non-transferable licence to access and view the purchased training materials for your own professional development or for use within your organisation's internal training programs.</li>
+    <li><strong>Redistribution:</strong> You are strictly prohibited from redistributing, copying, screen-recording, or repackaging our training videos, guides, assessments, or course materials as a competing educational product.</li>
   </ul>
 
-  <h2>4. Earnings Disclaimer</h2>
-  <p>Any revenue figures or case studies presented on the AgentOS website are illustrative of potential success and do not guarantee identical outcomes. Building a successful AI Automation Agency requires significant effort, sales skills, and market timing.</p>
+  <h2>4. Limitation of Liability</h2>
+  <p>SafeFleet Academy provides training for educational awareness purposes. We are not responsible for any regulatory non-compliance, enforcement actions, fines, or business losses that may occur. Our training supplements — but does not replace — professional compliance advice, accredited RTO courses, or official NHVR guidance.</p>
 
   <h2>5. Refund Policy</h2>
-  <p>Due to the non-returnable nature of digital knowledge products, databases, and code templates, all sales are considered final unless explicitly stated otherwise during the checkout process.</p>
+  <p>Due to the non-returnable nature of digital training content, all sales are considered final unless explicitly stated otherwise during the checkout process. If you experience technical issues accessing your training portal, please contact us at <a href="mailto:support@SafeFleetacademy.com" style="color: var(--accent-amber);">support@SafeFleetacademy.com</a>.</p>
 </div>
 
 </body>

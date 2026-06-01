@@ -28,24 +28,25 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Secure Checkout — AgentOS</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Secure Checkout — SafeFleet Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-void: #000000;
-    --card-surface: rgba(12, 12, 14, 0.7);
+    --bg-void: #0f172a;
+    --card-surface: rgba(15, 23, 42, 0.85);
     --border-dim: rgba(255, 255, 255, 0.08);
     --border-bright: rgba(255, 255, 255, 0.25);
-    --neon-blue: #00e5ff;
-    --neon-purple: #b537f2;
-    --neon-green: #00ff66;
+    --accent-amber: #f59e0b;
+    --accent-blue: #3b82f6;
+    --accent-green: #22c55e;
+    --accent-red: #ef4444;
     --text-primary: #ffffff;
-    --text-secondary: #8892b0;
+    --text-secondary: #94a3b8;
   }
 
   body {
     background-color: var(--bg-void); color: var(--text-primary);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0; padding: 40px; position: relative; min-height: 100vh; z-index: 1;
   }
   
@@ -61,19 +62,19 @@
   .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 1px solid var(--border-dim); padding-bottom: 24px; max-width: 1200px; margin: 0 auto 40px auto; }
   h1 { font-family: 'Space Grotesk', sans-serif; margin: 0; font-size: 32px; font-weight: 900; }
   .btn-outline { background: transparent; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 8px; border: 1px solid var(--border-bright); transition: border-color 0.3s; cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 14px;}
-  .btn-outline:hover { border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0,229,255,0.2); }
+  .btn-outline:hover { border-color: var(--accent-amber); box-shadow: 0 0 15px rgba(245,158,11,0.2); }
   
-  .btn-neon { background: var(--neon-blue); color: #000; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; padding: 16px 32px; border-radius: 8px; border: none; cursor: pointer; width: 100%; display: block; text-align: center; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);}
-  .btn-neon:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(0, 229, 255, 0.6); }
+  .btn-neon { background: var(--accent-amber); color: #000; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; padding: 16px 32px; border-radius: 8px; border: none; cursor: pointer; width: 100%; display: block; text-align: center; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);}
+  .btn-neon:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(245, 158, 11, 0.6); }
   
   .cart-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
   @media (max-width: 900px) { .cart-container { grid-template-columns: 1fr; } }
   
   .cart-item { background: var(--card-surface); border: 1px solid var(--border-dim); border-radius: 16px; padding: 24px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; backdrop-filter: blur(20px); transition: border-color 0.3s; }
-  .cart-item:hover { border-color: rgba(0, 229, 255, 0.3); }
+  .cart-item:hover { border-color: rgba(245, 158, 11, 0.3); }
   .item-name { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 4px;}
-  .item-price { font-family: 'JetBrains Mono', monospace; font-size: 24px; color: var(--neon-blue); font-weight: 700; }
-  .remove-btn { color: #ff4d4d; background: none; border: none; cursor: pointer; font-size: 13px; margin-top: 12px; opacity: 0.8;}
+  .item-price { font-family: 'JetBrains Mono', monospace; font-size: 24px; color: var(--accent-amber); font-weight: 700; }
+  .remove-btn { color: var(--accent-red); background: none; border: none; cursor: pointer; font-size: 13px; margin-top: 12px; opacity: 0.8;}
   .remove-btn:hover { opacity: 1; text-decoration: underline; }
   
   .summary-card, .billing-card { background: var(--card-surface); border: 1px solid var(--border-dim); border-radius: 16px; padding: 32px; backdrop-filter: blur(20px); }
@@ -86,11 +87,11 @@
   .total-value { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #fff; }
   
   .promo-box { display: flex; gap: 8px; margin-bottom: 24px; }
-  .form-input { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--border-dim); border-radius: 8px; padding: 14px; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; outline: none; box-sizing: border-box; transition: border-color 0.2s;}
-  .form-input:focus { border-color: var(--neon-blue); }
+  .form-input { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border-dim); border-radius: 8px; padding: 14px; color: #fff; font-family: 'Inter', sans-serif; outline: none; box-sizing: border-box; transition: border-color 0.2s;}
+  .form-input:focus { border-color: var(--accent-amber); }
   .promo-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--border-bright); color: #fff; border-radius: 8px; padding: 0 16px; cursor: pointer; font-family: 'Space Grotesk', sans-serif;}
-  .promo-btn:hover { border-color: var(--neon-blue); }
-  .discount-row { color: var(--neon-green); display: none; }
+  .promo-btn:hover { border-color: var(--accent-amber); }
+  .discount-row { color: var(--accent-green); display: none; }
   
   .trust-badges { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
   .trust-badge { display: flex; align-items: center; gap: 12px; color: var(--text-secondary); font-size: 13px; }
@@ -109,10 +110,10 @@
 <body>
   <div class="header">
     <div style="display: flex; align-items: center; gap: 12px;">
-      <img src="/static/logo.png" alt="AgentOS Logo" style="width: 32px; height: 32px; border-radius: 6px;">
-      <h1>Secure <span style="color: var(--neon-blue);">Checkout</span></h1>
+      <img src="/static/logo.png" alt="SafeFleet Academy Logo" style="width: 32px; height: 32px; border-radius: 6px;">
+      <h1>Secure <span style="color: var(--accent-amber);">Checkout</span></h1>
     </div>
-    <a href="/#products" class="btn-outline">← Back to Store</a>
+    <a href="/#products" class="btn-outline">← Back to Courses</a>
   </div>
   
   <div class="cart-container" id="mainContainer">
@@ -120,7 +121,7 @@
       <div id="cartItems"></div>
       
       <div class="billing-card" id="billingCard">
-        <div class="card-title">Terminal Access Details</div>
+        <div class="card-title">Your Enrolment Details</div>
         
         <div class="form-row">
           <div class="form-group">
@@ -129,18 +130,18 @@
           </div>
           <div class="form-group">
             <label class="form-label">Last Name</label>
-            <input type="text" id="lName" class="form-input" placeholder="Doe" required>
+            <input type="text" id="lName" class="form-input" placeholder="Smith" required>
           </div>
         </div>
         
         <div class="form-group">
-          <label class="form-label">Email Address (For Portal Access)</label>
-          <input type="email" id="email" class="form-input" placeholder="john@example.com" required>
+          <label class="form-label">Email Address (For Training Portal Access)</label>
+          <input type="email" id="email" class="form-input" placeholder="john@company.com.au" required>
         </div>
         
         <div class="form-group" style="margin-top: 32px; padding-top: 24px; border-top: 1px dashed var(--border-dim);">
-          <label class="form-label" style="color: var(--neon-blue);">Initialize Portal Password</label>
-          <p style="font-size: 13px; color: var(--text-secondary); margin-top: 0; margin-bottom: 12px;">We will immediately provision a secure Video Portal account for your masterclasses.</p>
+          <label class="form-label" style="color: var(--accent-amber);">Create Your Portal Password</label>
+          <p style="font-size: 13px; color: var(--text-secondary); margin-top: 0; margin-bottom: 12px;">We will immediately provision your secure Training Portal account for your compliance modules.</p>
           <input type="password" id="password" class="form-input" placeholder="Enter secure password" required>
         </div>
       </div>
@@ -153,7 +154,7 @@
         <input type="text" id="promoCode" class="form-input" placeholder="Promo code">
         <button class="promo-btn" onclick="applyPromo()">Apply</button>
       </div>
-      <div id="promoMsg" style="color: var(--neon-green); font-size: 12px; margin-top: -16px; margin-bottom: 16px; display: none;">Code applied!</div>
+      <div id="promoMsg" style="color: var(--accent-green); font-size: 12px; margin-top: -16px; margin-bottom: 16px; display: none;">Code applied!</div>
       
       <div class="summary-row">
         <span>Subtotal</span>
@@ -169,7 +170,7 @@
         <span class="total-value" id="totalValue">$0</span>
       </div>
       
-      <button id="checkoutBtn" class="btn-neon" style="margin-top: 32px;" onclick="initPayPal()">Initiate Secure Payment</button>
+      <button id="checkoutBtn" class="btn-neon" style="margin-top: 32px;" onclick="initPayPal()">Complete Secure Payment</button>
       <div id="paypal-button-container" style="margin-top: 16px; display: none;"></div>
       
       <div class="trust-badges">
@@ -179,7 +180,7 @@
         </div>
         <div class="trust-badge">
           <span class="trust-icon">⚡</span>
-          <span>Instant Portal Provisioning</span>
+          <span>Instant Training Portal Access</span>
         </div>
         <div class="trust-badge">
           <span class="trust-icon">🛡️</span>
@@ -194,13 +195,13 @@
     let isDiscountApplied = false;
 
     function loadCart() {
-      const cart = JSON.parse(localStorage.getItem('wealthweb_cart')) || [];
+      const cart = JSON.parse(localStorage.getItem('safefleet_cart')) || [];
       const container = document.getElementById('cartItems');
       const summaryCard = document.getElementById('summaryCard');
       const mainContainer = document.getElementById('mainContainer');
       
       if (cart.length === 0) {
-        mainContainer.innerHTML = '<div class="empty">Your cart is empty.<br><br><a href="/#products" class="btn-outline">Browse Products</a></div>';
+        mainContainer.innerHTML = '<div class="empty">Your cart is empty.<br><br><a href="/#products" class="btn-outline">Browse Courses</a></div>';
         return;
       }
       
@@ -255,12 +256,12 @@
         document.getElementById('promoMsg').style.display = 'block';
         document.getElementById('promoMsg').style.color = '#ff4d4d';
         document.getElementById('promoMsg').innerText = 'Invalid promo code.';
-        setTimeout(() => { document.getElementById('promoMsg').style.display = 'none'; document.getElementById('promoMsg').style.color = 'var(--neon-green)'; }, 3000);
+        setTimeout(() => { document.getElementById('promoMsg').style.display = 'none'; document.getElementById('promoMsg').style.color = 'var(--accent-green)'; }, 3000);
       }
     }
 
     function removeItem(index) {
-      let cart = JSON.parse(localStorage.getItem('wealthweb_cart')) || [];
+      let cart = JSON.parse(localStorage.getItem('safefleet_cart')) || [];
       const itemEl = document.getElementById('item-' + index);
       
       itemEl.style.opacity = '0';
@@ -268,7 +269,7 @@
       
       setTimeout(() => {
         cart.splice(index, 1);
-        localStorage.setItem('wealthweb_cart', JSON.stringify(cart));
+        localStorage.setItem('safefleet_cart', JSON.stringify(cart));
         loadCart();
       }, 300);
     }
@@ -284,15 +285,15 @@
       const password = document.getElementById('password').value;
       
       if(!fName || !lName || !email || !password) {
-        alert("Please provide terminal access details (Name, Email, Password).");
+        alert("Please provide your enrolment details (Name, Email, Password).");
         return;
       }
       
-      const cart = JSON.parse(localStorage.getItem('wealthweb_cart')) || [];
+      const cart = JSON.parse(localStorage.getItem('safefleet_cart')) || [];
       const total = isDiscountApplied ? currentSubtotal * 0.8 : currentSubtotal;
       
       const btn = document.getElementById('checkoutBtn');
-      btn.innerText = 'Initializing Secure Gateway...';
+      btn.innerText = 'Processing Secure Payment...';
       btn.disabled = true;
       
       try {
@@ -312,7 +313,7 @@
         const data = await res.json();
         if (data.error) {
           alert("Error: " + data.error);
-          btn.innerText = 'Initiate Secure Payment';
+          btn.innerText = 'Complete Secure Payment';
           btn.disabled = false;
           return;
         }
@@ -332,7 +333,7 @@
             renderPayPalButtons();
           };
           script.onerror = () => {
-            document.getElementById('paypal-button-container').innerHTML = '<div style="text-align:center;padding:20px;color:#ff4d4d;font-family:Space Grotesk;">PayPal failed to load. Please disable ad-blockers and try again.</div>';
+            document.getElementById('paypal-button-container').innerHTML = '<div style="text-align:center;padding:20px;color:#ef4444;font-family:Space Grotesk;">PayPal failed to load. Please disable ad-blockers and try again.</div>';
             console.error('PayPal SDK failed to load. Client ID:', data.paypal_client_id);
           };
           document.head.appendChild(script);
@@ -342,7 +343,7 @@
         
       } catch (err) {
         alert("Error connecting to payment gateway.");
-        btn.innerText = 'Initiate Secure Payment';
+        btn.innerText = 'Complete Secure Payment';
         btn.disabled = false;
       }
     }
@@ -360,7 +361,7 @@
         createOrder: function(data, actions) {
           return actions.order.create({
             purchase_units: [{
-              description: 'AgentOS AI Blueprint',
+              description: 'SafeFleet Academy Training Module',
               amount: {
                 value: orderTotal
               }
@@ -374,7 +375,7 @@
           // Verify on our server
           const btn = document.getElementById('checkoutBtn');
           const container = document.getElementById('paypal-button-container');
-          container.innerHTML = '<div style="text-align: center; padding: 20px; color: var(--neon-green); font-family: Space Grotesk; font-weight: 700;">✅ Payment Successful! Provisioning your account...</div>';
+          container.innerHTML = '<div style="text-align: center; padding: 20px; color: var(--accent-green); font-family: Space Grotesk; font-weight: 700;">✅ Payment Successful! Setting up your training portal...</div>';
           
           try {
             const verifyRes = await fetch('/api/verify-payment', {
@@ -388,12 +389,12 @@
             
             const verifyData = await verifyRes.json();
             if (verifyData.success) {
-              localStorage.removeItem('wealthweb_cart');
-              container.innerHTML = '<div style="text-align: center; padding: 20px; color: var(--neon-green); font-family: Space Grotesk; font-weight: 700; font-size: 18px;">🚀 Account Created! Redirecting to Dashboard...</div>';
+              localStorage.removeItem('safefleet_cart');
+              container.innerHTML = '<div style="text-align: center; padding: 20px; color: var(--accent-green); font-family: Space Grotesk; font-weight: 700; font-size: 18px;">✅ Enrolment Complete! Redirecting to Training Portal...</div>';
               setTimeout(() => { gtag_report_conversion(verifyData.redirect); }, 2000);
             }
           } catch (err) {
-            container.innerHTML = '<div style="text-align: center; padding: 20px; color: var(--neon-green); font-family: Space Grotesk;">Payment received! Redirecting...</div>';
+            container.innerHTML = '<div style="text-align: center; padding: 20px; color: var(--accent-green); font-family: Space Grotesk;">Payment received! Redirecting...</div>';
             setTimeout(() => { gtag_report_conversion('/portal'); }, 2000);
           }
         },
@@ -401,7 +402,7 @@
           document.getElementById('paypal-button-container').style.display = 'none';
           const btn = document.getElementById('checkoutBtn');
           btn.style.display = 'block';
-          btn.innerText = 'Initiate Secure Payment';
+          btn.innerText = 'Complete Secure Payment';
           btn.disabled = false;
         },
         onError: function(err) {
@@ -409,7 +410,7 @@
           document.getElementById('paypal-button-container').style.display = 'none';
           const btn = document.getElementById('checkoutBtn');
           btn.style.display = 'block';
-          btn.innerText = 'Initiate Secure Payment';
+          btn.innerText = 'Complete Secure Payment';
           btn.disabled = false;
         }
       }).render('#paypal-button-container');

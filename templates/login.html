@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18174625300"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18174625300');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Override — AgentOS</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Admin Login — SafeFleet Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-void: #000000;
-    --card-surface: rgba(12, 12, 14, 0.8);
+    --bg-void: #0f172a;
+    --card-surface: rgba(15, 23, 42, 0.85);
     --border-dim: rgba(255, 255, 255, 0.1);
-    --neon-red: #ff4d4d;
+    --accent-red: #ef4444;
     --text-primary: #ffffff;
-    --text-secondary: #8892b0;
+    --text-secondary: #94a3b8;
   }
   body {
     background-color: var(--bg-void); color: var(--text-primary);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0; display: flex; justify-content: center; align-items: center;
     min-height: 100vh; overflow: hidden;
   }
@@ -32,33 +41,33 @@
   .login-container {
     background: var(--card-surface); border: 1px solid var(--border-dim);
     border-radius: 16px; padding: 48px; width: 100%; max-width: 400px;
-    box-shadow: 0 0 40px rgba(255, 77, 77, 0.1); backdrop-filter: blur(20px);
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.1); backdrop-filter: blur(20px);
     position: relative;
-    border-top: 3px solid var(--neon-red);
+    border-top: 3px solid var(--accent-red);
   }
   
   .brand { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 32px; }
   .brand h1 { font-family: 'Space Grotesk'; margin: 0; font-size: 28px; font-weight: 900; }
   
-  .auth-title { font-family: 'JetBrains Mono'; font-size: 13px; color: var(--neon-red); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 32px;}
+  .auth-title { font-family: 'JetBrains Mono'; font-size: 13px; color: var(--accent-red); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 32px;}
 
   .form-group { margin-bottom: 24px; }
   label { display: block; margin-bottom: 8px; color: var(--text-secondary); font-size: 13px; text-transform: uppercase; font-weight: 600; letter-spacing: 1px;}
   input { 
-    width: 100%; padding: 14px; background: rgba(0,0,0,0.5); 
+    width: 100%; padding: 14px; background: rgba(0,0,0,0.3); 
     border: 1px solid var(--border-dim); color: #fff; border-radius: 8px; 
     font-family: 'JetBrains Mono'; box-sizing: border-box; transition: border-color 0.3s;
   }
-  input:focus { border-color: var(--neon-red); outline: none; box-shadow: 0 0 15px rgba(255, 77, 77, 0.2); }
+  input:focus { border-color: var(--accent-red); outline: none; box-shadow: 0 0 15px rgba(239, 68, 68, 0.2); }
   
   .btn { 
-    background: transparent; color: var(--neon-red); padding: 16px; border: 1px solid var(--neon-red); 
+    background: transparent; color: var(--accent-red); padding: 16px; border: 1px solid var(--accent-red); 
     border-radius: 8px; font-family: 'Space Grotesk'; font-weight: 700; 
     cursor: pointer; width: 100%; font-size: 16px; transition: all 0.2s;
   }
-  .btn:hover { background: var(--neon-red); color: #000; box-shadow: 0 0 30px rgba(255, 77, 77, 0.4); }
+  .btn:hover { background: var(--accent-red); color: #000; box-shadow: 0 0 30px rgba(239, 68, 68, 0.4); }
   
-  .error { background: rgba(255, 77, 77, 0.1); color: #ff4d4d; border: 1px dashed #ff4d4d; padding: 12px; border-radius: 8px; text-align: center; margin-bottom: 24px; font-size: 14px; font-family: 'JetBrains Mono';}
+  .error { background: rgba(239, 68, 68, 0.1); color: var(--accent-red); border: 1px dashed var(--accent-red); padding: 12px; border-radius: 8px; text-align: center; margin-bottom: 24px; font-size: 14px; font-family: 'JetBrains Mono';}
   
   .footer-links { margin-top: 32px; text-align: center; font-size: 14px;}
   .footer-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s;}
@@ -69,11 +78,11 @@
 
 <div class="login-container">
   <div class="brand">
-    <img src="/static/logo.png" alt="AgentOS" style="width: 40px; height: 40px; border-radius: 8px; box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);">
-    <h1>Agent<span style="color: var(--neon-red);">OS</span></h1>
+    <img src="/static/logo.png" alt="SafeFleet Academy" style="width: 40px; height: 40px; border-radius: 8px; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);">
+    <h1>SafeFleet<span style="color: var(--accent-red);"> Academy</span></h1>
   </div>
   
-  <div class="auth-title">System Admin Override</div>
+  <div class="auth-title">Admin Panel Access</div>
 
   {% if error %}
     <div class="error">ACCESS DENIED: {{ error }}</div>
@@ -81,14 +90,14 @@
 
   <form method="POST">
     <div class="form-group">
-      <label>Root Password</label>
+      <label>Admin Password</label>
       <input type="password" name="password" required placeholder="••••••••" autofocus>
     </div>
-    <button type="submit" class="btn">Execute Override</button>
+    <button type="submit" class="btn">Authenticate</button>
   </form>
   
   <div class="footer-links">
-    <a href="/">← Return to Public Matrix</a>
+    <a href="/">← Back to SafeFleet Academy Home</a>
   </div>
 </div>
 

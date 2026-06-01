@@ -7,131 +7,88 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'AW-18174625300');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advanced Make.com Workflows — AgentOS</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Load Restraint & Mass Management — SafeFleet Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root { --bg-void: #000000; --card-surface: rgba(12, 12, 14, 0.9); --border-dim: rgba(255, 255, 255, 0.08); --neon-orange: #ff6b2b; --neon-green: #39ff14; --text-primary: #ffffff; --text-secondary: #8892b0; }
-  body { background-color: var(--bg-void); color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-  .nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; border-bottom: 1px solid var(--border-dim); background: #000; z-index: 10; }
-  .nav-left { display: flex; align-items: center; gap: 24px; }
-  .nav h1 { font-family: 'Space Grotesk'; margin: 0; font-size: 20px; font-weight: 900; }
-  .btn-outline { background: transparent; color: #fff; border: 1px solid var(--border-dim); padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; }
-  .lms-container { display: flex; flex: 1; overflow: hidden; }
-  .sidebar { width: 350px; background: #050505; border-right: 1px solid var(--border-dim); display: flex; flex-direction: column; overflow-y: auto; }
-  .module-group { border-bottom: 1px solid var(--border-dim); }
-  .module-title { padding: 20px 24px; font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; background: #020202; }
-  .lesson { padding: 16px 24px; display: flex; align-items: flex-start; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.02); cursor: pointer; transition: background 0.2s; }
-  .lesson:hover { background: rgba(255,255,255,0.02); }
-  .lesson.active { background: rgba(255, 107, 43, 0.05); border-left: 3px solid var(--neon-orange); }
-  .lesson-icon { font-size: 16px; margin-top: 2px; }
-  .lesson-info { flex: 1; }
-  .lesson-name { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 4px; }
-  .lesson.active .lesson-name { color: var(--neon-orange); font-weight: 700;}
-  .lesson-time { font-size: 12px; color: var(--text-secondary); font-family: 'JetBrains Mono';}
-  .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; background: var(--bg-void); }
-  .video-wrapper { width: 100%; background: #000; position: relative; padding-top: 56.25%; border-bottom: 1px solid var(--border-dim); overflow: hidden; }
-  .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-  .video-brand-top { position: absolute; top: 0; left: 0; right: 0; padding: 14px 20px; z-index: 10; height: 52px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; background: linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 60%, transparent 100%); }
-  .video-brand-top img { width: 28px; height: 28px; border-radius: 6px; box-shadow: 0 0 10px rgba(255,107,43,0.3); }
-  .video-brand-top span { font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
-  .video-brand-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 50px; z-index: 10; background: linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%); display: flex; align-items: flex-end; justify-content: space-between; padding: 0 20px 10px 20px; }
-  .video-brand-bottom span { font-family: 'JetBrains Mono'; font-size: 11px; color: rgba(255,107,43,0.6); letter-spacing: 1.5px; text-transform: uppercase; }
-  .video-details { padding: 48px; max-width: 1000px; }
-  .video-details h2 { font-family: 'Space Grotesk'; font-size: 32px; margin: 0 0 16px 0; }
-  .video-details p { color: var(--text-secondary); font-size: 16px; line-height: 1.8; margin-bottom: 32px; }
-  .resource-box { background: rgba(255,255,255,0.03); border: 1px solid var(--border-dim); padding: 24px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-  .resource-box h3 { font-family: 'Space Grotesk'; margin: 0 0 4px 0; font-size: 18px; }
-  .btn-download { background: var(--neon-orange); color: #000; padding: 10px 20px; border-radius: 6px; font-family: 'Space Grotesk'; font-weight: 700; text-decoration: none; font-size: 14px; white-space: nowrap; cursor: pointer; border: none; }
-  .completion-bar { display: flex; align-items: center; gap: 12px; padding: 16px 24px; background: #020202; border-bottom: 1px solid var(--border-dim); }
-  .completion-bar span { font-family: 'JetBrains Mono'; font-size: 12px; color: var(--text-secondary); }
-  .completion-track { flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
-  .completion-fill { height: 100%; background: var(--neon-orange); border-radius: 2px; transition: width 0.3s; }
+  :root { --bg: #0f172a; --card: rgba(30,41,59,0.9); --border: rgba(255,255,255,0.08); --amber: #f59e0b; --blue: #3b82f6; --green: #22c55e; --red: #ef4444; --text: #f1f5f9; --text2: #94a3b8; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+  .top-bar { padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(15,23,42,0.95); backdrop-filter: blur(12px); }
+  .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 900; font-size: 20px; color: #fff; text-decoration: none; }
+  .logo span { color: var(--amber); }
+  .back-btn { color: var(--amber); text-decoration: none; font-size: 14px; font-weight: 600; }
+  .course-container { flex: 1; overflow-y: auto; padding: 0; }
+  .course-header { padding: 48px 32px; text-align: center; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, rgba(34,197,94,0.05), transparent); }
+  .course-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 32px; margin-bottom: 8px; }
+  .course-header p { color: var(--text2); max-width: 600px; margin: 0 auto; font-size: 15px; }
+  .modules { max-width: 800px; margin: 0 auto; padding: 32px; }
+  .module { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 16px; transition: border-color 0.3s; }
+  .module:hover { border-color: var(--green); }
+  .module-num { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--green); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .module h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; margin-bottom: 8px; }
+  .module p { color: var(--text2); font-size: 14px; line-height: 1.6; }
+  .highlight-box { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 12px; padding: 20px; margin: 0 auto 24px; max-width: 600px; text-align: center; }
+  .highlight-box strong { color: var(--green); }
 </style>
 </head>
 <body>
-<div class="nav">
-  <div class="nav-left">
-    <a href="/portal" class="btn-outline">← Dashboard</a>
-    <h1>Agent<span style="color: var(--neon-orange);">OS</span></h1>
-  </div>
-  <div style="font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700; color: var(--neon-orange);">ADVANCED MAKE.COM WORKFLOWS</div>
+<div class="top-bar">
+  <a href="/" class="logo">SafeFleet<span> Academy</span></a>
+  <a href="/portal" class="back-btn">← Back to Portal</a>
 </div>
-<div class="lms-container">
-  <div class="sidebar">
-    <div class="completion-bar">
-      <span id="progressText">1/5 Complete</span>
-      <div class="completion-track"><div class="completion-fill" id="progressFill" style="width: 20%;"></div></div>
-    </div>
-    <div class="module-group">
-      <div class="module-title">Module 1: Make.com Foundations</div>
-      <div class="lesson active" onclick="loadLesson(0)"><div class="lesson-icon">▶️</div><div class="lesson-info"><div class="lesson-name">1. Make.com Full Tutorial for Beginners</div><div class="lesson-time">24:30</div></div></div>
-      <div class="lesson" onclick="loadLesson(1)"><div class="lesson-icon">⬜</div><div class="lesson-info"><div class="lesson-name">2. ChatGPT + Google Sheets Automation</div><div class="lesson-time">18:15</div></div></div>
-    </div>
-    <div class="module-group">
-      <div class="module-title">Module 2: Advanced Workflows</div>
-      <div class="lesson" onclick="loadLesson(2)"><div class="lesson-icon">⬜</div><div class="lesson-info"><div class="lesson-name">3. Webhook to CRM Integration</div><div class="lesson-time">16:40</div></div></div>
-      <div class="lesson" onclick="loadLesson(3)"><div class="lesson-icon">⬜</div><div class="lesson-info"><div class="lesson-name">4. Gmail Automation Workflows</div><div class="lesson-time">14:20</div></div></div>
-    </div>
-    <div class="module-group">
-      <div class="module-title">Module 3: Selling Automations</div>
-      <div class="lesson" onclick="loadLesson(4)"><div class="lesson-icon">⬜</div><div class="lesson-info"><div class="lesson-name">5. Packaging & Pricing Your Services</div><div class="lesson-time">12:45</div></div></div>
+<div class="course-container">
+  <div class="course-header">
+    <h1>📦 Load Restraint & Mass Management</h1>
+    <p>Master performance-based load restraint standards, mass limits (GML, CML, HML), dimension requirements, and the 2026 changes to general access limits.</p>
+    <div class="highlight-box" style="margin-top: 24px;">
+      <p style="font-size: 14px; color: var(--text2); margin: 0;">Performance Standards: <strong>0.8g forward</strong> · <strong>0.5g sideways/rearward</strong> · <strong>0.2g vertical</strong></p>
     </div>
   </div>
-  <div class="main-content">
-    <div class="video-wrapper">
-      <iframe id="videoPlayer" src="https://www.youtube-nocookie.com/embed/JSA2oezQWOU?modestbranding=1&rel=0&showinfo=0&color=white&iv_load_policy=3" title="Lesson Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="video-brand-top"><img src="/static/logo.png" alt="AgentOS"><span>AgentOS Academy</span></div>
-      <div class="video-brand-bottom"><span>Powered by AgentOS™</span></div>
+  <div class="modules">
+    <div class="module">
+      <div class="module-num">Module 01</div>
+      <h3>Introduction to Load Restraint</h3>
+      <p>Why load restraint matters, the physics of cargo movement during braking, turning, and road undulations, and the legal framework governing load security in Australia.</p>
     </div>
-    <div class="video-details">
-      <h2 id="lessonTitle">1. Make.com Full Tutorial for Beginners</h2>
-      <p id="lessonDesc">Get started with Make.com from zero. This comprehensive beginner lesson walks you through the interface, how scenarios work, and how to build your first automation connecting two apps together.</p>
-      <div class="resource-box" style="border-color: var(--neon-orange); box-shadow: 0 0 20px rgba(255,107,43,0.1);">
-        <div>
-          <h3 id="resourceTitle" style="color: var(--neon-orange);">Make.com Starter Scenario (JSON Import)</h3>
-          <p id="resourceDesc" style="margin:0; color: var(--text-secondary);">A pre-built starter scenario you can import directly into Make.com. Connects a webhook trigger to a Google Sheets action.</p>
-        </div>
-        <button class="btn-download" onclick="alert('Downloading JSON...')">Download</button>
-      </div>
-      <div class="resource-box">
-        <div>
-          <h3 style="color: var(--neon-orange);">📝 Lesson Notes</h3>
-          <p id="lessonNotes" style="margin:0; color: var(--text-secondary);">Key concepts: Scenarios (workflows), Modules (app connections), Routes (conditional logic), Webhooks (external triggers). Free plan: 1,000 operations/month.</p>
-        </div>
-      </div>
+    <div class="module">
+      <div class="module-num">Module 02</div>
+      <h3>Performance-Based Standards</h3>
+      <p>Understanding the g-force requirements: 0.8g forward (emergency braking), 0.5g sideways and rearward (cornering/reversing), and 0.2g vertically upward (road surface variations).</p>
+    </div>
+    <div class="module">
+      <div class="module-num">Module 03</div>
+      <h3>Methods of Restraint</h3>
+      <p>Lashing (tie-downs), blocking, containing, friction, and combination methods. When to use each method and how to calculate the minimum number of lashings required.</p>
+    </div>
+    <div class="module">
+      <div class="module-num">Module 04</div>
+      <h3>Pre-Departure Load Inspections</h3>
+      <p>Conducting thorough pre-departure inspections, checking lashing tension, identifying load shift risks, and documenting your inspection for compliance evidence.</p>
+    </div>
+    <div class="module">
+      <div class="module-num">Module 05</div>
+      <h3>Mass Limits: GML, CML & HML</h3>
+      <p>Understanding General Mass Limits, Concessional Mass Limits, and Higher Mass Limits. Axle group configurations, bridge formula calculations, and the 2026 GML increases.</p>
+    </div>
+    <div class="module">
+      <div class="module-num">Module 06</div>
+      <h3>Dimension & Configuration Limits</h3>
+      <p>Vehicle length limits (new 20m general access under 2026 reforms), width, height, and overhang restrictions. Restricted access vehicles and permit requirements.</p>
+    </div>
+    <div class="module">
+      <div class="module-num">Module 07</div>
+      <h3>Practical Load Scenarios</h3>
+      <p>Real-world case studies: restraining steel coils, palletised goods, loose bulk cargo, machinery, and dangerous goods. Common failures and how to prevent them.</p>
+    </div>
+    <div class="module">
+      <div class="module-num">Module 08</div>
+      <h3>CoR Obligations for Loaders & Consignors</h3>
+      <p>How Chain of Responsibility applies to loading practices. Consignor and loader duties, shared responsibility with drivers, and documentation requirements.</p>
     </div>
   </div>
 </div>
-<script>
-  const lessons = [
-    { videoId: 'JSA2oezQWOU', title: '1. Make.com Full Tutorial for Beginners', desc: 'Get started with Make.com from zero. This comprehensive beginner lesson walks you through the interface, how scenarios work, and how to build your first automation connecting two apps together.', resourceTitle: 'Make.com Starter Scenario (JSON Import)', resourceDesc: 'A pre-built starter scenario you can import directly into Make.com. Connects a webhook trigger to a Google Sheets action.', notes: 'Key concepts: Scenarios (workflows), Modules (app connections), Routes (conditional logic), Webhooks (external triggers). Free plan: 1,000 operations/month.' },
-    { videoId: 'EJWyHI6_OY8', title: '2. ChatGPT + Google Sheets Automation', desc: 'Build an automation that takes data from Google Sheets, sends it to ChatGPT for AI processing, and writes the results back. This is the foundation for AI content generation, data analysis, and lead enrichment.', resourceTitle: 'ChatGPT-Sheets Scenario (JSON Import)', resourceDesc: 'Import this scenario to connect ChatGPT to Google Sheets instantly. Pre-configured with prompt templates for content generation.', notes: 'Use cases: Auto-generate product descriptions, summarize customer reviews, enrich lead data with AI insights, create social media posts from blog content.' },
-    { videoId: 'zgI6CGAWCQY', title: '3. Webhook to CRM Integration', desc: 'Learn how to capture data from any external source using webhooks and route it directly into a CRM. This is the automation that ties your chatbot leads to your client\'s sales pipeline.', resourceTitle: 'Webhook-to-CRM Scenario (JSON Import)', resourceDesc: 'Pre-built scenario: Webhook receives chatbot data → Formats contact → Creates CRM deal. Works with HubSpot, Salesforce, and GoHighLevel.', notes: 'This is the #1 most valuable automation to sell. Every business with a chatbot needs this. Average price: $500-$1,500 per setup + $200/month maintenance retainer.' },
-    { videoId: 'yPSexTVUgwU', title: '4. Gmail Automation Workflows', desc: 'Automate email workflows: auto-reply to inquiries, send follow-up sequences, forward leads to team members, and generate AI-written responses. This saves clients hours of manual email work every day.', resourceTitle: 'Email Automation Scenario (JSON Import)', resourceDesc: 'Pre-built Gmail automation: New email → AI categorization → Auto-response or team notification based on category.', notes: 'Popular use cases: Auto-respond to contact form submissions, send AI-written follow-ups to leads, categorize support emails and route to the right team member.' },
-    { videoId: 'wrmp5onIeV8', title: '5. Packaging & Pricing Your Services', desc: 'Now that you can build automations, learn how to package and price them as a service. This lesson covers creating service tiers, writing proposals, and structuring monthly retainer agreements.', resourceTitle: 'Service Pricing Calculator (Spreadsheet)', resourceDesc: 'A Google Sheets template to calculate your pricing based on complexity, hours, and value delivered. Includes proposal template.', notes: 'Pricing tiers: Basic ($500 one-time), Standard ($1,500 + $200/mo retainer), Premium ($5,000 + $500/mo retainer). Always charge based on VALUE delivered, not hours worked.' }
-  ];
-  let currentLesson = 0; let completedLessons = new Set([0]);
-  function loadLesson(index) {
-    currentLesson = index; completedLessons.add(index);
-    const lesson = lessons[index];
-    document.getElementById('videoPlayer').src = `https://www.youtube-nocookie.com/embed/${lesson.videoId}?modestbranding=1&rel=0&showinfo=0&color=white&autoplay=1&iv_load_policy=3`;
-    document.getElementById('lessonTitle').innerText = lesson.title;
-    document.getElementById('lessonDesc').innerText = lesson.desc;
-    document.getElementById('resourceTitle').innerText = lesson.resourceTitle;
-    document.getElementById('resourceDesc').innerText = lesson.resourceDesc;
-    document.getElementById('lessonNotes').innerText = lesson.notes;
-    const allLessons = document.querySelectorAll('.lesson');
-    allLessons.forEach((el, i) => { el.classList.remove('active'); const icon = el.querySelector('.lesson-icon'); if (i === index) { el.classList.add('active'); icon.innerText = '▶️'; } else if (completedLessons.has(i)) { icon.innerText = '✅'; } else { icon.innerText = '⬜'; } });
-    const pct = Math.round((completedLessons.size / lessons.length) * 100);
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressText').innerText = `${completedLessons.size}/${lessons.length} Complete`;
-    document.querySelector('.main-content').scrollTop = 0;
-  }
-</script>
 </body>
 </html>
