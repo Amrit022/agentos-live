@@ -225,6 +225,15 @@ def logout_customer():
     session.pop('customer_email', None)
     return redirect(url_for('login_customer'))
 
+course_mappings = {
+    "CoR Awareness for Drivers": {"route": "/course/blueprint", "icon": "🛡️", "desc": "Chain of Responsibility training for heavy vehicle drivers"},
+    "CoR for Supervisors & Schedulers": {"route": "/course/supervisors", "icon": "📋", "desc": "CoR training for supervisors and schedulers"},
+    "CoR Due Diligence for Executives": {"route": "/course/executives", "icon": "⚖️", "desc": "Executive due diligence training"},
+    "Fatigue Management (BFM)": {"route": "/course/templates", "icon": "⏱️", "desc": "Fatigue management training for drivers"},
+    "Load Restraint Essentials": {"route": "/course/makecom", "icon": "📦", "desc": "Load restraint compliance training"},
+    "SMS Implementation & Audit Prep": {"route": "/course/acquisition", "icon": "🔍", "desc": "Safety Management Systems training"}
+}
+
 @app.route('/portal')
 @customer_required
 def portal():
@@ -237,11 +246,33 @@ def portal():
     conn.close()
     
     purchased_items = []
+    has_bundle = False
     for o in orders:
         items = json.loads(o['items'])
         for item in items:
-            if not any(p['name'] == item['name'] for p in purchased_items):
-                purchased_items.append(item)
+            name = item.get('name')
+            if name == "HVNL 2026 Reform Readiness Bundle":
+                has_bundle = True
+            elif name and not any(p['name'] == name for p in purchased_items):
+                purchased_items.append(dict(item))
+                
+    if has_bundle:
+        for course_name, details in course_mappings.items():
+            if not any(p['name'] == course_name for p in purchased_items):
+                purchased_items.append({
+                    "name": course_name,
+                    "price": 0,
+                    "icon": details["icon"],
+                    "desc": details["desc"]
+                })
+                
+    for item in purchased_items:
+        name = item.get('name')
+        if name in course_mappings:
+            item['route'] = course_mappings[name]['route']
+            item['icon'] = course_mappings[name]['icon']
+        else:
+            item['route'] = '/course/blueprint'
                 
     return render_template('portal.html', items=purchased_items)
 
@@ -249,6 +280,16 @@ def portal():
 @customer_required
 def course_blueprint():
     return render_template('course_blueprint.html')
+
+@app.route('/course/supervisors')
+@customer_required
+def course_supervisors():
+    return render_template('course_supervisors.html')
+
+@app.route('/course/executives')
+@customer_required
+def course_executives():
+    return render_template('course_executives.html')
 
 @app.route('/course/templates')
 @customer_required

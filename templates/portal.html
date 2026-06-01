@@ -227,9 +227,9 @@
     {% if items %}
       <div class="video-grid">
         {% for item in items %}
-        <a href="{% if 'Template' in item.name %}/course/templates{% elif 'Acquisition' in item.name %}/course/acquisition{% elif 'Make.com' in item.name %}/course/makecom{% else %}/course/blueprint{% endif %}" class="video-card">
+        <a href="{{ item.route }}" class="video-card">
           <div class="thumb-container">
-            <div class="play-btn">▶</div>
+            <div style="font-size: 40px; margin-bottom: 8px;">{{ item.icon }}</div>
           </div>
           <div class="card-content">
             <div class="card-title">{{ item.name }}</div>
