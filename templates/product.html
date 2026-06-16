@@ -81,22 +81,34 @@
 <section class="related-section container" id="related-products">
     {% if related_products %}
         <h2 class="section-title">You May Also Like</h2>
-        <div class="product-grid-small">
+        <div class="product-grid">
             {% for rel in related_products %}
                 <div class="product-card tilt-card reveal-on-scroll" data-product-id="{{ rel.id }}" data-price="{{ rel.price }}">
-                    <a href="/product/${{ rel.id }}" class="product-card-link">
+                    <a href="/product/{{ rel.id }}" class="product-card-link">
                         <div class="product-card-image tilt-inner">
                             <img src="{{ rel.image_url }}" alt="{{ rel.name }}" loading="lazy" />
-                            <span class="category-badge">{{ rel.category_display }}</span>
+                            <span class="product-card-badge">{{ rel.category_display }}</span>
                         </div>
-                        <div class="product-card-info tilt-inner">
-                            <h3 class="product-name">{{ rel.name }}</h3>
-                            <div class="product-price">${{ "%.2f"|format(rel.price) }}</div>
+                        <div class="product-card-body tilt-inner">
+                            <h3 class="product-card-name">{{ rel.name }}</h3>
+                            <div class="product-card-rating">
+                                {% for i in range(1, 6) %}
+                                    {% if i <= rel.rating|int %}
+                                        <span class="star full">★</span>
+                                    {% else %}
+                                        <span class="star empty">☆</span>
+                                    {% endif %}
+                                {% endfor %}
+                                <span class="rating-num">({{ rel.rating }})</span>
+                            </div>
+                            <div class="product-card-footer">
+                                <div class="product-price">${{ "%.2f"|format(rel.price) }}</div>
+                                <button class="btn btn-primary btn-add-to-cart" onclick="event.preventDefault(); event.stopPropagation(); addToCart({{ rel.id }})" aria-label="Add to cart">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
                         </div>
                     </a>
-                    <button class="btn btn-primary btn-add-to-cart" onclick="event.preventDefault(); event.stopPropagation(); addToCart({{ rel.id }})">
-                        Add to Cart
-                    </button>
                 </div>
             {% endfor %}
         </div>

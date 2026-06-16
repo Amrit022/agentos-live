@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -64,13 +64,18 @@
 
     <!-- Responsive Footer -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section brand-info">
-                <h3>NEX<span>ORA</span></h3>
-                <p class="tagline">The Future, Delivered.</p>
-                <p class="desc">A global, premium dropshipping e-commerce experience showcasing next-generation technology, fashion, lifestyle, and beauty essentials.</p>
+        <div class="footer-grid container">
+            <div class="footer-brand footer-col">
+                <a href="/" class="nav-brand">NEX<span>ORA</span></a>
+                <p class="desc">A global, premium dropshipping e-commerce experience showcasing handpicked next-generation tech, fashion, sports, home, and beauty essentials.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
             </div>
-            <div class="footer-section links">
+            <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -80,7 +85,7 @@
                     <li><a href="/login">Admin Center</a></li>
                 </ul>
             </div>
-            <div class="footer-section categories-links">
+            <div class="footer-col">
                 <h4>Shop Categories</h4>
                 <ul>
                     {% for slug, cat in categories.items() %}
@@ -88,10 +93,10 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="footer-section contact-info">
+            <div class="footer-col">
                 <h4>Support Center</h4>
-                <p><i class="fa-solid fa-envelope"></i> support@agentosacademy.com</p>
-                <p><i class="fa-solid fa-shield-halved"></i> 100% Secure Checkout</p>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;"><i class="fa-solid fa-envelope"></i> support@agentosacademy.com</p>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px;"><i class="fa-solid fa-shield-halved"></i> 100% Secure Checkout</p>
                 <div class="payment-methods">
                     <i class="fa-brands fa-cc-paypal"></i>
                     <i class="fa-brands fa-cc-visa"></i>
@@ -100,7 +105,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom container">
             <p>&copy; 2026 NEXORA Store. All Rights Reserved. Powered by global dropshipping network.</p>
         </div>
     </footer>

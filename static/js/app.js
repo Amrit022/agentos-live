@@ -60,22 +60,20 @@
         <a href="/product/${product.id}" class="product-card-link">
           <div class="product-card-image tilt-inner">
             <img src="${product.image_url}" alt="${product.name}" loading="lazy" />
-            <span class="category-badge">${product.category_display || product.category}</span>
+            <span class="product-card-badge">${product.category_display || product.category}</span>
           </div>
-          <div class="product-card-info tilt-inner">
-            <h3 class="product-name">${product.name}</h3>
-            <div class="product-rating">${starRating(product.rating)}</div>
-            <div class="product-price">${formatPrice(product.price)}</div>
-            <p class="product-delivery">🚀 Delivery in ${deliveryText}</p>
+          <div class="product-card-body tilt-inner">
+            <h3 class="product-card-name">${product.name}</h3>
+            <div class="product-card-rating">${starRating(product.rating)}</div>
+            <div class="product-card-footer">
+              <div class="product-price">${formatPrice(product.price)}</div>
+              <button class="btn btn-primary btn-add-to-cart" onclick="event.preventDefault(); event.stopPropagation(); addToCart(${product.id})" aria-label="Add to cart">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+            <p class="product-delivery" style="font-size: 0.72rem; color: var(--text-dim); margin-top: 8px;">🚀 Delivery: ${deliveryText}</p>
           </div>
         </a>
-        <button class="btn btn-primary btn-add-to-cart" onclick="event.preventDefault(); event.stopPropagation(); addToCart(${product.id})">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-            <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
-          </svg>
-          Add to Cart
-        </button>
       </div>
     `;
   }

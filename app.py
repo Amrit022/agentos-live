@@ -159,6 +159,8 @@ CATEGORIES = {
     "home":    {"name": "Home & Kitchen",        "slug": "home"},
     "health":  {"name": "Health & Fitness",       "slug": "health"},
     "beauty":  {"name": "Beauty & Skincare",      "slug": "beauty"},
+    "sports":  {"name": "Sports & Outdoors",     "slug": "sports"},
+    "pets":    {"name": "Pet Supplies",          "slug": "pets"},
 }
 
 # ===================================================================

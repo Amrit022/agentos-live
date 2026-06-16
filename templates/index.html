@@ -4,15 +4,17 @@
 
 {% block content %}
 <!-- Hero Section with Three.js Canvas Background -->
-<section class="hero-section">
-    <canvas id="hero-canvas" class="hero-background"></canvas>
+<section class="hero">
+    <div class="hero-canvas">
+        <canvas id="hero-canvas"></canvas>
+    </div>
     
     <div class="hero-overlay">
         <div class="hero-content reveal-on-scroll">
             <h1 class="hero-title">NEX<span>ORA</span></h1>
-            <p class="hero-subtitle">The Future, Delivered.</p>
-            <p class="hero-description">Discover curated next-generation gadgets, lifestyle apparel, home electronics, fitness tools, and luxury skincare essentials shipped directly from global warehouses to your doorstep.</p>
-            <div class="hero-actions">
+            <p class="hero-tagline">The Future, Delivered.</p>
+            <p class="hero-description" style="max-width: 600px; margin: 0 auto 32px; color: var(--text-muted); font-size: 0.95rem;">Discover curated next-generation gadgets, lifestyle apparel, home electronics, fitness tools, and luxury skincare essentials shipped directly from global warehouses to your doorstep.</p>
+            <div class="hero-cta">
                 <a href="#featured-section" class="btn btn-primary btn-lg">Explore Showcase</a>
                 <a href="/about" class="btn btn-secondary btn-lg">Learn How It Works</a>
             </div>
@@ -30,40 +32,54 @@
 <!-- Category Showcase Grid -->
 <section class="categories-section container" id="categories-section">
     <h2 class="section-title reveal-on-scroll">Premium Categories</h2>
-    <div class="category-grid">
+    <div class="categories-grid">
         <div class="category-card tilt-card reveal-on-scroll" style="animation-delay: 0.1s;">
             <a href="/category/tech">
                 <div class="category-icon tilt-inner"><i class="fa-solid fa-microchip"></i></div>
-                <h3 class="tilt-inner">Tech & Gadgets</h3>
-                <p class="tilt-inner">Next-gen wireless accessories and smart home electronics.</p>
+                <h3 class="category-name tilt-inner">Tech & Gadgets</h3>
+                <p class="category-desc tilt-inner">Next-gen wireless accessories and smart home electronics.</p>
             </a>
         </div>
         <div class="category-card tilt-card reveal-on-scroll" style="animation-delay: 0.2s;">
             <a href="/category/fashion">
                 <div class="category-icon tilt-inner"><i class="fa-solid fa-glasses"></i></div>
-                <h3 class="tilt-inner">Fashion & Accessories</h3>
-                <p class="tilt-inner">Premium watches, leather wallets, bags, and luxury eyewear.</p>
+                <h3 class="category-name tilt-inner">Fashion & Accessories</h3>
+                <p class="category-desc tilt-inner">Premium watches, leather wallets, bags, and luxury eyewear.</p>
             </a>
         </div>
         <div class="category-card tilt-card reveal-on-scroll" style="animation-delay: 0.3s;">
             <a href="/category/home">
                 <div class="category-icon tilt-inner"><i class="fa-solid fa-house-laptop"></i></div>
-                <h3 class="tilt-inner">Home & Kitchen</h3>
-                <p class="tilt-inner">Induction cooktops, smart lighting, and vacuum insulation flasks.</p>
+                <h3 class="category-name tilt-inner">Home & Kitchen</h3>
+                <p class="category-desc tilt-inner">Induction cooktops, smart lighting, and vacuum insulation flasks.</p>
             </a>
         </div>
         <div class="category-card tilt-card reveal-on-scroll" style="animation-delay: 0.4s;">
             <a href="/category/health">
                 <div class="category-icon tilt-inner"><i class="fa-solid fa-dumbbell"></i></div>
-                <h3 class="tilt-inner">Health & Fitness</h3>
-                <p class="tilt-inner">High-density yoga mats, protein powders, and resistance gear.</p>
+                <h3 class="category-name tilt-inner">Health & Fitness</h3>
+                <p class="category-desc tilt-inner">High-density yoga mats, protein powders, and resistance gear.</p>
             </a>
         </div>
         <div class="category-card tilt-card reveal-on-scroll" style="animation-delay: 0.5s;">
             <a href="/category/beauty">
                 <div class="category-icon tilt-inner"><i class="fa-solid fa-sparkles"></i></div>
-                <h3 class="tilt-inner">Beauty & Skincare</h3>
-                <p class="tilt-inner">Clinical-grade serums, exfoliants, and sunscreen lotions.</p>
+                <h3 class="category-name tilt-inner">Beauty & Skincare</h3>
+                <p class="category-desc tilt-inner">Clinical-grade serums, exfoliants, and sunscreen lotions.</p>
+            </a>
+        </div>
+        <div class="category-card tilt-card reveal-on-scroll" style="animation-delay: 0.6s;">
+            <a href="/category/sports">
+                <div class="category-icon tilt-inner"><i class="fa-solid fa-mountain-sun"></i></div>
+                <h3 class="category-name tilt-inner">Sports & Outdoors</h3>
+                <p class="category-desc tilt-inner">Hydration packs, hiking gear, hammocks, and sports equipment.</p>
+            </a>
+        </div>
+        <div class="category-card tilt-card reveal-on-scroll" style="animation-delay: 0.7s;">
+            <a href="/category/pets">
+                <div class="category-icon tilt-inner"><i class="fa-solid fa-paw"></i></div>
+                <h3 class="category-name tilt-inner">Pet Supplies</h3>
+                <p class="category-desc tilt-inner">Orthopedic memory foam beds, cat toys, and grooming essentials.</p>
             </a>
         </div>
     </div>
