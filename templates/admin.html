@@ -349,7 +349,10 @@
         <!-- Welcome Row -->
         <div class="admin-title-row">
             <h1><i class="fa-solid fa-sliders"></i> Dropshipping Operations Console</h1>
-            <button onclick="loadConsoleData()" class="btn btn-secondary"><i class="fa-solid fa-rotate"></i> Sync Data</button>
+            <div style="display: flex; gap: 12px;">
+                <button onclick="syncCJDropshipping(this)" class="btn btn-primary"><i class="fa-solid fa-cloud-arrow-down"></i> Sync CJ Dropshipping</button>
+                <button onclick="loadConsoleData()" class="btn btn-secondary"><i class="fa-solid fa-rotate"></i> Sync Data</button>
+            </div>
         </div>
         
         <!-- KPI Dashboard Panel -->
@@ -621,6 +624,25 @@
             } catch (err) {
                 console.error(err);
                 showAdminToast('Could not sync console data. Check connection.', false);
+            }
+        }
+        
+        async function syncCJDropshipping(btn) {
+            const originalHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-sm"></span> Syncing CJ API...';
+            try {
+                const res = await fetch('/api/cj/sync', { method: 'POST' });
+                if (!res.ok) throw new Error('CJ Dropshipping Server offline or unauthorized');
+                const data = await res.json();
+                showAdminToast(data.message, true);
+                await loadConsoleData();
+            } catch (err) {
+                console.error(err);
+                showAdminToast('Failed to connect to CJDropshipping API. Check settings.', false);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalHtml;
             }
         }
         
