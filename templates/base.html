@@ -31,43 +31,56 @@
 
     <!-- Sticky Glassmorphic Navbar -->
     <nav class="navbar">
-        <div class="navbar-container">
+        <div class="container">
             <a href="/" class="nav-brand">
                 NEX<span>ORA</span>
             </a>
             
-            <div class="nav-menu" id="mobile-menu">
-                <a href="/" class="nav-item">Home</a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
                 <div class="nav-dropdown">
-                    <a href="#" class="nav-item dropdown-toggle">Categories <i class="fa-solid fa-chevron-down dropdown-arrow"></i></a>
+                    <a href="#" class="nav-link dropdown-toggle">Categories <i class="fa-solid fa-chevron-down dropdown-arrow"></i></a>
                     <div class="nav-dropdown-menu">
                         {% for slug, cat in categories.items() %}
                             <a href="/category/{{ slug }}">{{ cat.name }}</a>
                         {% endfor %}
                     </div>
                 </div>
-                <a href="/about" class="nav-item">About</a>
-                <a href="/tracking" class="nav-item">Track Order</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/tracking" class="nav-link">Track Order</a>
             </div>
             
-            <div class="nav-actions">
-                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light/dark theme" style="margin-right: 12px;">
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 8px;">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light/dark theme" style="margin-right: 8px;">
                     <i class="fa-solid fa-moon"></i>
                 </button>
                 
-                <a href="/cart" class="nav-cart" aria-label="View Shopping Cart">
+                <a href="/cart" class="nav-cart" aria-label="View Shopping Cart" style="margin-right: 8px;">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="cart-badge" id="cart-badge">0</span>
                 </a>
                 
-                <button class="menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
+                <button class="hamburger" id="mobile-menu-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Navigation Drawer Panel -->
+    <div class="mobile-nav" id="mobile-menu">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/tracking">Track Order</a>
+        <a href="/cart">Cart</a>
+        <hr style="width: 40px; border: none; border-top: 1px solid var(--glass-border); margin: 12px 0;">
+        <span style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--cyan); margin-bottom: 8px; font-weight: 600;">Categories</span>
+        {% for slug, cat in categories.items() %}
+            <a href="/category/{{ slug }}" style="font-size: 1.15rem; padding: 4px 0;">{{ cat.name }}</a>
+        {% endfor %}
+    </div>
 
     <!-- Main Content Area -->
     <main class="main-content">

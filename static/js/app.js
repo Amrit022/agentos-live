@@ -326,7 +326,7 @@
 
       container.innerHTML = `
         <h2 class="section-title">You May Also Like</h2>
-        <div class="product-grid-small">
+        <div class="product-grid">
           ${products.map(renderProductCard).join('')}
         </div>
       `;

@@ -6,79 +6,67 @@
 <section class="checkout-section container">
     <h1 class="page-title reveal-on-scroll">Secure Checkout</h1>
     
-    <div class="checkout-layout-grid">
+    <div class="checkout-layout">
         <!-- Shipping Details Form (Left Column) -->
-        <div class="checkout-form-column reveal-on-scroll">
-            <div class="checkout-card">
-                <h2>1. Shipping Information</h2>
-                <form id="checkout-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="checkout-name">Full Name</label>
-                            <input type="text" id="checkout-name" name="name" class="form-control" required placeholder="e.g. John Doe">
-                            <span class="field-error"></span>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="checkout-email">Email Address</label>
-                            <input type="email" id="checkout-email" name="email" class="form-control" required placeholder="e.g. john@example.com">
-                            <span class="field-error"></span>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="checkout-phone">Phone Number</label>
-                            <input type="tel" id="checkout-phone" name="phone" class="form-control" required placeholder="10-digit number" pattern="[0-9]{10}">
-                            <span class="field-error"></span>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="checkout-address">Address Line 1</label>
-                            <input type="text" id="checkout-address" name="address" class="form-control" required placeholder="Street address, P.O. box">
-                            <span class="field-error"></span>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="checkout-address2">Address Line 2 (Optional)</label>
-                            <input type="text" id="checkout-address2" name="address2" class="form-control" placeholder="Apartment, suite, unit, building, floor">
-                            <span class="field-error"></span>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="checkout-city">City</label>
-                            <input type="text" id="checkout-city" name="city" class="form-control" required placeholder="e.g. New York">
-                            <span class="field-error"></span>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="checkout-state">State / Province</label>
-                            <input type="text" id="checkout-state" name="state" class="form-control" required placeholder="e.g. NY">
-                            <span class="field-error"></span>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="checkout-pincode">Zip / Postal Code</label>
-                            <input type="text" id="checkout-pincode" name="pincode" class="form-control" required placeholder="e.g. 10001">
-                            <span class="field-error"></span>
-                        </div>
-                    </div>
-                </form>
-            </div>
+        <div class="checkout-form reveal-on-scroll">
+            <h2 class="form-title">1. Shipping Information</h2>
+            <form id="checkout-form" class="form-grid">
+                <div class="form-group full">
+                    <label class="form-label" for="checkout-name">Full Name</label>
+                    <input type="text" id="checkout-name" name="name" class="form-input" required placeholder="e.g. John Doe">
+                    <span class="field-error" style="font-size: 0.75rem; color: var(--error); margin-top: 4px;"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="checkout-email">Email Address</label>
+                    <input type="email" id="checkout-email" name="email" class="form-input" required placeholder="e.g. john@example.com">
+                    <span class="field-error" style="font-size: 0.75rem; color: var(--error); margin-top: 4px;"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="checkout-phone">Phone Number</label>
+                    <input type="tel" id="checkout-phone" name="phone" class="form-input" required placeholder="10-digit number" pattern="[0-9]{10}">
+                    <span class="field-error" style="font-size: 0.75rem; color: var(--error); margin-top: 4px;"></span>
+                </div>
+                
+                <div class="form-group full">
+                    <label class="form-label" for="checkout-address">Address Line 1</label>
+                    <input type="text" id="checkout-address" name="address" class="form-input" required placeholder="Street address, P.O. box">
+                    <span class="field-error" style="font-size: 0.75rem; color: var(--error); margin-top: 4px;"></span>
+                </div>
+                
+                <div class="form-group full">
+                    <label class="form-label" for="checkout-address2">Address Line 2 (Optional)</label>
+                    <input type="text" id="checkout-address2" name="address2" class="form-input" placeholder="Apartment, suite, unit, building, floor">
+                    <span class="field-error" style="font-size: 0.75rem; color: var(--error); margin-top: 4px;"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="checkout-city">City</label>
+                    <input type="text" id="checkout-city" name="city" class="form-input" required placeholder="e.g. New York">
+                    <span class="field-error" style="font-size: 0.75rem; color: var(--error); margin-top: 4px;"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="checkout-state">State / Province</label>
+                    <input type="text" id="checkout-state" name="state" class="form-input" required placeholder="e.g. NY">
+                    <span class="field-error" style="font-size: 0.75rem; color: var(--error); margin-top: 4px;"></span>
+                </div>
+                <div class="form-group full">
+                    <label class="form-label" for="checkout-pincode">Zip / Postal Code</label>
+                    <input type="text" id="checkout-pincode" name="pincode" class="form-input" required placeholder="e.g. 10001">
+                    <span class="field-error" style="font-size: 0.75rem; color: var(--error); margin-top: 4px;"></span>
+                </div>
+            </form>
             
-            <div class="checkout-card payment-card" style="margin-top: 30px;">
-                <h2>2. Secure Payment Gateway</h2>
-                <p class="payment-note">Complete your purchase safely. PayPal supports all major credit/debit cards and secure checkout encryption.</p>
+            <div class="payment-section" style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.06);">
+                <h2 class="form-title" style="border: none; margin-bottom: 8px; padding: 0;">2. Secure Payment Gateway</h2>
+                <p class="payment-note" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px;">Complete your purchase safely. PayPal supports all major credit/debit cards and secure checkout encryption.</p>
                 <div id="paypal-button-container" class="paypal-container"></div>
             </div>
         </div>
 
         <!-- Summary Sidebar (Right Column) -->
         <div class="checkout-summary-column reveal-on-scroll">
-            <div class="cart-summary-card">
+            <div class="cart-summary">
                 <h3>Order Summary</h3>
                 <div class="checkout-items-list">
                     {% for item in items %}
@@ -92,27 +80,25 @@
                         </div>
                     {% endfor %}
                 </div>
-                <div class="summary-divider"></div>
-                <div class="summary-row">
-                    <span>Subtotal</span>
-                    <span>${{ "%.2f"|format(subtotal) }}</span>
+                <div class="summary-row" style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06);">
+                    <span class="label">Subtotal</span>
+                    <span class="value">${{ "%.2f"|format(subtotal) }}</span>
                 </div>
                 <div class="summary-row">
-                    <span>Shipping</span>
-                    <span>
+                    <span class="label">Shipping</span>
+                    <span class="value">
                         {% if shipping == 0 %}
-                            <span class="free-shipping">FREE</span>
+                            <span class="free">FREE</span>
                         {% else %}
                             ${{ "%.2f"|format(shipping) }}
                         {% endif %}
                     </span>
                 </div>
-                <div class="summary-divider"></div>
-                <div class="summary-row summary-total">
-                    <span>Total</span>
-                    <span>${{ "%.2f"|format(total) }}</span>
+                <div class="summary-row total" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08);">
+                    <span class="label" style="font-weight: 600;">Total</span>
+                    <span class="value">${{ "%.2f"|format(total) }}</span>
                 </div>
-                <a href="/cart" class="btn btn-ghost btn-block">Modify Cart</a>
+                <a href="/cart" class="btn btn-secondary" style="width: 100%; margin-top: 20px;">Modify Cart</a>
             </div>
         </div>
     </div>
