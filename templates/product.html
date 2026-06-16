@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }} — NEXORA{% endblock %}
+
+{% block content %}
+<section class="product-detail-section container">
+    <div class="reveal-on-scroll">
+        <span class="breadcrumb">
+            <a href="/">Home</a> / 
+            <a href="/category/{{ product.category }}">{{ product.category_display }}</a> / 
+            <span class="active">{{ product.name }}</span>
+        </span>
+    </div>
+
+    <!-- Product Showcase Area -->
+    <div id="product-detail" data-product-id="{{ product.id }}">
+        <div class="product-detail-grid">
+            <!-- Image Left -->
+            <div class="product-detail-image float-image reveal-on-scroll">
+                <img src="{{ product.image_url }}" alt="{{ product.name }}" />
+            </div>
+            
+            <!-- Info Right -->
+            <div class="product-detail-info reveal-on-scroll">
+                <span class="category-badge">{{ product.category_display }}</span>
+                <h1 class="product-detail-name">{{ product.name }}</h1>
+                
+                <div class="product-rating" id="detail-rating">
+                    <!-- Rating rendered by app.js or fallback -->
+                    {% for i in range(1, 6) %}
+                        {% if i <= product.rating|int %}
+                            <span class="star full">★</span>
+                        {% else %}
+                            <span class="star empty">☆</span>
+                        {% endif %}
+                    {% endfor %}
+                    <span class="rating-num">({{ product.rating }})</span>
+                </div>
+                
+                <div class="product-detail-price" id="detail-price">
+                    ${{ "%.2f"|format(product.price) }}
+                </div>
+                
+                <p class="product-detail-desc">{{ product.description }}</p>
+                
+                <ul class="product-features">
+                    {% for feat in product.features %}
+                        <li><i class="fa-solid fa-circle-check"></i> {{ feat }}</li>
+                    {% endfor %}
+                </ul>
+                
+                <p class="product-stock {% if product.stock > 0 %}in-stock{% else %}out-of-stock{% endif %}">
+                    {% if product.stock > 0 %}
+                        <i class="fa-solid fa-circle-check"></i> In Stock ({{ product.stock }} available)
+                    {% else %}
+                        <i class="fa-solid fa-circle-xmark"></i> Out of Stock
+                    {% endif %}
+                </p>
+                
+                <p class="product-delivery-info">
+                    <i class="fa-solid fa-truck-fast"></i> Ships globally. Estimated delivery in {{ product.delivery_days }} days.
+                </p>
+                
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="adjustDetailQty(-1)">−</button>
+                        <input type="number" id="detail-qty" value="1" min="1" max="{{ product.stock }}" />
+                        <button class="qty-btn" onclick="adjustDetailQty(1)">+</button>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-lg" onclick="addToCartFromDetail({{ product.id }})" {% if product.stock <= 0 %}disabled{% endif %}>
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Products Showcase -->
+<section class="related-section container" id="related-products">
+    {% if related_products %}
+        <h2 class="section-title">You May Also Like</h2>
+        <div class="product-grid-small">
+            {% for rel in related_products %}
+                <div class="product-card tilt-card reveal-on-scroll" data-product-id="{{ rel.id }}" data-price="{{ rel.price }}">
+                    <a href="/product/${{ rel.id }}" class="product-card-link">
+                        <div class="product-card-image tilt-inner">
+                            <img src="{{ rel.image_url }}" alt="{{ rel.name }}" loading="lazy" />
+                            <span class="category-badge">{{ rel.category_display }}</span>
+                        </div>
+                        <div class="product-card-info tilt-inner">
+                            <h3 class="product-name">{{ rel.name }}</h3>
+                            <div class="product-price">${{ "%.2f"|format(rel.price) }}</div>
+                        </div>
+                    </a>
+                    <button class="btn btn-primary btn-add-to-cart" onclick="event.preventDefault(); event.stopPropagation(); addToCart({{ rel.id }})">
+                        Add to Cart
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

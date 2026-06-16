@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout — NEXORA{% endblock %}
+
+{% block content %}
+<section class="checkout-section container">
+    <h1 class="page-title reveal-on-scroll">Secure Checkout</h1>
+    
+    <div class="checkout-layout-grid">
+        <!-- Shipping Details Form (Left Column) -->
+        <div class="checkout-form-column reveal-on-scroll">
+            <div class="checkout-card">
+                <h2>1. Shipping Information</h2>
+                <form id="checkout-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="checkout-name">Full Name</label>
+                            <input type="text" id="checkout-name" name="name" class="form-control" required placeholder="e.g. John Doe">
+                            <span class="field-error"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="checkout-email">Email Address</label>
+                            <input type="email" id="checkout-email" name="email" class="form-control" required placeholder="e.g. john@example.com">
+                            <span class="field-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="checkout-phone">Phone Number</label>
+                            <input type="tel" id="checkout-phone" name="phone" class="form-control" required placeholder="10-digit number" pattern="[0-9]{10}">
+                            <span class="field-error"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="checkout-address">Address Line 1</label>
+                            <input type="text" id="checkout-address" name="address" class="form-control" required placeholder="Street address, P.O. box">
+                            <span class="field-error"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="checkout-address2">Address Line 2 (Optional)</label>
+                            <input type="text" id="checkout-address2" name="address2" class="form-control" placeholder="Apartment, suite, unit, building, floor">
+                            <span class="field-error"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="checkout-city">City</label>
+                            <input type="text" id="checkout-city" name="city" class="form-control" required placeholder="e.g. New York">
+                            <span class="field-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="checkout-state">State / Province</label>
+                            <input type="text" id="checkout-state" name="state" class="form-control" required placeholder="e.g. NY">
+                            <span class="field-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="checkout-pincode">Zip / Postal Code</label>
+                            <input type="text" id="checkout-pincode" name="pincode" class="form-control" required placeholder="e.g. 10001">
+                            <span class="field-error"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="checkout-card payment-card" style="margin-top: 30px;">
+                <h2>2. Secure Payment Gateway</h2>
+                <p class="payment-note">Complete your purchase safely. PayPal supports all major credit/debit cards and secure checkout encryption.</p>
+                <div id="paypal-button-container" class="paypal-container"></div>
+            </div>
+        </div>
+
+        <!-- Summary Sidebar (Right Column) -->
+        <div class="checkout-summary-column reveal-on-scroll">
+            <div class="cart-summary-card">
+                <h3>Order Summary</h3>
+                <div class="checkout-items-list">
+                    {% for item in items %}
+                        <div class="checkout-item-summary">
+                            <img src="{{ item.image_url }}" alt="{{ item.name }}" />
+                            <div class="summary-details">
+                                <span class="summary-name">{{ item.name }}</span>
+                                <span class="summary-qty">Qty: {{ item.quantity }} × ${{ "%.2f"|format(item.price) }}</span>
+                            </div>
+                            <span class="summary-total-item">${{ "%.2f"|format(item.price * item.quantity) }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>${{ "%.2f"|format(subtotal) }}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span>
+                        {% if shipping == 0 %}
+                            <span class="free-shipping">FREE</span>
+                        {% else %}
+                            ${{ "%.2f"|format(shipping) }}
+                        {% endif %}
+                    </span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span>${{ "%.2f"|format(total) }}</span>
+                </div>
+                <a href="/cart" class="btn btn-ghost btn-block">Modify Cart</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id }}&currency=USD"></script>
+<script>
+    (function() {
+        let internalOrderId = null;
+        
+        paypal.Buttons({
+            onClick: function(data, actions) {
+                // Trigger HTML5 validation checks before proceeding to payment portal
+                const form = document.getElementById('checkout-form');
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return actions.reject();
+                }
+            },
+            createOrder: async function(data, actions) {
+                const form = document.getElementById('checkout-form');
+                const payload = {
+                    name: form.querySelector('[name="name"]').value.trim(),
+                    email: form.querySelector('[name="email"]').value.trim(),
+                    phone: form.querySelector('[name="phone"]').value.trim(),
+                    address: form.querySelector('[name="address"]').value.trim(),
+                    address2: form.querySelector('[name="address2"]').value.trim(),
+                    city: form.querySelector('[name="city"]').value.trim(),
+                    state: form.querySelector('[name="state"]').value.trim(),
+                    pincode: form.querySelector('[name="pincode"]').value.trim()
+                };
+                
+                try {
+                    const res = await fetch('/api/create-checkout-session', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (!res.ok) {
+                        const err = await res.json();
+                        alert(err.error || 'Failed to initialize checkout session.');
+                        throw new Error('Internal Order Creation Failed');
+                    }
+                    
+                    const sessionData = await res.json();
+                    internalOrderId = sessionData.internal_order_id;
+                    
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                currency_code: 'USD',
+                                value: sessionData.total
+                            },
+                            description: 'NEXORA Order Fulfillment ' + internalOrderId
+                        }]
+                    });
+                } catch (err) {
+                    console.error('PayPal createOrder Error:', err);
+                }
+            },
+            onApprove: async function(data, actions) {
+                return actions.order.capture().then(async function(details) {
+                    try {
+                        const res = await fetch('/api/verify-payment', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                paypal_order_id: data.orderID,
+                                internal_order_id: internalOrderId
+                            })
+                        });
+                        
+                        if (!res.ok) throw new Error('Failed to verify payment.');
+                        
+                        const verifyData = await res.json();
+                        if (verifyData.success) {
+                            window.location.href = verifyData.redirect;
+                        } else {
+                            alert('Payment captured but verification failed. Please contact support.');
+                        }
+                    } catch (err) {
+                        console.error('PayPal onApprove Error:', err);
+                        alert('Payment verified, but server sync failed. Please retain your transaction ID.');
+                    }
+                });
+            },
+            onError: function(err) {
+                console.error('PayPal Error:', err);
+                alert('An error occurred during the transaction. Please try again.');
+            }
+        }).render('#paypal-button-container');
+    })();
+</script>
+{% endblock %}

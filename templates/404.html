@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found — NEXORA{% endblock %}
+
+{% block content %}
+<section class="container" style="min-height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 20px;">
+    <div class="reveal-on-scroll" style="max-width: 600px;">
+        <span style="font-size: 6rem; font-family: var(--font-heading); font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; margin-bottom: 10px; text-shadow: var(--cyan-glow);">404</span>
+        <h1 class="page-title" style="margin-bottom: 20px; font-size: 2rem;">Grid Coordinate Offline</h1>
+        <p class="text-muted" style="font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6;">
+            The page you are trying to reach has drifted out of orbit. It either doesn't exist, was moved, or has been taken offline by the factory supplier network.
+        </p>
+        <div style="display: flex; gap: 15px; justify-content: center;">
+            <a href="/" class="btn btn-primary"><i class="fa-solid fa-house"></i> Return Home</a>
+            <a href="/about" class="btn btn-secondary"><i class="fa-solid fa-circle-info"></i> Support Center</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,972 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SafeFleet Academy — Heavy Vehicle Compliance Training Australia | HVNL 2026 Ready</title>
-<meta name="description" content="Australia's trusted online heavy vehicle compliance training. Chain of Responsibility, Fatigue Management, Load Restraint, and SMS courses for drivers, supervisors, and fleet managers. HVNL 2026 reform ready.">
-<meta name="keywords" content="heavy vehicle compliance, chain of responsibility training, HVNL 2026, fatigue management, CoR training Australia, NHVR compliance, load restraint training, SMS implementation">
-<meta property="og:title" content="SafeFleet Academy — Heavy Vehicle Compliance Training Australia">
-<meta property="og:description" content="Get HVNL 2026 ready. Online compliance training for drivers, supervisors, and fleet managers. Trusted by 2,000+ transport professionals.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://SafeFleetacademy.com">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://SafeFleetacademy.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18174625300"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-18174625300');
-</script>
-<style>
-  :root {
-    --bg-primary: #f8fafc;
-    --bg-secondary: #ffffff;
-    --card-surface: rgba(255, 255, 255, 0.9);
-    --border-dim: rgba(15, 23, 42, 0.08);
-    --border-bright: rgba(15, 23, 42, 0.15);
-    --amber: #d97706;
-    --amber-glow: rgba(217, 119, 6, 0.15);
-    --blue: #1d4ed8;
-    --blue-glow: rgba(29, 78, 216, 0.15);
-    --green: #15803d;
-    --red: #ef4444;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-tertiary: #64748b;
-  }
+{% extends "base.html" %}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+{% block title %}NEXORA — The Future, Delivered.{% endblock %}
 
-  body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  h1, h2, h3, h4 {
-    font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: -0.03em;
-  }
-
-  /* ───── BACKGROUNDS ───── */
-  .grid-bg {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -3;
-    background-image: linear-gradient(var(--border-dim) 1px, transparent 1px), linear-gradient(90deg, var(--border-dim) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(circle at center, black, transparent 80%);
-    -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
-  }
-  .glow-orb { position: fixed; border-radius: 50%; filter: blur(120px); z-index: -2; opacity: 0.12; animation: drift 20s infinite alternate linear; }
-  .orb-amber { width: 50vw; height: 50vw; background: var(--amber); top: -20%; left: -10%; }
-  .orb-blue { width: 40vw; height: 40vw; background: var(--blue); bottom: -10%; right: -10%; }
-
-  @keyframes drift { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(10%, 10%) scale(1.1); } }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-
-  /* ───── NAV ───── */
-  nav {
-    position: fixed; top: 0; left: 0; width: 100%;
-    padding: 16px 48px;
-    display: flex; justify-content: space-between; align-items: center;
-    z-index: 100;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-dim);
-  }
-  .nav-logo {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 900; font-size: 22px; color: var(--text-primary);
-    text-decoration: none; display: flex; align-items: center; gap: 10px;
-  }
-  .nav-links { display: flex; gap: 32px; align-items: center; }
-  .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--amber); }
-
-  .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 8px; }
-  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: 0.3s; }
-
-  .btn-amber {
-    background: var(--amber); color: #0f172a; padding: 10px 24px; border-radius: 8px;
-    font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
-    text-decoration: none; border: none; cursor: pointer;
-    box-shadow: 0 0 20px var(--amber-glow);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .btn-amber:hover { transform: translateY(-2px); box-shadow: 0 0 30px var(--amber-glow); }
-
-  .btn-outline {
-    background: transparent; color: var(--text-primary); padding: 10px 24px; border-radius: 8px;
-    font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
-    text-decoration: none; border: 1px solid var(--border-bright); cursor: pointer;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--amber); color: var(--amber); }
-
-  /* ───── MOBILE CART ───── */
-  .mobile-cart-btn { display: flex; position: relative; text-decoration: none; }
-  .cart-badge { position: absolute; top: -6px; right: -8px; background: var(--red); color: #fff; font-size: 10px; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-  .nav-cart-link { display: none; }
-
-  /* ───── HERO ───── */
-  #hero {
-    min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; padding: 160px 24px 100px;
-  }
-  .reform-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);
-    padding: 8px 20px; border-radius: 100px; font-size: 13px; font-weight: 600;
-    color: var(--red); margin-bottom: 32px; animation: fadeUp 0.8s ease both;
-  }
-  .reform-badge .dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; animation: pulse 1.5s infinite; }
-
-  .hero-title {
-    font-size: clamp(42px, 7vw, 88px); line-height: 1.05; font-weight: 900;
-    max-width: 900px; margin-bottom: 24px; animation: fadeUp 1s 0.1s ease both;
-  }
-  .text-gradient {
-    background: linear-gradient(180deg, var(--text-primary), var(--text-secondary));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
-  .text-amber { color: var(--amber); -webkit-text-fill-color: var(--amber); text-shadow: 0 0 10px var(--amber-glow); }
-
-  .hero-sub {
-    font-size: clamp(16px, 2vw, 20px); color: var(--text-secondary);
-    max-width: 650px; margin-bottom: 48px; font-weight: 400; animation: fadeUp 1s 0.2s ease both;
-  }
-
-  .hero-metrics {
-    display: flex; gap: 48px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px;
-    animation: fadeUp 1s 0.3s ease both;
-  }
-  .metric { display: flex; flex-direction: column; align-items: center; }
-  .metric-val { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: var(--text-primary); }
-  .metric-lbl { font-size: 12px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 2px; }
-
-  .hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; animation: fadeUp 1s 0.4s ease both; }
-
-  /* ───── SECTIONS ───── */
-  section { padding: 100px 24px; max-width: 1200px; margin: 0 auto; width: 100%; }
-
-  .section-header { text-align: center; margin-bottom: 64px; }
-  .sec-tag { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--amber); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; display: block; }
-  .sec-title { font-size: clamp(32px, 5vw, 48px); margin-bottom: 16px; }
-  .sec-desc { color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 17px; }
-
-  /* ───── REFORM ALERT ───── */
-  .reform-banner {
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
-    border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 16px;
-    padding: 48px; text-align: center; margin-bottom: 80px;
-  }
-  .countdown { display: flex; gap: 24px; justify-content: center; margin: 32px 0; flex-wrap: wrap; }
-  .countdown-item { display: flex; flex-direction: column; align-items: center; }
-  .countdown-val { font-family: 'JetBrains Mono', monospace; font-size: 48px; font-weight: 700; color: var(--amber); }
-  .countdown-lbl { font-size: 12px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 2px; }
-
-  /* ───── CARDS ───── */
-  .bento-card {
-    background: var(--card-surface); border: 1px solid var(--border-dim); border-radius: 16px;
-    padding: 32px; backdrop-filter: blur(8px);
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  }
-  .bento-card:hover { border-color: var(--amber); transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); }
-
-  .role-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
-  .role-card { text-align: center; padding: 40px 24px; }
-  .role-icon { font-size: 48px; margin-bottom: 16px; }
-  .role-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-  .role-desc { color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
-
-  /* ───── COURSE CATALOG ───── */
-  .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-  .course-card { position: relative; overflow: hidden; }
-  .course-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: inline-block; padding: 4px 12px; border-radius: 100px; }
-  .course-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-  .course-desc { color: var(--text-secondary); font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
-  .course-price { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; color: var(--amber); }
-  .course-price-note { font-size: 12px; color: var(--text-tertiary); }
-  .course-features { list-style: none; margin: 16px 0; }
-  .course-features li { color: var(--text-secondary); font-size: 13px; padding: 4px 0; }
-  .course-features li::before { content: "✓ "; color: var(--green); font-weight: 700; }
-
-  /* ───── HOW IT WORKS ───── */
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; counter-reset: step; }
-  .step { text-align: center; counter-increment: step; }
-  .step::before {
-    content: counter(step); display: flex; align-items: center; justify-content: center;
-    width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 16px;
-    background: var(--amber); color: #0f172a; font-family: 'JetBrains Mono', monospace;
-    font-size: 18px; font-weight: 700;
-  }
-  .step h4 { font-size: 16px; margin-bottom: 8px; }
-  .step p { color: var(--text-secondary); font-size: 14px; }
-
-  /* ───── COR EXPLAINER ───── */
-  .cor-chain { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin: 32px 0; }
-  .cor-party {
-    background: var(--card-surface); border: 1px solid var(--border-dim);
-    padding: 16px 24px; border-radius: 12px; text-align: center; min-width: 140px;
-    transition: border-color 0.3s;
-  }
-  .cor-party:hover { border-color: var(--amber); }
-  .cor-party .party-icon { font-size: 28px; margin-bottom: 8px; }
-  .cor-party .party-name { font-size: 13px; font-weight: 600; }
-
-  /* ───── FAQ ───── */
-  .faq-list { max-width: 800px; margin: 0 auto; }
-  .faq-item { border-bottom: 1px solid var(--border-dim); }
-  .faq-q {
-    width: 100%; text-align: left; background: none; border: none; color: var(--text-primary);
-    font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600;
-    padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-  }
-  .faq-q::after { content: "+"; font-size: 24px; color: var(--amber); transition: transform 0.3s; }
-  .faq-q.active::after { transform: rotate(45deg); }
-  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
-  .faq-a.open { max-height: 500px; padding-bottom: 20px; }
-
-  /* ───── NEWSLETTER ───── */
-  .newsletter-section {
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(59, 130, 246, 0.08));
-    border: 1px solid var(--border-dim); border-radius: 24px;
-    padding: 64px 48px; text-align: center; margin: 80px auto; max-width: 800px;
-  }
-  .newsletter-input-group { display: flex; gap: 12px; max-width: 480px; margin: 24px auto 0; }
-  .newsletter-input-group input {
-    flex: 1; padding: 14px 20px; border-radius: 8px; border: 1px solid var(--border-dim);
-    background: var(--bg-secondary); color: var(--text-primary); font-size: 14px; font-family: 'Inter', sans-serif;
-  }
-  .newsletter-input-group input:focus { outline: none; border-color: var(--amber); }
-
-  /* ───── FOOTER ───── */
-  footer {
-    border-top: 1px solid var(--border-dim); padding: 64px 48px 32px;
-    max-width: 1200px; margin: 0 auto;
-  }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-  .footer-col h4 { font-size: 13px; color: var(--amber); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
-  .footer-col ul { list-style: none; }
-  .footer-col li { margin-bottom: 8px; }
-  .footer-col a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
-  .footer-col a:hover { color: var(--amber); }
-  .footer-bottom { border-top: 1px solid var(--border-dim); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  .footer-bottom p { color: var(--text-tertiary); font-size: 13px; }
-
-  /* ───── CHATBOT ───── */
-  #chat-toggle-btn {
-    position: fixed; bottom: 24px; right: 24px; z-index: 999;
-    width: 60px; height: 60px; border-radius: 50%; border: none; cursor: pointer;
-    background: var(--amber); color: #0f172a;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 20px var(--amber-glow);
-    font-size: 28px; transition: transform 0.2s;
-  }
-  #chat-toggle-btn:hover { transform: scale(1.1); }
-
-  #chat-window {
-    position: fixed; bottom: 24px; right: 24px; z-index: 1000;
-    width: 380px; height: 520px; border-radius: 16px; overflow: hidden;
-    background: var(--bg-secondary); border: 1px solid var(--border-dim);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-    display: none; flex-direction: column;
-  }
-  .chat-header {
-    padding: 16px 20px; background: var(--bg-secondary);
-    border-bottom: 1px solid var(--border-dim);
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .chat-header-title { font-weight: 700; font-size: 15px; color: var(--text-primary); }
-  .chat-close { background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 20px; }
-  #chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-  .chat-input-area { padding: 12px; border-top: 1px solid var(--border-dim); display: flex; gap: 8px; }
-  .chat-input-area input {
-    flex: 1; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border-dim);
-    background: var(--bg-primary); color: var(--text-primary); font-size: 14px; font-family: 'Inter', sans-serif;
-  }
-  .chat-input-area input:focus { outline: none; border-color: var(--amber); }
-  .chat-input-area button {
-    background: var(--amber); color: #0f172a; border: none; border-radius: 8px;
-    padding: 10px 16px; cursor: pointer; font-weight: 700; font-size: 14px;
-  }
-  .chip-container { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 12px; }
-  .chip {
-    background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3);
-    color: var(--amber); padding: 6px 14px; border-radius: 100px; font-size: 12px;
-    cursor: pointer; transition: background 0.2s;
-  }
-  .chip:hover { background: rgba(245, 158, 11, 0.2); }
-
-  /* ───── MODAL ───── */
-  .modal-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
-    z-index: 2000; display: none; align-items: center; justify-content: center; padding: 24px;
-  }
-  .modal-content {
-    background: var(--bg-secondary); border: 1px solid var(--border-dim); border-radius: 16px;
-    padding: 40px; max-width: 500px; width: 100%; position: relative;
-  }
-  .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 24px; }
-
-  /* ───── SCROLL REVEAL ───── */
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* ───── RESPONSIVE ───── */
-  @media (max-width: 768px) {
-    nav { padding: 16px 20px; }
-    .nav-links { 
-      position: fixed; top: 0; left: -100%; width: 80%; height: 100vh;
-      background: var(--bg-primary); flex-direction: column; padding: 80px 32px 32px;
-      gap: 24px; transition: left 0.4s ease; z-index: 101;
-      border-right: 1px solid var(--border-dim);
-    }
-    .nav-links.open { left: 0; }
-    .nav-links a { font-size: 18px; }
-    .hamburger { display: flex; z-index: 102; }
-    .mobile-cart-btn { display: flex; }
-    .nav-cta-desktop { display: none !important; }
-    .nav-cart-link { display: block !important; }
-
-    #hero { padding: 140px 20px 80px; }
-    section { padding: 60px 20px; }
-    .hero-metrics { gap: 24px; }
-    .metric-val { font-size: 24px; }
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-    .newsletter-section { padding: 40px 24px; }
-    .newsletter-input-group { flex-direction: column; }
-    .countdown-val { font-size: 32px; }
-    .reform-banner { padding: 32px 20px; }
-    #chat-window { width: calc(100vw - 32px); right: 16px; bottom: 16px; height: 70vh; }
-  }
-  @media (max-width: 480px) {
-    .footer-grid { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
-
-<div class="grid-bg"></div>
-<div class="glow-orb orb-amber"></div>
-<div class="glow-orb orb-blue"></div>
-
-<nav>
-  <a href="/" class="nav-logo">
-    <img src="/static/logo.png" alt="SafeFleet Academy Logo" style="width: 32px; height: 32px; border-radius: 6px;">
-    SafeFleet<span style="color: var(--amber);"> Academy</span>
-  </a>
-
-  <div class="nav-links" id="navLinks">
-    <a href="#courses">Courses</a>
-    <a href="#how-it-works">How It Works</a>
-    <a href="#cor">Chain of Responsibility</a>
-    <a href="#faq">FAQ</a>
-    <a href="/portal">My Portal</a>
-    <a href="/cart" class="nav-cart-link" style="color: var(--amber);">
-      Cart <span id="cartCountMenu" class="cart-badge">0</span>
-    </a>
-  </div>
-
-  <div style="display: flex; align-items: center; gap: 16px;">
-    <a href="/cart" class="mobile-cart-btn">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--amber);"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      <span id="cartCountMobile" class="cart-badge">0</span>
-    </a>
-    <a href="#courses" class="btn-amber nav-cta-desktop" style="padding: 8px 20px; font-size: 12px;">Get Started</a>
-    <button class="hamburger" id="hamburgerBtn" onclick="toggleNav()">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="reform-badge"><span class="dot"></span> HVNL 2026 Reforms — 1 August 2026</div>
-  <h1 class="hero-title"><span class="text-gradient">Heavy vehicle compliance,</span> <br><span class="text-amber">made simple.</span></h1>
-  <p class="hero-sub">Stay compliant with Australia's HVNL 2026 reforms. Online training for drivers, supervisors, and fleet managers — trusted by transport professionals nationwide.</p>
-
-  <div class="hero-metrics">
-    <div class="metric"><span class="metric-val">2000+</span><span class="metric-lbl">Trained</span></div>
-    <div class="metric"><span class="metric-val">18</span><span class="metric-lbl">Modules</span></div>
-    <div class="metric"><span class="metric-val">1 Aug</span><span class="metric-lbl">Deadline</span></div>
-  </div>
-
-  <div class="hero-cta-group">
-    <a href="#courses" class="btn-amber">View All Courses</a>
-    <a href="#cor" class="btn-outline">Learn About CoR</a>
-  </div>
-</section>
-
-<!-- REFORM COUNTDOWN -->
-<section>
-  <div class="reform-banner reveal">
-    <h2 style="font-size: 28px; margin-bottom: 8px;">⚠️ HVNL 2026 Reforms Are Coming</h2>
-    <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 24px;">The biggest regulatory change in a decade commences <strong style="color: var(--red);">1 August 2026</strong> with <strong>no grace period</strong>. New Safety Management Systems, expanded duties, and the Two-Tier HVA accreditation are now mandatory.</p>
-    <div class="countdown" id="countdown">
-      <div class="countdown-item"><span class="countdown-val" id="cd-days">--</span><span class="countdown-lbl">Days</span></div>
-      <div class="countdown-item"><span class="countdown-val" id="cd-hours">--</span><span class="countdown-lbl">Hours</span></div>
-      <div class="countdown-item"><span class="countdown-val" id="cd-mins">--</span><span class="countdown-lbl">Minutes</span></div>
-      <div class="countdown-item"><span class="countdown-val" id="cd-secs">--</span><span class="countdown-lbl">Seconds</span></div>
-    </div>
-    <a href="#courses" class="btn-amber">Get Compliant Now</a>
-  </div>
-</section>
-
-<!-- WHO IS THIS FOR -->
-<section id="roles">
-  <div class="section-header reveal">
-    <span class="sec-tag">01 // Your Role</span>
-    <h2 class="sec-title">Training for Every Role in the Chain</h2>
-    <p class="sec-desc">From the driver's seat to the boardroom, everyone in the supply chain has legal compliance obligations.</p>
-  </div>
-
-  <div class="role-cards">
-    <div class="bento-card role-card reveal">
-      <div class="role-icon">🚛</div>
-      <h3 class="role-title">Drivers</h3>
-      <p class="role-desc">CoR awareness, fatigue management, pre-trip inspections, work diary compliance, and fitness for duty obligations.</p>
-    </div>
-    <div class="bento-card role-card reveal">
-      <div class="role-icon">📋</div>
-      <h3 class="role-title">Supervisors & Schedulers</h3>
-      <p class="role-desc">Fatigue risk management, compliant rostering, scheduling duties, and Chain of Responsibility for operational staff.</p>
-    </div>
-    <div class="bento-card role-card reveal">
-      <div class="role-icon">💼</div>
-      <h3 class="role-title">Fleet Managers & Executives</h3>
-      <p class="role-desc">Due diligence obligations, Safety Management Systems, internal auditing, and HVA accreditation preparation.</p>
-    </div>
-    <div class="bento-card role-card reveal">
-      <div class="role-icon">📦</div>
-      <h3 class="role-title">Loaders & Warehouse</h3>
-      <p class="role-desc">Load restraint performance standards, mass management, dimension compliance, and consignor/consignee duties.</p>
-    </div>
-  </div>
-</section>
-
-<!-- COURSE CATALOG -->
-<section id="courses">
-  <div class="section-header reveal">
-    <span class="sec-tag">02 // Course Catalog</span>
-    <h2 class="sec-title">Compliance Training Modules</h2>
-    <p class="sec-desc">Self-paced online courses with certificates of completion. Updated for HVNL 2026 reforms.</p>
-  </div>
-
-  <div class="course-grid">
-    <!-- CoR Drivers -->
-    <div class="bento-card course-card reveal">
-      <span class="course-tag" style="color: var(--amber); background: rgba(245, 158, 11, 0.1);">Drivers</span>
-      <h3 class="course-title">🛡️ CoR Awareness for Drivers</h3>
-      <p class="course-desc">Understand your Chain of Responsibility obligations under the HVNL. Essential for every heavy vehicle driver.</p>
-      <ul class="course-features">
-        <li>Primary safety duty (Section 26C)</li>
-        <li>5 key compliance areas</li>
-        <li>Penalties & enforcement</li>
-        <li>Practical case studies</li>
-      </ul>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
-        <div><span class="course-price">AUD $99</span><br><span class="course-price-note">One-time • Lifetime access</span></div>
-        <button class="btn-amber" style="padding: 8px 20px; font-size: 12px;" onclick="addToCart('CoR Awareness for Drivers', 99, '🛡️', 'Chain of Responsibility training for heavy vehicle drivers')">Enrol</button>
-      </div>
-    </div>
-
-    <!-- CoR Supervisors -->
-    <div class="bento-card course-card reveal">
-      <span class="course-tag" style="color: var(--blue); background: rgba(59, 130, 246, 0.1);">Supervisors</span>
-      <h3 class="course-title">📋 CoR for Supervisors & Schedulers</h3>
-      <p class="course-desc">Advanced CoR training for those who schedule, manage, or direct transport activities.</p>
-      <ul class="course-features">
-        <li>Scheduler duties under CoR</li>
-        <li>Fatigue risk management</li>
-        <li>Compliant rostering practices</li>
-        <li>Due diligence documentation</li>
-      </ul>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
-        <div><span class="course-price">AUD $149</span><br><span class="course-price-note">One-time • Lifetime access</span></div>
-        <button class="btn-amber" style="padding: 8px 20px; font-size: 12px;" onclick="addToCart('CoR for Supervisors & Schedulers', 149, '📋', 'CoR training for supervisors and schedulers')">Enrol</button>
-      </div>
-    </div>
-
-    <!-- CoR Executives -->
-    <div class="bento-card course-card reveal">
-      <span class="course-tag" style="color: var(--red); background: rgba(239, 68, 68, 0.1);">Executives</span>
-      <h3 class="course-title">⚖️ CoR Due Diligence for Executives</h3>
-      <p class="course-desc">Executive officer duties, personal liability, and due diligence obligations under the HVNL.</p>
-      <ul class="course-features">
-        <li>Personal liability exposure</li>
-        <li>6 elements of due diligence</li>
-        <li>Governance framework</li>
-        <li>Safety assurance systems</li>
-      </ul>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
-        <div><span class="course-price">AUD $249</span><br><span class="course-price-note">One-time • Lifetime access</span></div>
-        <button class="btn-amber" style="padding: 8px 20px; font-size: 12px;" onclick="addToCart('CoR Due Diligence for Executives', 249, '⚖️', 'Executive due diligence training')">Enrol</button>
-      </div>
-    </div>
-
-    <!-- Fatigue Management -->
-    <div class="bento-card course-card reveal">
-      <span class="course-tag" style="color: var(--amber); background: rgba(245, 158, 11, 0.1);">Drivers</span>
-      <h3 class="course-title">⏱️ Fatigue Management (BFM)</h3>
-      <p class="course-desc">Standard Hours, BFM limits, work diaries, EWD compliance, and the new ACA framework.</p>
-      <ul class="course-features">
-        <li>Standard & BFM hour limits</li>
-        <li>Work diary & EWD requirements</li>
-        <li>Rest break obligations</li>
-        <li>ACA transition guide</li>
-      </ul>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
-        <div><span class="course-price">AUD $129</span><br><span class="course-price-note">One-time • Lifetime access</span></div>
-        <button class="btn-amber" style="padding: 8px 20px; font-size: 12px;" onclick="addToCart('Fatigue Management (BFM)', 129, '⏱️', 'Fatigue management training for drivers')">Enrol</button>
-      </div>
-    </div>
-
-    <!-- Load Restraint -->
-    <div class="bento-card course-card reveal">
-      <span class="course-tag" style="color: var(--green); background: rgba(34, 197, 94, 0.1);">All Workers</span>
-      <h3 class="course-title">📦 Load Restraint Essentials</h3>
-      <p class="course-desc">Performance-based load restraint: 0.8g forward, 0.5g sideways/rearward, 0.2g vertical.</p>
-      <ul class="course-features">
-        <li>Performance-based standards</li>
-        <li>Lashing, blocking & containment</li>
-        <li>Minimum restraint calculations</li>
-        <li>Pre-departure inspections</li>
-      </ul>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
-        <div><span class="course-price">AUD $99</span><br><span class="course-price-note">One-time • Lifetime access</span></div>
-        <button class="btn-amber" style="padding: 8px 20px; font-size: 12px;" onclick="addToCart('Load Restraint Essentials', 99, '📦', 'Load restraint compliance training')">Enrol</button>
-      </div>
-    </div>
-
-    <!-- SMS & Audit -->
-    <div class="bento-card course-card reveal">
-      <span class="course-tag" style="color: var(--red); background: rgba(239, 68, 68, 0.1);">Managers</span>
-      <h3 class="course-title">🔍 SMS Implementation & Audit Prep</h3>
-      <p class="course-desc">Build and audit Safety Management Systems using the PSOE methodology for HVA accreditation.</p>
-      <ul class="course-features">
-        <li>5 SMS core outcomes</li>
-        <li>PSOE audit methodology</li>
-        <li>Safety documentation templates</li>
-        <li>GSA & ACA accreditation prep</li>
-      </ul>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
-        <div><span class="course-price">AUD $299</span><br><span class="course-price-note">One-time • Lifetime access</span></div>
-        <button class="btn-amber" style="padding: 8px 20px; font-size: 12px;" onclick="addToCart('SMS Implementation & Audit Prep', 299, '🔍', 'Safety Management Systems training')">Enrol</button>
-      </div>
-    </div>
-
-    <!-- Reform Bundle -->
-    <div class="bento-card course-card reveal" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(59, 130, 246, 0.05)); border-color: rgba(245, 158, 11, 0.3);">
-      <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: space-between;">
-        <div style="flex: 1; min-width: 300px;">
-          <span class="course-tag" style="color: var(--amber); background: rgba(245, 158, 11, 0.15);">🏆 Best Value</span>
-          <h3 class="course-title" style="font-size: 24px; margin-top: 8px;">HVNL 2026 Reform Readiness Bundle</h3>
-          <p class="course-desc">Complete access to ALL compliance modules. Everything your team needs to be fully compliant before 1 August 2026.</p>
-          <ul class="course-features">
-            <li>All 6 individual courses included</li>
-            <li>Save over AUD $500 vs buying separately</li>
-            <li>Priority support & annual refresher updates</li>
-            <li>Bulk team pricing available</li>
-          </ul>
+{% block content %}
+<!-- Hero Section with Three.js Canvas Background -->
+<section class="hero-section">
+    <canvas id="hero-canvas" class="hero-background"></canvas>
+    
+    <div class="hero-overlay">
+        <div class="hero-content reveal-on-scroll">
+            <h1 class="hero-title">NEX<span>ORA</span></h1>
+            <p class="hero-subtitle">The Future, Delivered.</p>
+            <p class="hero-description">Discover curated next-generation gadgets, lifestyle apparel, home electronics, fitness tools, and luxury skincare essentials shipped directly from global warehouses to your doorstep.</p>
+            <div class="hero-actions">
+                <a href="#featured-section" class="btn btn-primary btn-lg">Explore Showcase</a>
+                <a href="/about" class="btn btn-secondary btn-lg">Learn How It Works</a>
+            </div>
         </div>
-        <div style="text-align: center;">
-          <div style="text-decoration: line-through; color: var(--text-tertiary); font-size: 14px;">AUD $1,024</div>
-          <span class="course-price" style="font-size: 36px;">AUD $499</span><br>
-          <span class="course-price-note">One-time • Lifetime access</span><br>
-          <button class="btn-amber" style="margin-top: 16px; padding: 12px 32px;" onclick="addToCart('HVNL 2026 Reform Readiness Bundle', 499, '🏆', 'Complete compliance training bundle — all modules included')">Enrol in Bundle</button>
+    </div>
+    
+    <div class="hero-scroll-indicator">
+        <span class="mouse-icon">
+            <span class="wheel"></span>
+        </span>
+        <span class="label">Scroll to Explore</span>
+    </div>
+</section>
+
+<!-- Category Showcase Grid -->
+<section class="categories-section container" id="categories-section">
+    <h2 class="section-title reveal-on-scroll">Premium Categories</h2>
+    <div class="category-grid">
+        <div class="category-card tilt-card reveal-on-scroll" style="animation-delay: 0.1s;">
+            <a href="/category/tech">
+                <div class="category-icon tilt-inner"><i class="fa-solid fa-microchip"></i></div>
+                <h3 class="tilt-inner">Tech & Gadgets</h3>
+                <p class="tilt-inner">Next-gen wireless accessories and smart home electronics.</p>
+            </a>
         </div>
-      </div>
+        <div class="category-card tilt-card reveal-on-scroll" style="animation-delay: 0.2s;">
+            <a href="/category/fashion">
+                <div class="category-icon tilt-inner"><i class="fa-solid fa-glasses"></i></div>
+                <h3 class="tilt-inner">Fashion & Accessories</h3>
+                <p class="tilt-inner">Premium watches, leather wallets, bags, and luxury eyewear.</p>
+            </a>
+        </div>
+        <div class="category-card tilt-card reveal-on-scroll" style="animation-delay: 0.3s;">
+            <a href="/category/home">
+                <div class="category-icon tilt-inner"><i class="fa-solid fa-house-laptop"></i></div>
+                <h3 class="tilt-inner">Home & Kitchen</h3>
+                <p class="tilt-inner">Induction cooktops, smart lighting, and vacuum insulation flasks.</p>
+            </a>
+        </div>
+        <div class="category-card tilt-card reveal-on-scroll" style="animation-delay: 0.4s;">
+            <a href="/category/health">
+                <div class="category-icon tilt-inner"><i class="fa-solid fa-dumbbell"></i></div>
+                <h3 class="tilt-inner">Health & Fitness</h3>
+                <p class="tilt-inner">High-density yoga mats, protein powders, and resistance gear.</p>
+            </a>
+        </div>
+        <div class="category-card tilt-card reveal-on-scroll" style="animation-delay: 0.5s;">
+            <a href="/category/beauty">
+                <div class="category-icon tilt-inner"><i class="fa-solid fa-sparkles"></i></div>
+                <h3 class="tilt-inner">Beauty & Skincare</h3>
+                <p class="tilt-inner">Clinical-grade serums, exfoliants, and sunscreen lotions.</p>
+            </a>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how-it-works">
-  <div class="section-header reveal">
-    <span class="sec-tag">03 // Process</span>
-    <h2 class="sec-title">How It Works</h2>
-    <p class="sec-desc">Get compliant in 4 simple steps.</p>
-  </div>
-
-  <div class="steps">
-    <div class="step bento-card reveal">
-      <h4>Choose Your Role</h4>
-      <p>Select courses based on your position: Driver, Supervisor, Manager, or Loader.</p>
+<!-- Featured Products Section -->
+<section class="featured-section container" id="featured-section">
+    <h2 class="section-title reveal-on-scroll">Trending Products</h2>
+    <div class="product-grid" id="featured-products">
+        <!-- Dynamically populated by app.js -->
     </div>
-    <div class="step bento-card reveal">
-      <h4>Enrol Online</h4>
-      <p>Secure checkout with instant access to your training portal.</p>
-    </div>
-    <div class="step bento-card reveal">
-      <h4>Complete Training</h4>
-      <p>Self-paced interactive modules. Study on any device, anytime.</p>
-    </div>
-    <div class="step bento-card reveal">
-      <h4>Get Certified</h4>
-      <p>Download your Certificate of Completion and stay compliant.</p>
-    </div>
-  </div>
 </section>
 
-<!-- CHAIN OF RESPONSIBILITY -->
-<section id="cor">
-  <div class="section-header reveal">
-    <span class="sec-tag">04 // Understanding CoR</span>
-    <h2 class="sec-title">Chain of Responsibility</h2>
-    <p class="sec-desc">Under the HVNL, safety obligations extend to every party who influences or controls transport activities.</p>
-  </div>
-
-  <div class="cor-chain reveal">
-    <div class="cor-party"><div class="party-icon">👔</div><div class="party-name">Employers</div></div>
-    <div class="cor-party"><div class="party-icon">🚛</div><div class="party-name">Drivers</div></div>
-    <div class="cor-party"><div class="party-icon">📋</div><div class="party-name">Schedulers</div></div>
-    <div class="cor-party"><div class="party-icon">📦</div><div class="party-name">Loaders</div></div>
-    <div class="cor-party"><div class="party-icon">📤</div><div class="party-name">Consignors</div></div>
-    <div class="cor-party"><div class="party-icon">📥</div><div class="party-name">Consignees</div></div>
-    <div class="cor-party"><div class="party-icon">⚖️</div><div class="party-name">Executives</div></div>
-  </div>
-
-  <div class="bento-card reveal" style="max-width: 800px; margin: 32px auto; padding: 32px;">
-    <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--amber);">5 Key Compliance Areas</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px;">
-      <div style="text-align: center; padding: 16px;"><div style="font-size: 28px; margin-bottom: 8px;">⚡</div><div style="font-size: 13px; font-weight: 600;">Speed</div></div>
-      <div style="text-align: center; padding: 16px;"><div style="font-size: 28px; margin-bottom: 8px;">😴</div><div style="font-size: 13px; font-weight: 600;">Fatigue</div></div>
-      <div style="text-align: center; padding: 16px;"><div style="font-size: 28px; margin-bottom: 8px;">⚖️</div><div style="font-size: 13px; font-weight: 600;">Mass & Loading</div></div>
-      <div style="text-align: center; padding: 16px;"><div style="font-size: 28px; margin-bottom: 8px;">🔗</div><div style="font-size: 13px; font-weight: 600;">Load Restraint</div></div>
-      <div style="text-align: center; padding: 16px;"><div style="font-size: 28px; margin-bottom: 8px;">🔧</div><div style="font-size: 13px; font-weight: 600;">Vehicle Standards</div></div>
+<!-- Interactive Dropshipping Flow Section -->
+<section class="dropshipping-flow-section">
+    <div class="container">
+        <h2 class="section-title reveal-on-scroll">Our Global Operations</h2>
+        <p class="section-subtitle reveal-on-scroll">How NEXORA keeps overhead zero and passes massive savings to you.</p>
+        
+        <div class="flow-grid">
+            <div class="flow-step reveal-on-scroll" style="animation-delay: 0.1s;">
+                <div class="step-num">01</div>
+                <div class="step-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                <h3>1. Select & Secure Pay</h3>
+                <p>Pick a premium product from our store. Pay securely via PayPal or Credit Card. The system locks in your order details instantly.</p>
+            </div>
+            
+            <div class="flow-connector"><i class="fa-solid fa-chevron-right"></i></div>
+            
+            <div class="flow-step reveal-on-scroll" style="animation-delay: 0.2s;">
+                <div class="step-num">02</div>
+                <div class="step-icon"><i class="fa-solid fa-share-nodes"></i></div>
+                <h3>2. Auto Order Forwarding</h3>
+                <p>Our backend instantly routes the order request to our global suppliers. We pay them the wholesale cost directly—you keep 100% of the profit margin.</p>
+            </div>
+            
+            <div class="flow-connector"><i class="fa-solid fa-chevron-right"></i></div>
+            
+            <div class="flow-step reveal-on-scroll" style="animation-delay: 0.3s;">
+                <div class="step-num">03</div>
+                <div class="step-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <h3>3. Direct Factory Shipping</h3>
+                <p>The supplier packages the item and ships it straight to your doorstep. The product never hits a middleman warehouse, reducing emissions and transit times.</p>
+            </div>
+        </div>
     </div>
-    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 16px; text-align: center;">Non-compliance can result in <strong style="color: var(--red);">substantial financial penalties, criminal prosecution, and imprisonment</strong>. The duty cannot be transferred, delegated, or contracted away.</p>
-  </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq">
-  <div class="section-header reveal">
-    <span class="sec-tag">05 // FAQ</span>
-    <h2 class="sec-title">Frequently Asked Questions</h2>
-  </div>
-
-  <div class="bento-card reveal" style="max-width: 800px; margin: 0 auto; padding: 40px;">
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What is Chain of Responsibility (CoR)?</button>
-        <div class="faq-a">CoR is the legal framework under the Heavy Vehicle National Law (HVNL) that extends safety obligations beyond the driver to ALL parties who influence or control transport activities — including employers, schedulers, loaders, consignors, consignees, and executive officers.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Are these courses nationally accredited?</button>
-        <div class="faq-a">Our courses are designed as awareness-level compliance training and provide a Certificate of Completion. They are not nationally accredited RTO qualifications. For nationally accredited units (e.g., TLIF0005, TLIF0009), we recommend pairing our training with an accredited RTO assessment.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What changes with the HVNL 2026 reforms?</button>
-        <div class="faq-a">Key changes include: mandatory Safety Management Systems (SMS), a new Two-Tier HVA accreditation replacing NHVAS, expanded "Unfit to Drive" duties covering illness and mental health, increased mass limits (GML raised to current CML levels), and extended length limits (19m → 20m). There is NO grace period — compliance is required from Day One (1 August 2026).</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How long do the courses take to complete?</button>
-        <div class="faq-a">Most individual modules take 2–4 hours to complete. They are fully self-paced, so you can pause and resume anytime. The complete Reform Readiness Bundle takes approximately 15–20 hours total.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Can I train my whole team?</button>
-        <div class="faq-a">Yes! We offer volume pricing for teams of 5 or more. Contact us at support@SafeFleetacademy.com for a custom corporate training quote with dedicated progress tracking and team dashboards.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Do you offer refunds?</button>
-        <div class="faq-a">Yes. We offer a 14-day money-back guarantee on all courses. If the training does not meet your expectations, email support@SafeFleetacademy.com for a full refund.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Which states and territories does this apply to?</button>
-        <div class="faq-a">The HVNL applies in ACT, NSW, QLD, SA, TAS, and VIC. Western Australia and the Northern Territory operate under their own legislation, though many CoR and fatigue management principles are similar.</div>
-      </div>
+<!-- Trust Metrics Section -->
+<section class="metrics-section container">
+    <div class="metric-card reveal-on-scroll">
+        <div class="metric-icon"><i class="fa-solid fa-globe"></i></div>
+        <h3>Global Shipping</h3>
+        <p>Door-to-door tracked delivery across 150+ countries worldwide.</p>
     </div>
-  </div>
+    <div class="metric-card reveal-on-scroll" style="animation-delay: 0.1s;">
+        <div class="metric-icon"><i class="fa-solid fa-lock"></i></div>
+        <h3>Payment Safeguard</h3>
+        <p>Your transactions are encrypted and processed securely using PayPal.</p>
+    </div>
+    <div class="metric-card reveal-on-scroll" style="animation-delay: 0.2s;">
+        <div class="metric-icon"><i class="fa-solid fa-rotate-left"></i></div>
+        <h3>Satisfaction Guarantee</h3>
+        <p>Not satisfied? Contact us within 30 days for a full, hassle-free refund.</p>
+    </div>
 </section>
-
-<!-- NEWSLETTER -->
-<div class="newsletter-section reveal">
-  <h3 style="font-size: 24px; margin-bottom: 8px;">Stay Compliant. Stay Informed.</h3>
-  <p style="color: var(--text-secondary);">Get the latest HVNL updates, reform alerts, and compliance tips delivered to your inbox.</p>
-  <div class="newsletter-input-group">
-    <input type="email" id="newsletterEmail" placeholder="Enter your work email">
-    <button class="btn-amber" onclick="subscribeNewsletter()">Subscribe</button>
-  </div>
-  <p id="subMsg" style="color: var(--green); font-size: 13px; margin-top: 12px; display: none;">✓ Subscribed successfully!</p>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-col">
-      <a href="/" class="nav-logo" style="margin-bottom: 16px;">
-        <img src="/static/logo.png" alt="SafeFleet Academy Logo" style="width: 28px; height: 28px; border-radius: 4px;">
-        SafeFleet<span style="color: var(--amber);"> Academy</span>
-      </a>
-      <p style="color: var(--text-secondary); font-size: 14px; max-width: 280px;">Australia's trusted online heavy vehicle compliance training platform. HVNL 2026 reform ready.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Training</h4>
-      <ul>
-        <li><a href="#courses">CoR for Drivers</a></li>
-        <li><a href="#courses">Fatigue Management</a></li>
-        <li><a href="#courses">Load Restraint</a></li>
-        <li><a href="#courses">SMS & Audit Prep</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Resources</h4>
-      <ul>
-        <li><a href="#cor">Chain of Responsibility</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="/portal">Student Portal</a></li>
-        <li><a href="/support">Support</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <ul>
-        <li><a href="/privacy">Privacy Policy</a></li>
-        <li><a href="/terms">Terms of Service</a></li>
-        <li><a href="mailto:support@SafeFleetacademy.com" style="color: var(--amber);">support@SafeFleetacademy.com</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 SafeFleet Academy. All rights reserved. ABN pending.</p>
-    <p style="color: var(--text-tertiary); font-size: 12px;">This training is for educational awareness purposes. It is not a substitute for legal advice or nationally accredited RTO certification.</p>
-  </div>
-</footer>
-
-<!-- PRODUCT MODAL -->
-<div class="modal-overlay" id="productModal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <span id="modalTag" class="course-tag"></span>
-    <h3 id="modalTitle" style="font-size: 22px; margin: 12px 0 8px;"></h3>
-    <p id="modalDesc" style="color: var(--text-secondary); font-size: 14px; margin-bottom: 16px;"></p>
-    <div id="modalPrice" style="font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; color: var(--amber); margin-bottom: 16px;"></div>
-    <ul id="modalFeatures" class="course-features"></ul>
-    <button id="modalAddBtn" class="btn-amber" style="width: 100%; padding: 14px; margin-top: 16px;">Add to Cart</button>
-  </div>
-</div>
-
-<!-- CHATBOT -->
-<button id="chat-toggle-btn" onclick="toggleChat()">💬</button>
-<div id="chat-window">
-  <div class="chat-header">
-    <span class="chat-header-title">🛡️ SafeFleet Academy Assistant</span>
-    <button class="chat-close" onclick="toggleChat()">✕</button>
-  </div>
-  <div id="chat-messages"></div>
-  <div class="chip-container" id="chatChips"></div>
-  <div class="chat-input-area">
-    <input type="text" id="chatInput" placeholder="Ask about compliance..." onkeydown="if(event.key==='Enter')sendChat()">
-    <button onclick="sendChat()">Send</button>
-  </div>
-</div>
-
-<script>
-  // ───── NAV TOGGLE ─────
-  function toggleNav() {
-    const nav = document.getElementById('navLinks');
-    nav.classList.toggle('open');
-  }
-
-  // ───── COUNTDOWN TIMER ─────
-  function updateCountdown() {
-    const target = new Date('2026-08-01T00:00:00+10:00').getTime();
-    const now = new Date().getTime();
-    const diff = target - now;
-
-    if (diff <= 0) {
-      document.getElementById('cd-days').textContent = '00';
-      document.getElementById('cd-hours').textContent = '00';
-      document.getElementById('cd-mins').textContent = '00';
-      document.getElementById('cd-secs').textContent = '00';
-      return;
-    }
-
-    document.getElementById('cd-days').textContent = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-    document.getElementById('cd-hours').textContent = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-    document.getElementById('cd-mins').textContent = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-    document.getElementById('cd-secs').textContent = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
-  // ───── SCROLL REVEAL ─────
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // ───── FAQ TOGGLE ─────
-  function toggleFaq(btn) {
-    const answer = btn.nextElementSibling;
-    const isOpen = answer.classList.contains('open');
-    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
-    document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('active'));
-    if (!isOpen) { answer.classList.add('open'); btn.classList.add('active'); }
-  }
-
-  // ───── CART SYSTEM ─────
-  function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('safefleet_cart')) || [];
-    const count = cart.length;
-    const menuBadge = document.getElementById('cartCountMenu');
-    const mobileBadge = document.getElementById('cartCountMobile');
-    if (menuBadge) menuBadge.textContent = count;
-    if (mobileBadge) mobileBadge.textContent = count;
-  }
-
-  function addToCart(title, price, icon, desc) {
-    const cart = JSON.parse(localStorage.getItem('safefleet_cart')) || [];
-    if (cart.some(item => item.title === title)) {
-      showNotification('Already in cart!', '#f59e0b');
-      return;
-    }
-    cart.push({ title, name: title, price: parseFloat(price), icon, desc });
-    localStorage.setItem('safefleet_cart', JSON.stringify(cart));
-    updateCartCount();
-    showNotification('✓ Added to cart: ' + title, '#22c55e');
-  }
-
-  function showNotification(text, color) {
-    const n = document.createElement('div');
-    n.textContent = text;
-    n.style.cssText = `position: fixed; top: 80px; right: 24px; background: ${color}; color: #0f172a; padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 14px; z-index: 5000; animation: fadeUp 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.3);`;
-    document.body.appendChild(n);
-    setTimeout(() => n.remove(), 3000);
-  }
-
-  updateCartCount();
-
-  // ───── NEWSLETTER ─────
-  async function subscribeNewsletter() {
-    const email = document.getElementById('newsletterEmail').value;
-    if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
-    try {
-      const res = await fetch('/api/subscribe', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ email }) });
-      if (res.ok) { document.getElementById('subMsg').style.display = 'block'; document.getElementById('newsletterEmail').value = ''; }
-    } catch (e) { alert('Subscription error. Please try again.'); }
-  }
-
-  // ───── MODAL ─────
-  function closeModal() { document.getElementById('productModal').style.display = 'none'; }
-  window.onclick = function(event) { if (event.target === document.getElementById('productModal')) closeModal(); }
-
-  // ───── CHATBOT ─────
-  const chatbotKB = [
-    { keywords: ["what is cor", "chain of responsibility", "explain cor", "cor meaning"], q: "What is Chain of Responsibility?", a: "Chain of Responsibility (CoR) is the legal framework under Australia's Heavy Vehicle National Law (HVNL) that extends safety obligations beyond the driver to ALL parties who influence or control transport activities — including employers, schedulers, loaders, consignors, consignees, and executive officers." },
-    { keywords: ["hvnl 2026", "reform", "what changes", "new law", "august 2026"], q: "What changes with the HVNL 2026 reforms?", a: "Major changes include: mandatory Safety Management Systems (SMS), new Two-Tier HVA accreditation replacing NHVAS, expanded 'Unfit to Drive' duties covering illness and mental health, increased mass limits, extended length limits (19m → 20m), and a new PSOE audit standard. There is <strong>no grace period</strong> — compliance is required from Day One (1 August 2026)." },
-    { keywords: ["fatigue", "hours", "rest break", "how long drive", "standard hours"], q: "What are the fatigue management rules?", a: "Under Standard Hours: max 12 hours work in 24 hours, 7 continuous hours rest, and max 72 hours in 7 days. Under BFM: max 14 hours in 24 hours, with specific break thresholds at 6.25h, 9h, and 12h. A 24-hour rest break is required after 84 hours of work." },
-    { keywords: ["bfm", "basic fatigue management", "afm", "advanced fatigue"], q: "What is BFM and AFM?", a: "BFM (Basic Fatigue Management) allows extended driving hours (up to 14h/day) with NHVAS accreditation and TLIF0005 training. AFM (Advanced Fatigue Management) uses a custom risk-based safety case. Under the 2026 reforms, both are being replaced by the new Alternative Compliance Accreditation (ACA) framework." },
-    { keywords: ["load restraint", "how secure load", "tie down", "lashing"], q: "What are the load restraint requirements?", a: "Loads must be restrained to withstand: <strong>0.8g forward</strong>, <strong>0.5g sideways and rearward</strong>, and <strong>0.2g vertically upward</strong>. Methods include lashing (tie-downs), blocking, containing, and combinations. All loads must be inspected before departure." },
-    { keywords: ["penalty", "fine", "jail", "prosecution", "consequences"], q: "What are the penalties for non-compliance?", a: "Penalties include substantial financial fines for both individuals and businesses, criminal prosecution, and potential imprisonment. Executive officers face personal liability. The duty <strong>cannot be transferred, delegated, or contracted away</strong>." },
-    { keywords: ["mass limit", "gml", "cml", "hml", "weight limit", "axle"], q: "What are the mass limits?", a: "Under the 2026 reforms, General Mass Limits (GML) are being increased to current Concessional Mass Limits (CML) levels. Higher Mass Limits (HML) require additional accreditation. Axle group limits vary by configuration. Our Mass Management course covers all limits in detail." },
-    { keywords: ["sms", "safety management system", "psoe", "audit"], q: "What is a Safety Management System (SMS)?", a: "An SMS is now mandatory under the new HVA accreditation. It must demonstrate 5 core outcomes: Leadership & Commitment, Risk Management, People, Assurance & Improvement, and Safety Systems. Audits use the PSOE methodology: Present → Suitable → Operating → Effective." },
-    { keywords: ["work diary", "ewd", "electronic work diary", "logbook"], q: "Do I need a work diary?", a: "You must carry a work diary if you travel more than 100km from your base under Standard Hours, or at all times under BFM. Electronic Work Diaries (EWDs) are approved as an alternative to paper work diaries and are becoming the industry standard." },
-    { keywords: ["certificate", "accredited", "rto", "qualification"], q: "Are your courses nationally accredited?", a: "Our courses provide awareness-level compliance training with a Certificate of Completion. They are not nationally accredited RTO qualifications. For units like TLIF0005 or TLIF0009, we recommend pairing our training with an accredited RTO assessment for formal certification." },
-    { keywords: ["price", "cost", "how much", "fee", "payment"], q: "How much do the courses cost?", a: "Individual courses range from <strong>AUD $79 to $299</strong>. Our best value is the HVNL 2026 Reform Readiness Bundle at <strong>AUD $499</strong> (saving over $500 vs buying separately). All purchases are one-time with lifetime access." },
-    { keywords: ["refund", "money back", "guarantee", "cancel"], q: "Do you offer refunds?", a: "Yes! We offer a <strong>14-day money-back guarantee</strong> on all courses. If the training doesn't meet your expectations, email support@SafeFleetacademy.com for a full refund." },
-    { keywords: ["contact", "email", "phone", "support", "help"], q: "How can I contact support?", a: "You can reach us at <strong>support@SafeFleetacademy.com</strong>. We aim to respond within 24 hours on business days." },
-    { keywords: ["team", "corporate", "bulk", "company training", "enterprise"], q: "Do you offer team/corporate training?", a: "Yes! We offer volume pricing for teams of 5 or more, with dedicated progress tracking and team dashboards. Contact support@SafeFleetacademy.com for a custom corporate training quote." },
-    { keywords: ["which states", "western australia", "northern territory", "wa", "nt"], q: "Which states does the HVNL apply to?", a: "The HVNL applies in ACT, NSW, QLD, SA, TAS, and VIC. Western Australia and the Northern Territory operate under their own legislation, though many core principles (CoR, fatigue, load restraint) are similar." },
-    { keywords: ["unfit to drive", "fitness for duty", "illness", "drugs", "alcohol"], q: "What is the 'Unfit to Drive' duty?", a: "Under the 2026 reforms, the 'Unfit to Drive' duty has been expanded beyond just fatigue. It now covers illness, injury, mental health impairment, and the effects of drugs or alcohol. Both drivers and their employers share this duty." },
-    { keywords: ["nhvas", "hva", "accreditation", "transition"], q: "What happens to NHVAS accreditation?", a: "NHVAS is being replaced by the new Heavy Vehicle Accreditation (HVA) scheme under the 2026 reforms. It has two tiers: General Safety Accreditation (GSA) as the new baseline, and Alternative Compliance Accreditation (ACA) replacing BFM/AFM. Existing NHVAS operators have up to 3 years to transition." },
-    { keywords: ["how long", "duration", "time to complete"], q: "How long do courses take?", a: "Most individual modules take 2–4 hours to complete. They are fully self-paced — study on any device, anytime. The complete Reform Readiness Bundle takes approximately 15–20 hours total." },
-    { keywords: ["login", "portal", "access course", "dashboard"], q: "How do I access my courses?", a: "After purchasing, click 'My Portal' in the top menu or go directly to the login page. Enter the email and password you created during checkout to access your training dashboard." },
-    { keywords: ["driver shortage", "industry", "jobs", "career"], q: "Is there a driver shortage in Australia?", a: "Yes! Australia currently has approximately 28,000 unfilled heavy vehicle driver positions, projected to reach 78,000 by 2029. Compliance training strengthens your credentials and career prospects in this high-demand industry." },
-    { keywords: ["us dot", "fmcsa", "american", "united states"], q: "Do you cover US DOT compliance?", a: "Our primary focus is Australian HVNL compliance. However, many safety principles (fatigue management, load restraint, chain of responsibility) align with US DOT/FMCSA regulations. We are developing US-specific modules — contact us for early access." }
-  ];
-
-  function findBestAnswer(query) {
-    const cleanQuery = query.toLowerCase().replace(/[^\w\s]/gi, '').trim();
-    if (!cleanQuery) return null;
-    let bestMatch = null, highestScore = 0;
-    chatbotKB.forEach(item => {
-      let score = 0;
-      item.keywords.forEach(kw => {
-        if (cleanQuery.includes(kw)) score += 15;
-        const queryWords = cleanQuery.split(' ');
-        const kwWords = kw.split(' ');
-        queryWords.forEach(qw => { if (kwWords.includes(qw) && qw.length > 2) score += 3; });
-      });
-      if (score > highestScore) { highestScore = score; bestMatch = item; }
-    });
-    return highestScore >= 5 ? bestMatch : null;
-  }
-
-  function toggleChat() {
-    const chatWin = document.getElementById('chat-window');
-    const toggleBtn = document.getElementById('chat-toggle-btn');
-    if (chatWin.style.display === 'none' || !chatWin.style.display) {
-      chatWin.style.display = 'flex';
-      toggleBtn.style.display = 'none';
-      initializeChatChips();
-      if (document.getElementById('chat-messages').children.length === 0) {
-        appendBotMessage("G'day! 👋 I'm your SafeFleet Academy assistant. Ask me anything about heavy vehicle compliance, HVNL 2026 reforms, or our training courses.");
-      }
-    } else {
-      chatWin.style.display = 'none';
-      toggleBtn.style.display = 'flex';
-    }
-  }
-
-  function appendBotMessage(text) {
-    const container = document.getElementById('chat-messages');
-    const div = document.createElement('div');
-    div.style.cssText = 'background: rgba(245, 158, 11, 0.08); padding: 12px; border-radius: 12px 12px 12px 0; max-width: 85%; border: 1px solid rgba(245, 158, 11, 0.15); color: var(--text-primary); line-height: 1.5; font-size: 14px;';
-    div.innerHTML = text;
-    container.appendChild(div);
-    container.scrollTop = container.scrollHeight;
-  }
-
-  function appendUserMessage(text) {
-    const container = document.getElementById('chat-messages');
-    const div = document.createElement('div');
-    div.style.cssText = 'background: var(--amber); color: #0f172a; padding: 10px 14px; border-radius: 12px 12px 0 12px; max-width: 75%; align-self: flex-end; font-size: 14px; font-weight: 500;';
-    div.textContent = text;
-    container.appendChild(div);
-    container.scrollTop = container.scrollHeight;
-  }
-
-  function sendChat() {
-    const input = document.getElementById('chatInput');
-    const query = input.value.trim();
-    if (!query) return;
-    appendUserMessage(query);
-    input.value = '';
-
-    setTimeout(() => {
-      const match = findBestAnswer(query);
-      if (match) {
-        appendBotMessage(match.a);
-      } else {
-        appendBotMessage("I don't have a specific answer for that, but our support team can help! Reach out at <strong>support@SafeFleetacademy.com</strong> or browse our <a href='#faq' style='color: var(--amber);'>FAQ section</a>.");
-      }
-    }, 600);
-  }
-
-  function initializeChatChips() {
-    const container = document.getElementById('chatChips');
-    if (container.children.length > 0) return;
-    const chips = ['What is CoR?', 'HVNL 2026 changes', 'Course pricing', 'Fatigue rules', 'Load restraint'];
-    chips.forEach(text => {
-      const chip = document.createElement('span');
-      chip.className = 'chip';
-      chip.textContent = text;
-      chip.onclick = () => { document.getElementById('chatInput').value = text; sendChat(); };
-      container.appendChild(chip);
-    });
-  }
-</script>
-</body>
-</html>
+{% endblock %}

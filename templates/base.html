@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NEXORA — The Future, Delivered. Premium 3D Immersive global e-commerce dropshipping store.">
+    <title>{% block title %}NEXORA — The Future, Delivered.{% endblock %}</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/nexora.css">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+    <!-- Sticky Glassmorphic Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="nav-brand">
+                NEX<span>ORA</span>
+            </a>
+            
+            <div class="nav-menu" id="mobile-menu">
+                <a href="/" class="nav-item">Home</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-item dropdown-toggle">Categories <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        {% for slug, cat in categories.items() %}
+                            <a href="/category/{{ slug }}">{{ cat.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <a href="/about" class="nav-item">About</a>
+                <a href="/tracking" class="nav-item">Track Order</a>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="/cart" class="nav-cart" aria-label="View Shopping Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </a>
+                
+                <button class="menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Responsive Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section brand-info">
+                <h3>NEX<span>ORA</span></h3>
+                <p class="tagline">The Future, Delivered.</p>
+                <p class="desc">A global, premium dropshipping e-commerce experience showcasing next-generation technology, fashion, lifestyle, and beauty essentials.</p>
+            </div>
+            <div class="footer-section links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/tracking">Track Order</a></li>
+                    <li><a href="/cart">Shopping Cart</a></li>
+                    <li><a href="/login">Admin Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-section categories-links">
+                <h4>Shop Categories</h4>
+                <ul>
+                    {% for slug, cat in categories.items() %}
+                        <li><a href="/category/{{ slug }}">{{ cat.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="footer-section contact-info">
+                <h4>Support Center</h4>
+                <p><i class="fa-solid fa-envelope"></i> support@agentosacademy.com</p>
+                <p><i class="fa-solid fa-shield-halved"></i> 100% Secure Checkout</p>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-paypal"></i>
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-stripe"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NEXORA Store. All Rights Reserved. Powered by global dropshipping network.</p>
+        </div>
+    </footer>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Custom Controllers -->
+    <script src="/static/js/three-scene.js"></script>
+    <script src="/static/js/product-viewer.js"></script>
+    <script src="/static/js/cart.js"></script>
+    <script src="/static/js/app.js"></script>
+    
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

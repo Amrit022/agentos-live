@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category_name }} — NEXORA{% endblock %}
+
+{% block content %}
+<section class="category-header-section">
+    <div class="container reveal-on-scroll">
+        <span class="breadcrumb"><a href="/">Home</a> / <span class="active">{{ category_name }}</span></span>
+        <h1 class="category-title">{{ category_name }}</h1>
+        <p class="category-description">Explore our handpicked range of high-performance {{ category_name.lower() }} items, engineered to deliver premium value at wholesale pricing.</p>
+    </div>
+</section>
+
+<section class="category-body container">
+    <!-- Sidebar Filters -->
+    <div class="filters-sidebar reveal-on-scroll">
+        <h3 class="filter-title">Refine Products</h3>
+        
+        <div class="filter-group">
+            <label for="sort-select" class="filter-label">Sort By</label>
+            <select id="sort-select" class="filter-control">
+                <option value="default">Relevance</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="rating">Top Customer Rated</option>
+                <option value="name">Name: A to Z</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label class="filter-label">Price Range ($)</label>
+            <div class="price-inputs">
+                <input type="number" id="min-price" placeholder="Min" class="filter-control price-control" min="0">
+                <span class="price-separator">to</span>
+                <input type="number" id="max-price" placeholder="Max" class="filter-control price-control" min="0">
+            </div>
+        </div>
+        
+        <button id="apply-filters" class="btn btn-primary btn-block">Apply Filters</button>
+    </div>
+
+    <!-- Product Display Area -->
+    <div class="products-display">
+        <div class="product-grid" id="product-grid" data-category="{{ category_slug }}">
+            <!-- Dynamically populated by app.js -->
+        </div>
+    </div>
+</section>
+{% endblock %}
