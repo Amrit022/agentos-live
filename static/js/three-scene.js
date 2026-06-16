@@ -28,7 +28,7 @@
   });
   renderer.setSize(canvas.clientWidth, canvas.clientHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setClearColor(0x0d0e10, 1);
+  renderer.setClearColor(0x000000, 0);
 
   /* ---------- champagne gold color ---------- */
   const GOLD = 0xc5a880;

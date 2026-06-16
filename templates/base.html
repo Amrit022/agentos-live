@@ -20,6 +20,14 @@
     {% block extra_head %}{% endblock %}
 </head>
 <body>
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            if (theme === 'light') {
+                document.body.classList.add('light-theme');
+            }
+        })();
+    </script>
 
     <!-- Sticky Glassmorphic Navbar -->
     <nav class="navbar">
@@ -31,8 +39,8 @@
             <div class="nav-menu" id="mobile-menu">
                 <a href="/" class="nav-item">Home</a>
                 <div class="nav-dropdown">
-                    <a href="#" class="nav-item dropdown-toggle">Categories <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="dropdown-menu">
+                    <a href="#" class="nav-item dropdown-toggle">Categories <i class="fa-solid fa-chevron-down dropdown-arrow"></i></a>
+                    <div class="nav-dropdown-menu">
                         {% for slug, cat in categories.items() %}
                             <a href="/category/{{ slug }}">{{ cat.name }}</a>
                         {% endfor %}
@@ -43,6 +51,10 @@
             </div>
             
             <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light/dark theme" style="margin-right: 12px;">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                
                 <a href="/cart" class="nav-cart" aria-label="View Shopping Cart">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="cart-badge" id="cart-badge">0</span>
@@ -120,5 +132,30 @@
     <script src="/static/js/app.js"></script>
     
     {% block extra_scripts %}{% endblock %}
+
+    <!-- Theme Toggler Script -->
+    <script>
+        (function() {
+            const toggleBtn = document.getElementById('theme-toggle');
+            if (toggleBtn) {
+                const updateIcon = (isLight) => {
+                    const icon = toggleBtn.querySelector('i');
+                    if (icon) {
+                        icon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                    }
+                };
+                
+                toggleBtn.addEventListener('click', () => {
+                    document.body.classList.toggle('light-theme');
+                    const isLight = document.body.classList.contains('light-theme');
+                    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+                    updateIcon(isLight);
+                });
+                
+                // Set initial icon on load
+                updateIcon(document.body.classList.contains('light-theme'));
+            }
+        })();
+    </script>
 </body>
 </html>

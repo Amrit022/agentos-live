@@ -56,6 +56,27 @@
   --glass-blur:     blur(20px);
 }
 
+body.light-theme {
+  --bg-deep:        #faf9f5;
+  --bg-panel:       #f4f2eb;
+  --bg-card:        #ffffff;
+  --bg-card-hover:  #fdfdfd;
+  --bg-input:       #f0eee9;
+  --cyan:           #a88e67;
+  --violet:         #9e755b;
+  --gradient:       linear-gradient(135deg, #a88e67, #9e755b);
+  --gradient-rev:   linear-gradient(135deg, #9e755b, #a88e67);
+  --cyan-glow:      0 8px 24px rgba(0, 0, 0, 0.08), 0 0 10px rgba(168, 142, 103, 0.08);
+  --violet-glow:    0 8px 24px rgba(0, 0, 0, 0.08), 0 0 10px rgba(158, 117, 91, 0.08);
+  --neon-border:    1px solid rgba(168, 142, 103, 0.15);
+  --text-primary:   #1c1b18;
+  --text-muted:     #666560;
+  --text-dim:       #9c9a94;
+  --glass-bg:       rgba(255, 255, 255, 0.75);
+  --glass-border:   rgba(0, 0, 0, 0.06);
+  --glass-blur:     blur(24px);
+}
+
 /* ---------- Reset ---------- */
 *, *::before, *::after {
   margin: 0;
@@ -736,7 +757,8 @@ button { cursor: pointer; }
    ============================================================ */
 .product-grid, .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 240px));
+  justify-content: center;
   gap: 28px;
 }
 
@@ -798,15 +820,16 @@ button { cursor: pointer; }
 
 .product-card-name {
   font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 500;
   margin-bottom: 8px;
   color: var(--text-primary);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  line-height: 1.4;
+  line-height: 1.3;
+  height: 2.6em;
 }
 
 .product-card-name a {
@@ -2461,3 +2484,88 @@ button { cursor: pointer; }
 .page-content {
   animation: fadeIn 0.4s var(--ease) both;
 }
+
+/* ============================================================
+   TRUST METRICS
+   ============================================================ */
+.metrics-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  padding: 80px 24px;
+}
+
+.metric-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.4s var(--ease);
+}
+
+.metric-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(197, 168, 128, 0.15);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(197, 168, 128, 0.05);
+}
+
+.metric-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(197, 168, 128, 0.08);
+  color: var(--cyan);
+  font-size: 1.35rem;
+  transition: all 0.4s var(--ease);
+}
+
+.metric-card:hover .metric-icon {
+  background: rgba(197, 168, 128, 0.15);
+  transform: scale(1.1);
+}
+
+.metric-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.metric-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   THEME TOGGLER BUTTON
+   ============================================================ */
+.theme-toggle-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--cyan);
+  font-size: 1.05rem;
+  transition: all var(--duration) var(--ease);
+  cursor: pointer;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(197, 168, 128, 0.1);
+  border-color: var(--cyan);
+  transform: scale(1.05);
+}
+
