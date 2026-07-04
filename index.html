@@ -581,86 +581,6 @@
     <!-- INLINED AND CACHE-PROOF JAVASCRIPT SYSTEM -->
   <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Calculator Logic ---
-  const capitalInput = document.getElementById('capital-input');
-  const durationSlider = document.getElementById('duration-slider');
-  const durationVal = document.getElementById('duration-val');
-  const monthlyRateInput = document.getElementById('monthly-rate');
-  const monthlyRateVal = document.getElementById('rate-val');
-  
-  const projectionVal = document.getElementById('projection-val');
-  const totalReturnVal = document.getElementById('total-return');
-  const percentageGrowthVal = document.getElementById('percentage-growth');
-  const profileBtns = document.querySelectorAll('.profile-btn');
- 
-  const profiles = {
-    conservative: 4.2,
-    moderate: 8.5,
-    aggressive: 14.5
-  };
-
-  function formatCurrency(value) {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      maximumFractionDigits: 0
-    }).format(value);
-  }
-
-  function calculateProjections() {
-    if(!capitalInput || !durationSlider || !monthlyRateInput || !projectionVal) return;
-    let principal = parseFloat(capitalInput.value);
-    if (isNaN(principal) || principal <= 0) {
-      principal = 1000;
-    }
-
-    const months = parseInt(durationSlider.value);
-    const monthlyRate = parseFloat(monthlyRateInput.value) / 100;
-
-    const finalBalance = principal * Math.pow(1 + monthlyRate, months);
-    const totalProfit = finalBalance - principal;
-    const percentageGrowth = ((finalBalance - principal) / principal) * 100;
-
-    projectionVal.textContent = formatCurrency(finalBalance);
-    totalReturnVal.textContent = formatCurrency(totalProfit);
-    percentageGrowthVal.textContent = percentageGrowth.toFixed(0) + '%';
-  }
-
-  if (capitalInput) {
-    capitalInput.addEventListener('input', () => {
-      if (capitalInput.value < 0) capitalInput.value = 0;
-      calculateProjections();
-    });
-  }
-
-  if (durationSlider) {
-    durationSlider.addEventListener('input', () => {
-      durationVal.textContent = durationSlider.value;
-      calculateProjections();
-    });
-  }
-
-  if (monthlyRateInput) {
-    monthlyRateInput.addEventListener('input', () => {
-      monthlyRateVal.textContent = monthlyRateInput.value + '%';
-      profileBtns.forEach(btn => btn.classList.remove('active'));
-      calculateProjections();
-    });
-  }
-
-  profileBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      profileBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const profileType = btn.dataset.profile;
-      const targetRate = profiles[profileType];
-      
-      monthlyRateInput.value = targetRate;
-      monthlyRateVal.textContent = targetRate + '%';
-      calculateProjections();
-    });
-  });
-
   // --- FAQ Accordion Logic ---
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
@@ -672,9 +592,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
-  // Initialize
-  calculateProjections();
 });
 
 // --- MOBILE MENU ---
@@ -699,8 +616,6 @@ function openTopicModal(modalId) {
   const overlay = document.getElementById('topic-overlay');
   
   if (modal && overlay) {
-    modal.style.display = 'block';
-    overlay.style.display = 'block';
     // Clone FAQ accordion items into FAQ modal if empty
     if (modalId === 'modal-faq') {
       const faqContainer = document.getElementById('modal-faq-accordion-container');
@@ -728,8 +643,12 @@ function openTopicModal(modalId) {
       }
     }
     
-    modal.classList.add('open');
-    overlay.classList.add('open');
+    modal.style.display = 'block';
+    overlay.style.display = 'block';
+    setTimeout(() => {
+      modal.classList.add('open');
+      overlay.classList.add('open');
+    }, 10);
   }
 }
 
@@ -955,6 +874,8 @@ function updateModalCalc() {
 
 if (mCapitalInput) {
   mCapitalInput.addEventListener('input', updateModalCalc);
+  mCapitalInput.addEventListener('keyup', updateModalCalc);
+  mCapitalInput.addEventListener('change', updateModalCalc);
 }
 if (mDurationSlider) {
   mDurationSlider.addEventListener('input', updateModalCalc);
@@ -1021,7 +942,6 @@ function updateLaunchTimer() {
 
 setInterval(updateLaunchTimer, 1000);
 updateLaunchTimer();
-
   </script>
 </body>
 </html>
