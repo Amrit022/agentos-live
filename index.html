@@ -26,9 +26,10 @@
           <li><a href="#installation">How it Works</a></li>
           <li><a href="#results">Backtests</a></li>
           <li><a href="#faq">FAQ</a></li>
+          <li><a href="#pricing" style="color: var(--accent-color);">Buy License</a></li>
         </ul>
-        <a href="https://www.mql5.com/en/market/product/122176" class="glow-btn" target="_blank">
-          Get on MQL5 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <a href="#pricing" class="glow-btn">
+          Buy Now <i class="fa-solid fa-shopping-bag"></i>
         </a>
       </nav>
     </div>
@@ -288,15 +289,73 @@
     </div>
   </section>
 
-  <!-- CALL TO ACTION -->
-  <section class="cta-section">
+  <!-- PRICING & STORE SECTION -->
+  <section class="pricing" id="pricing">
     <div class="container">
-      <div class="cta-box">
-        <h2>Start Automating Your Trades Today</h2>
-        <p>Deploy the validated Forex Master Pro EA on your MetaTrader 5 terminal. Fast installation, clean logs, and risk-controlled compounds.</p>
-        <a href="https://www.mql5.com/en/market/product/122176" class="glow-btn" target="_blank">
-          Get Forex Master Pro on MQL5 <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
+      <div class="section-header">
+        <span class="badge">Direct License Purchase</span>
+        <h2>Choose Your Trading License</h2>
+        <p>Get instant access to the compiled Forex Master Pro EA. Secure payments processed directly with automated license key generation.</p>
+      </div>
+      
+      <div class="pricing-grid">
+        <!-- Card 1: Starter -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Starter License</h3>
+            <p>Perfect for testing live markets</p>
+            <div class="price"><span>$</span>49<span>/ 1 Month</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><i class="fa-solid fa-check"></i> 1 Active MT5 Live Account</li>
+            <li><i class="fa-solid fa-check"></i> Unlimited Demo Accounts</li>
+            <li><i class="fa-solid fa-check"></i> Full EA Technical Features</li>
+            <li><i class="fa-solid fa-check"></i> Standard Discord Support</li>
+            <li class="disabled-feature"><i class="fa-solid fa-xmark"></i> Lifetime Free Upgrades</li>
+          </ul>
+          <button class="glow-btn add-to-cart-btn" data-id="starter-license" data-name="Starter License (1 Month)" data-price="49">
+            Add to Cart <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </div>
+
+        <!-- Card 2: Pro (Best Value) -->
+        <div class="pricing-card popular">
+          <span class="popular-badge">Most Popular</span>
+          <div class="pricing-header">
+            <h3>Pro License</h3>
+            <p>For dedicated accounts</p>
+            <div class="price"><span>$</span>149<span>/ 1 Year</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><i class="fa-solid fa-check"></i> 3 Active MT5 Live Accounts</li>
+            <li><i class="fa-solid fa-check"></i> Unlimited Demo Accounts</li>
+            <li><i class="fa-solid fa-check"></i> Full EA Technical Features</li>
+            <li><i class="fa-solid fa-check"></i> Priority Developer Support</li>
+            <li><i class="fa-solid fa-check"></i> 1 Year Free Upgrades</li>
+          </ul>
+          <button class="glow-btn add-to-cart-btn" data-id="pro-license" data-name="Pro License (1 Year)" data-price="149">
+            Add to Cart <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </div>
+
+        <!-- Card 3: Lifetime -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Lifetime License</h3>
+            <p>The ultimate professional choice</p>
+            <div class="price"><span>$</span>299<span>/ Lifetime</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><i class="fa-solid fa-check"></i> Unlimited Live MT5 Accounts</li>
+            <li><i class="fa-solid fa-check"></i> Unlimited Demo Accounts</li>
+            <li><i class="fa-solid fa-check"></i> Full EA Technical Features</li>
+            <li><i class="fa-solid fa-check"></i> 1-on-1 Setup Assistance</li>
+            <li><i class="fa-solid fa-check"></i> Lifetime Free Upgrades</li>
+          </ul>
+          <button class="glow-btn add-to-cart-btn" data-id="lifetime-license" data-name="Lifetime License (Unlimited)" data-price="299">
+            Add to Cart <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -336,6 +395,112 @@
       </div>
     </div>
   </footer>
+
+    <!-- CART FLOATING BUTTON -->
+  <div class="cart-float" id="cart-float">
+    <i class="fa-solid fa-shopping-cart"></i>
+    <span class="cart-badge" id="cart-badge-count">0</span>
+  </div>
+
+  <!-- CART SIDEBAR DRAWER -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>Your Shopping Cart</h3>
+      <span class="close-drawer" id="close-cart-btn">&times;</span>
+    </div>
+    <div class="cart-items" id="cart-items-container">
+      <div class="empty-cart-msg">Your cart is empty.</div>
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cart-total-price">$0.00</span>
+      </div>
+      <button class="glow-btn checkout-btn" id="drawer-checkout-btn" style="width: 100%; justify-content: center; margin-top: 1.5rem;" disabled>
+        Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cart-overlay"></div>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="checkout-modal" id="checkout-modal">
+    <div class="checkout-modal-content">
+      <span class="close-modal" id="close-checkout-btn">&times;</span>
+      <h2>Secure Licensing Checkout</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">Enter your details to generate your EA license key.</p>
+      
+      <form id="checkout-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="cust-name">Full Name</label>
+            <input type="text" id="cust-name" class="calc-input" required placeholder="John Doe" style="font-size: 1rem; padding: 0.85rem 1.25rem;">
+          </div>
+          <div class="form-group">
+            <label for="cust-email">Email Address</label>
+            <input type="email" id="cust-email" class="calc-input" required placeholder="john@example.com" style="font-size: 1rem; padding: 0.85rem 1.25rem;">
+          </div>
+        </div>
+        
+        <div class="form-group" style="margin-top: 1.5rem; text-align: left;">
+          <label for="cust-mt5-account">MetaTrader 5 Live Account Number (For License Binding)</label>
+          <input type="number" id="cust-mt5-account" class="calc-input" required placeholder="e.g. 51839401" min="10000" max="999999999" style="font-size: 1rem; padding: 0.85rem 1.25rem;">
+          <small style="color: var(--text-muted); display: block; margin-top: 0.5rem;">Your EA license is digitally bound to this account number.</small>
+        </div>
+        
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: 1.25rem;">Payment Information</h3>
+        <div class="form-group" style="text-align: left;">
+          <label for="card-num">Credit Card Number</label>
+          <input type="text" id="card-num" class="calc-input" required placeholder="4111 2222 3333 4444" style="font-size: 1rem; padding: 0.85rem 1.25rem;">
+        </div>
+        <div class="form-grid" style="margin-top: 1.5rem;">
+          <div class="form-group">
+            <label for="card-expiry">Expiry Date</label>
+            <input type="text" id="card-expiry" class="calc-input" required placeholder="MM/YY" style="font-size: 1rem; padding: 0.85rem 1.25rem;">
+          </div>
+          <div class="form-group">
+            <label for="card-cvc">CVC</label>
+            <input type="text" id="card-cvc" class="calc-input" required placeholder="123" style="font-size: 1rem; padding: 0.85rem 1.25rem;">
+          </div>
+        </div>
+        
+        <div class="checkout-actions" style="margin-top: 2.5rem; display: flex; justify-content: flex-end; gap: 1rem;">
+          <button type="button" class="secondary-btn" id="cancel-checkout-btn" style="padding: 0.75rem 1.5rem; font-size: 0.95rem;">Cancel</button>
+          <button type="submit" class="glow-btn" style="padding: 0.75rem 1.5rem; font-size: 0.95rem;">Pay and Activate <i class="fa-solid fa-shield-halved"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-overlay" id="modal-overlay"></div>
+
+  <!-- ORDER CONFIRMATION MODAL -->
+  <div class="confirmation-modal" id="confirmation-modal">
+    <div class="confirmation-modal-content">
+      <div class="success-icon" style="font-size: 4rem; color: var(--accent-color); margin-bottom: 1.5rem;"><i class="fa-solid fa-circle-check"></i></div>
+      <h2>Payment & Licensing Successful!</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">Your license key has been successfully generated.</p>
+      
+      <div class="license-info-box" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; text-align: left;">
+        <div class="license-row" style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+          <span style="color: var(--text-secondary);">License Key:</span>
+          <strong id="confirm-license-key" style="color: var(--accent-color); font-family: monospace; font-size: 1.15rem; letter-spacing: 0.05em;">FMP-XXXX-XXXX-XXXX</strong>
+        </div>
+        <div class="license-row" style="display: flex; justify-content: space-between;">
+          <span style="color: var(--text-secondary);">Bound MT5 Account:</span>
+          <strong id="confirm-mt5-account" style="color: var(--text-primary);">00000000</strong>
+        </div>
+      </div>
+      
+      <div class="instruction-box" style="background: rgba(16, 185, 129, 0.05); border: 1px dashed rgba(16, 185, 129, 0.4); padding: 1.5rem; border-radius: 12px; text-align: left;">
+        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;"><i class="fa-solid fa-circle-info"></i> How to Activate:</h4>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">When attaching the EA to your chart inside MetaTrader 5, copy and paste this **License Key** into the inputs configuration parameter tab.</p>
+      </div>
+      
+      <button class="glow-btn" style="margin-top: 2.5rem; width: 100%; justify-content: center;" id="confirm-close-btn">
+        Start Trading Now <i class="fa-solid fa-circle-play"></i>
+      </button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
