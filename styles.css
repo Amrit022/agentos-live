@@ -1386,3 +1386,24 @@ footer {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(16, 185, 129, 0.25);
 }
+
+/* Upgrade Modals to sleek small boxes */
+.topic-modal {
+  max-width: 520px; /* Centered small box */
+  padding: 2.5rem;
+  border-radius: 20px;
+}
+
+#modal-calculator.topic-modal {
+  max-width: 680px;
+}
+
+#modal-pricing.topic-modal {
+  max-width: 750px;
+}
+
+/* Order Summary dropdown select animations */
+#checkout-plan-select:hover {
+  border-color: var(--accent-color);
+  background-color: #0b1533;
+}

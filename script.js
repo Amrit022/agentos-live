@@ -588,3 +588,100 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Re-run setup on reload
   updateCartUI();
+
+  // --- DIRECT CHECKOUT FLOW ---
+  window.openDirectCheckout = function(planId) {
+    // Close any open navigation menus or topic modals
+    closeAllTopicModals();
+    const navMenu = document.getElementById('nav-menu');
+    if(navMenu) navMenu.classList.remove('open');
+    
+    // Select the plan in the dropdown
+    const planSelect = document.getElementById('checkout-plan-select');
+    if (planSelect) {
+      planSelect.value = planId;
+      updateCheckoutPrice();
+    }
+    
+    // Open Checkout Modal directly
+    const chModal = document.getElementById('checkout-modal');
+    const chOverlay = document.getElementById('modal-overlay');
+    if (chModal && chOverlay) {
+      chModal.classList.add('open');
+      chOverlay.classList.add('open');
+    }
+  };
+
+  // Dropdown price update logic
+  const planSelect = document.getElementById('checkout-plan-select');
+  const summaryPrice = document.getElementById('checkout-summary-price');
+  
+  if (planSelect && summaryPrice) {
+    planSelect.addEventListener('change', updateCheckoutPrice);
+  }
+  
+  function updateCheckoutPrice() {
+    const selectedOption = planSelect.options[planSelect.selectedIndex];
+    const price = selectedOption.dataset.price;
+    summaryPrice.textContent = '$' + parseFloat(price).toFixed(2);
+  }
+
+  // Bind global openTopicModal
+  window.openTopicModal = function(modalId) {
+    // Close others
+    closeAllTopicModals();
+    
+    const targetModal = document.getElementById(modalId);
+    const topicOverlay = document.getElementById('topic-overlay');
+    
+    if (targetModal && topicOverlay) {
+      // Clone FAQ items into FAQ modal if empty
+      if (modalId === 'modal-faq') {
+        const faqContainer = document.getElementById('modal-faq-accordion-container');
+        if (faqContainer && faqContainer.children.length === 0) {
+          const originalFaqs = document.querySelectorAll('#faq .faq-item');
+          originalFaqs.forEach(item => {
+            const clone = item.cloneNode(true);
+            clone.addEventListener('click', () => {
+              clone.classList.toggle('active');
+            });
+            faqContainer.appendChild(clone);
+          });
+        }
+      }
+      
+      // Clone Pricing grid into Pricing modal if empty
+      if (modalId === 'modal-pricing') {
+        const pricingContainer = document.getElementById('modal-pricing-grid-container');
+        if (pricingContainer && pricingContainer.children.length === 0) {
+          const originalPricing = document.querySelector('#pricing .pricing-grid');
+          if (originalPricing) {
+            const cloneGrid = originalPricing.cloneNode(true);
+            // Re-setup buy triggers
+            cloneGrid.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+              // Find the plan type from parameters or attributes
+              let planType = 'pro';
+              if (btn.outerHTML.includes('starter')) planType = 'starter';
+              else if (btn.outerHTML.includes('lifetime')) planType = 'lifetime';
+              
+              btn.addEventListener('click', () => {
+                openDirectCheckout(planType);
+              });
+            });
+            pricingContainer.appendChild(cloneGrid);
+          }
+        }
+      }
+      
+      targetModal.classList.add('open');
+      topicOverlay.classList.add('open');
+    }
+  };
+
+  window.closeAllTopicModals = function() {
+    document.querySelectorAll('.topic-modal').forEach(modal => {
+      modal.classList.remove('open');
+    });
+    const topicOverlay = document.getElementById('topic-overlay');
+    if(topicOverlay) topicOverlay.classList.remove('open');
+  };
