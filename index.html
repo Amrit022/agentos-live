@@ -398,7 +398,7 @@
   <!-- TOPIC MODALS (TABS) -->
   
   <!-- Features Modal -->
-  <div class="topic-modal" id="modal-features" style="display: none;">
+  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-features" style="display: none;">
     <div class="topic-modal-content">
       <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
       <span class="badge">Specifications</span>
@@ -425,7 +425,7 @@
   </div>
 
   <!-- Calculator Modal -->
-  <div class="topic-modal" id="modal-calculator" style="display: none;">
+  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-calculator" style="display: none;">
     <div class="topic-modal-content" style="max-width: 750px;">
       <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
       <span class="badge">Growth Estimator</span>
@@ -436,7 +436,7 @@
         <div class="calc-box" style="padding: 2rem; box-shadow: none; border: 1px solid var(--border-color);">
           <div class="calc-group">
             <label>Starting Capital (USD) <span>$</span></label>
-            <input type="number" id="modal-capital-input" class="calc-input" value="1000" min="100" max="1000000" style="padding: 0.75rem 1.25rem; font-size: 1.1rem;">
+            <input type="text" id="modal-capital-input" class="calc-input" value="1000" min="100" max="1000000" style="padding: 0.75rem 1.25rem; font-size: 1.1rem;">
           </div>
           <div class="calc-group">
             <label>Risk Profile Preset</label>
@@ -472,7 +472,7 @@
   </div>
 
   <!-- How It Works Modal -->
-  <div class="topic-modal" id="modal-howitworks" style="display: none;">
+  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-howitworks" style="display: none;">
     <div class="topic-modal-content">
       <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
       <span class="badge">Setup Guide</span>
@@ -516,7 +516,7 @@
   </div>
 
   <!-- Backtests Modal -->
-  <div class="topic-modal" id="modal-backtests" style="display: none;">
+  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-backtests" style="display: none;">
     <div class="topic-modal-content">
       <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
       <span class="badge">Backtest Reports</span>
@@ -549,7 +549,7 @@
   </div>
 
   <!-- FAQ Modal -->
-  <div class="topic-modal" id="modal-faq" style="display: none;">
+  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-faq" style="display: none;">
     <div class="topic-modal-content">
       <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
       <span class="badge">FAQ</span>
@@ -563,7 +563,7 @@
   </div>
 
   <!-- Pricing Modal -->
-  <div class="topic-modal" id="modal-pricing" style="display: none;">
+  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-pricing" style="display: none;">
     <div class="topic-modal-content" style="max-width: 850px;">
       <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
       <span class="badge">Pricing Plans</span>
@@ -577,7 +577,7 @@
   </div>
 
   <!-- SIMULATED PAYPAL GATEWAY MODAL -->
-  <div class="topic-modal" id="modal-paypal-gateway" style="display: none; z-index: 1250;">
+  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-paypal-gateway" style="display: none; z-index: 1250;">
     <div class="topic-modal-content" style="max-width: 420px; padding: 2rem; background: #ffffff; color: #2c2e2f; border-radius: 12px; border: 1px solid #dcdcdc;">
       <span class="close-topic-modal" onclick="closePayPalGateway()" style="color: #2c2e2f; right: 20px; top: 15px;">&times;</span>
       
@@ -624,6 +624,17 @@
             <strong style="color: #333;" id="pp-modal-total">$149.00</strong>
           </div>
         </div>
+
+        <div style="margin-bottom: 1.5rem; text-align: left;">
+          <label style="font-size: 0.85rem; font-weight: 600; color: #6c757d; margin-bottom: 0.5rem; display: block; font-family: sans-serif;">Pay with</label>
+          <select style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #a6a8ea; border-radius: 5px; font-size: 1rem; background: #fff; color: #333;">
+            <option>Visa •••• 4242</option>
+            <option>Mastercard •••• 5555</option>
+            <option>Bank Account •••• 0192</option>
+            <option>PayPal Balance</option>
+          </select>
+        </div>
+    
 
         <div style="text-align: left; margin-bottom: 2rem;">
           <h4 style="font-size: 0.9rem; font-weight: 600; color: #333; margin-bottom: 0.5rem; font-family: sans-serif;">Payment Method</h4>
@@ -996,7 +1007,8 @@ let modalMonthlyRate = 4.2;
 function updateModalCalc() {
   if (!mCapitalInput || !mDurationSlider || !mProjectionVal) return;
   
-  const capital = parseFloat(mCapitalInput.value) || 0;
+  let valStr = String(mCapitalInput.value).replace(/[^0-9.]/g, '');
+  const capital = parseFloat(valStr) || 0;
   const duration = parseInt(mDurationSlider.value);
   if (mDurationVal) mDurationVal.textContent = duration;
   
@@ -1076,10 +1088,32 @@ function updateLaunchTimer() {
     mEl.textContent = mins.toString().padStart(2, '0');
     sEl.textContent = secs.toString().padStart(2, '0');
   }
+  
+  const chEl = document.getElementById('checkout-timer-hours');
+  const cmEl = document.getElementById('checkout-timer-mins');
+  const csEl = document.getElementById('checkout-timer-secs');
+  if (chEl && cmEl && csEl) {
+    chEl.textContent = hours.toString().padStart(2, '0');
+    cmEl.textContent = mins.toString().padStart(2, '0');
+    csEl.textContent = secs.toString().padStart(2, '0');
+  }
 }
 
 setInterval(updateLaunchTimer, 1000);
 updateLaunchTimer();
   </script>
+
+  <!-- Footer -->
+  <footer style="background: var(--bg-secondary); padding: 3rem 5%; text-align: center; border-top: 1px solid var(--border-color); margin-top: 4rem;">
+    <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+      <a href="javascript:void(0)" onclick="openTopicModal('modal-faq')" style="color: var(--text-secondary); text-decoration: none;">FAQ</a>
+      <a href="javascript:void(0)" onclick="openTopicModal('modal-backtests')" style="color: var(--text-secondary); text-decoration: none;">Backtests</a>
+      <a href="javascript:void(0)" onclick="openTopicModal('modal-pricing')" style="color: var(--text-secondary); text-decoration: none;">Pricing</a>
+      <a href="javascript:void(0)" style="color: var(--text-secondary); text-decoration: none;">Terms of Service</a>
+      <a href="javascript:void(0)" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+    </div>
+    <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Forex Master Pro EA. All Rights Reserved. Trading involves significant risk of loss.</p>
+  </footer>
+
 </body>
 </html>

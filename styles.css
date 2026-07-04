@@ -1326,6 +1326,7 @@ footer {
 
 .close-topic-modal {
   position: absolute;
+  z-index: 100;
   top: 1.75rem;
   right: 1.75rem;
   font-size: 2rem;
