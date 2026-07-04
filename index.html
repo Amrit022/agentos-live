@@ -128,6 +128,27 @@
         <span class="badge">Direct License Purchase</span>
         <h2>Choose Your Trading License</h2>
         <p>Get instant access to the compiled Forex Master Pro EA. Secure payments processed directly with automated license key generation.</p>
+
+        <!-- PROMO TIMER CAPSULE -->
+        <div class="promo-timer-container" style="margin-top: 1.75rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+          <span style="font-size: 0.85rem; color: #ef4444; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-clock fa-spin" style="animation-duration: 4s;"></i> Special 50% Launch Discount Ending Soon
+          </span>
+          <div class="countdown-timer" id="countdown-timer" style="display: flex; gap: 0.75rem; margin-top: 0.25rem;">
+            <div class="time-block" style="background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.15); padding: 0.5rem 1rem; border-radius: 10px; min-width: 70px; text-align: center;">
+              <span id="timer-hours" style="font-size: 1.5rem; font-weight: 800; color: var(--accent-color); font-family: monospace;">02</span>
+              <p style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-top: 0.15rem; font-weight: 600; letter-spacing: 0.05em;">Hours</p>
+            </div>
+            <div class="time-block" style="background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.15); padding: 0.5rem 1rem; border-radius: 10px; min-width: 70px; text-align: center;">
+              <span id="timer-mins" style="font-size: 1.5rem; font-weight: 800; color: var(--accent-color); font-family: monospace;">45</span>
+              <p style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-top: 0.15rem; font-weight: 600; letter-spacing: 0.05em;">Mins</p>
+            </div>
+            <div class="time-block" style="background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.15); padding: 0.5rem 1rem; border-radius: 10px; min-width: 70px; text-align: center;">
+              <span id="timer-secs" style="font-size: 1.5rem; font-weight: 800; color: var(--accent-color); font-family: monospace;">12</span>
+              <p style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-top: 0.15rem; font-weight: 600; letter-spacing: 0.05em;">Secs</p>
+            </div>
+          </div>
+        </div>
       </div>
       
       <div class="pricing-grid">
@@ -864,6 +885,40 @@ function submitInlinePayPal() {
     btn.innerHTML = '<i class="fa-brands fa-paypal"></i> Pay with PayPal';
   }, 1500);
 }
+
+// --- DYNAMIC LAUNCH DISCOUNT TIMER ---
+function updateLaunchTimer() {
+  const now = new Date();
+  
+  // Set target to end of today (midnight)
+  const target = new Date();
+  target.setHours(23, 59, 59, 999);
+  
+  const diff = target - now;
+  if (diff <= 0) {
+    document.getElementById('timer-hours').textContent = "00";
+    document.getElementById('timer-mins').textContent = "00";
+    document.getElementById('timer-secs').textContent = "00";
+    return;
+  }
+  
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const secs = Math.floor((diff % (1000 * 60)) / 1000);
+  
+  const hEl = document.getElementById('timer-hours');
+  const mEl = document.getElementById('timer-mins');
+  const sEl = document.getElementById('timer-secs');
+  
+  if (hEl && mEl && sEl) {
+    hEl.textContent = hours.toString().padStart(2, '0');
+    mEl.textContent = mins.toString().padStart(2, '0');
+    sEl.textContent = secs.toString().padStart(2, '0');
+  }
+}
+
+setInterval(updateLaunchTimer, 1000);
+updateLaunchTimer();
 
   </script>
 </body>
