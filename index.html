@@ -576,6 +576,73 @@
     </div>
   </div>
 
+  <!-- SIMULATED PAYPAL GATEWAY MODAL -->
+  <div class="topic-modal" id="modal-paypal-gateway" style="display: none; z-index: 1250;">
+    <div class="topic-modal-content" style="max-width: 420px; padding: 2rem; background: #ffffff; color: #2c2e2f; border-radius: 12px; border: 1px solid #dcdcdc;">
+      <span class="close-topic-modal" onclick="closePayPalGateway()" style="color: #2c2e2f; right: 20px; top: 15px;">&times;</span>
+      
+      <!-- Logo Header -->
+      <div style="text-align: center; margin-bottom: 2rem; border-bottom: 1px solid #f2f2f2; padding-bottom: 1rem;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal_svg_logo.svg" alt="PayPal Logo" style="height: 28px;">
+      </div>
+
+      <!-- Login Screen -->
+      <div id="paypal-login-screen">
+        <h3 style="font-size: 1.25rem; font-weight: 600; text-align: center; margin-bottom: 1.5rem; color: #2c2e2f; font-family: sans-serif;">Pay with PayPal</h3>
+        
+        <div style="display: flex; flex-direction: column; gap: 1.25rem; text-align: left;">
+          <div>
+            <label style="font-size: 0.85rem; font-weight: 600; color: #6c757d; margin-bottom: 0.25rem; display: block; font-family: sans-serif;">Email or mobile number</label>
+            <input type="email" id="pp-email" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #a6a8ea; border-radius: 5px; font-size: 1rem; background: #fff; color: #333; box-sizing: border-box;" placeholder="email@address.com" required>
+          </div>
+          <div>
+            <label style="font-size: 0.85rem; font-weight: 600; color: #6c757d; margin-bottom: 0.25rem; display: block; font-family: sans-serif;">Password</label>
+            <input type="password" id="pp-password" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #a6a8ea; border-radius: 5px; font-size: 1rem; background: #fff; color: #333; box-sizing: border-box;" placeholder="••••••••" required>
+          </div>
+          
+          <button type="button" onclick="submitPayPalLogin()" style="width: 100%; background: #0070ba; color: white; padding: 0.75rem; border: none; border-radius: 20px; font-weight: 700; font-size: 1rem; cursor: pointer; margin-top: 1rem; transition: background 0.2s; font-family: sans-serif;">
+            Log In
+          </button>
+          
+          <div style="text-align: center; margin-top: 0.5rem; font-size: 0.85rem;">
+            <a href="javascript:void(0)" style="color: #0070ba; text-decoration: none; font-weight: 600; font-family: sans-serif;">Forgot password?</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pay Screen -->
+      <div id="paypal-pay-screen" style="display: none;">
+        <h3 style="font-size: 1.2rem; font-weight: 600; text-align: center; margin-bottom: 1.5rem; color: #2c2e2f; font-family: sans-serif;">Review Your Payment</h3>
+        
+        <div style="text-align: left; background: #f5f7fa; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid #e9ecef;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; font-family: sans-serif;">
+            <span style="color: #6c757d;">Paying to:</span>
+            <strong style="color: #333;">Forex Master Pro EA</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-family: sans-serif;">
+            <span style="color: #6c757d;">Total Amount:</span>
+            <strong style="color: #333;" id="pp-modal-total">$149.00</strong>
+          </div>
+        </div>
+
+        <div style="text-align: left; margin-bottom: 2rem;">
+          <h4 style="font-size: 0.9rem; font-weight: 600; color: #333; margin-bottom: 0.5rem; font-family: sans-serif;">Payment Method</h4>
+          <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; border: 1px solid #e1e4e8; border-radius: 6px; background: #fff;">
+            <i class="fa-solid fa-credit-card" style="font-size: 1.25rem; color: #0070ba;"></i>
+            <div>
+              <p style="font-size: 0.85rem; font-weight: 600; color: #333; margin: 0; font-family: sans-serif;">PayPal Balance (or Linked Card)</p>
+              <p style="font-size: 0.75rem; color: #6c757d; margin: 0; font-family: sans-serif;">Instant Transfer</p>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" onclick="completePayPalPayment()" style="width: 100%; background: #0070ba; color: white; padding: 0.75rem; border: none; border-radius: 20px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: background 0.2s; font-family: sans-serif;">
+          Complete Purchase
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="topic-overlay" id="topic-overlay" style="display: none;" onclick="closeAllTopicModals()"></div>
 
     <!-- INLINED AND CACHE-PROOF JAVASCRIPT SYSTEM -->
@@ -822,23 +889,94 @@ function submitInlineCheckout(e) {
 }
 
 function submitInlinePayPal() {
-  const name = document.getElementById('inline-cust-name');
-  const email = document.getElementById('inline-cust-email');
-  const mt5 = document.getElementById('inline-cust-mt5');
+  const form = document.getElementById('inline-payment-form');
+  if(!form) return;
   
-  if(!name.checkValidity() || !email.checkValidity() || !mt5.checkValidity()) {
-    document.getElementById('inline-payment-form').reportValidity();
+  if(!form.checkValidity()) {
+    form.reportValidity();
     return;
   }
   
   const btn = document.getElementById('inline-paypal-button');
-  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Authorizing...';
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Initializing...';
   
   setTimeout(() => {
-    // Submit form
-    document.getElementById('inline-payment-form').dispatchEvent(new Event('submit'));
     btn.innerHTML = '<i class="fa-brands fa-paypal"></i> Pay with PayPal';
+    
+    // Set total in PayPal modal
+    const total = document.getElementById('inline-total-display').textContent;
+    const ppTotal = document.getElementById('pp-modal-total');
+    if(ppTotal) ppTotal.textContent = total;
+    
+    // Show PayPal Modal
+    closeAllTopicModals();
+    const ppModal = document.getElementById('modal-paypal-gateway');
+    const overlay = document.getElementById('topic-overlay');
+    if(ppModal && overlay) {
+      document.getElementById('paypal-login-screen').style.display = 'block';
+      document.getElementById('paypal-pay-screen').style.display = 'none';
+      
+      // Clear inputs
+      document.getElementById('pp-email').value = '';
+      document.getElementById('pp-password').value = '';
+      
+      ppModal.style.display = 'block';
+      overlay.style.display = 'block';
+      setTimeout(() => {
+        ppModal.classList.add('open');
+        overlay.classList.add('open');
+      }, 10);
+    }
+  }, 1000);
+}
+
+function closePayPalGateway() {
+  const ppModal = document.getElementById('modal-paypal-gateway');
+  const overlay = document.getElementById('topic-overlay');
+  if(ppModal && overlay) {
+    ppModal.classList.remove('open');
+    ppModal.style.display = 'none';
+    overlay.classList.remove('open');
+    overlay.style.display = 'none';
+  }
+}
+
+function submitPayPalLogin() {
+  const email = document.getElementById('pp-email').value;
+  const pwd = document.getElementById('pp-password').value;
+  
+  if(!email || !pwd) {
+    alert("Please enter your PayPal credentials.");
+    return;
+  }
+  
+  const loginBtn = document.querySelector('#paypal-login-screen button');
+  loginBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Logging in...';
+  loginBtn.disabled = true;
+  
+  setTimeout(() => {
+    loginBtn.innerHTML = 'Log In';
+    loginBtn.disabled = false;
+    // Transition to pay screen
+    document.getElementById('paypal-login-screen').style.display = 'none';
+    document.getElementById('paypal-pay-screen').style.display = 'block';
   }, 1500);
+}
+
+function completePayPalPayment() {
+  const payBtn = document.querySelector('#paypal-pay-screen button');
+  payBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing payment...';
+  payBtn.disabled = true;
+  
+  setTimeout(() => {
+    payBtn.innerHTML = 'Complete Purchase';
+    payBtn.disabled = false;
+    closePayPalGateway();
+    
+    // Submit checkout form and generate license key
+    const mockEvent = { preventDefault: () => {} };
+    submitInlineCheckout(mockEvent);
+  }, 2000);
 }
 
 // --- MODAL CALCULATOR LOGIC ---
