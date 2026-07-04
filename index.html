@@ -343,7 +343,7 @@
   <!-- Features Modal -->
   <div class="topic-modal" id="modal-features" style="display: none;">
     <div class="topic-modal-content">
-      <span class="close-topic-modal">&times;</span>
+      <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
       <span class="badge">Specifications</span>
       <h2>EA Technical Architecture</h2>
       <p style="color: var(--text-secondary); margin-bottom: 2rem;">Deep dive into the algorithmic trading systems that power Forex Master Pro.</p>
@@ -370,7 +370,7 @@
   <!-- Calculator Modal -->
   <div class="topic-modal" id="modal-calculator" style="display: none;">
     <div class="topic-modal-content" style="max-width: 750px;">
-      <span class="close-topic-modal">&times;</span>
+      <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
       <span class="badge">Growth Estimator</span>
       <h2>Interactive Compound Projections</h2>
       <p style="color: var(--text-secondary); margin-bottom: 2rem;">Adjust the parameters to estimate compounded interest trajectories.</p>
@@ -417,7 +417,7 @@
   <!-- How It Works Modal -->
   <div class="topic-modal" id="modal-howitworks" style="display: none;">
     <div class="topic-modal-content">
-      <span class="close-topic-modal">&times;</span>
+      <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
       <span class="badge">Setup Guide</span>
       <h2>Installation Walkthrough</h2>
       <p style="color: var(--text-secondary); margin-bottom: 2rem;">4 simple steps to set up and launch the EA on your MetaTrader 5 terminal.</p>
@@ -461,7 +461,7 @@
   <!-- Backtests Modal -->
   <div class="topic-modal" id="modal-backtests" style="display: none;">
     <div class="topic-modal-content">
-      <span class="close-topic-modal">&times;</span>
+      <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
       <span class="badge">Backtest Reports</span>
       <h2>Verified Performance Logs</h2>
       <p style="color: var(--text-secondary); margin-bottom: 2rem;">10-Year historical quality data reports modeled using real broker tick spreads.</p>
@@ -494,7 +494,7 @@
   <!-- FAQ Modal -->
   <div class="topic-modal" id="modal-faq" style="display: none;">
     <div class="topic-modal-content">
-      <span class="close-topic-modal">&times;</span>
+      <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
       <span class="badge">FAQ</span>
       <h2>Frequently Asked Questions</h2>
       <p style="color: var(--text-secondary); margin-bottom: 2rem;">Answers to help you deploy and configure the EA successfully.</p>
@@ -508,7 +508,7 @@
   <!-- Pricing Modal -->
   <div class="topic-modal" id="modal-pricing" style="display: none;">
     <div class="topic-modal-content" style="max-width: 850px;">
-      <span class="close-topic-modal">&times;</span>
+      <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
       <span class="badge">Pricing Plans</span>
       <h2>Acquire Your EA License</h2>
       <p style="color: var(--text-secondary); margin-bottom: 2rem;">Select a plan and bind it directly to your MT5 account.</p>
@@ -519,7 +519,7 @@
     </div>
   </div>
 
-  <div class="topic-overlay" id="topic-overlay" style="display: none;"></div>
+  <div class="topic-overlay" id="topic-overlay" style="display: none;" onclick="closeAllTopicModals()"></div>
 
     <!-- INLINED AND CACHE-PROOF JAVASCRIPT SYSTEM -->
   <script>
