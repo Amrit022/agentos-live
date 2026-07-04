@@ -922,6 +922,72 @@ function submitInlinePayPal() {
   }, 1500);
 }
 
+// --- MODAL CALCULATOR LOGIC ---
+const mCapitalInput = document.getElementById('modal-capital-input');
+const mDurationSlider = document.getElementById('modal-duration-slider');
+const mDurationVal = document.getElementById('modal-duration-val');
+const mProjectionVal = document.getElementById('modal-projection-val');
+const mTotalProfit = document.getElementById('modal-total-profit');
+const mTotalGrowth = document.getElementById('modal-total-growth');
+
+const mProfCons = document.getElementById('m-prof-cons');
+const mProfMod = document.getElementById('m-prof-mod');
+const mProfAgg = document.getElementById('m-prof-agg');
+
+let modalMonthlyRate = 4.2;
+
+function updateModalCalc() {
+  if (!mCapitalInput || !mDurationSlider || !mProjectionVal) return;
+  
+  const capital = parseFloat(mCapitalInput.value) || 0;
+  const duration = parseInt(mDurationSlider.value);
+  if (mDurationVal) mDurationVal.textContent = duration;
+  
+  const rateDec = modalMonthlyRate / 100;
+  const projected = capital * Math.pow(1 + rateDec, duration);
+  const profit = projected - capital;
+  const growthPct = capital > 0 ? (profit / capital) * 100 : 0;
+  
+  mProjectionVal.textContent = '$' + projected.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  if (mTotalProfit) mTotalProfit.textContent = '+$' + profit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  if (mTotalGrowth) mTotalGrowth.textContent = '+' + growthPct.toFixed(1) + '%';
+}
+
+if (mCapitalInput) {
+  mCapitalInput.addEventListener('input', updateModalCalc);
+}
+if (mDurationSlider) {
+  mDurationSlider.addEventListener('input', updateModalCalc);
+}
+
+if (mProfCons) {
+  mProfCons.addEventListener('click', () => {
+    setModalProfile(mProfCons, 4.2);
+  });
+}
+if (mProfMod) {
+  mProfMod.addEventListener('click', () => {
+    setModalProfile(mProfMod, 8.5);
+  });
+}
+if (mProfAgg) {
+  mProfAgg.addEventListener('click', () => {
+    setModalProfile(mProfAgg, 14.5);
+  });
+}
+
+function setModalProfile(btn, rate) {
+  if (mProfCons) mProfCons.classList.remove('active');
+  if (mProfMod) mProfMod.classList.remove('active');
+  if (mProfAgg) mProfAgg.classList.remove('active');
+  btn.classList.add('active');
+  modalMonthlyRate = rate;
+  updateModalCalc();
+}
+
+// Initial calculation run
+updateModalCalc();
+
 // --- DYNAMIC LAUNCH DISCOUNT TIMER ---
 function updateLaunchTimer() {
   const now = new Date();
