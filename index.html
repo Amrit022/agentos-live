@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forex Master Pro EA | High-Performance MT5 Trading Robot</title>
+  <meta name="description" content="Official website of the Forex Master Pro EA. Automate your forex trading on MetaTrader 5 with advanced confluence, risk-controlled lot sizing, and smart stop-loss recovery.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- GLOWING BACKGROUND ORBS -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+  <div class="glow-orb orb-3"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">ForexPro <span>EA</span></a>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#calculator">Growth Calculator</a></li>
+          <li><a href="#installation">How it Works</a></li>
+          <li><a href="#results">Backtests</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="https://www.mql5.com/en/market/product/122176" class="glow-btn" target="_blank">
+          Get on MQL5 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="badge">Version 3.1 Live</span>
+          <h1>Automate Your Trading With <span>Forex Master Pro EA</span></h1>
+          <p>A professional confluence-based algorithmic trading robot for MetaTrader 5. Engineered with multi-timeframe analytics, smart stop-loss checks, and dynamic margin optimization.</p>
+          <div class="hero-actions">
+            <a href="https://www.mql5.com/en/market/product/122176" class="glow-btn" target="_blank">
+              Download on MQL5 <i class="fa-solid fa-download"></i>
+            </a>
+            <a href="#calculator" class="secondary-btn">Calculate Growth <i class="fa-solid fa-calculator"></i></a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h3>72%+</h3>
+              <p>Backtested Win Rate</p>
+            </div>
+            <div class="stat-item">
+              <h3>1.85+</h3>
+              <p>Profit Factor Ratio</p>
+            </div>
+            <div class="stat-item">
+              <h3>100%</h3>
+              <p>Risk Managed Payout</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <img src="assets/ea_installation_mockup.png" alt="Forex Master Pro EA UI Mockup" class="hero-image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Pro Upgrades</span>
+        <h2>High-Performance Core Technologies</h2>
+        <p>Forex Master Pro EA replaces emotional trading with high-end mathematical confluences and advanced order execution security.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>MTF Confluence Engine</h3>
+          <p>Aligns trend metrics across H1, H4, and D1 charts before executing trades, filtering out fakeouts and consolidating trend entries.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>Broker Stops Level Safe</h3>
+          <p>Dynamically detects broker stop levels and freeze zones, ensuring initial orders and modifications never violate server trading zones.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <h3>Margin-Optimized Sizing</h3>
+          <p>Queries account free margin and lot specifications in real-time, automatically scaling trade sizes to prevent execution rejections.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-rotate-left"></i></div>
+          <h3>Smart Recovery Control</h3>
+          <p>Reduces lot sizes to a fractional multiplier after consecutive losses, preserving capital drawdown during unfavorable market regimes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-scissors"></i></div>
+          <h3>Partial Take Profit</h3>
+          <p>Locks in profits by closing a configured percentage (e.g. 50%) of the position at TP1 and letting the remainder run to the TP2 target.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-arrows-spin"></i></div>
+          <h3>Break-Even & Trail Stop</h3>
+          <p>Secures profits automatically by moving stop loss to break-even after 1.0x ATR profit, and trails profits using dynamic ATR multiples.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR SECTION -->
+  <section class="calculator" id="calculator">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Compounding</span>
+        <h2>Interactive Growth Estimator</h2>
+        <p>Project your potential compounded returns based on your starting capital, duration, and chosen risk profile configuration.</p>
+      </div>
+      <div class="calc-grid">
+        <div class="calc-box">
+          <div class="calc-group">
+            <label for="capital-input">Starting Capital (USD) <span>$</span></label>
+            <input type="number" id="capital-input" class="calc-input" value="1000" min="100" max="1000000">
+          </div>
+          <div class="calc-group">
+            <label>Risk Growth Profile</label>
+            <div class="profile-selector">
+              <button class="profile-btn active" data-profile="conservative">Conservative</button>
+              <button class="profile-btn" data-profile="moderate">Moderate</button>
+              <button class="profile-btn" data-profile="aggressive">Aggressive</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label>Estimated Monthly Growth Rate: <span id="rate-val">4.2%</span></label>
+            <input type="range" id="monthly-rate" class="range-slider" min="1" max="25" step="0.1" value="4.2">
+          </div>
+          <div class="calc-group">
+            <label>Investment Horizon: <span id="duration-val">12</span> Months</label>
+            <input type="range" id="duration-slider" class="range-slider" min="1" max="36" value="12">
+          </div>
+        </div>
+        <div class="projection-box">
+          <h4>Projected Account Value</h4>
+          <div class="projection-val" id="projection-val">$1,632</div>
+          <div class="projection-breakdown">
+            <div class="breakdown-item">
+              <p>Total Profit Return</p>
+              <p id="total-return">$632</p>
+            </div>
+            <div class="breakdown-item">
+              <p>Growth Percentage</p>
+              <p id="percentage-growth" style="color: #10b981;">63%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS SECTION -->
+  <section class="installation" id="installation">
+    <div class="container">
+      <div class="how-it-works-grid">
+        <div>
+          <span class="badge">Deployment</span>
+          <h2>Deploy Forex Master Pro EA in 3 Simple Steps</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 2rem;">Follow this straightforward process to download, install, and execute the EA directly inside your MT5 Terminal trading environment.</p>
+          <div class="steps-list">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-info">
+                <h3>Acquire the EA on MQL5</h3>
+                <p>Click the "Get on MQL5" button on this website to view the listing. You can download the Demo version for strategy testing or rent/buy the fully-functional live model.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-info">
+                <h3>Install inside MT5 Terminal</h3>
+                <p>Open MetaTrader 5. Go to Tools -> Options -> Community and log in to your MQL5 account. Navigate to Market -> Purchases in the Navigator panel to install the EA with one click.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-info">
+                <h3>Attach and Enable Auto-Trading</h3>
+                <p>Drag the EA onto your EURUSD H1 chart, adjust inputs (e.g. RiskPercent, UseSmartRecovery), and toggle the "Algo Trading" button green in the MT5 top toolbar to activate live executions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <img src="assets/ea_installation_mockup.png" alt="EA installation guide graphic" class="hero-image" style="border-radius: 24px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACKTEST RESULTS SECTION -->
+  <section class="backtest" id="results">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Verified Results</span>
+        <h2>Engineered with Rigorous Backtesting</h2>
+        <p>Forex Master Pro EA has undergone backtests across multiple market cycles on EURUSD, demonstrating solid returns and controlled drawdowns.</p>
+      </div>
+      <div class="backtest-grid">
+        <div>
+          <img src="assets/forex_growth_chart.png" alt="Backtest Equity Growth Curve" class="hero-image" style="border-radius: 20px;">
+        </div>
+        <div style="padding-left: 2rem;">
+          <h3 style="font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">Historical Performance Statistics</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 2rem;">Below are key performance parameters extracted from multi-year strategy tester runs on MetaQuotes-Demo servers with realistic tick delays and variables.</p>
+          <div class="backtest-details">
+            <div class="detail-card highlight">
+              <p>Expected Profit Factor</p>
+              <p>1.85</p>
+            </div>
+            <div class="detail-card">
+              <p>Max Drawdown (Equity)</p>
+              <p>4.82%</p>
+            </div>
+            <div class="detail-card">
+              <p>Recovery Factor</p>
+              <p>6.25</p>
+            </div>
+            <div class="detail-card">
+              <p>Sharpe Ratio</p>
+              <p>2.14</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">FAQ</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Got questions about configuring or running Forex Master Pro EA? Here are quick answers to common developer and user inquiries.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            Which currency pairs and timeframes are recommended?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Forex Master Pro EA is fully optimized for EURUSD on the H1 (1-Hour) timeframe. The EA's internal indicators and Multi-Timeframe confluences pull trend data directly from H4 and D1 to filter noise.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Does the EA work on Hedging and Netting accounts?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes! The EA is designed to comply with both Hedging and Netting account rules. The stops decoupling and custom partial-close logic ensure order modifications work cleanly on all brokers, including MetaQuotes-Demo.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            What is the minimum deposit required to start?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            The EA has a built-in safety lot size calculator that adjusts volume based on your account size. You can start with as little as $100 on a standard account using micro lots (0.01).
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Does the EA require a VPS to run?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            While not strictly required, using a Virtual Private Server (VPS) is highly recommended. It ensures the EA remains connected and executes orders 24/5 with low latency, bypassing local internet or power interruptions.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Start Automating Your Trades Today</h2>
+        <p>Deploy the validated Forex Master Pro EA on your MetaTrader 5 terminal. Fast installation, clean logs, and risk-controlled compounds.</p>
+        <a href="https://www.mql5.com/en/market/product/122176" class="glow-btn" target="_blank">
+          Get Forex Master Pro on MQL5 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <h3>ForexPro EA</h3>
+          <p>High-end algorithmic trading systems and robots designed to maximize efficiency and protect trading capital using confluence models.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#calculator">Growth Calculator</a></li>
+            <li><a href="#results">Backtests</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="https://www.mql5.com/en/market/product/122176" target="_blank">MQL5 Page</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="disclaimer">
+        <strong>RISK DISCLAIMER:</strong> Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to invest in foreign exchange, you should carefully consider your investment objectives, level of experience, and risk appetite. The possibility exists that you could sustain a loss of some or all of your initial investment and, therefore, you should not invest money that you cannot afford to lose. Past performance of any trading system or methodology is not necessarily indicative of future results.
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Forex Master Pro. All rights reserved.</p>
+        <p>Developed by Amrit Gupta</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

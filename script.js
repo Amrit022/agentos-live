@@ -1,135 +1,110 @@
-// ===== Navbar Scroll Effect =====
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+document.addEventListener('DOMContentLoaded', () => {
+  // --- Calculator Logic ---
+  const capitalInput = document.getElementById('capital-input');
+  const durationSlider = document.getElementById('duration-slider');
+  const durationVal = document.getElementById('duration-val');
+  const monthlyRateInput = document.getElementById('monthly-rate');
+  const monthlyRateVal = document.getElementById('rate-val');
+  
+  const projectionVal = document.getElementById('projection-val');
+  const totalReturnVal = document.getElementById('total-return');
+  const percentageGrowthVal = document.getElementById('percentage-growth');
+  
+  const profileBtns = document.querySelectorAll('.profile-btn');
+
+  // Predefined profiles (conservative, moderate, aggressive)
+  const profiles = {
+    conservative: 4.2,  // 4.2% monthly average (approx 64% annual compounded)
+    moderate: 8.5,      // 8.5% monthly average (approx 166% annual compounded)
+    aggressive: 14.5    // 14.5% monthly average (approx 407% annual compounded)
+  };
+
+  function formatCurrency(value) {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0
+    }).format(value);
+  }
+
+  function calculateProjections() {
+    let principal = parseFloat(capitalInput.value);
+    if (isNaN(principal) || principal <= 0) {
+      principal = 1000; // Fallback
     }
-});
 
-// ===== Mobile Navigation Toggle =====
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
+    const months = parseInt(durationSlider.value);
+    const monthlyRate = parseFloat(monthlyRateInput.value) / 100;
 
-navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+    // Compound Interest Formula: A = P(1 + r)^t
+    const finalBalance = principal * Math.pow(1 + monthlyRate, months);
+    const totalProfit = finalBalance - principal;
+    const percentageGrowth = ((finalBalance - principal) / principal) * 100;
+
+    // Animate/Update values
+    projectionVal.textContent = formatCurrency(finalBalance);
+    totalReturnVal.textContent = formatCurrency(totalProfit);
+    percentageGrowthVal.textContent = percentageGrowth.toFixed(0) + '%';
+  }
+
+  // Event Listeners for inputs
+  capitalInput.addEventListener('input', () => {
+    // Sanitize input
+    if (capitalInput.value < 0) capitalInput.value = 0;
+    calculateProjections();
+  });
+
+  durationSlider.addEventListener('input', () => {
+    durationVal.textContent = durationSlider.value;
+    calculateProjections();
+  });
+
+  monthlyRateInput.addEventListener('input', () => {
+    monthlyRateVal.textContent = monthlyRateInput.value + '%';
     
-    // Animate hamburger to X
-    const spans = navToggle.querySelectorAll('span');
-    if (navLinks.classList.contains('active')) {
-        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-    } else {
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-    }
-});
-
-// Close mobile menu on link click
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        const spans = navToggle.querySelectorAll('span');
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-    });
-});
-
-// ===== Accordion Logic =====
-const accordions = document.querySelectorAll('.topic-accordion');
-
-accordions.forEach(accordion => {
-    const header = accordion.querySelector('.accordion-header');
-    const content = accordion.querySelector('.accordion-content');
-
-    header.addEventListener('click', () => {
-        const isActive = accordion.classList.contains('active');
-
-        // Close all accordions
-        accordions.forEach(a => {
-            a.classList.remove('active');
-            a.querySelector('.accordion-content').style.maxHeight = null;
-        });
-
-        // If it wasn't active, open it
-        if (!isActive) {
-            accordion.classList.add('active');
-            content.style.maxHeight = content.scrollHeight + "px";
-        }
-    });
-});
-
-// Initialize the first accordion as open
-if(accordions.length > 0) {
-    accordions[0].classList.add('active');
-    const firstContent = accordions[0].querySelector('.accordion-content');
-    firstContent.style.maxHeight = firstContent.scrollHeight + "px";
-}
-
-// ===== Animated Counters =====
-const counters = document.querySelectorAll('.counter');
-const animateCounters = () => {
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const duration = 2000; // ms
-        const start = performance.now();
-
-        const updateCounter = (currentTime) => {
-            const elapsed = currentTime - start;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Easing function (easeOutExpo)
-            const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-            
-            counter.innerText = Math.floor(easeOut * target);
-
-            if (progress < 1) {
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.innerText = target;
-            }
-        };
-
-        requestAnimationFrame(updateCounter);
-    });
-};
-
-// Intersection Observer for triggering counters
-const statsSection = document.querySelector('.hero-stats');
-if (statsSection) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounters();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
+    // Deactivate profiles if user manually overrides the rate
+    profileBtns.forEach(btn => btn.classList.remove('active'));
     
-    observer.observe(statsSection);
-}
+    calculateProjections();
+  });
 
-// ===== Form Submission & Toast =====
-const contactForm = document.getElementById('contactForm');
-const toast = document.getElementById('toast');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Prevent actual submission
-        
-        // Show Toast
-        toast.classList.add('show');
-        
-        // Hide Toast after 3 seconds
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
-
-        // Reset form
-        contactForm.reset();
+  // Profile Button selection
+  profileBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all
+      profileBtns.forEach(b => b.classList.remove('active'));
+      
+      // Add active to current
+      btn.classList.add('active');
+      
+      const profileType = btn.dataset.profile;
+      const targetRate = profiles[profileType];
+      
+      // Set monthly rate slider and text
+      monthlyRateInput.value = targetRate;
+      monthlyRateVal.textContent = targetRate + '%';
+      
+      calculateProjections();
     });
-}
+  });
+
+  // --- FAQ Accordion Logic ---
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      
+      // Close all first
+      faqItems.forEach(i => i.classList.remove('active'));
+      
+      // Toggle current
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  });
+
+  // --- Initialize calculator default state ---
+  calculateProjections();
+});
