@@ -276,3 +276,76 @@ document.addEventListener('DOMContentLoaded', () => {
     
     return `FMP-${p1}-${p2}-${p3}`;
   }
+
+  // --- PAYPAL GATEWAY TAB TOGGLING ---
+  const tabCard = document.getElementById('tab-card');
+  const tabPaypal = document.getElementById('tab-paypal');
+  const cardFields = document.getElementById('card-payment-fields');
+  const paypalFields = document.getElementById('paypal-payment-fields');
+  const cardNumInput = document.getElementById('card-num');
+  const cardExpiryInput = document.getElementById('card-expiry');
+  const cardCvcInput = document.getElementById('card-cvc');
+  
+  let selectedPaymentMethod = 'card';
+
+  tabCard.addEventListener('click', () => {
+    selectedPaymentMethod = 'card';
+    tabCard.classList.add('active');
+    tabCard.style.color = 'var(--accent-color)';
+    tabCard.style.borderBottom = '2px solid var(--accent-color)';
+    
+    tabPaypal.classList.remove('active');
+    tabPaypal.style.color = 'var(--text-secondary)';
+    tabPaypal.style.borderBottom = 'none';
+    
+    cardFields.style.display = 'block';
+    paypalFields.style.display = 'none';
+    
+    // Set CC inputs required
+    cardNumInput.required = true;
+    cardExpiryInput.required = true;
+    cardCvcInput.required = true;
+  });
+
+  tabPaypal.addEventListener('click', () => {
+    selectedPaymentMethod = 'paypal';
+    tabPaypal.classList.add('active');
+    tabPaypal.style.color = 'var(--accent-color)';
+    tabPaypal.style.borderBottom = '2px solid var(--accent-color)';
+    
+    tabCard.classList.remove('active');
+    tabCard.style.color = 'var(--text-secondary)';
+    tabCard.style.borderBottom = 'none';
+    
+    cardFields.style.display = 'none';
+    paypalFields.style.display = 'block';
+    
+    // Disable CC inputs required
+    cardNumInput.required = false;
+    cardExpiryInput.required = false;
+    cardCvcInput.required = false;
+  });
+
+  // Mock PayPal Smart Button click triggers the submit
+  const paypalButton = document.getElementById('paypal-button-container');
+  paypalButton.addEventListener('click', () => {
+    // Validate name, email, account number before submission
+    const custName = document.getElementById('cust-name');
+    const custEmail = document.getElementById('cust-email');
+    const mt5Account = document.getElementById('cust-mt5-account');
+    
+    if(!custName.checkValidity() || !custEmail.checkValidity() || !mt5Account.checkValidity()) {
+      checkoutForm.reportValidity();
+      return;
+    }
+    
+    // Simulate PayPal pop-up loader
+    paypalButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+    setTimeout(() => {
+      // Trigger checkout form submit
+      checkoutForm.dispatchEvent(new Event('submit'));
+      
+      // Reset button text
+      paypalButton.innerHTML = '<i class="fa-brands fa-paypal"></i> Pay with PayPal';
+    }, 1500);
+  });
