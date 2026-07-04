@@ -9,14 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const projectionVal = document.getElementById('projection-val');
   const totalReturnVal = document.getElementById('total-return');
   const percentageGrowthVal = document.getElementById('percentage-growth');
-  
   const profileBtns = document.querySelectorAll('.profile-btn');
-
-  // Predefined profiles (conservative, moderate, aggressive)
+ 
   const profiles = {
-    conservative: 4.2,  // 4.2% monthly average (approx 64% annual compounded)
-    moderate: 8.5,      // 8.5% monthly average (approx 166% annual compounded)
-    aggressive: 14.5    // 14.5% monthly average (approx 407% annual compounded)
+    conservative: 4.2,
+    moderate: 8.5,
+    aggressive: 14.5
   };
 
   function formatCurrency(value) {
@@ -28,660 +26,308 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function calculateProjections() {
+    if(!capitalInput || !durationSlider || !monthlyRateInput || !projectionVal) return;
     let principal = parseFloat(capitalInput.value);
     if (isNaN(principal) || principal <= 0) {
-      principal = 1000; // Fallback
+      principal = 1000;
     }
 
     const months = parseInt(durationSlider.value);
     const monthlyRate = parseFloat(monthlyRateInput.value) / 100;
 
-    // Compound Interest Formula: A = P(1 + r)^t
     const finalBalance = principal * Math.pow(1 + monthlyRate, months);
     const totalProfit = finalBalance - principal;
     const percentageGrowth = ((finalBalance - principal) / principal) * 100;
 
-    // Animate/Update values
     projectionVal.textContent = formatCurrency(finalBalance);
     totalReturnVal.textContent = formatCurrency(totalProfit);
     percentageGrowthVal.textContent = percentageGrowth.toFixed(0) + '%';
   }
 
-  // Event Listeners for inputs
-  capitalInput.addEventListener('input', () => {
-    // Sanitize input
-    if (capitalInput.value < 0) capitalInput.value = 0;
-    calculateProjections();
-  });
+  if (capitalInput) {
+    capitalInput.addEventListener('input', () => {
+      if (capitalInput.value < 0) capitalInput.value = 0;
+      calculateProjections();
+    });
+  }
 
-  durationSlider.addEventListener('input', () => {
-    durationVal.textContent = durationSlider.value;
-    calculateProjections();
-  });
+  if (durationSlider) {
+    durationSlider.addEventListener('input', () => {
+      durationVal.textContent = durationSlider.value;
+      calculateProjections();
+    });
+  }
 
-  monthlyRateInput.addEventListener('input', () => {
-    monthlyRateVal.textContent = monthlyRateInput.value + '%';
-    
-    // Deactivate profiles if user manually overrides the rate
-    profileBtns.forEach(btn => btn.classList.remove('active'));
-    
-    calculateProjections();
-  });
+  if (monthlyRateInput) {
+    monthlyRateInput.addEventListener('input', () => {
+      monthlyRateVal.textContent = monthlyRateInput.value + '%';
+      profileBtns.forEach(btn => btn.classList.remove('active'));
+      calculateProjections();
+    });
+  }
 
-  // Profile Button selection
   profileBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Remove active class from all
       profileBtns.forEach(b => b.classList.remove('active'));
-      
-      // Add active to current
       btn.classList.add('active');
-      
       const profileType = btn.dataset.profile;
       const targetRate = profiles[profileType];
       
-      // Set monthly rate slider and text
       monthlyRateInput.value = targetRate;
       monthlyRateVal.textContent = targetRate + '%';
-      
       calculateProjections();
     });
   });
 
   // --- FAQ Accordion Logic ---
   const faqItems = document.querySelectorAll('.faq-item');
-  
   faqItems.forEach(item => {
     item.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
-      
-      // Close all first
       faqItems.forEach(i => i.classList.remove('active'));
-      
-      // Toggle current
       if (!isActive) {
         item.classList.add('active');
       }
     });
   });
 
-  // --- Initialize calculator default state ---
+  // Initialize
   calculateProjections();
 });
 
-  // --- STORE & CART FUNCTIONALITY ---
-  let cart = JSON.parse(localStorage.getItem('fmp_cart')) || [];
-  
-  const cartFloat = document.getElementById('cart-float');
-  const cartDrawer = document.getElementById('cart-drawer');
-  const cartOverlay = document.getElementById('cart-overlay');
-  const closeCartBtn = document.getElementById('close-cart-btn');
-  const cartBadgeCount = document.getElementById('cart-badge-count');
-  const cartItemsContainer = document.getElementById('cart-items-container');
-  const cartTotalPrice = document.getElementById('cart-total-price');
-  const drawerCheckoutBtn = document.getElementById('drawer-checkout-btn');
-  
-  const checkoutModal = document.getElementById('checkout-modal');
-  const modalOverlay = document.getElementById('modal-overlay');
-  const closeCheckoutBtn = document.getElementById('close-checkout-btn');
-  const cancelCheckoutBtn = document.getElementById('cancel-checkout-btn');
-  const checkoutForm = document.getElementById('checkout-form');
-  
-  const confirmationModal = document.getElementById('confirmation-modal');
-  const confirmLicenseKey = document.getElementById('confirm-license-key');
-  const confirmMT5Account = document.getElementById('confirm-mt5-account');
-  const confirmCloseBtn = document.getElementById('confirm-close-btn');
-
-  // Load cart state on startup
-  updateCartUI();
-
-  // Floating Cart Click -> Toggle Drawer
-  cartFloat.addEventListener('click', toggleCartDrawer);
-  closeCartBtn.addEventListener('click', toggleCartDrawer);
-  cartOverlay.addEventListener('click', toggleCartDrawer);
-  
-  function toggleCartDrawer() {
-    cartDrawer.classList.toggle('open');
-    cartOverlay.classList.toggle('open');
-  }
-
-  // Add to Cart Button Click
-  const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
-  addToCartBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.dataset.id;
-      const name = btn.dataset.name;
-      const price = parseFloat(btn.dataset.price);
-      
-      // Check if product is already in cart
-      const existingProduct = cart.find(item => item.id === id);
-      if (!existingProduct) {
-        cart.push({ id, name, price });
-        localStorage.setItem('fmp_cart', JSON.stringify(cart));
-        updateCartUI();
-        
-        // Open the drawer automatically to show added item
-        cartDrawer.classList.add('open');
-        cartOverlay.classList.add('open');
-      } else {
-        alert("This license is already in your cart!");
-      }
-    });
-  });
-
-  // Remove Item from Cart
-  cartItemsContainer.addEventListener('click', (e) => {
-    if (e.target.classList.contains('remove-item-btn') || e.target.parentElement.classList.contains('remove-item-btn')) {
-      const btn = e.target.classList.contains('remove-item-btn') ? e.target : e.target.parentElement;
-      const id = btn.dataset.id;
-      
-      cart = cart.filter(item => item.id !== id);
-      localStorage.setItem('fmp_cart', JSON.stringify(cart));
-      updateCartUI();
-    }
-  });
-
-  function updateCartUI() {
-    // Update Badge
-    cartBadgeCount.textContent = cart.length;
-    
-    // Clear items container
-    cartItemsContainer.innerHTML = '';
-    
-    if (cart.length === 0) {
-      cartItemsContainer.innerHTML = '<div class="empty-cart-msg">Your cart is empty.</div>';
-      cartTotalPrice.textContent = '$0.00';
-      drawerCheckoutBtn.disabled = true;
-    } else {
-      let total = 0;
-      cart.forEach(item => {
-        total += item.price;
-        const itemHtml = `
-          <div class="cart-item">
-            <div class="cart-item-details">
-              <h4>${item.name}</h4>
-              <p>$${item.price.toFixed(2)}</p>
-            </div>
-            <button class="remove-item-btn" data-id="${item.id}">
-              <i class="fa-solid fa-trash-can"></i>
-            </button>
-          </div>
-        `;
-        cartItemsContainer.insertAdjacentHTML('beforeend', itemHtml);
-      });
-      
-      cartTotalPrice.textContent = '$' + total.toFixed(2);
-      drawerCheckoutBtn.disabled = false;
-    }
-  }
-
-  // Drawer Checkout Button Click -> Open Modal
-  drawerCheckoutBtn.addEventListener('click', () => {
-    // Close Drawer
-    toggleCartDrawer();
-    
-    // Open Modal
-    checkoutModal.classList.add('open');
-    modalOverlay.classList.add('open');
-  });
-
-  // Modal Closures
-  closeCheckoutBtn.addEventListener('click', closeCheckout);
-  cancelCheckoutBtn.addEventListener('click', closeCheckout);
-  modalOverlay.addEventListener('click', closeCheckout);
-  
-  function closeCheckout() {
-    checkoutModal.classList.remove('open');
-    modalOverlay.classList.remove('open');
-  }
-
-  // Form Submit -> Generate License Key & Show Confirmation
-  checkoutForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const custName = document.getElementById('cust-name').value;
-    const custEmail = document.getElementById('cust-email').value;
-    const mt5Account = document.getElementById('cust-mt5-account').value;
-    
-    // Simple hash licensing generator based on account number
-    const generatedKey = generateLicenseHash(mt5Account);
-    
-    // Close checkout
-    closeCheckout();
-    
-    // Clear Cart
-    cart = [];
-    localStorage.removeItem('fmp_cart');
-    updateCartUI();
-    
-    // Open Confirmation Modal
-    confirmLicenseKey.textContent = generatedKey;
-    confirmMT5Account.textContent = mt5Account;
-    
-    confirmationModal.classList.add('open');
-    modalOverlay.classList.add('open');
-  });
-
-  confirmCloseBtn.addEventListener('click', () => {
-    confirmationModal.classList.remove('open');
-    modalOverlay.classList.remove('open');
-  });
-
-  function generateLicenseHash(accountNumber) {
-    // Dynamic mock key generation formula
-    const baseVal = parseInt(accountNumber) * 31;
-    const p1 = (baseVal % 10000).toString().padStart(4, '7');
-    const p2 = (Math.floor(baseVal / 3) % 10000).toString().padStart(4, '3');
-    const p3 = (Math.floor(baseVal / 7) % 10000).toString().padStart(4, '9');
-    
-    return `FMP-${p1}-${p2}-${p3}`;
-  }
-
-  // --- PAYPAL GATEWAY TAB TOGGLING ---
-  const tabCard = document.getElementById('tab-card');
-  const tabPaypal = document.getElementById('tab-paypal');
-  const cardFields = document.getElementById('card-payment-fields');
-  const paypalFields = document.getElementById('paypal-payment-fields');
-  const cardNumInput = document.getElementById('card-num');
-  const cardExpiryInput = document.getElementById('card-expiry');
-  const cardCvcInput = document.getElementById('card-cvc');
-  
-  let selectedPaymentMethod = 'card';
-
-  tabCard.addEventListener('click', () => {
-    selectedPaymentMethod = 'card';
-    tabCard.classList.add('active');
-    tabCard.style.color = 'var(--accent-color)';
-    tabCard.style.borderBottom = '2px solid var(--accent-color)';
-    
-    tabPaypal.classList.remove('active');
-    tabPaypal.style.color = 'var(--text-secondary)';
-    tabPaypal.style.borderBottom = 'none';
-    
-    cardFields.style.display = 'block';
-    paypalFields.style.display = 'none';
-    
-    // Set CC inputs required
-    cardNumInput.required = true;
-    cardExpiryInput.required = true;
-    cardCvcInput.required = true;
-  });
-
-  tabPaypal.addEventListener('click', () => {
-    selectedPaymentMethod = 'paypal';
-    tabPaypal.classList.add('active');
-    tabPaypal.style.color = 'var(--accent-color)';
-    tabPaypal.style.borderBottom = '2px solid var(--accent-color)';
-    
-    tabCard.classList.remove('active');
-    tabCard.style.color = 'var(--text-secondary)';
-    tabCard.style.borderBottom = 'none';
-    
-    cardFields.style.display = 'none';
-    paypalFields.style.display = 'block';
-    
-    // Disable CC inputs required
-    cardNumInput.required = false;
-    cardExpiryInput.required = false;
-    cardCvcInput.required = false;
-  });
-
-  // Mock PayPal Smart Button click triggers the submit
-  const paypalButton = document.getElementById('paypal-button-container');
-  paypalButton.addEventListener('click', () => {
-    // Validate name, email, account number before submission
-    const custName = document.getElementById('cust-name');
-    const custEmail = document.getElementById('cust-email');
-    const mt5Account = document.getElementById('cust-mt5-account');
-    
-    if(!custName.checkValidity() || !custEmail.checkValidity() || !mt5Account.checkValidity()) {
-      checkoutForm.reportValidity();
-      return;
-    }
-    
-    // Simulate PayPal pop-up loader
-    paypalButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
-    setTimeout(() => {
-      // Trigger checkout form submit
-      checkoutForm.dispatchEvent(new Event('submit'));
-      
-      // Reset button text
-      paypalButton.innerHTML = '<i class="fa-brands fa-paypal"></i> Pay with PayPal';
-    }, 1500);
-  });
-
-  // --- MOBILE HAMBURGER MENU ---
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+// --- MOBILE MENU ---
+function toggleMobileMenu() {
   const navMenu = document.getElementById('nav-menu');
-  
-  if (mobileMenuBtn && navMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
-      const icon = mobileMenuBtn.querySelector('i');
-      if (navMenu.classList.contains('open')) {
-        icon.classList.replace('fa-bars', 'fa-xmark');
-      } else {
-        icon.classList.replace('fa-xmark', 'fa-bars');
-      }
-    });
-    
-    // Close nav menu when clicking a link
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        const icon = mobileMenuBtn.querySelector('i');
-        if(icon) icon.classList.replace('fa-xmark', 'fa-bars');
-      });
-    });
-  }
-
-  // --- HEADER BUY NOW BUTTON OPENS CART DIRECTLY ---
-  const headerBuyNowBtn = document.getElementById('header-buy-now-btn');
-  if (headerBuyNowBtn) {
-    headerBuyNowBtn.addEventListener('click', () => {
-      cartDrawer.classList.add('open');
-      cartOverlay.classList.add('open');
-    });
-  }
-
-  // --- TOPIC MODALS OPEN/CLOSE LOGIC ---
-  const tabTriggers = document.querySelectorAll('.tab-trigger');
-  const topicOverlay = document.getElementById('topic-overlay');
-  
-  tabTriggers.forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const modalId = trigger.getAttribute('data-modal');
-      const targetModal = document.getElementById(modalId);
-      
-      if (targetModal) {
-        // Clone FAQ items into FAQ modal if not already done
-        if (modalId === 'modal-faq') {
-          const faqContainer = document.getElementById('modal-faq-accordion-container');
-          if (faqContainer.children.length === 0) {
-            const originalFaqs = document.querySelectorAll('#faq .faq-item');
-            originalFaqs.forEach(item => {
-              const clone = item.cloneNode(true);
-              // Setup accordion trigger on the clone
-              clone.addEventListener('click', () => {
-                clone.classList.toggle('active');
-              });
-              faqContainer.appendChild(clone);
-            });
-          }
-        }
-        
-        // Clone Pricing cards into Pricing modal if not already done
-        if (modalId === 'modal-pricing') {
-          const pricingContainer = document.getElementById('modal-pricing-grid-container');
-          if (pricingContainer.children.length === 0) {
-            const originalPricing = document.querySelector('#pricing .pricing-grid');
-            if (originalPricing) {
-              const cloneGrid = originalPricing.cloneNode(true);
-              // Setup click listeners on clone buttons
-              cloneGrid.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                  const id = btn.dataset.id;
-                  const name = btn.dataset.name;
-                  const price = parseFloat(btn.dataset.price);
-                  
-                  const existingProduct = cart.find(item => item.id === id);
-                  if (!existingProduct) {
-                    cart.push({ id, name, price });
-                    localStorage.setItem('fmp_cart', JSON.stringify(cart));
-                    updateCartUI();
-                    
-                    // Close the topic modal & open cart drawer
-                    closeAllTopicModals();
-                    cartDrawer.classList.add('open');
-                    cartOverlay.classList.add('open');
-                  } else {
-                    alert("This license is already in your cart!");
-                  }
-                });
-              });
-              pricingContainer.appendChild(cloneGrid);
-            }
-          }
-        }
-        
-        targetModal.classList.add('open');
-        topicOverlay.classList.add('open');
-      }
-    });
-  });
-
-  // Close topic modals when clicking overlay or 'x'
-  const closeTopicBtns = document.querySelectorAll('.close-topic-modal');
-  closeTopicBtns.forEach(btn => {
-    btn.addEventListener('click', closeAllTopicModals);
-  });
-  
-  if (topicOverlay) {
-    topicOverlay.addEventListener('click', closeAllTopicModals);
-  }
-  
-  function closeAllTopicModals() {
-    document.querySelectorAll('.topic-modal').forEach(modal => {
-      modal.classList.remove('open');
-    });
-    if(topicOverlay) topicOverlay.classList.remove('open');
-  }
-
-  // --- MODAL CALCULATOR LOGIC ---
-  const mCapitalInput = document.getElementById('modal-capital-input');
-  const mDurationSlider = document.getElementById('modal-duration-slider');
-  const mDurationVal = document.getElementById('modal-duration-val');
-  const mProjectionVal = document.getElementById('modal-projection-val');
-  const mTotalProfit = document.getElementById('modal-total-profit');
-  const mTotalGrowth = document.getElementById('modal-total-growth');
-  
-  const mProfCons = document.getElementById('m-prof-cons');
-  const mProfMod = document.getElementById('m-prof-mod');
-  const mProfAgg = document.getElementById('m-prof-agg');
-  
-  let modalMonthlyRate = 4.2; // default conservative
-
-  if (mCapitalInput && mDurationSlider) {
-    const updateModalCalc = () => {
-      const capital = parseFloat(mCapitalInput.value) || 0;
-      const duration = parseInt(mDurationSlider.value);
-      mDurationVal.textContent = duration;
-      
-      const rateDec = modalMonthlyRate / 100;
-      const projected = capital * Math.pow(1 + rateDec, duration);
-      const profit = projected - capital;
-      const growthPct = (profit / capital) * 100;
-      
-      mProjectionVal.textContent = '$' + projected.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      mTotalProfit.textContent = '+$' + profit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      mTotalGrowth.textContent = '+' + growthPct.toFixed(1) + '%';
-    };
-    
-    mCapitalInput.addEventListener('input', updateModalCalc);
-    mDurationSlider.addEventListener('input', updateModalCalc);
-    
-    mProfCons.addEventListener('click', () => {
-      setActiveProfile(mProfCons, 4.2);
-    });
-    mProfMod.addEventListener('click', () => {
-      setActiveProfile(mProfMod, 8.5);
-    });
-    mProfAgg.addEventListener('click', () => {
-      setActiveProfile(mProfAgg, 14.5);
-    });
-    
-    function setActiveProfile(btn, rate) {
-      [mProfCons, mProfMod, mProfAgg].forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      modalMonthlyRate = rate;
-      updateModalCalc();
+  const btn = document.getElementById('mobile-menu-btn');
+  if(navMenu && btn) {
+    navMenu.classList.toggle('open');
+    const icon = btn.querySelector('i');
+    if(navMenu.classList.contains('open')) {
+      icon.classList.replace('fa-bars', 'fa-xmark');
+    } else {
+      icon.classList.replace('fa-xmark', 'fa-bars');
     }
   }
+}
 
-  // --- UPGRADE empty-cart UI to include quick-add ---
-  const originalUpdateCartUI = updateCartUI;
-  updateCartUI = function() {
-    cartBadgeCount.textContent = cart.length;
-    cartItemsContainer.innerHTML = '';
-    
-    if (cart.length === 0) {
-      cartItemsContainer.innerHTML = `
-        <div class="vps-promo-box" style="background: rgba(59, 130, 246, 0.05); border: 1px dashed rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 1rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; text-align: left;">
-          <i class="fa-solid fa-server" style="color: #60a5fa; font-size: 1.25rem;"></i>
-          <div>
-            <h5 style="font-size: 0.85rem; font-weight: 700; color: #60a5fa; margin-bottom: 0.15rem;">Free VPS Setup Included</h5>
-            <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.3;">Your license includes free remote VPS configuration assistance.</p>
-          </div>
-        </div>
-        <div class="empty-cart-msg">
-          <p>Your cart is empty.</p>
-          <button class="quick-add-btn" id="quick-add-pro-btn">
-            Quick-Add Pro License ($149) <i class="fa-solid fa-cart-plus"></i>
-          </button>
-        </div>
-      `;
-      cartTotalPrice.textContent = '$0.00';
-      drawerCheckoutBtn.disabled = true;
-      
-      // Hook event to the newly added quick-add button
-      const quickAddBtn = document.getElementById('quick-add-pro-btn');
-      if(quickAddBtn) {
-        quickAddBtn.addEventListener('click', () => {
-          cart.push({ id: 'pro-license', name: 'Pro License (1 Year)', price: 149 });
-          localStorage.setItem('fmp_cart', JSON.stringify(cart));
-          updateCartUI();
+// --- TOPIC MODALS ---
+function openTopicModal(modalId) {
+  closeAllTopicModals();
+  const modal = document.getElementById(modalId);
+  const overlay = document.getElementById('topic-overlay');
+  
+  if (modal && overlay) {
+    // Clone FAQ accordion items into FAQ modal if empty
+    if (modalId === 'modal-faq') {
+      const faqContainer = document.getElementById('modal-faq-accordion-container');
+      if (faqContainer && faqContainer.children.length === 0) {
+        const originalFaqs = document.querySelectorAll('#faq .faq-item');
+        originalFaqs.forEach(item => {
+          const clone = item.cloneNode(true);
+          clone.addEventListener('click', () => {
+            clone.classList.toggle('active');
+          });
+          faqContainer.appendChild(clone);
         });
       }
+    }
+    
+    // Clone Pricing cards into Pricing modal if empty
+    if (modalId === 'modal-pricing') {
+      const pricingContainer = document.getElementById('modal-pricing-grid-container');
+      if (pricingContainer && pricingContainer.children.length === 0) {
+        const originalPricing = document.querySelector('#pricing .pricing-grid');
+        if (originalPricing) {
+          const cloneGrid = originalPricing.cloneNode(true);
+          pricingContainer.appendChild(cloneGrid);
+        }
+      }
+    }
+    
+    modal.classList.add('open');
+    overlay.classList.add('open');
+  }
+}
+
+function closeAllTopicModals() {
+  document.querySelectorAll('.topic-modal').forEach(m => m.classList.remove('open'));
+  const overlay = document.getElementById('topic-overlay');
+  if(overlay) overlay.classList.remove('open');
+}
+
+// --- INLINE ORDER SUMMARY & CHECKOUT SYSTEM ---
+const planDetails = {
+  starter: {
+    name: "Starter License (1 Month)",
+    price: 49.00,
+    features: [
+      "1 Active MT5 Live Account",
+      "Unlimited Demo Accounts",
+      "Full EA Technical Features",
+      "Standard Discord Support"
+    ]
+  },
+  pro: {
+    name: "Pro License (1 Year)",
+    price: 149.00,
+    features: [
+      "3 Active MT5 Live Accounts",
+      "Unlimited Demo Accounts",
+      "Full EA Technical Features",
+      "Priority Developer Support",
+      "1 Year Free Upgrades"
+    ]
+  },
+  lifetime: {
+    name: "Lifetime License (Unlimited)",
+    price: 299.00,
+    features: [
+      "Unlimited Live MT5 Accounts",
+      "Unlimited Demo Accounts",
+      "Full EA Technical Features",
+      "1-on-1 Setup Assistance",
+      "Lifetime Free Upgrades"
+    ]
+  }
+};
+
+let currentOrder = {
+  planId: 'pro',
+  qty: 1,
+  paymentMethod: 'card'
+};
+
+function addToOrder(planId) {
+  currentOrder.planId = planId;
+  currentOrder.qty = 1;
+  
+  // Show checkout section
+  const checkoutSection = document.getElementById('inline-checkout-section');
+  if(checkoutSection) {
+    checkoutSection.style.display = 'block';
+  }
+  
+  updateOrderUI();
+  
+  // Scroll smoothly to order form
+  document.getElementById('inline-checkout-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+function adjustQty(amount) {
+  currentOrder.qty += amount;
+  if(currentOrder.qty < 1) currentOrder.qty = 1;
+  updateOrderUI();
+}
+
+function removeOrder() {
+  const checkoutSection = document.getElementById('inline-checkout-section');
+  if(checkoutSection) {
+    checkoutSection.style.display = 'none';
+  }
+}
+
+function toggleDetails() {
+  const details = document.getElementById('summary-details-content');
+  if(details) {
+    if(details.style.display === 'none') {
+      details.style.display = 'block';
     } else {
-      // Re-create the standard VPS promo header
-      cartItemsContainer.innerHTML = `
-        <div class="vps-promo-box" style="background: rgba(59, 130, 246, 0.05); border: 1px dashed rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 1rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; text-align: left;">
-          <i class="fa-solid fa-server" style="color: #60a5fa; font-size: 1.25rem;"></i>
-          <div>
-            <h5 style="font-size: 0.85rem; font-weight: 700; color: #60a5fa; margin-bottom: 0.15rem;">Free VPS Setup Included</h5>
-            <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.3;">Your license includes free remote VPS configuration assistance.</p>
-          </div>
-        </div>
-      `;
-      
-      let total = 0;
-      cart.forEach(item => {
-        total += item.price;
-        const itemHtml = `
-          <div class="cart-item">
-            <div class="cart-item-details">
-              <h4>${item.name}</h4>
-              <p>$${item.price.toFixed(2)}</p>
-            </div>
-            <button class="remove-item-btn" data-id="${item.id}">
-              <i class="fa-solid fa-trash-can"></i>
-            </button>
-          </div>
-        `;
-        cartItemsContainer.insertAdjacentHTML('beforeend', itemHtml);
-      });
-      
-      cartTotalPrice.textContent = '$' + total.toFixed(2);
-      drawerCheckoutBtn.disabled = false;
+      details.style.display = 'none';
     }
-  };
-  
-  // Re-run setup on reload
-  updateCartUI();
-
-  // --- DIRECT CHECKOUT FLOW ---
-  window.openDirectCheckout = function(planId) {
-    // Close any open navigation menus or topic modals
-    closeAllTopicModals();
-    const navMenu = document.getElementById('nav-menu');
-    if(navMenu) navMenu.classList.remove('open');
-    
-    // Select the plan in the dropdown
-    const planSelect = document.getElementById('checkout-plan-select');
-    if (planSelect) {
-      planSelect.value = planId;
-      updateCheckoutPrice();
-    }
-    
-    // Open Checkout Modal directly
-    const chModal = document.getElementById('checkout-modal');
-    const chOverlay = document.getElementById('modal-overlay');
-    if (chModal && chOverlay) {
-      chModal.classList.add('open');
-      chOverlay.classList.add('open');
-    }
-  };
-
-  // Dropdown price update logic
-  const planSelect = document.getElementById('checkout-plan-select');
-  const summaryPrice = document.getElementById('checkout-summary-price');
-  
-  if (planSelect && summaryPrice) {
-    planSelect.addEventListener('change', updateCheckoutPrice);
   }
+}
+
+function updateOrderUI() {
+  const plan = planDetails[currentOrder.planId];
   
-  function updateCheckoutPrice() {
-    const selectedOption = planSelect.options[planSelect.selectedIndex];
-    const price = selectedOption.dataset.price;
-    summaryPrice.textContent = '$' + parseFloat(price).toFixed(2);
-  }
-
-  // Bind global openTopicModal
-  window.openTopicModal = function(modalId) {
-    // Close others
-    closeAllTopicModals();
-    
-    const targetModal = document.getElementById(modalId);
-    const topicOverlay = document.getElementById('topic-overlay');
-    
-    if (targetModal && topicOverlay) {
-      // Clone FAQ items into FAQ modal if empty
-      if (modalId === 'modal-faq') {
-        const faqContainer = document.getElementById('modal-faq-accordion-container');
-        if (faqContainer && faqContainer.children.length === 0) {
-          const originalFaqs = document.querySelectorAll('#faq .faq-item');
-          originalFaqs.forEach(item => {
-            const clone = item.cloneNode(true);
-            clone.addEventListener('click', () => {
-              clone.classList.toggle('active');
-            });
-            faqContainer.appendChild(clone);
-          });
-        }
-      }
-      
-      // Clone Pricing grid into Pricing modal if empty
-      if (modalId === 'modal-pricing') {
-        const pricingContainer = document.getElementById('modal-pricing-grid-container');
-        if (pricingContainer && pricingContainer.children.length === 0) {
-          const originalPricing = document.querySelector('#pricing .pricing-grid');
-          if (originalPricing) {
-            const cloneGrid = originalPricing.cloneNode(true);
-            // Re-setup buy triggers
-            cloneGrid.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-              // Find the plan type from parameters or attributes
-              let planType = 'pro';
-              if (btn.outerHTML.includes('starter')) planType = 'starter';
-              else if (btn.outerHTML.includes('lifetime')) planType = 'lifetime';
-              
-              btn.addEventListener('click', () => {
-                openDirectCheckout(planType);
-              });
-            });
-            pricingContainer.appendChild(cloneGrid);
-          }
-        }
-      }
-      
-      targetModal.classList.add('open');
-      topicOverlay.classList.add('open');
-    }
-  };
-
-  window.closeAllTopicModals = function() {
-    document.querySelectorAll('.topic-modal').forEach(modal => {
-      modal.classList.remove('open');
+  document.getElementById('summary-item-name').textContent = plan.name;
+  document.getElementById('summary-item-qty').textContent = currentOrder.qty;
+  
+  const unitPrice = plan.price * currentOrder.qty;
+  document.getElementById('summary-unit-price').textContent = '$' + unitPrice.toFixed(2);
+  document.getElementById('inline-total-display').textContent = '$' + unitPrice.toFixed(2);
+  
+  // Render features list
+  const listContainer = document.getElementById('summary-detail-list');
+  if(listContainer) {
+    listContainer.innerHTML = '';
+    plan.features.forEach(feat => {
+      const li = document.createElement('li');
+      li.innerHTML = `<i class="fa-solid fa-circle-check" style="color: var(--accent-color); margin-right: 0.5rem;"></i> ` + feat;
+      listContainer.appendChild(li);
     });
-    const topicOverlay = document.getElementById('topic-overlay');
-    if(topicOverlay) topicOverlay.classList.remove('open');
-  };
+  }
+}
+
+function setInlinePayment(method) {
+  currentOrder.paymentMethod = method;
+  
+  const btnCard = document.getElementById('btn-tab-card');
+  const btnPaypal = document.getElementById('btn-tab-paypal');
+  const cardBox = document.getElementById('inline-card-fields-box');
+  const paypalBox = document.getElementById('inline-paypal-fields-box');
+  
+  const cardNum = document.getElementById('inline-card-number');
+  const cardExp = document.getElementById('inline-card-expiry');
+  const cardCvc = document.getElementById('inline-card-cvc');
+  
+  if(method === 'card') {
+    btnCard.classList.add('active');
+    btnPaypal.classList.remove('active');
+    cardBox.style.display = 'block';
+    paypalBox.style.display = 'none';
+    
+    if(cardNum) cardNum.required = true;
+    if(cardExp) cardExp.required = true;
+    if(cardCvc) cardCvc.required = true;
+  } else {
+    btnPaypal.classList.add('active');
+    btnCard.classList.remove('active');
+    cardBox.style.display = 'none';
+    paypalBox.style.display = 'block';
+    
+    if(cardNum) cardNum.required = false;
+    if(cardExp) cardExp.required = false;
+    if(cardCvc) cardCvc.required = false;
+  }
+}
+
+function submitInlineCheckout(e) {
+  e.preventDefault();
+  
+  const mt5Account = document.getElementById('inline-cust-mt5').value;
+  if(!mt5Account) return;
+  
+  const baseVal = parseInt(mt5Account) * 31;
+  const p1 = (baseVal % 10000).toString().padStart(4, '7');
+  const p2 = (Math.floor(baseVal / 3) % 10000).toString().padStart(4, '3');
+  const p3 = (Math.floor(baseVal / 7) % 10000).toString().padStart(4, '9');
+  const licenseKey = `FMP-${p1}-${p2}-${p3}`;
+  
+  // Hide form, show success
+  document.getElementById('inline-payment-form').style.display = 'none';
+  document.getElementById('inline-success-box').style.display = 'block';
+  
+  document.getElementById('inline-lic-key').textContent = licenseKey;
+  document.getElementById('inline-lic-account').textContent = mt5Account;
+}
+
+function submitInlinePayPal() {
+  const name = document.getElementById('inline-cust-name');
+  const email = document.getElementById('inline-cust-email');
+  const mt5 = document.getElementById('inline-cust-mt5');
+  
+  if(!name.checkValidity() || !email.checkValidity() || !mt5.checkValidity()) {
+    document.getElementById('inline-payment-form').reportValidity();
+    return;
+  }
+  
+  const btn = document.getElementById('inline-paypal-button');
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Authorizing...';
+  
+  setTimeout(() => {
+    // Submit form
+    document.getElementById('inline-payment-form').dispatchEvent(new Event('submit'));
+    btn.innerHTML = '<i class="fa-brands fa-paypal"></i> Pay with PayPal';
+  }, 1500);
+}

@@ -1407,3 +1407,327 @@ footer {
   border-color: var(--accent-color);
   background-color: #0b1533;
 }
+
+/* Inline Checkout Dashboard Styling */
+.inline-checkout-dashboard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 28px;
+  padding: 3.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.inline-checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.checkout-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.order-summary-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.order-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.order-item-header h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.summary-item-sub {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.15rem;
+}
+
+.remove-order-icon {
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+.remove-order-icon:hover {
+  color: #ef4444;
+}
+
+.order-item-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.inline-qty-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.35rem 0.75rem;
+}
+
+.qty-btn {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.qty-btn:hover {
+  color: var(--accent-color);
+}
+
+.order-unit-price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent-color);
+}
+
+.order-details-expander {
+  text-align: left;
+}
+
+.expander-trigger {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-main);
+  transition: var(--transition);
+}
+
+.expander-trigger:hover {
+  color: var(--text-primary);
+}
+
+.expander-content {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(255,255,255,0.05);
+}
+
+.summary-detail-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.vps-promo-box {
+  background: rgba(59, 130, 246, 0.04);
+  border: 1px dashed rgba(59, 130, 246, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+}
+
+.vps-promo-box i {
+  font-size: 1.75rem;
+  color: #60a5fa;
+}
+
+.vps-promo-box h5 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #60a5fa;
+  margin-bottom: 0.15rem;
+}
+
+.vps-promo-box p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Pay Form styles */
+.payment-method-selector {
+  display: flex;
+  gap: 1.5rem;
+  margin: 2rem 0 1.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+.pay-tab {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding-bottom: 0.5rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+.pay-tab.active {
+  color: var(--accent-color);
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.checkout-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.total-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.total-amount {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-color);
+}
+
+.paypal-smart-btn {
+  background: #ffc439;
+  border-radius: 50px;
+  padding: 1rem;
+  color: #111;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(255, 196, 57, 0.2);
+  font-size: 1.05rem;
+  transition: var(--transition);
+  max-width: 350px;
+  margin: 1.5rem auto 0 auto;
+}
+
+.paypal-smart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 196, 57, 0.35);
+}
+
+.paypal-subtext {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+}
+
+/* Success Box Styling */
+.inline-success-box {
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid var(--accent-color);
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.inline-success-box .success-icon {
+  font-size: 3.5rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.inline-success-box h4 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.license-info-card {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.lic-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+.lic-row:first-child {
+  margin-bottom: 0.75rem;
+}
+
+.lic-row strong {
+  color: var(--accent-color);
+  font-family: monospace;
+  font-size: 1.1rem;
+}
+
+.activation-instructions h5 {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.activation-instructions p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  text-align: left;
+}
+
+@media (max-width: 968px) {
+  .inline-checkout-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .inline-checkout-dashboard {
+    padding: 2rem;
+  }
+}

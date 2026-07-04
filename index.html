@@ -145,7 +145,7 @@
             <li><i class="fa-solid fa-check"></i> Standard Discord Support</li>
             <li class="disabled-feature"><i class="fa-solid fa-xmark"></i> Lifetime Free Upgrades</li>
           </ul>
-          <button class="glow-btn add-to-cart-btn" onclick="openDirectCheckout('starter')">
+          <button class="glow-btn add-to-cart-btn" onclick="addToOrder('starter')">
             Buy Now <i class="fa-solid fa-shopping-bag"></i>
           </button>
         </div>
@@ -165,7 +165,7 @@
             <li><i class="fa-solid fa-check"></i> Priority Developer Support</li>
             <li><i class="fa-solid fa-check"></i> 1 Year Free Upgrades</li>
           </ul>
-          <button class="glow-btn add-to-cart-btn" onclick="openDirectCheckout('pro')">
+          <button class="glow-btn add-to-cart-btn" onclick="addToOrder('pro')">
             Buy Now <i class="fa-solid fa-shopping-bag"></i>
           </button>
         </div>
@@ -184,344 +184,161 @@
             <li><i class="fa-solid fa-check"></i> 1-on-1 Setup Assistance</li>
             <li><i class="fa-solid fa-check"></i> Lifetime Free Upgrades</li>
           </ul>
-          <button class="glow-btn add-to-cart-btn" onclick="openDirectCheckout('lifetime')">
+          <button class="glow-btn add-to-cart-btn" onclick="addToOrder('lifetime')">
             Buy Now <i class="fa-solid fa-shopping-bag"></i>
           </button>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- CALCULATOR SECTION -->
-  <section class="calculator" id="calculator">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge">Compounding</span>
-        <h2>Interactive Growth Estimator</h2>
-        <p>Project your potential compounded returns based on your starting capital, duration, and chosen risk profile configuration.</p>
-      </div>
-      <div class="calc-grid">
-        <div class="calc-box">
-          <div class="calc-group">
-            <label for="capital-input">Starting Capital (USD) <span>$</span></label>
-            <input type="number" id="capital-input" class="calc-input" value="1000" min="100" max="1000000">
-          </div>
-          <div class="calc-group">
-            <label>Risk Growth Profile</label>
-            <div class="profile-selector">
-              <button class="profile-btn active" data-profile="conservative">Conservative</button>
-              <button class="profile-btn" data-profile="moderate">Moderate</button>
-              <button class="profile-btn" data-profile="aggressive">Aggressive</button>
-            </div>
-          </div>
-          <div class="calc-group">
-            <label>Estimated Monthly Growth Rate: <span id="rate-val">4.2%</span></label>
-            <input type="range" id="monthly-rate" class="range-slider" min="1" max="25" step="0.1" value="4.2">
-          </div>
-          <div class="calc-group">
-            <label>Investment Horizon: <span id="duration-val">12</span> Months</label>
-            <input type="range" id="duration-slider" class="range-slider" min="1" max="36" value="12">
-          </div>
-        </div>
-        <div class="projection-box">
-          <h4>Projected Account Value</h4>
-          <div class="projection-val" id="projection-val">$1,632</div>
-          <div class="projection-breakdown">
-            <div class="breakdown-item">
-              <p>Total Profit Return</p>
-              <p id="total-return">$632</p>
-            </div>
-            <div class="breakdown-item">
-              <p>Growth Percentage</p>
-              <p id="percentage-growth" style="color: #10b981;">63%</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <!-- INLINE CHECKOUT SYSTEM (Directly below Pricing part) -->
+      <div id="inline-checkout-section" class="inline-checkout-dashboard" style="margin-top: 5rem; display: none;">
+        <div class="inline-checkout-grid">
+          
+          <!-- Left: Order Summary & controls -->
+          <div class="checkout-panel">
+            <h3 class="panel-title">Order Customization</h3>
+            
+            <div class="order-summary-card">
+              <div class="order-item-header">
+                <div>
+                  <h4 id="summary-item-name">Pro License (1 Year)</h4>
+                  <p class="summary-item-sub">MT5 Algo License</p>
+                </div>
+                <span class="remove-order-icon" onclick="removeOrder()"><i class="fa-solid fa-trash-can"></i></span>
+              </div>
+              
+              <div class="order-item-controls">
+                <!-- Quantity selector -->
+                <div class="inline-qty-picker">
+                  <button type="button" class="qty-btn" onclick="adjustQty(-1)">-</button>
+                  <span id="summary-item-qty">1</span>
+                  <button type="button" class="qty-btn" onclick="adjustQty(1)">+</button>
+                </div>
+                
+                <span class="order-unit-price" id="summary-unit-price">$149.00</span>
+              </div>
 
-  <!-- HOW IT WORKS SECTION -->
-  <section class="installation" id="installation">
-    <div class="container">
-      <div class="how-it-works-grid">
-        <div>
-          <span class="badge">Deployment</span>
-          <h2>Deploy Forex Master Pro EA in 3 Simple Steps</h2>
-          <p style="color: var(--text-secondary); margin-bottom: 2rem;">Follow this straightforward process to download, install, and execute the EA directly inside your MT5 Terminal trading environment.</p>
-          <div class="steps-list">
-            <div class="step-item">
-              <div class="step-num">1</div>
-              <div class="step-info">
-                <h3>Acquire the EA on MQL5</h3>
-                <p>Click the "Get on MQL5" button on this website to view the listing. You can download the Demo version for strategy testing or rent/buy the fully-functional live model.</p>
+              <!-- View details expander -->
+              <div class="order-details-expander">
+                <button type="button" class="expander-trigger" onclick="toggleDetails()">
+                  View Included Features <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="expander-content" id="summary-details-content" style="display: none;">
+                  <ul class="summary-detail-list" id="summary-detail-list">
+                    <li>3 Active MT5 Live Accounts</li>
+                    <li>Unlimited Demo Accounts</li>
+                    <li>Full Technical confluence configurations</li>
+                    <li>Priority Developer Setup support</li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <div class="step-item">
-              <div class="step-num">2</div>
-              <div class="step-info">
-                <h3>Install inside MT5 Terminal</h3>
-                <p>Open MetaTrader 5. Go to Tools -> Options -> Community and log in to your MQL5 account. Navigate to Market -> Purchases in the Navigator panel to install the EA with one click.</p>
-              </div>
-            </div>
-            <div class="step-item">
-              <div class="step-num">3</div>
-              <div class="step-info">
-                <h3>Attach and Enable Auto-Trading</h3>
-                <p>Drag the EA onto your EURUSD H1 chart, adjust inputs (e.g. RiskPercent, UseSmartRecovery), and toggle the "Algo Trading" button green in the MT5 top toolbar to activate live executions.</p>
+
+            <!-- VPS promo -->
+            <div class="vps-promo-box">
+              <i class="fa-solid fa-server"></i>
+              <div>
+                <h5>Free VPS Setup Included</h5>
+                <p>Includes free remote assistance to deploy your EA to a 24/7 low-latency trading server.</p>
               </div>
             </div>
           </div>
-        </div>
-        <div>
-          <img src="assets/ea_installation_mockup.png" alt="EA installation guide graphic" class="hero-image" style="border-radius: 24px;">
+          
+          <!-- Right: Payment & licensing form -->
+          <div class="checkout-panel">
+            <h3 class="panel-title">Licensing & Payment</h3>
+            
+            <form id="inline-payment-form" onsubmit="submitInlineCheckout(event)">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="inline-cust-name">Full Name</label>
+                  <input type="text" id="inline-cust-name" class="calc-input" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                  <label for="inline-cust-email">Email Address</label>
+                  <input type="email" id="inline-cust-email" class="calc-input" required placeholder="john@example.com">
+                </div>
+              </div>
+              
+              <div class="form-group" style="margin-top: 1rem;">
+                <label for="inline-cust-mt5">MetaTrader 5 Account Number (For Licensing)</label>
+                <input type="number" id="inline-cust-mt5" class="calc-input" required placeholder="e.g. 51839401" min="1000">
+                <small class="form-help">Your license key is bound specifically to this account number.</small>
+              </div>
+
+              <!-- Pay tabs -->
+              <div class="payment-method-selector">
+                <button type="button" class="pay-tab active" id="btn-tab-card" onclick="setInlinePayment('card')">Credit Card</button>
+                <button type="button" class="pay-tab" id="btn-tab-paypal" onclick="setInlinePayment('paypal')">PayPal</button>
+              </div>
+
+              <!-- CC Fields -->
+              <div id="inline-card-fields-box">
+                <div class="form-group">
+                  <label for="inline-card-number">Credit Card Number</label>
+                  <input type="text" id="inline-card-number" class="calc-input" placeholder="4111 2222 3333 4444">
+                </div>
+                <div class="form-grid" style="margin-top: 1rem;">
+                  <div class="form-group">
+                    <label for="inline-card-expiry">Expiry Date</label>
+                    <input type="text" id="inline-card-expiry" class="calc-input" placeholder="MM/YY">
+                  </div>
+                  <div class="form-group">
+                    <label for="inline-card-cvc">CVC</label>
+                    <input type="text" id="inline-card-cvc" class="calc-input" placeholder="123">
+                  </div>
+                </div>
+              </div>
+
+              <!-- PayPal Button -->
+              <div id="inline-paypal-fields-box" style="display: none;">
+                <div class="paypal-smart-btn" id="inline-paypal-button" onclick="submitInlinePayPal()">
+                  <i class="fa-brands fa-paypal"></i> Pay with PayPal
+                </div>
+                <p class="paypal-subtext">Clicking pay will launch secure PayPal popup authorization</p>
+              </div>
+
+              <div class="checkout-footer-row">
+                <div>
+                  <span class="total-label">Total Due</span>
+                  <strong class="total-amount" id="inline-total-display">$149.00</strong>
+                </div>
+                <button type="submit" id="inline-submit-pay-btn" class="glow-btn">Pay & Activate <i class="fa-solid fa-shield-halved"></i></button>
+              </div>
+            </form>
+
+            <!-- Success Box (displays after payment succeeds) -->
+            <div class="inline-success-box" id="inline-success-box" style="display: none;">
+              <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+              <h4>Payment & Licensing Successful!</h4>
+              <p>Your license key has been successfully generated.</p>
+              
+              <div class="license-info-card">
+                <div class="lic-row">
+                  <span>License Key:</span>
+                  <strong id="inline-lic-key">FMP-XXXX-XXXX-XXXX</strong>
+                </div>
+                <div class="lic-row">
+                  <span>Bound MT5 Account:</span>
+                  <strong id="inline-lic-account">00000000</strong>
+                </div>
+              </div>
+              
+              <div class="activation-instructions">
+                <h5><i class="fa-solid fa-circle-info"></i> How to Activate:</h5>
+                <p>When launching the EA in your MetaTrader 5, copy and paste this **License Key** into the inputs configuration parameter tab.</p>
+              </div>
+            </div>
+
+          </div>
+          
         </div>
       </div>
+      
     </div>
   </section>
 
-  <!-- BACKTEST RESULTS SECTION -->
-  <section class="backtest" id="results">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge">Verified Results</span>
-        <h2>Engineered with Rigorous Backtesting</h2>
-        <p>Forex Master Pro EA has undergone backtests across multiple market cycles on EURUSD, demonstrating solid returns and controlled drawdowns.</p>
-      </div>
-      <div class="backtest-grid">
-        <div>
-          <img src="assets/forex_growth_chart.png" alt="Backtest Equity Growth Curve" class="hero-image" style="border-radius: 20px;">
-        </div>
-        <div style="padding-left: 2rem;">
-          <h3 style="font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">Historical Performance Statistics</h3>
-          <p style="color: var(--text-secondary); margin-bottom: 2rem;">Below are key performance parameters extracted from multi-year strategy tester runs on MetaQuotes-Demo servers with realistic tick delays and variables.</p>
-          <div class="backtest-details">
-            <div class="detail-card highlight">
-              <p>Expected Profit Factor</p>
-              <p>1.85</p>
-            </div>
-            <div class="detail-card">
-              <p>Max Drawdown (Equity)</p>
-              <p>4.82%</p>
-            </div>
-            <div class="detail-card">
-              <p>Recovery Factor</p>
-              <p>6.25</p>
-            </div>
-            <div class="detail-card">
-              <p>Sharpe Ratio</p>
-              <p>2.14</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ SECTION -->
-  <section class="faq" id="faq">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge">FAQ</span>
-        <h2>Frequently Asked Questions</h2>
-        <p>Got questions about configuring or running Forex Master Pro EA? Here are quick answers to common developer and user inquiries.</p>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-question">
-            Which currency pairs and timeframes are recommended?
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            Forex Master Pro EA is fully optimized for EURUSD on the H1 (1-Hour) timeframe. The EA's internal indicators and Multi-Timeframe confluences pull trend data directly from H4 and D1 to filter noise.
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            Does the EA work on Hedging and Netting accounts?
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            Yes! The EA is designed to comply with both Hedging and Netting account rules. The stops decoupling and custom partial-close logic ensure order modifications work cleanly on all brokers, including MetaQuotes-Demo.
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            What is the minimum deposit required to start?
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            The EA has a built-in safety lot size calculator that adjusts volume based on your account size. You can start with as little as $100 on a standard account using micro lots (0.01).
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            Does the EA require a VPS to run?
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            While not strictly required, using a Virtual Private Server (VPS) is highly recommended. It ensures the EA remains connected and executes orders 24/5 with low latency, bypassing local internet or power interruptions.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-about">
-          <h3>ForexPro EA</h3>
-          <p>High-end algorithmic trading systems and robots designed to maximize efficiency and protect trading capital using confluence models.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Product</h4>
-          <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#calculator">Growth Calculator</a></li>
-            <li><a href="#results">Backtests</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="https://www.mql5.com/en/market/product/122176" target="_blank">MQL5 Page</a></li>
-            <li><a href="#faq">FAQ</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="disclaimer">
-        <strong>RISK DISCLAIMER:</strong> Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to invest in foreign exchange, you should carefully consider your investment objectives, level of experience, and risk appetite. The possibility exists that you could sustain a loss of some or all of your initial investment and, therefore, you should not invest money that you cannot afford to lose. Past performance of any trading system or methodology is not necessarily indicative of future results.
-      </div>
-      
-      <div class="footer-bottom">
-        <p>&copy; 2026 Forex Master Pro. All rights reserved.</p>
-        <p>Developed by Amrit Gupta</p>
-      </div>
-    </div>
-  </footer>
-
-  
-
-
-
-  <!-- CHECKOUT MODAL -->
-  <div class="checkout-modal" id="checkout-modal">
-    <div class="checkout-modal-content">
-      <span class="close-modal" id="close-checkout-btn">&times;</span>
-      <h2>Secure Licensing Checkout</h2>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">Enter your details to generate your EA license key.</p>
-      
-      <form id="checkout-form">
-        <!-- Order Summary Box -->
-        <div class="checkout-order-summary" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 14px; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; text-align: left;">
-          <div>
-            <label style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.15rem; display: block; font-weight: 600;">Selected License</label>
-            <select id="checkout-plan-select" class="calc-input" style="font-size: 0.95rem; padding: 0.4rem 1.25rem; background: #080f24; border: 1px solid var(--border-color); width: auto; font-weight: 700; color: var(--text-primary); border-radius: 8px; outline: none; transition: var(--transition);">
-              <option value="starter" data-price="49">Starter License - $49</option>
-              <option value="pro" data-price="149" selected>Pro License - $149</option>
-              <option value="lifetime" data-price="299">Lifetime License - $299</option>
-            </select>
-          </div>
-          <div style="text-align: right;">
-            <span style="font-size: 0.8rem; color: var(--text-muted); display: block; font-weight: 600;">Total Price</span>
-            <strong id="checkout-summary-price" style="font-size: 1.5rem; color: var(--accent-color); font-feature-settings: 'tnum';">$149.00</strong>
-          </div>
-        </div>
-
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="cust-name">Full Name</label>
-            <input type="text" id="cust-name" class="calc-input" required placeholder="John Doe" style="font-size: 1rem; padding: 0.85rem 1.25rem;">
-          </div>
-          <div class="form-group">
-            <label for="cust-email">Email Address</label>
-            <input type="email" id="cust-email" class="calc-input" required placeholder="john@example.com" style="font-size: 1rem; padding: 0.85rem 1.25rem;">
-          </div>
-        </div>
-        
-        <div class="form-group" style="margin-top: 1.5rem; text-align: left;">
-          <label for="cust-mt5-account">MetaTrader 5 Live Account Number (For License Binding)</label>
-          <input type="number" id="cust-mt5-account" class="calc-input" required placeholder="e.g. 51839401" min="10000" max="999999999" style="font-size: 1rem; padding: 0.85rem 1.25rem;">
-          <small style="color: var(--text-muted); display: block; margin-top: 0.5rem;">Your EA license is digitally bound to this account number.</small>
-        </div>
-        
-        <h3 style="margin-top: 2rem; margin-bottom: 1rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: 1.25rem; text-align: left;">Payment Method</h3>
-        
-        <div class="payment-method-selector" style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; text-align: left;">
-          <button type="button" class="pay-tab active" id="tab-card" style="background: none; border: none; color: var(--accent-color); font-weight: 700; cursor: pointer; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-color); font-family: var(--font-main); font-size: 1rem; outline: none;">Credit Card</button>
-          <button type="button" class="pay-tab" id="tab-paypal" style="background: none; border: none; color: var(--text-secondary); font-weight: 500; cursor: pointer; padding-bottom: 0.5rem; font-family: var(--font-main); font-size: 1rem; outline: none;">PayPal</button>
-        </div>
-
-        <!-- Credit Card Fields -->
-        <div id="card-payment-fields">
-          <div class="form-group" style="text-align: left;">
-            <label for="card-num">Credit Card Number</label>
-            <input type="text" id="card-num" class="calc-input" placeholder="4111 2222 3333 4444" style="font-size: 1rem; padding: 0.85rem 1.25rem;">
-          </div>
-          <div class="form-grid" style="margin-top: 1.5rem;">
-            <div class="form-group" style="text-align: left;">
-              <label for="card-expiry">Expiry Date</label>
-              <input type="text" id="card-expiry" class="calc-input" placeholder="MM/YY" style="font-size: 1rem; padding: 0.85rem 1.25rem;">
-            </div>
-            <div class="form-group" style="text-align: left;">
-              <label for="card-cvc">CVC</label>
-              <input type="text" id="card-cvc" class="calc-input" placeholder="123" style="font-size: 1rem; padding: 0.85rem 1.25rem;">
-            </div>
-          </div>
-        </div>
-
-        <!-- PayPal Fields -->
-        <div id="paypal-payment-fields" style="display: none; text-align: center; padding: 1.5rem 0;">
-          <div id="paypal-button-container" style="background: #ffc439; border-radius: 50px; padding: 0.95rem 2.5rem; color: #111; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; box-shadow: 0 4px 20px rgba(255, 196, 57, 0.25); transition: var(--transition); width: 100%; max-width: 320px; margin: 0 auto;">
-            <i class="fa-brands fa-paypal" style="font-size: 1.4rem;"></i> Pay with PayPal
-          </div>
-          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 1rem;">Clicking pay will launch secure PayPal popup authorization</p>
-        </div>
-        
-        <div class="checkout-actions" style="margin-top: 2.5rem; display: flex; justify-content: flex-end; gap: 1rem;">
-          <button type="button" class="secondary-btn" id="cancel-checkout-btn" style="padding: 0.75rem 1.5rem; font-size: 0.95rem;">Cancel</button>
-          <button type="submit" class="glow-btn" style="padding: 0.75rem 1.5rem; font-size: 0.95rem;">Pay and Activate <i class="fa-solid fa-shield-halved"></i></button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="modal-overlay" id="modal-overlay"></div>
-
-  <!-- ORDER CONFIRMATION MODAL -->
-  <div class="confirmation-modal" id="confirmation-modal">
-    <div class="confirmation-modal-content">
-      <div class="success-icon" style="font-size: 4rem; color: var(--accent-color); margin-bottom: 1.5rem;"><i class="fa-solid fa-circle-check"></i></div>
-      <h2>Payment & Licensing Successful!</h2>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">Your license key has been successfully generated.</p>
-      
-      <div class="license-info-box" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; text-align: left;">
-        <div class="license-row" style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-          <span style="color: var(--text-secondary);">License Key:</span>
-          <strong id="confirm-license-key" style="color: var(--accent-color); font-family: monospace; font-size: 1.15rem; letter-spacing: 0.05em;">FMP-XXXX-XXXX-XXXX</strong>
-        </div>
-        <div class="license-row" style="display: flex; justify-content: space-between;">
-          <span style="color: var(--text-secondary);">Bound MT5 Account:</span>
-          <strong id="confirm-mt5-account" style="color: var(--text-primary);">00000000</strong>
-        </div>
-      </div>
-      
-      <div class="instruction-box" style="background: rgba(16, 185, 129, 0.05); border: 1px dashed rgba(16, 185, 129, 0.4); padding: 1.5rem; border-radius: 12px; text-align: left;">
-        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;"><i class="fa-solid fa-circle-info"></i> How to Activate:</h4>
-        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">When attaching the EA to your chart inside MetaTrader 5, copy and paste this **License Key** into the inputs configuration parameter tab.</p>
-      </div>
-      
-      <button class="glow-btn" style="margin-top: 2.5rem; width: 100%; justify-content: center;" id="confirm-close-btn">
-        Start Trading Now <i class="fa-solid fa-circle-play"></i>
-      </button>
-    </div>
-  </div>
-
-    <!-- TOPIC MODALS (TABS) -->
+  <!-- TOPIC MODALS (TABS) -->
   
   <!-- Features Modal -->
   <div class="topic-modal" id="modal-features">
