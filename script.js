@@ -349,3 +349,242 @@ document.addEventListener('DOMContentLoaded', () => {
       paypalButton.innerHTML = '<i class="fa-brands fa-paypal"></i> Pay with PayPal';
     }, 1500);
   });
+
+  // --- MOBILE HAMBURGER MENU ---
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const navMenu = document.getElementById('nav-menu');
+  
+  if (mobileMenuBtn && navMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (navMenu.classList.contains('open')) {
+        icon.classList.replace('fa-bars', 'fa-xmark');
+      } else {
+        icon.classList.replace('fa-xmark', 'fa-bars');
+      }
+    });
+    
+    // Close nav menu when clicking a link
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        const icon = mobileMenuBtn.querySelector('i');
+        if(icon) icon.classList.replace('fa-xmark', 'fa-bars');
+      });
+    });
+  }
+
+  // --- HEADER BUY NOW BUTTON OPENS CART DIRECTLY ---
+  const headerBuyNowBtn = document.getElementById('header-buy-now-btn');
+  if (headerBuyNowBtn) {
+    headerBuyNowBtn.addEventListener('click', () => {
+      cartDrawer.classList.add('open');
+      cartOverlay.classList.add('open');
+    });
+  }
+
+  // --- TOPIC MODALS OPEN/CLOSE LOGIC ---
+  const tabTriggers = document.querySelectorAll('.tab-trigger');
+  const topicOverlay = document.getElementById('topic-overlay');
+  
+  tabTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const modalId = trigger.getAttribute('data-modal');
+      const targetModal = document.getElementById(modalId);
+      
+      if (targetModal) {
+        // Clone FAQ items into FAQ modal if not already done
+        if (modalId === 'modal-faq') {
+          const faqContainer = document.getElementById('modal-faq-accordion-container');
+          if (faqContainer.children.length === 0) {
+            const originalFaqs = document.querySelectorAll('#faq .faq-item');
+            originalFaqs.forEach(item => {
+              const clone = item.cloneNode(true);
+              // Setup accordion trigger on the clone
+              clone.addEventListener('click', () => {
+                clone.classList.toggle('active');
+              });
+              faqContainer.appendChild(clone);
+            });
+          }
+        }
+        
+        // Clone Pricing cards into Pricing modal if not already done
+        if (modalId === 'modal-pricing') {
+          const pricingContainer = document.getElementById('modal-pricing-grid-container');
+          if (pricingContainer.children.length === 0) {
+            const originalPricing = document.querySelector('#pricing .pricing-grid');
+            if (originalPricing) {
+              const cloneGrid = originalPricing.cloneNode(true);
+              // Setup click listeners on clone buttons
+              cloneGrid.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                  const id = btn.dataset.id;
+                  const name = btn.dataset.name;
+                  const price = parseFloat(btn.dataset.price);
+                  
+                  const existingProduct = cart.find(item => item.id === id);
+                  if (!existingProduct) {
+                    cart.push({ id, name, price });
+                    localStorage.setItem('fmp_cart', JSON.stringify(cart));
+                    updateCartUI();
+                    
+                    // Close the topic modal & open cart drawer
+                    closeAllTopicModals();
+                    cartDrawer.classList.add('open');
+                    cartOverlay.classList.add('open');
+                  } else {
+                    alert("This license is already in your cart!");
+                  }
+                });
+              });
+              pricingContainer.appendChild(cloneGrid);
+            }
+          }
+        }
+        
+        targetModal.classList.add('open');
+        topicOverlay.classList.add('open');
+      }
+    });
+  });
+
+  // Close topic modals when clicking overlay or 'x'
+  const closeTopicBtns = document.querySelectorAll('.close-topic-modal');
+  closeTopicBtns.forEach(btn => {
+    btn.addEventListener('click', closeAllTopicModals);
+  });
+  
+  if (topicOverlay) {
+    topicOverlay.addEventListener('click', closeAllTopicModals);
+  }
+  
+  function closeAllTopicModals() {
+    document.querySelectorAll('.topic-modal').forEach(modal => {
+      modal.classList.remove('open');
+    });
+    if(topicOverlay) topicOverlay.classList.remove('open');
+  }
+
+  // --- MODAL CALCULATOR LOGIC ---
+  const mCapitalInput = document.getElementById('modal-capital-input');
+  const mDurationSlider = document.getElementById('modal-duration-slider');
+  const mDurationVal = document.getElementById('modal-duration-val');
+  const mProjectionVal = document.getElementById('modal-projection-val');
+  const mTotalProfit = document.getElementById('modal-total-profit');
+  const mTotalGrowth = document.getElementById('modal-total-growth');
+  
+  const mProfCons = document.getElementById('m-prof-cons');
+  const mProfMod = document.getElementById('m-prof-mod');
+  const mProfAgg = document.getElementById('m-prof-agg');
+  
+  let modalMonthlyRate = 4.2; // default conservative
+
+  if (mCapitalInput && mDurationSlider) {
+    const updateModalCalc = () => {
+      const capital = parseFloat(mCapitalInput.value) || 0;
+      const duration = parseInt(mDurationSlider.value);
+      mDurationVal.textContent = duration;
+      
+      const rateDec = modalMonthlyRate / 100;
+      const projected = capital * Math.pow(1 + rateDec, duration);
+      const profit = projected - capital;
+      const growthPct = (profit / capital) * 100;
+      
+      mProjectionVal.textContent = '$' + projected.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      mTotalProfit.textContent = '+$' + profit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      mTotalGrowth.textContent = '+' + growthPct.toFixed(1) + '%';
+    };
+    
+    mCapitalInput.addEventListener('input', updateModalCalc);
+    mDurationSlider.addEventListener('input', updateModalCalc);
+    
+    mProfCons.addEventListener('click', () => {
+      setActiveProfile(mProfCons, 4.2);
+    });
+    mProfMod.addEventListener('click', () => {
+      setActiveProfile(mProfMod, 8.5);
+    });
+    mProfAgg.addEventListener('click', () => {
+      setActiveProfile(mProfAgg, 14.5);
+    });
+    
+    function setActiveProfile(btn, rate) {
+      [mProfCons, mProfMod, mProfAgg].forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      modalMonthlyRate = rate;
+      updateModalCalc();
+    }
+  }
+
+  // --- UPGRADE empty-cart UI to include quick-add ---
+  const originalUpdateCartUI = updateCartUI;
+  updateCartUI = function() {
+    cartBadgeCount.textContent = cart.length;
+    cartItemsContainer.innerHTML = '';
+    
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = `
+        <div class="vps-promo-box" style="background: rgba(59, 130, 246, 0.05); border: 1px dashed rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 1rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; text-align: left;">
+          <i class="fa-solid fa-server" style="color: #60a5fa; font-size: 1.25rem;"></i>
+          <div>
+            <h5 style="font-size: 0.85rem; font-weight: 700; color: #60a5fa; margin-bottom: 0.15rem;">Free VPS Setup Included</h5>
+            <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.3;">Your license includes free remote VPS configuration assistance.</p>
+          </div>
+        </div>
+        <div class="empty-cart-msg">
+          <p>Your cart is empty.</p>
+          <button class="quick-add-btn" id="quick-add-pro-btn">
+            Quick-Add Pro License ($149) <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </div>
+      `;
+      cartTotalPrice.textContent = '$0.00';
+      drawerCheckoutBtn.disabled = true;
+      
+      // Hook event to the newly added quick-add button
+      const quickAddBtn = document.getElementById('quick-add-pro-btn');
+      if(quickAddBtn) {
+        quickAddBtn.addEventListener('click', () => {
+          cart.push({ id: 'pro-license', name: 'Pro License (1 Year)', price: 149 });
+          localStorage.setItem('fmp_cart', JSON.stringify(cart));
+          updateCartUI();
+        });
+      }
+    } else {
+      // Re-create the standard VPS promo header
+      cartItemsContainer.innerHTML = `
+        <div class="vps-promo-box" style="background: rgba(59, 130, 246, 0.05); border: 1px dashed rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 1rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; text-align: left;">
+          <i class="fa-solid fa-server" style="color: #60a5fa; font-size: 1.25rem;"></i>
+          <div>
+            <h5 style="font-size: 0.85rem; font-weight: 700; color: #60a5fa; margin-bottom: 0.15rem;">Free VPS Setup Included</h5>
+            <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.3;">Your license includes free remote VPS configuration assistance.</p>
+          </div>
+        </div>
+      `;
+      
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price;
+        const itemHtml = `
+          <div class="cart-item">
+            <div class="cart-item-details">
+              <h4>${item.name}</h4>
+              <p>$${item.price.toFixed(2)}</p>
+            </div>
+            <button class="remove-item-btn" data-id="${item.id}">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        `;
+        cartItemsContainer.insertAdjacentHTML('beforeend', itemHtml);
+      });
+      
+      cartTotalPrice.textContent = '$' + total.toFixed(2);
+      drawerCheckoutBtn.disabled = false;
+    }
+  };
+  
+  // Re-run setup on reload
+  updateCartUI();
