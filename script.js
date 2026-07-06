@@ -1,29 +1,120 @@
 /* ============================================================
-   Forex Master Pro EA — site scripts (v3.0)
+   Forex Master Pro EA — site scripts (v4.0)
    ============================================================ */
 
-/* ------------------------------------------------------------
-   CHECKOUT — all Buy buttons send customers to the official
-   MQL5 product page where the purchase is handled securely.
-   Update MQL5_URL if your product listing ever changes.
-   ------------------------------------------------------------ */
-const MQL5_URL = 'https://www.mql5.com/en/market/product/184184';
+const MQL5_BASE = 'https://www.mql5.com/en/market/product/184184';
+
+function mql5Url(plan) {
+  const params = new URLSearchParams({
+    utm_source: 'agentosacademy',
+    utm_medium: 'website',
+    utm_campaign: 'forex_master_pro_launch',
+    utm_content: plan || 'general'
+  });
+  return `${MQL5_BASE}?${params}`;
+}
 
 document.querySelectorAll('.buy-btn').forEach(btn => {
-  btn.href = MQL5_URL;
+  const plan = btn.dataset.plan || 'general';
+  btn.href = mql5Url(plan);
   btn.target = '_blank';
   btn.rel = 'noopener';
 });
 
-// Clicking the price amount also opens the MQL5 product page
 document.querySelectorAll('.price').forEach(price => {
   price.classList.add('price-link');
   price.setAttribute('role', 'link');
   price.setAttribute('title', 'Buy on MQL5');
   price.addEventListener('click', () => {
-    window.open(MQL5_URL, '_blank', 'noopener');
+    window.open(mql5Url('price-click'), '_blank', 'noopener');
   });
 });
+
+/* ---------- Floating particle background ---------- */
+(function initParticles() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let animId;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticles() {
+    const count = Math.min(Math.floor(window.innerWidth / 18), 80);
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.8 + 0.4,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      alpha: Math.random() * 0.5 + 0.1,
+      gold: Math.random() > 0.6
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.gold
+        ? `rgba(212, 168, 67, ${p.alpha})`
+        : `rgba(16, 185, 129, ${p.alpha * 0.7})`;
+      ctx.fill();
+    });
+
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(212, 168, 67, ${0.06 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  resize();
+  createParticles();
+  draw();
+
+  window.addEventListener('resize', () => {
+    resize();
+    createParticles();
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(animId);
+    } else {
+      draw();
+    }
+  });
+})();
 
 /* ---------- Sticky header ---------- */
 const header = document.getElementById('site-header');

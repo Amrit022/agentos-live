@@ -3,58 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forex Master Pro EA | High-Performance MT5 Trading Robot</title>
-  <meta name="description" content="Forex Master Pro EA — an algorithmic trading robot for MetaTrader 5 with multi-timeframe confluence, risk-controlled lot sizing, and smart stop-loss management.">
+  <title>Forex Master Pro EA v3.1 | Institutional MT5 Trading Robot</title>
+  <meta name="description" content="Forex Master Pro v3.0 Ultimate Edition — institutional-grade MT5 Expert Advisor with EMA Ribbon, RSI, MACD confluence, circuit breaker protection, and smart risk management. From $30/month or $149 full purchase.">
   <link rel="canonical" href="https://agentosacademy.com/">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://agentosacademy.com/">
-  <meta property="og:title" content="Forex Master Pro EA | High-Performance MT5 Trading Robot">
-  <meta property="og:description" content="Automate your forex trading on MetaTrader 5 with multi-timeframe confluence, dynamic risk management, and smart trade recovery.">
+  <meta property="og:title" content="Forex Master Pro EA v3.1 | Institutional MT5 Trading Robot">
+  <meta property="og:description" content="High-probability confluence trading robot for MetaTrader 5. Buy for $149, rent from $30/month, or try the free demo.">
   <meta property="og:image" content="https://agentosacademy.com/assets/forex_growth_chart.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Forex Master Pro EA | High-Performance MT5 Trading Robot">
-  <meta name="twitter:description" content="Automate your forex trading on MetaTrader 5 with multi-timeframe confluence, dynamic risk management, and smart trade recovery.">
+  <meta name="twitter:title" content="Forex Master Pro EA v3.1 | Institutional MT5 Trading Robot">
+  <meta name="twitter:description" content="High-probability confluence trading robot for MetaTrader 5. Buy for $149, rent from $30/month, or try the free demo.">
   <meta name="twitter:image" content="https://agentosacademy.com/assets/forex_growth_chart.png">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=3.0">
+  <link rel="stylesheet" href="styles.css?v=4.0">
 
-  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Forex Master Pro EA",
-    "description": "Confluence-based algorithmic trading robot for MetaTrader 5 with multi-timeframe analytics, dynamic lot sizing, and smart stop-loss management.",
+    "name": "Forex Master Pro EA v3.0 Ultimate Edition",
+    "description": "Institutional-grade, fully automated trading robot for MetaTrader 5 with EMA Ribbon, RSI, MACD, and Bollinger Bands confluence.",
     "image": "https://agentosacademy.com/assets/forex_growth_chart.png",
     "brand": { "@type": "Brand", "name": "Forex Master Pro" },
+    "author": { "@type": "Person", "name": "Amrit Gupta" },
     "offers": [
-      { "@type": "Offer", "name": "Starter License", "price": "49", "priceCurrency": "USD", "url": "https://agentosacademy.com/#pricing" },
-      { "@type": "Offer", "name": "Pro License", "price": "149", "priceCurrency": "USD", "url": "https://agentosacademy.com/#pricing" },
-      { "@type": "Offer", "name": "Lifetime License", "price": "299", "priceCurrency": "USD", "url": "https://agentosacademy.com/#pricing" }
+      { "@type": "Offer", "name": "Full Purchase", "price": "149", "priceCurrency": "USD", "url": "https://www.mql5.com/en/market/product/184184" },
+      { "@type": "Offer", "name": "1 Month Rental", "price": "30", "priceCurrency": "USD", "url": "https://www.mql5.com/en/market/product/184184" },
+      { "@type": "Offer", "name": "3 Month Rental", "price": "75", "priceCurrency": "USD", "url": "https://www.mql5.com/en/market/product/184184" }
     ]
   }
   </script>
 </head>
 <body>
 
-  <!-- Background layers -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
   <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-circuit" aria-hidden="true"></div>
   <div class="glow-orb orb-1" aria-hidden="true"></div>
   <div class="glow-orb orb-2" aria-hidden="true"></div>
+  <div class="glow-orb orb-3" aria-hidden="true"></div>
 
-  <!-- HEADER -->
+  <!-- Live ticker -->
+  <div class="ticker-bar" aria-hidden="true">
+    <div class="ticker-track">
+      <span>EURUSD <em class="up">+0.12%</em></span>
+      <span>GBPUSD <em class="down">-0.08%</em></span>
+      <span>USDCAD <em class="up">+0.05%</em></span>
+      <span>USDCHF <em class="down">-0.03%</em></span>
+      <span>XAUUSD <em class="up">+0.34%</em></span>
+      <span>Version 3.1 Live</span>
+      <span>5 Activations Included</span>
+      <span>Min. Balance $100</span>
+      <span>EURUSD <em class="up">+0.12%</em></span>
+      <span>GBPUSD <em class="down">-0.08%</em></span>
+      <span>USDCAD <em class="up">+0.05%</em></span>
+      <span>USDCHF <em class="down">-0.03%</em></span>
+      <span>XAUUSD <em class="up">+0.34%</em></span>
+      <span>Version 3.1 Live</span>
+      <span>5 Activations Included</span>
+      <span>Min. Balance $100</span>
+    </div>
+  </div>
+
   <header id="site-header">
     <div class="container">
       <nav>
-        <a href="#home" class="logo">ForexMaster <span>Pro</span></a>
+        <a href="#home" class="logo">
+          <img src="assets/logo.svg" alt="" class="logo-img" width="36" height="36">
+          ForexMaster <span>Pro</span>
+        </a>
 
         <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
           <svg class="icon" id="menu-icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -63,11 +87,11 @@
 
         <ul class="nav-links" id="nav-menu">
           <li><a href="#features">Features</a></li>
-          <li><a href="#how-it-works">How it Works</a></li>
+          <li><a href="#recommendations">Setup</a></li>
           <li><a href="#performance">Performance</a></li>
           <li><a href="#calculator">Calculator</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li class="nav-cta-item"><a href="#pricing" class="glow-btn nav-cta">Get License</a></li>
+          <li class="nav-cta-item"><a href="#pricing" class="glow-btn nav-cta">Buy — $149</a></li>
         </ul>
       </nav>
     </div>
@@ -78,22 +102,48 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
-          <span class="badge">
+          <span class="badge pulse-badge">
             <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
-            Version 3.1 — Live
+            Version 3.1 — Published 3 July 2026
           </span>
-          <h1>Automate Your Trading With <span class="grad-text">Forex Master Pro EA</span></h1>
-          <p class="hero-sub">A professional confluence-based algorithmic trading robot for MetaTrader 5. Engineered with multi-timeframe analytics, smart stop-loss checks, and dynamic margin optimization.</p>
+
+          <div class="author-trust">
+            <div class="stars" aria-label="5 star rating">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <span class="author-name">Amrit Gupta</span>
+            <span class="verified-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Verified Developer
+            </span>
+          </div>
+
+          <h1>Institutional-Grade Trading, <span class="grad-text">Fully Automated</span></h1>
+          <p class="hero-tagline">Forex Master Pro EA v3.0 — Ultimate Edition</p>
+          <p class="hero-sub">A high-probability confluence trading robot built for MetaTrader 5. It combines EMA Ribbon, RSI, MACD, and Bollinger Bands to find trend-following pullback setups — while strict risk management protects your capital every single trade.</p>
+
+          <div class="hero-price-tag">
+            <span class="hero-price">$149</span>
+            <span class="hero-price-label">Full License · 5 Activations</span>
+          </div>
+
           <div class="hero-actions">
-            <a href="#pricing" class="glow-btn">
-              Get Your License
+            <a href="https://www.mql5.com/en/market/product/184184" class="glow-btn buy-btn" data-plan="buy" target="_blank" rel="noopener">
+              Buy Now — $149
               <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
-            <a href="https://www.mql5.com/en/market/product/184184" class="secondary-btn" target="_blank" rel="noopener">
-              View on MQL5
-              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            <a href="https://www.mql5.com/en/market/product/184184" class="demo-btn buy-btn" data-plan="demo" target="_blank" rel="noopener">
+              Free Demo
+            </a>
+            <a href="#pricing" class="secondary-btn">
+              View All Plans
             </a>
           </div>
+
           <div class="hero-stats">
             <div class="stat-item">
               <h3><span class="counter" data-target="72" data-suffix="%">0%</span></h3>
@@ -107,8 +157,13 @@
               <h3><span class="counter" data-target="4.2" data-decimals="1" data-suffix="%">0%</span></h3>
               <p>Max Drawdown</p>
             </div>
+            <div class="stat-item">
+              <h3>5</h3>
+              <p>MT5 Activations</p>
+            </div>
           </div>
         </div>
+
         <div class="hero-image-wrapper">
           <div class="hero-image-glow" aria-hidden="true"></div>
           <img src="assets/ea_installation_mockup.webp" alt="Forex Master Pro EA running inside MetaTrader 5" class="hero-image" width="1024" height="1024" fetchpriority="high">
@@ -121,76 +176,105 @@
   <section class="features" id="features">
     <div class="container">
       <div class="section-header reveal">
-        <span class="badge">Core Technology</span>
-        <h2>High-Performance Core Technologies</h2>
-        <p>Forex Master Pro EA replaces emotional trading with mathematical confluence models and safe order execution.</p>
+        <span class="badge">Key Features</span>
+        <h2>Built Like an Institution. Priced for You.</h2>
+        <p>Every trade is filtered through a multi-indicator confluence engine — no guesswork, no emotion, just disciplined execution.</p>
       </div>
       <div class="features-grid">
         <div class="feature-card reveal">
-          <div class="feature-icon">
+          <div class="feature-icon gold">
             <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m7 14 4-4 4 4 5-6"/></svg>
           </div>
-          <h3>MTF Confluence Engine</h3>
-          <p>Aligns trend metrics across H1, H4, and D1 charts before executing trades, filtering out fakeouts and consolidating trend entries.</p>
+          <h3>Confluence Engine</h3>
+          <p>Trades open only when the EMA Ribbon (9, 21, 50, 200), RSI, MACD, and Bollinger Bands all align — filtering out low-quality setups before they cost you money.</p>
         </div>
         <div class="feature-card reveal reveal-delay-1">
           <div class="feature-icon">
             <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
           </div>
-          <h3>Broker Stops Level Safe</h3>
-          <p>Dynamically detects broker stop levels and freeze zones, ensuring orders and modifications never violate server trading zones.</p>
+          <h3>Risk Protection</h3>
+          <p>Automatically calculates lot sizes based on a set percentage of your account balance — e.g. 0.5% risk per trade — so you never overexpose your capital.</p>
         </div>
         <div class="feature-card reveal reveal-delay-2">
-          <div class="feature-icon">
-            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+          <div class="feature-icon red">
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <h3>Margin-Optimized Sizing</h3>
-          <p>Queries account free margin and lot specifications in real time, automatically scaling trade sizes to prevent execution rejections.</p>
+          <h3>Virtual Circuit Breaker</h3>
+          <p>Stops all trading and closes positions if your account floating drawdown exceeds a user-defined threshold (e.g. 5.0%) — your safety net when markets turn ugly.</p>
         </div>
         <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          <div class="feature-icon blue">
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <h3>Smart Recovery Control</h3>
-          <p>Reduces lot sizes to a fractional multiplier after consecutive losses, preserving capital during unfavorable market regimes.</p>
+          <h3>Time Exit</h3>
+          <p>Automatically closes stagnant trades after a set number of bars (e.g. 30 candles) to avoid high swap fees and ranging market traps.</p>
         </div>
         <div class="feature-card reveal reveal-delay-1">
-          <div class="feature-icon">
-            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>
+          <div class="feature-icon gold">
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg>
           </div>
-          <h3>Partial Take Profit</h3>
-          <p>Locks in profits by closing a configured percentage of the position at TP1 and letting the remainder run to the TP2 target.</p>
+          <h3>Break-Even &amp; Trailing Stop</h3>
+          <p>Automatically locks in profit at 1× ATR, converting the position into a risk-free trade — then trails the stop to capture maximum upside.</p>
         </div>
         <div class="feature-card reveal reveal-delay-2">
           <div class="feature-icon">
-            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg>
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
           </div>
-          <h3>Break-Even &amp; Trail Stop</h3>
-          <p>Secures profits automatically by moving stop loss to break-even after 1.0x ATR profit, then trails using dynamic ATR multiples.</p>
+          <h3>Free VPS Setup</h3>
+          <p>Every license includes free remote assistance to deploy your EA on a 24/7 low-latency trading server — so it never misses a setup while you sleep.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="arch-grid">
-        <div class="arch-card reveal">
-          <h4>
-            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="M11 18H8a2 2 0 0 1-2-2V9"/></svg>
-            Multi-Timeframe Confluence
-          </h4>
-          <p>A trade is only triggered when market structure, volume trends, and ATR ranges align concurrently across all monitored charts, filtering out false breakouts.</p>
+  <!-- RECOMMENDATIONS -->
+  <section id="recommendations">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="badge">Optimal Setup</span>
+        <h2>Recommended Trading Configuration</h2>
+        <p>Follow these settings for the best results — the EA was optimized and backtested with these exact parameters.</p>
+      </div>
+      <div class="rec-grid reveal">
+        <div class="rec-card">
+          <div class="rec-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>Timeframes</h4>
+          <div class="rec-pills">
+            <span class="pill">M15</span>
+            <span class="pill">M30</span>
+            <span class="pill">H1</span>
+          </div>
         </div>
-        <div class="arch-card reveal reveal-delay-1">
-          <h4>
-            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
-            Safety Stops Check
-          </h4>
-          <p>Monitors broker spreads and slippage in real time. Automatically rejects trades during high-volatility news releases or weekend gaps if spread exceeds your configured limit.</p>
+        <div class="rec-card">
+          <div class="rec-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h4>Currency Pairs</h4>
+          <div class="rec-pills">
+            <span class="pill">EURUSD</span>
+            <span class="pill">GBPUSD</span>
+            <span class="pill">USDCAD</span>
+            <span class="pill">USDCHF</span>
+            <span class="pill gold-pill">XAUUSD</span>
+          </div>
         </div>
-        <div class="arch-card reveal reveal-delay-2">
-          <h4>
-            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
-            Dynamic Volume Allocation
-          </h4>
-          <p>Adjusts lot sizing from free margin and current ATR. Keeps maximum risk strictly capped to a configured percentage (e.g. 1–2%) per trade.</p>
+        <div class="rec-card">
+          <div class="rec-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h4>Broker</h4>
+          <p class="rec-detail">Low spread ECN/RAW account</p>
+          <span class="rec-highlight">Optimized for OctaFX</span>
+        </div>
+        <div class="rec-card highlight-rec">
+          <div class="rec-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <h4>Minimum Balance</h4>
+          <p class="rec-balance">$100</p>
+          <p class="rec-detail">Start small, scale as you grow</p>
         </div>
       </div>
     </div>
@@ -201,36 +285,29 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="badge">Setup Guide</span>
-        <h2>Up and Running in 4 Steps</h2>
-        <p>From purchase to live trading on your MetaTrader 5 terminal in minutes.</p>
+        <h2>Live in 4 Simple Steps</h2>
+        <p>From purchase to automated trading on your MetaTrader 5 terminal — in under 10 minutes.</p>
       </div>
       <div class="steps-grid">
         <div class="step-card reveal">
           <div class="step-num">1</div>
-          <h4>Purchase License</h4>
-          <p>Select a plan, complete the secure checkout, and receive your MT5 license key by email.</p>
+          <h4>Choose Your Plan</h4>
+          <p>Buy for $149, rent from $30/month, or download the free demo to test first.</p>
         </div>
         <div class="step-card reveal reveal-delay-1">
           <div class="step-num">2</div>
-          <h4>Place Files in MT5</h4>
+          <h4>Install in MT5</h4>
           <p>Open MetaTrader 5 → File → Open Data Folder. Drop the <code>.ex5</code> file into <code>MQL5/Experts</code>.</p>
         </div>
         <div class="step-card reveal reveal-delay-2">
           <div class="step-num">3</div>
           <h4>Enable Algo Trading</h4>
-          <p>Click the "Algo Trading" button in the MT5 toolbar and refresh the Navigator panel to see the EA.</p>
+          <p>Click the "Algo Trading" button in the MT5 toolbar and refresh the Navigator panel.</p>
         </div>
         <div class="step-card reveal reveal-delay-3">
           <div class="step-num">4</div>
-          <h4>Enter License Key</h4>
-          <p>Drag the EA onto your EURUSD or GBPUSD chart, paste your key in the "Inputs" tab, and hit OK.</p>
-        </div>
-      </div>
-      <div class="vps-banner reveal">
-        <svg class="icon" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-        <div>
-          <h5>Free VPS Setup Included</h5>
-          <p>Every license includes free remote assistance to deploy your EA to a 24/7 low-latency trading server.</p>
+          <h4>Attach &amp; Trade</h4>
+          <p>Drag the EA onto your chart (M15/M30/H1), configure your risk settings, and let it run.</p>
         </div>
       </div>
     </div>
@@ -275,8 +352,8 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="badge">Growth Estimator</span>
-        <h2>Interactive Compound Projections</h2>
-        <p>Adjust the parameters to estimate compounded growth trajectories.</p>
+        <h2>See Your Potential Returns</h2>
+        <p>Adjust the parameters to estimate compounded growth — starting from as little as $100.</p>
       </div>
       <div class="calc-grid reveal">
         <div class="calc-box">
@@ -319,69 +396,112 @@
   <section class="pricing" id="pricing">
     <div class="container">
       <div class="section-header reveal">
-        <span class="badge">Direct License Purchase</span>
-        <h2>Choose Your Trading License</h2>
-        <p>Instant access to the compiled Forex Master Pro EA with your license key bound to your MT5 account.</p>
+        <span class="badge">Get Started Today</span>
+        <h2>Choose How You Want to Trade</h2>
+        <p>Buy once, rent monthly, or try the free demo — every option gives you the full Forex Master Pro EA experience.</p>
       </div>
 
       <div class="pricing-grid">
-        <!-- Starter -->
-        <div class="pricing-card reveal">
+        <!-- Buy Full -->
+        <div class="pricing-card buy-card popular reveal">
+          <span class="popular-badge">Best Value</span>
           <div class="pricing-header">
-            <h3>Starter License</h3>
-            <p>Perfect for testing live markets</p>
-            <div class="price"><span class="currency">$</span>49<span class="period"> / 1 month</span></div>
+            <div class="plan-icon buy-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </div>
+            <h3>Full Purchase</h3>
+            <p>Own it forever — 5 MT5 activations</p>
+            <div class="price buy-price"><span class="currency">$</span>149</div>
           </div>
           <ul class="pricing-features">
-            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 1 Active MT5 Live Account</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 5 MT5 Account Activations</li>
             <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Unlimited Demo Accounts</li>
-            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Full EA Technical Features</li>
-            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Standard Discord Support</li>
-            <li class="disabled-feature"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg> Lifetime Free Upgrades</li>
-          </ul>
-          <a href="#" class="glow-btn buy-btn" data-plan="starter">Buy Starter — $49</a>
-        </div>
-
-        <!-- Pro -->
-        <div class="pricing-card popular reveal reveal-delay-1">
-          <span class="popular-badge">Most Popular</span>
-          <div class="pricing-header">
-            <h3>Pro License</h3>
-            <p>For dedicated accounts</p>
-            <div class="price"><span class="currency">$</span>149<span class="period"> / 1 year</span></div>
-          </div>
-          <ul class="pricing-features">
-            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 3 Active MT5 Live Accounts</li>
-            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Unlimited Demo Accounts</li>
-            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Full EA Technical Features</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> All Features Included</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Free VPS Setup Assistance</li>
             <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Priority Developer Support</li>
-            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 1 Year Free Upgrades</li>
           </ul>
-          <a href="#" class="glow-btn buy-btn" data-plan="pro">Buy Pro — $149</a>
+          <a href="https://www.mql5.com/en/market/product/184184" class="glow-btn buy-btn buy-green" data-plan="buy" target="_blank" rel="noopener">Buy: $149 USD</a>
         </div>
 
-        <!-- Lifetime -->
-        <div class="pricing-card reveal reveal-delay-2">
+        <!-- Rent 1 Month -->
+        <div class="pricing-card rent-card reveal reveal-delay-1">
           <div class="pricing-header">
-            <h3>Lifetime License</h3>
-            <p>The ultimate professional choice</p>
-            <div class="price"><span class="currency">$</span>299<span class="period"> / lifetime</span></div>
+            <div class="plan-icon rent-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3>1 Month Rental</h3>
+            <p>Perfect for testing live markets</p>
+            <div class="price rent-price"><span class="currency">$</span>30<span class="period"> / month</span></div>
           </div>
           <ul class="pricing-features">
-            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Unlimited Live MT5 Accounts</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 1 MT5 Live Account</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Full EA Features</li>
             <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Unlimited Demo Accounts</li>
-            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Full EA Technical Features</li>
-            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 1-on-1 Setup Assistance</li>
-            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Lifetime Free Upgrades</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Standard Support</li>
           </ul>
-          <a href="#" class="glow-btn buy-btn" data-plan="lifetime">Buy Lifetime — $299</a>
+          <a href="https://www.mql5.com/en/market/product/184184" class="rent-btn buy-btn" data-plan="rent-1m" target="_blank" rel="noopener">For 1 Month: $30 USD</a>
+        </div>
+
+        <!-- Rent 3 Months -->
+        <div class="pricing-card rent-card reveal reveal-delay-2">
+          <span class="save-badge">Save 17%</span>
+          <div class="pricing-header">
+            <div class="plan-icon rent-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+            <h3>3 Month Rental</h3>
+            <p>Best rental value — save vs monthly</p>
+            <div class="price rent-price"><span class="currency">$</span>75<span class="period"> / 3 months</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 1 MT5 Live Account</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Full EA Features</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Unlimited Demo Accounts</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> You save 17% vs monthly</li>
+          </ul>
+          <a href="https://www.mql5.com/en/market/product/184184" class="rent-btn buy-btn" data-plan="rent-3m" target="_blank" rel="noopener">For 3 Months: $75 USD</a>
+        </div>
+
+        <!-- Free Demo -->
+        <div class="pricing-card demo-card reveal reveal-delay-3">
+          <div class="pricing-header">
+            <div class="plan-icon demo-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <h3>Free Demo</h3>
+            <p>Test before you commit — zero risk</p>
+            <div class="price demo-price">Free</div>
+          </div>
+          <ul class="pricing-features">
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Full Strategy Tester Access</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Your Own Broker Data</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> No Credit Card Required</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Instant Download</li>
+          </ul>
+          <a href="https://www.mql5.com/en/market/product/184184" class="demo-btn buy-btn" data-plan="demo" target="_blank" rel="noopener">Free Demo</a>
         </div>
       </div>
 
       <p class="pricing-note">
-        Payments are processed securely. Your license key is delivered by email and bound to your MT5 account number.<br>
-        Prefer a marketplace purchase? <a href="https://www.mql5.com/en/market/product/184184" target="_blank" rel="noopener">Buy directly on MQL5</a>.
+        All purchases are processed securely through the official MQL5 marketplace.<br>
+        Your license is delivered instantly and bound to your MT5 account number.
       </p>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="container reveal">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h2>Ready to Let the Robot Trade for You?</h2>
+          <p>Join traders worldwide using Forex Master Pro EA. Start with the free demo or buy today for $149.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="https://www.mql5.com/en/market/product/184184" class="glow-btn buy-btn" data-plan="buy" target="_blank" rel="noopener">Buy Now — $149</a>
+          <a href="https://www.mql5.com/en/market/product/184184" class="demo-btn buy-btn" data-plan="demo" target="_blank" rel="noopener">Try Free Demo</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -391,56 +511,58 @@
       <div class="section-header reveal">
         <span class="badge">FAQ</span>
         <h2>Frequently Asked Questions</h2>
-        <p>Answers to help you deploy and configure the EA successfully.</p>
+        <p>Everything you need to know before getting started.</p>
       </div>
       <div class="faq-list reveal">
         <details class="faq-item">
           <summary>Which currency pairs and timeframes work best?
             <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </summary>
-          <p>The EA is optimized for EURUSD and GBPUSD on the M15 chart, but the multi-timeframe confluence engine automatically reads H1, H4, and D1 data regardless of the chart it runs on. Any major pair with tight spreads will work.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do I need a VPS to run the EA?
-            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </summary>
-          <p>A VPS is recommended so the EA can trade 24/7 without your computer staying on. Every license includes free remote VPS setup assistance to get you deployed on a low-latency server.</p>
+          <p>The EA is optimized for M15, M30, and H1 timeframes on EURUSD, GBPUSD, USDCAD, USDCHF, and XAUUSD. It works best on low-spread ECN/RAW accounts — optimized for OctaFX.</p>
         </details>
         <details class="faq-item">
           <summary>What is the minimum deposit required?
             <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </summary>
-          <p>You can start with as little as $100 on a cent or micro account. For standard accounts we recommend $500+ so the dynamic lot sizing has room to manage risk at 1–2% per trade.</p>
+          <p>You can start with as little as $100. The EA automatically calculates lot sizes based on your account balance and configured risk percentage (e.g. 0.5% per trade).</p>
         </details>
         <details class="faq-item">
-          <summary>How is the license bound to my account?
+          <summary>What's the difference between buying and renting?
             <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </summary>
-          <p>After purchase you send us your MT5 account number and receive a license key bound to it. Demo accounts are always unlimited, and you can request a transfer to a new live account at any time.</p>
+          <p>Buying ($149) gives you permanent access with 5 MT5 activations. Renting ($30/month or $75/3 months) gives you temporary access for the rental period — great for testing on a live account before committing to a full purchase.</p>
         </details>
         <details class="faq-item">
           <summary>Can I test the EA before buying?
             <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </summary>
-          <p>Yes — a free demo version is available through the MQL5 marketplace where you can run it in the MetaTrader strategy tester with your own broker data before committing to a license.</p>
+          <p>Yes — download the free demo from MQL5 and run it in the MetaTrader 5 Strategy Tester with your own broker data. No credit card required.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How many MT5 accounts can I use?
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <p>The full purchase includes 5 MT5 account activations. Demo accounts are always unlimited. You can request a transfer to a new live account at any time.</p>
         </details>
         <details class="faq-item">
           <summary>Does the EA guarantee profits?
             <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </summary>
-          <p>No trading system can guarantee profits. Backtested results are historical and not indicative of future performance. The EA's focus is disciplined execution and strict risk management — never risk money you cannot afford to lose.</p>
+          <p>No trading system can guarantee profits. Backtested results are historical and not indicative of future performance. The EA focuses on disciplined execution and strict risk management — never risk money you cannot afford to lose.</p>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-about">
-          <a href="#home" class="logo">ForexMaster <span>Pro</span></a>
-          <p>High-end algorithmic trading systems designed to maximize efficiency and protect trading capital using confluence models.</p>
+          <a href="#home" class="logo">
+            <img src="assets/logo.svg" alt="" class="logo-img" width="32" height="32">
+            ForexMaster <span>Pro</span>
+          </a>
+          <p>Institutional-grade algorithmic trading systems designed to maximize efficiency and protect your capital using multi-indicator confluence models.</p>
         </div>
         <div class="footer-links">
           <h4>Product</h4>
@@ -454,7 +576,7 @@
         <div class="footer-links">
           <h4>Support</h4>
           <ul>
-            <li><a href="https://www.mql5.com/en/market/product/184184" target="_blank" rel="noopener">MQL5 Page</a></li>
+            <li><a href="https://www.mql5.com/en/market/product/184184" target="_blank" rel="noopener">MQL5 Marketplace</a></li>
             <li><a href="#how-it-works">Setup Guide</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
@@ -467,11 +589,11 @@
 
       <div class="footer-bottom">
         <p>&copy; 2026 Forex Master Pro. All rights reserved.</p>
-        <p>Developed by Amrit Gupta</p>
+        <p>Developed by Amrit Gupta · Version 3.1</p>
       </div>
     </div>
   </footer>
 
-  <script src="script.js?v=3.0" defer></script>
+  <script src="script.js?v=4.0" defer></script>
 </body>
 </html>
