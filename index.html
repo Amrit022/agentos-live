@@ -4,358 +4,433 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Forex Master Pro EA | High-Performance MT5 Trading Robot</title>
-  <meta name="description" content="Official website of the Forex Master Pro EA. Automate your forex trading on MetaTrader 5 with advanced confluence, risk-controlled lot sizing, and smart stop-loss recovery.">
-  <link rel="stylesheet" href="styles.css?v=2.2">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="Forex Master Pro EA — an algorithmic trading robot for MetaTrader 5 with multi-timeframe confluence, risk-controlled lot sizing, and smart stop-loss management.">
+  <link rel="canonical" href="https://agentosacademy.com/">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://agentosacademy.com/">
+  <meta property="og:title" content="Forex Master Pro EA | High-Performance MT5 Trading Robot">
+  <meta property="og:description" content="Automate your forex trading on MetaTrader 5 with multi-timeframe confluence, dynamic risk management, and smart trade recovery.">
+  <meta property="og:image" content="https://agentosacademy.com/assets/forex_growth_chart.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Forex Master Pro EA | High-Performance MT5 Trading Robot">
+  <meta name="twitter:description" content="Automate your forex trading on MetaTrader 5 with multi-timeframe confluence, dynamic risk management, and smart trade recovery.">
+  <meta name="twitter:image" content="https://agentosacademy.com/assets/forex_growth_chart.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=3.0">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Forex Master Pro EA",
+    "description": "Confluence-based algorithmic trading robot for MetaTrader 5 with multi-timeframe analytics, dynamic lot sizing, and smart stop-loss management.",
+    "image": "https://agentosacademy.com/assets/forex_growth_chart.png",
+    "brand": { "@type": "Brand", "name": "Forex Master Pro" },
+    "offers": [
+      { "@type": "Offer", "name": "Starter License", "price": "49", "priceCurrency": "USD", "url": "https://agentosacademy.com/#pricing" },
+      { "@type": "Offer", "name": "Pro License", "price": "149", "priceCurrency": "USD", "url": "https://agentosacademy.com/#pricing" },
+      { "@type": "Offer", "name": "Lifetime License", "price": "299", "priceCurrency": "USD", "url": "https://agentosacademy.com/#pricing" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
-  <!-- GLOWING BACKGROUND ORBS -->
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
-  <div class="glow-orb orb-3"></div>
+  <!-- Background layers -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="glow-orb orb-1" aria-hidden="true"></div>
+  <div class="glow-orb orb-2" aria-hidden="true"></div>
 
   <!-- HEADER -->
-  <header>
+  <header id="site-header">
     <div class="container">
       <nav>
-        <a href="#" class="logo">ForexPro <span>EA</span></a>
-        
-        <div class="menu-toggle" id="mobile-menu-btn" onclick="toggleMobileMenu()">
-          <i class="fa-solid fa-bars"></i>
-        </div>
-        
+        <a href="#home" class="logo">ForexMaster <span>Pro</span></a>
+
+        <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg class="icon" id="menu-icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+          <svg class="icon" id="menu-icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+
         <ul class="nav-links" id="nav-menu">
-          <li><a href="javascript:void(0)" onclick="openTopicModal('modal-features')">Features</a></li>
-          <li><a href="javascript:void(0)" onclick="openTopicModal('modal-calculator')">Growth Calculator</a></li>
-          <li><a href="javascript:void(0)" onclick="openTopicModal('modal-howitworks')">How it Works</a></li>
-          <li><a href="javascript:void(0)" onclick="openTopicModal('modal-backtests')">Backtests</a></li>
-          <li><a href="javascript:void(0)" onclick="openTopicModal('modal-faq')">FAQ</a></li>
-          <li><a href="javascript:void(0)" onclick="openDirectCheckout('pro')" style="color: var(--accent-color);">Buy License</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How it Works</a></li>
+          <li><a href="#performance">Performance</a></li>
+          <li><a href="#calculator">Calculator</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li class="nav-cta-item"><a href="#pricing" class="glow-btn nav-cta">Get License</a></li>
         </ul>
-        <a href="javascript:void(0)" onclick="openDirectCheckout('pro')" class="glow-btn">
-          Buy Now <i class="fa-solid fa-shopping-bag"></i>
-        </a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero" id="home">
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
-          <span class="badge">Version 3.1 Live</span>
-          <h1>Automate Your Trading With <span>Forex Master Pro EA</span></h1>
-          <p>A professional confluence-based algorithmic trading robot for MetaTrader 5. Engineered with multi-timeframe analytics, smart stop-loss checks, and dynamic margin optimization.</p>
+          <span class="badge">
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
+            Version 3.1 — Live
+          </span>
+          <h1>Automate Your Trading With <span class="grad-text">Forex Master Pro EA</span></h1>
+          <p class="hero-sub">A professional confluence-based algorithmic trading robot for MetaTrader 5. Engineered with multi-timeframe analytics, smart stop-loss checks, and dynamic margin optimization.</p>
           <div class="hero-actions">
             <a href="#pricing" class="glow-btn">
-              Buy License Direct <i class="fa-solid fa-shield-halved"></i>
+              Get Your License
+              <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
-            <a href="https://www.mql5.com/en/market/product/122176" class="secondary-btn" target="_blank">
-              View on MQL5 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <a href="https://www.mql5.com/en/market/product/122176" class="secondary-btn" target="_blank" rel="noopener">
+              View on MQL5
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
             </a>
           </div>
           <div class="hero-stats">
             <div class="stat-item">
-              <h3>72%+</h3>
+              <h3><span class="counter" data-target="72" data-suffix="%">0%</span></h3>
               <p>Backtested Win Rate</p>
             </div>
             <div class="stat-item">
-              <h3>1.85+</h3>
-              <p>Profit Factor Ratio</p>
+              <h3><span class="counter" data-target="1.85" data-decimals="2">0</span></h3>
+              <p>Profit Factor</p>
             </div>
             <div class="stat-item">
-              <h3>100%</h3>
-              <p>Risk Managed Payout</p>
+              <h3><span class="counter" data-target="4.2" data-decimals="1" data-suffix="%">0%</span></h3>
+              <p>Max Drawdown</p>
             </div>
           </div>
         </div>
         <div class="hero-image-wrapper">
-          <img src="assets/ea_installation_mockup.png" alt="Forex Master Pro EA UI Mockup" class="hero-image">
+          <div class="hero-image-glow" aria-hidden="true"></div>
+          <img src="assets/ea_installation_mockup.webp" alt="Forex Master Pro EA running inside MetaTrader 5" class="hero-image" width="1024" height="1024" fetchpriority="high">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURES SECTION -->
+  <!-- FEATURES -->
   <section class="features" id="features">
     <div class="container">
-      <div class="section-header">
-        <span class="badge">Pro Upgrades</span>
+      <div class="section-header reveal">
+        <span class="badge">Core Technology</span>
         <h2>High-Performance Core Technologies</h2>
-        <p>Forex Master Pro EA replaces emotional trading with high-end mathematical confluences and advanced order execution security.</p>
+        <p>Forex Master Pro EA replaces emotional trading with mathematical confluence models and safe order execution.</p>
       </div>
       <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m7 14 4-4 4 4 5-6"/></svg>
+          </div>
           <h3>MTF Confluence Engine</h3>
           <p>Aligns trend metrics across H1, H4, and D1 charts before executing trades, filtering out fakeouts and consolidating trend entries.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
           <h3>Broker Stops Level Safe</h3>
-          <p>Dynamically detects broker stop levels and freeze zones, ensuring initial orders and modifications never violate server trading zones.</p>
+          <p>Dynamically detects broker stop levels and freeze zones, ensuring orders and modifications never violate server trading zones.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon">
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+          </div>
           <h3>Margin-Optimized Sizing</h3>
-          <p>Queries account free margin and lot specifications in real-time, automatically scaling trade sizes to prevent execution rejections.</p>
+          <p>Queries account free margin and lot specifications in real time, automatically scaling trade sizes to prevent execution rejections.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-rotate-left"></i></div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          </div>
           <h3>Smart Recovery Control</h3>
-          <p>Reduces lot sizes to a fractional multiplier after consecutive losses, preserving capital drawdown during unfavorable market regimes.</p>
+          <p>Reduces lot sizes to a fractional multiplier after consecutive losses, preserving capital during unfavorable market regimes.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-scissors"></i></div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>
+          </div>
           <h3>Partial Take Profit</h3>
-          <p>Locks in profits by closing a configured percentage (e.g. 50%) of the position at TP1 and letting the remainder run to the TP2 target.</p>
+          <p>Locks in profits by closing a configured percentage of the position at TP1 and letting the remainder run to the TP2 target.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-arrows-spin"></i></div>
-          <h3>Break-Even & Trail Stop</h3>
-          <p>Secures profits automatically by moving stop loss to break-even after 1.0x ATR profit, and trails profits using dynamic ATR multiples.</p>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon">
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg>
+          </div>
+          <h3>Break-Even &amp; Trail Stop</h3>
+          <p>Secures profits automatically by moving stop loss to break-even after 1.0x ATR profit, then trails using dynamic ATR multiples.</p>
+        </div>
+      </div>
+
+      <div class="arch-grid">
+        <div class="arch-card reveal">
+          <h4>
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="M11 18H8a2 2 0 0 1-2-2V9"/></svg>
+            Multi-Timeframe Confluence
+          </h4>
+          <p>A trade is only triggered when market structure, volume trends, and ATR ranges align concurrently across all monitored charts, filtering out false breakouts.</p>
+        </div>
+        <div class="arch-card reveal reveal-delay-1">
+          <h4>
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+            Safety Stops Check
+          </h4>
+          <p>Monitors broker spreads and slippage in real time. Automatically rejects trades during high-volatility news releases or weekend gaps if spread exceeds your configured limit.</p>
+        </div>
+        <div class="arch-card reveal reveal-delay-2">
+          <h4>
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+            Dynamic Volume Allocation
+          </h4>
+          <p>Adjusts lot sizing from free margin and current ATR. Keeps maximum risk strictly capped to a configured percentage (e.g. 1–2%) per trade.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING & STORE SECTION -->
-  <section class="pricing" id="pricing">
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
     <div class="container">
-      <div class="section-header">
-        <span class="badge">Direct License Purchase</span>
-        <h2>Choose Your Trading License</h2>
-        <p>Get instant access to the compiled Forex Master Pro EA. Secure payments processed directly with automated license key generation.</p>
+      <div class="section-header reveal">
+        <span class="badge">Setup Guide</span>
+        <h2>Up and Running in 4 Steps</h2>
+        <p>From purchase to live trading on your MetaTrader 5 terminal in minutes.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-num">1</div>
+          <h4>Purchase License</h4>
+          <p>Select a plan, complete the secure checkout, and receive your MT5 license key by email.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-num">2</div>
+          <h4>Place Files in MT5</h4>
+          <p>Open MetaTrader 5 → File → Open Data Folder. Drop the <code>.ex5</code> file into <code>MQL5/Experts</code>.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-num">3</div>
+          <h4>Enable Algo Trading</h4>
+          <p>Click the "Algo Trading" button in the MT5 toolbar and refresh the Navigator panel to see the EA.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-num">4</div>
+          <h4>Enter License Key</h4>
+          <p>Drag the EA onto your EURUSD or GBPUSD chart, paste your key in the "Inputs" tab, and hit OK.</p>
+        </div>
+      </div>
+      <div class="vps-banner reveal">
+        <svg class="icon" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        <div>
+          <h5>Free VPS Setup Included</h5>
+          <p>Every license includes free remote assistance to deploy your EA to a 24/7 low-latency trading server.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- PROMO TIMER CAPSULE -->
-        <div class="promo-timer-container" style="margin-top: 1.75rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-          <span style="font-size: 0.85rem; color: #ef4444; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-clock fa-spin" style="animation-duration: 4s;"></i> Special 50% Launch Discount Ending Soon
-          </span>
-          <div class="countdown-timer" id="countdown-timer" style="display: flex; gap: 0.75rem; margin-top: 0.25rem;">
-            <div class="time-block" style="background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.15); padding: 0.5rem 1rem; border-radius: 10px; min-width: 70px; text-align: center;">
-              <span id="timer-hours" style="font-size: 1.5rem; font-weight: 800; color: var(--accent-color); font-family: monospace;">02</span>
-              <p style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-top: 0.15rem; font-weight: 600; letter-spacing: 0.05em;">Hours</p>
+  <!-- PERFORMANCE -->
+  <section class="performance" id="performance">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="badge">Backtest Reports</span>
+        <h2>Verified Performance Logs</h2>
+        <p>10-year historical reports modeled using real broker tick spreads and quality data.</p>
+      </div>
+      <div class="performance-grid">
+        <div class="performance-chart reveal">
+          <img src="assets/forex_growth_chart.webp" alt="Forex Master Pro EA 10-year equity growth curve" width="1024" height="1024" loading="lazy">
+        </div>
+        <div class="performance-metrics">
+          <div class="metric-card reveal">
+            <p class="metric-label">Profit Factor</p>
+            <p class="metric-value">1.85</p>
+          </div>
+          <div class="metric-card highlight reveal reveal-delay-1">
+            <p class="metric-label">Max Drawdown</p>
+            <p class="metric-value accent">4.2%</p>
+          </div>
+          <div class="metric-card reveal reveal-delay-2">
+            <p class="metric-label">Win Rate</p>
+            <p class="metric-value">72.4%</p>
+          </div>
+          <div class="metric-card reveal reveal-delay-3">
+            <p class="metric-label">Sharpe Ratio</p>
+            <p class="metric-value">2.15</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section id="calculator">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="badge">Growth Estimator</span>
+        <h2>Interactive Compound Projections</h2>
+        <p>Adjust the parameters to estimate compounded growth trajectories.</p>
+      </div>
+      <div class="calc-grid reveal">
+        <div class="calc-box">
+          <div class="calc-group">
+            <label for="capital-input">Starting Capital (USD) <span>$</span></label>
+            <input type="number" id="capital-input" class="calc-input" value="1000" min="100" max="1000000">
+          </div>
+          <div class="calc-group">
+            <label>Risk Profile Preset</label>
+            <div class="profile-selector">
+              <button class="profile-btn active" data-rate="4.2" type="button">Conservative</button>
+              <button class="profile-btn" data-rate="8.5" type="button">Moderate</button>
+              <button class="profile-btn" data-rate="14.5" type="button">Aggressive</button>
             </div>
-            <div class="time-block" style="background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.15); padding: 0.5rem 1rem; border-radius: 10px; min-width: 70px; text-align: center;">
-              <span id="timer-mins" style="font-size: 1.5rem; font-weight: 800; color: var(--accent-color); font-family: monospace;">45</span>
-              <p style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-top: 0.15rem; font-weight: 600; letter-spacing: 0.05em;">Mins</p>
+          </div>
+          <div class="calc-group">
+            <label for="duration-slider">Horizon (Months): <span id="duration-val">12</span></label>
+            <input type="range" id="duration-slider" class="range-slider" min="1" max="36" value="12">
+          </div>
+        </div>
+        <div class="projection-box">
+          <h4>Projected Balance</h4>
+          <div class="projection-val" id="projection-val">$1,638.62</div>
+          <div class="projection-breakdown">
+            <div class="breakdown-item">
+              <p>Total Profit</p>
+              <p class="breakdown-num" id="total-profit">+$638.62</p>
             </div>
-            <div class="time-block" style="background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.15); padding: 0.5rem 1rem; border-radius: 10px; min-width: 70px; text-align: center;">
-              <span id="timer-secs" style="font-size: 1.5rem; font-weight: 800; color: var(--accent-color); font-family: monospace;">12</span>
-              <p style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-top: 0.15rem; font-weight: 600; letter-spacing: 0.05em;">Secs</p>
+            <div class="breakdown-item">
+              <p>Growth</p>
+              <p class="breakdown-num accent" id="total-growth">+63.9%</p>
             </div>
           </div>
         </div>
       </div>
-      
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="badge">Direct License Purchase</span>
+        <h2>Choose Your Trading License</h2>
+        <p>Instant access to the compiled Forex Master Pro EA with your license key bound to your MT5 account.</p>
+      </div>
+
       <div class="pricing-grid">
-        <!-- Card 1: Starter -->
-        <div class="pricing-card">
+        <!-- Starter -->
+        <div class="pricing-card reveal">
           <div class="pricing-header">
             <h3>Starter License</h3>
             <p>Perfect for testing live markets</p>
-            <div class="price"><span>$</span>49<span>/ 1 Month</span></div>
+            <div class="price"><span class="currency">$</span>49<span class="period"> / 1 month</span></div>
           </div>
           <ul class="pricing-features">
-            <li><i class="fa-solid fa-check"></i> 1 Active MT5 Live Account</li>
-            <li><i class="fa-solid fa-check"></i> Unlimited Demo Accounts</li>
-            <li><i class="fa-solid fa-check"></i> Full EA Technical Features</li>
-            <li><i class="fa-solid fa-check"></i> Standard Discord Support</li>
-            <li class="disabled-feature"><i class="fa-solid fa-xmark"></i> Lifetime Free Upgrades</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 1 Active MT5 Live Account</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Unlimited Demo Accounts</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Full EA Technical Features</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Standard Discord Support</li>
+            <li class="disabled-feature"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg> Lifetime Free Upgrades</li>
           </ul>
-          <button class="glow-btn add-to-cart-btn" onclick="addToOrder('starter')">
-            Buy Now <i class="fa-solid fa-shopping-bag"></i>
-          </button>
+          <a href="#" class="glow-btn buy-btn" data-plan="starter">Buy Starter — $49</a>
         </div>
 
-        <!-- Card 2: Pro (Best Value) -->
-        <div class="pricing-card popular">
+        <!-- Pro -->
+        <div class="pricing-card popular reveal reveal-delay-1">
           <span class="popular-badge">Most Popular</span>
           <div class="pricing-header">
             <h3>Pro License</h3>
             <p>For dedicated accounts</p>
-            <div class="price"><span>$</span>149<span>/ 1 Year</span></div>
+            <div class="price"><span class="currency">$</span>149<span class="period"> / 1 year</span></div>
           </div>
           <ul class="pricing-features">
-            <li><i class="fa-solid fa-check"></i> 3 Active MT5 Live Accounts</li>
-            <li><i class="fa-solid fa-check"></i> Unlimited Demo Accounts</li>
-            <li><i class="fa-solid fa-check"></i> Full EA Technical Features</li>
-            <li><i class="fa-solid fa-check"></i> Priority Developer Support</li>
-            <li><i class="fa-solid fa-check"></i> 1 Year Free Upgrades</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 3 Active MT5 Live Accounts</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Unlimited Demo Accounts</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Full EA Technical Features</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Priority Developer Support</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 1 Year Free Upgrades</li>
           </ul>
-          <button class="glow-btn add-to-cart-btn" onclick="addToOrder('pro')">
-            Buy Now <i class="fa-solid fa-shopping-bag"></i>
-          </button>
+          <a href="#" class="glow-btn buy-btn" data-plan="pro">Buy Pro — $149</a>
         </div>
 
-        <!-- Card 3: Lifetime -->
-        <div class="pricing-card">
+        <!-- Lifetime -->
+        <div class="pricing-card reveal reveal-delay-2">
           <div class="pricing-header">
             <h3>Lifetime License</h3>
             <p>The ultimate professional choice</p>
-            <div class="price"><span>$</span>299<span>/ Lifetime</span></div>
+            <div class="price"><span class="currency">$</span>299<span class="period"> / lifetime</span></div>
           </div>
           <ul class="pricing-features">
-            <li><i class="fa-solid fa-check"></i> Unlimited Live MT5 Accounts</li>
-            <li><i class="fa-solid fa-check"></i> Unlimited Demo Accounts</li>
-            <li><i class="fa-solid fa-check"></i> Full EA Technical Features</li>
-            <li><i class="fa-solid fa-check"></i> 1-on-1 Setup Assistance</li>
-            <li><i class="fa-solid fa-check"></i> Lifetime Free Upgrades</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Unlimited Live MT5 Accounts</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Unlimited Demo Accounts</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Full EA Technical Features</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 1-on-1 Setup Assistance</li>
+            <li><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Lifetime Free Upgrades</li>
           </ul>
-          <button class="glow-btn add-to-cart-btn" onclick="addToOrder('lifetime')">
-            Buy Now <i class="fa-solid fa-shopping-bag"></i>
-          </button>
+          <a href="#" class="glow-btn buy-btn" data-plan="lifetime">Buy Lifetime — $299</a>
         </div>
       </div>
 
-      <!-- INLINE CHECKOUT SYSTEM (Directly below Pricing part) -->
-      <div id="inline-checkout-section" class="inline-checkout-dashboard" style="margin-top: 5rem; display: none;">
-        <div class="inline-checkout-grid">
-          
-          <!-- Left: Order Summary & controls -->
-          <div class="checkout-panel">
-            <h3 class="panel-title">Order Customization</h3>
-            
-            <div class="order-summary-card">
-              <div class="order-item-header">
-                <div>
-                  <h4 id="summary-item-name">Pro License (1 Year)</h4>
-                  <p class="summary-item-sub">MT5 Algo License</p>
-                </div>
-                <span class="remove-order-icon" onclick="removeOrder()"><i class="fa-solid fa-trash-can"></i></span>
-              </div>
-              
-              <div class="order-item-controls">
-                <!-- Quantity selector -->
-                <div class="inline-qty-picker">
-                  <button type="button" class="qty-btn" onclick="adjustQty(-1)">-</button>
-                  <span id="summary-item-qty">1</span>
-                  <button type="button" class="qty-btn" onclick="adjustQty(1)">+</button>
-                </div>
-                
-                <span class="order-unit-price" id="summary-unit-price">$149.00</span>
-              </div>
+      <p class="pricing-note">
+        Payments are processed securely. Your license key is delivered by email and bound to your MT5 account number.<br>
+        Prefer a marketplace purchase? <a href="https://www.mql5.com/en/market/product/122176" target="_blank" rel="noopener">Buy directly on MQL5</a>.
+      </p>
+    </div>
+  </section>
 
-              <!-- View details expander -->
-              <div class="order-details-expander">
-                <button type="button" class="expander-trigger" onclick="toggleDetails()">
-                  View Included Features <i class="fa-solid fa-chevron-down"></i>
-                </button>
-                <div class="expander-content" id="summary-details-content" style="display: none;">
-                  <ul class="summary-detail-list" id="summary-detail-list">
-                    <li>3 Active MT5 Live Accounts</li>
-                    <li>Unlimited Demo Accounts</li>
-                    <li>Full Technical confluence configurations</li>
-                    <li>Priority Developer Setup support</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- VPS promo -->
-            <div class="vps-promo-box">
-              <i class="fa-solid fa-server"></i>
-              <div>
-                <h5>Free VPS Setup Included</h5>
-                <p>Includes free remote assistance to deploy your EA to a 24/7 low-latency trading server.</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Right: Payment & licensing form -->
-          <div class="checkout-panel">
-            <h3 class="panel-title">Licensing & Payment</h3>
-            
-            <form id="inline-payment-form" onsubmit="submitInlineCheckout(event)">
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="inline-cust-name">Full Name</label>
-                  <input type="text" id="inline-cust-name" class="calc-input" required placeholder="John Doe">
-                </div>
-                <div class="form-group">
-                  <label for="inline-cust-email">Email Address</label>
-                  <input type="email" id="inline-cust-email" class="calc-input" required placeholder="john@example.com">
-                </div>
-              </div>
-              
-              <div class="form-group" style="margin-top: 1rem;">
-                <label for="inline-cust-mt5">MetaTrader 5 Account Number (For Licensing)</label>
-                <input type="number" id="inline-cust-mt5" class="calc-input" required placeholder="e.g. 51839401" min="1000">
-                <small class="form-help">Your license key is bound specifically to this account number.</small>
-              </div>
-
-              <!-- Pay tabs -->
-              <div class="payment-method-selector">
-                <button type="button" class="pay-tab active" id="btn-tab-card" onclick="setInlinePayment('card')">Credit Card</button>
-                <button type="button" class="pay-tab" id="btn-tab-paypal" onclick="setInlinePayment('paypal')">PayPal</button>
-              </div>
-
-              <!-- CC Fields -->
-              <div id="inline-card-fields-box">
-                <div class="form-group">
-                  <label for="inline-card-number">Credit Card Number</label>
-                  <input type="text" id="inline-card-number" class="calc-input" placeholder="4111 2222 3333 4444">
-                </div>
-                <div class="form-grid" style="margin-top: 1rem;">
-                  <div class="form-group">
-                    <label for="inline-card-expiry">Expiry Date</label>
-                    <input type="text" id="inline-card-expiry" class="calc-input" placeholder="MM/YY">
-                  </div>
-                  <div class="form-group">
-                    <label for="inline-card-cvc">CVC</label>
-                    <input type="text" id="inline-card-cvc" class="calc-input" placeholder="123">
-                  </div>
-                </div>
-              </div>
-
-              <!-- PayPal Button -->
-              <div id="inline-paypal-fields-box" style="display: none;">
-                <div class="paypal-smart-btn" id="inline-paypal-button" onclick="submitInlinePayPal()">
-                  <i class="fa-brands fa-paypal"></i> Pay with PayPal
-                </div>
-                <p class="paypal-subtext">Clicking pay will launch secure PayPal popup authorization</p>
-              </div>
-
-              <div class="checkout-footer-row">
-                <div>
-                  <span class="total-label">Total Due</span>
-                  <strong class="total-amount" id="inline-total-display">$149.00</strong>
-                </div>
-                <button type="submit" id="inline-submit-pay-btn" class="glow-btn">Pay & Activate <i class="fa-solid fa-shield-halved"></i></button>
-              </div>
-            </form>
-
-            <!-- Success Box (displays after payment succeeds) -->
-            <div class="inline-success-box" id="inline-success-box" style="display: none;">
-              <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
-              <h4>Payment & Licensing Successful!</h4>
-              <p>Your license key has been successfully generated.</p>
-              
-              <div class="license-info-card">
-                <div class="lic-row">
-                  <span>License Key:</span>
-                  <strong id="inline-lic-key">FMP-XXXX-XXXX-XXXX</strong>
-                </div>
-                <div class="lic-row">
-                  <span>Bound MT5 Account:</span>
-                  <strong id="inline-lic-account">00000000</strong>
-                </div>
-              </div>
-              
-              <div class="activation-instructions">
-                <h5><i class="fa-solid fa-circle-info"></i> How to Activate:</h5>
-                <p>When launching the EA in your MetaTrader 5, copy and paste this **License Key** into the inputs configuration parameter tab.</p>
-              </div>
-            </div>
-
-          </div>
-          
-        </div>
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="badge">FAQ</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Answers to help you deploy and configure the EA successfully.</p>
       </div>
-      
+      <div class="faq-list reveal">
+        <details class="faq-item">
+          <summary>Which currency pairs and timeframes work best?
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <p>The EA is optimized for EURUSD and GBPUSD on the M15 chart, but the multi-timeframe confluence engine automatically reads H1, H4, and D1 data regardless of the chart it runs on. Any major pair with tight spreads will work.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need a VPS to run the EA?
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <p>A VPS is recommended so the EA can trade 24/7 without your computer staying on. Every license includes free remote VPS setup assistance to get you deployed on a low-latency server.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What is the minimum deposit required?
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <p>You can start with as little as $100 on a cent or micro account. For standard accounts we recommend $500+ so the dynamic lot sizing has room to manage risk at 1–2% per trade.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How is the license bound to my account?
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <p>After purchase you send us your MT5 account number and receive a license key bound to it. Demo accounts are always unlimited, and you can request a transfer to a new live account at any time.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I test the EA before buying?
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <p>Yes — a free demo version is available through the MQL5 marketplace where you can run it in the MetaTrader strategy tester with your own broker data before committing to a license.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does the EA guarantee profits?
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <p>No trading system can guarantee profits. Backtested results are historical and not indicative of future performance. The EA's focus is disciplined execution and strict risk management — never risk money you cannot afford to lose.</p>
+        </details>
+      </div>
     </div>
   </section>
 
@@ -364,30 +439,32 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-about">
-          <h3>ForexPro EA</h3>
-          <p>High-end algorithmic trading systems and robots designed to maximize efficiency and protect trading capital using confluence models.</p>
+          <a href="#home" class="logo">ForexMaster <span>Pro</span></a>
+          <p>High-end algorithmic trading systems designed to maximize efficiency and protect trading capital using confluence models.</p>
         </div>
         <div class="footer-links">
           <h4>Product</h4>
           <ul>
-            <li><a href="javascript:void(0)" onclick="openTopicModal('modal-features')">Features</a></li>
-            <li><a href="javascript:void(0)" onclick="openTopicModal('modal-calculator')">Growth Calculator</a></li>
-            <li><a href="javascript:void(0)" onclick="openTopicModal('modal-backtests')">Backtests</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#performance">Backtests</a></li>
+            <li><a href="#calculator">Growth Calculator</a></li>
+            <li><a href="#pricing">Pricing</a></li>
           </ul>
         </div>
         <div class="footer-links">
           <h4>Support</h4>
           <ul>
-            <li><a href="https://www.mql5.com/en/market/product/122176" target="_blank">MQL5 Page</a></li>
-            <li><a href="javascript:void(0)" onclick="openTopicModal('modal-faq')">FAQ</a></li>
+            <li><a href="https://www.mql5.com/en/market/product/122176" target="_blank" rel="noopener">MQL5 Page</a></li>
+            <li><a href="#how-it-works">Setup Guide</a></li>
+            <li><a href="#faq">FAQ</a></li>
           </ul>
         </div>
       </div>
-      
+
       <div class="disclaimer">
         <strong>RISK DISCLAIMER:</strong> Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to invest in foreign exchange, you should carefully consider your investment objectives, level of experience, and risk appetite. The possibility exists that you could sustain a loss of some or all of your initial investment and, therefore, you should not invest money that you cannot afford to lose. Past performance of any trading system or methodology is not necessarily indicative of future results.
       </div>
-      
+
       <div class="footer-bottom">
         <p>&copy; 2026 Forex Master Pro. All rights reserved.</p>
         <p>Developed by Amrit Gupta</p>
@@ -395,725 +472,6 @@
     </div>
   </footer>
 
-  <!-- TOPIC MODALS (TABS) -->
-  
-  <!-- Features Modal -->
-  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-features" style="display: none;">
-    <div class="topic-modal-content">
-      <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
-      <span class="badge">Specifications</span>
-      <h2>EA Technical Architecture</h2>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem;">Deep dive into the algorithmic trading systems that power Forex Master Pro.</p>
-      
-      <div style="text-align: left; display: flex; flex-direction: column; gap: 1.5rem; max-height: 450px; overflow-y: auto; padding-right: 10px;">
-        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px;">
-          <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;"><i class="fa-solid fa-code-compare"></i> Multi-Timeframe Confluence</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">Analyzes M5, M15, and H1 timeframes simultaneously. A trade is only triggered when market structure, volume trends, and ATR ranges align concurrently across all charts, filtering out false breakouts.</p>
-        </div>
-        
-        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px;">
-          <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved"></i> Safety Stops Check</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">Monitors brokers spreads and slippage in real-time. Automatically rejects trades during high volatility news releases or weekend gaps if the current spread exceeds a user-configured limit.</p>
-        </div>
-        
-        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px;">
-          <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-line"></i> Dynamic Volume Allocation</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">Automatically adjusts lot sizing based on free account margin and current ATR (Average True Range). Keeps your maximum risk strictly capped to a configured percentage (e.g. 1% or 2%) per trade.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Calculator Modal -->
-  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-calculator" style="display: none;">
-    <div class="topic-modal-content" style="max-width: 750px;">
-      <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
-      <span class="badge">Growth Estimator</span>
-      <h2>Interactive Compound Projections</h2>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem;">Adjust the parameters to estimate compounded interest trajectories.</p>
-      
-      <div class="calc-grid" style="grid-template-columns: 1.1fr 0.9fr; gap: 2rem; text-align: left;">
-        <div class="calc-box" style="padding: 2rem; box-shadow: none; border: 1px solid var(--border-color);">
-          <div class="calc-group">
-            <label>Starting Capital (USD) <span>$</span></label>
-            <input type="text" id="modal-capital-input" class="calc-input" value="1000" min="100" max="1000000" style="padding: 0.75rem 1.25rem; font-size: 1.1rem;">
-          </div>
-          <div class="calc-group">
-            <label>Risk Profile Preset</label>
-            <div class="profile-selector" style="gap: 0.5rem;">
-              <button class="profile-btn active" id="m-prof-cons" style="padding: 0.75rem;">Conservative</button>
-              <button class="profile-btn" id="m-prof-mod" style="padding: 0.75rem;">Moderate</button>
-              <button class="profile-btn" id="m-prof-agg" style="padding: 0.75rem;">Aggressive</button>
-            </div>
-          </div>
-          <div class="calc-group">
-            <label>Horizons (Months): <span id="modal-duration-val">12</span></label>
-            <input type="range" id="modal-duration-slider" class="range-slider" min="1" max="36" value="12">
-          </div>
-        </div>
-        
-        <div class="projection-box" style="padding: 2rem; box-shadow: none; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: center;">
-          <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Projected Balance</h4>
-          <div class="projection-val" id="modal-projection-val" style="font-size: 3rem; margin-bottom: 1.5rem;">$1,632.20</div>
-          
-          <div class="projection-breakdown" style="gap: 1rem; padding-top: 1.5rem;">
-            <div class="breakdown-item">
-              <p style="font-size: 0.8rem;">Total Profit</p>
-              <p id="modal-total-profit" style="font-size: 1.25rem;">+$632.20</p>
-            </div>
-            <div class="breakdown-item">
-              <p style="font-size: 0.8rem;">Growth %</p>
-              <p id="modal-total-growth" style="font-size: 1.25rem; color: var(--accent-color);">63.2%</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- How It Works Modal -->
-  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-howitworks" style="display: none;">
-    <div class="topic-modal-content">
-      <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
-      <span class="badge">Setup Guide</span>
-      <h2>Installation Walkthrough</h2>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem;">4 simple steps to set up and launch the EA on your MetaTrader 5 terminal.</p>
-      
-      <div style="text-align: left; display: flex; flex-direction: column; gap: 1.25rem; max-height: 450px; overflow-y: auto; padding-right: 10px;">
-        <div class="step-item" style="gap: 1.25rem;">
-          <div class="step-num" style="width: 35px; height: 35px; font-size: 1rem;">1</div>
-          <div class="step-info">
-            <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Purchase License</h4>
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">Select a plan, complete the secure checkout, and get your generated MT5 license key.</p>
-          </div>
-        </div>
-        
-        <div class="step-item" style="gap: 1.25rem;">
-          <div class="step-num" style="width: 35px; height: 35px; font-size: 1rem;">2</div>
-          <div class="step-info">
-            <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Place Files in MT5</h4>
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">Open MetaTrader 5 -> File -> Open Data Folder. Drag the `.ex5` file into the `MQL5/Experts` folder.</p>
-          </div>
-        </div>
-        
-        <div class="step-item" style="gap: 1.25rem;">
-          <div class="step-num" style="width: 35px; height: 35px; font-size: 1rem;">3</div>
-          <div class="step-info">
-            <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Enable Algorithmic Trading</h4>
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">Click the "Algo Trading" button in the MT5 top toolbar. Refresh the Navigator panel to see Forex Master Pro.</p>
-          </div>
-        </div>
-        
-        <div class="step-item" style="gap: 1.25rem;">
-          <div class="step-num" style="width: 35px; height: 35px; font-size: 1rem;">4</div>
-          <div class="step-info">
-            <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Enter License Key</h4>
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">Drag the EA onto your EURUSD/GBPUSD chart. In the "Inputs" parameters tab, paste your license key and hit OK!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Backtests Modal -->
-  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-backtests" style="display: none;">
-    <div class="topic-modal-content">
-      <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
-      <span class="badge">Backtest Reports</span>
-      <h2>Verified Performance Logs</h2>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem;">10-Year historical quality data reports modeled using real broker tick spreads.</p>
-      
-      <div style="text-align: left; max-height: 450px; overflow-y: auto; padding-right: 10px;">
-        <img src="assets/forex_growth_chart.png" alt="Forex Growth Chart" style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 1.5rem;">
-        
-        <div class="backtest-details" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
-          <div class="detail-card" style="padding: 1.25rem;">
-            <p style="font-size: 0.8rem; margin-bottom: 0.25rem;">Total Profit Factor</p>
-            <p style="font-size: 1.35rem; font-weight: 700;">1.85</p>
-          </div>
-          <div class="detail-card highlight" style="padding: 1.25rem;">
-            <p style="font-size: 0.8rem; margin-bottom: 0.25rem;">Max Drawdown</p>
-            <p style="font-size: 1.35rem; font-weight: 700; color: var(--accent-color);">4.2%</p>
-          </div>
-          <div class="detail-card" style="padding: 1.25rem;">
-            <p style="font-size: 0.8rem; margin-bottom: 0.25rem;">Win Rate</p>
-            <p style="font-size: 1.35rem; font-weight: 700;">72.4%</p>
-          </div>
-          <div class="detail-card" style="padding: 1.25rem;">
-            <p style="font-size: 0.8rem; margin-bottom: 0.25rem;">Sharpe Ratio</p>
-            <p style="font-size: 1.35rem; font-weight: 700;">2.15</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FAQ Modal -->
-  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-faq" style="display: none;">
-    <div class="topic-modal-content">
-      <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
-      <span class="badge">FAQ</span>
-      <h2>Frequently Asked Questions</h2>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem;">Answers to help you deploy and configure the EA successfully.</p>
-      
-      <div style="text-align: left; max-height: 450px; overflow-y: auto; padding-right: 10px; display: flex; flex-direction: column; gap: 1rem;" id="modal-faq-accordion-container">
-        <!-- Accordion items will be cloned here dynamically -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Pricing Modal -->
-  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-pricing" style="display: none;">
-    <div class="topic-modal-content" style="max-width: 850px;">
-      <span class="close-topic-modal" onclick="closeAllTopicModals()">&times;</span>
-      <span class="badge">Pricing Plans</span>
-      <h2>Acquire Your EA License</h2>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem;">Select a plan and bind it directly to your MT5 account.</p>
-      
-      <div class="pricing-grid" style="margin-top: 1rem;" id="modal-pricing-grid-container">
-        <!-- Pricing cards will be cloned here dynamically -->
-      </div>
-    </div>
-  </div>
-
-  <!-- SIMULATED PAYPAL GATEWAY MODAL -->
-  <div class="topic-modal" onclick="if(event.target === this) closeAllTopicModals()" id="modal-paypal-gateway" style="display: none; z-index: 1250;">
-    <div class="topic-modal-content" style="max-width: 420px; padding: 2rem; background: #ffffff; color: #2c2e2f; border-radius: 12px; border: 1px solid #dcdcdc;">
-      <span class="close-topic-modal" onclick="closePayPalGateway()" style="color: #2c2e2f; right: 20px; top: 15px;">&times;</span>
-      
-      <!-- Logo Header -->
-      <div style="text-align: center; margin-bottom: 2rem; border-bottom: 1px solid #f2f2f2; padding-bottom: 1rem;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal_svg_logo.svg" alt="PayPal Logo" style="height: 28px;">
-      </div>
-
-      <!-- Login Screen -->
-      <div id="paypal-login-screen">
-        <h3 style="font-size: 1.25rem; font-weight: 600; text-align: center; margin-bottom: 1.5rem; color: #2c2e2f; font-family: sans-serif;">Pay with PayPal</h3>
-        
-        <div style="display: flex; flex-direction: column; gap: 1.25rem; text-align: left;">
-          <div>
-            <label style="font-size: 0.85rem; font-weight: 600; color: #6c757d; margin-bottom: 0.25rem; display: block; font-family: sans-serif;">Email or mobile number</label>
-            <input type="email" id="pp-email" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #a6a8ea; border-radius: 5px; font-size: 1rem; background: #fff; color: #333; box-sizing: border-box;" placeholder="email@address.com" required>
-          </div>
-          <div>
-            <label style="font-size: 0.85rem; font-weight: 600; color: #6c757d; margin-bottom: 0.25rem; display: block; font-family: sans-serif;">Password</label>
-            <input type="password" id="pp-password" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #a6a8ea; border-radius: 5px; font-size: 1rem; background: #fff; color: #333; box-sizing: border-box;" placeholder="••••••••" required>
-          </div>
-          
-          <button type="button" onclick="submitPayPalLogin()" style="width: 100%; background: #0070ba; color: white; padding: 0.75rem; border: none; border-radius: 20px; font-weight: 700; font-size: 1rem; cursor: pointer; margin-top: 1rem; transition: background 0.2s; font-family: sans-serif;">
-            Log In
-          </button>
-          
-          <div style="text-align: center; margin-top: 0.5rem; font-size: 0.85rem;">
-            <a href="javascript:void(0)" style="color: #0070ba; text-decoration: none; font-weight: 600; font-family: sans-serif;">Forgot password?</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Pay Screen -->
-      <div id="paypal-pay-screen" style="display: none;">
-        <h3 style="font-size: 1.2rem; font-weight: 600; text-align: center; margin-bottom: 1.5rem; color: #2c2e2f; font-family: sans-serif;">Review Your Payment</h3>
-        
-        <div style="text-align: left; background: #f5f7fa; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid #e9ecef;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; font-family: sans-serif;">
-            <span style="color: #6c757d;">Paying to:</span>
-            <strong style="color: #333;">Forex Master Pro EA</strong>
-          </div>
-          <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-family: sans-serif;">
-            <span style="color: #6c757d;">Total Amount:</span>
-            <strong style="color: #333;" id="pp-modal-total">$149.00</strong>
-          </div>
-        </div>
-
-        <div style="margin-bottom: 1.5rem; text-align: left;">
-          <label style="font-size: 0.85rem; font-weight: 600; color: #6c757d; margin-bottom: 0.5rem; display: block; font-family: sans-serif;">Pay with</label>
-          <select style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #a6a8ea; border-radius: 5px; font-size: 1rem; background: #fff; color: #333;">
-            <option>Visa •••• 4242</option>
-            <option>Mastercard •••• 5555</option>
-            <option>Bank Account •••• 0192</option>
-            <option>PayPal Balance</option>
-          </select>
-        </div>
-    
-
-        <div style="text-align: left; margin-bottom: 2rem;">
-          <h4 style="font-size: 0.9rem; font-weight: 600; color: #333; margin-bottom: 0.5rem; font-family: sans-serif;">Payment Method</h4>
-          <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; border: 1px solid #e1e4e8; border-radius: 6px; background: #fff;">
-            <i class="fa-solid fa-credit-card" style="font-size: 1.25rem; color: #0070ba;"></i>
-            <div>
-              <p style="font-size: 0.85rem; font-weight: 600; color: #333; margin: 0; font-family: sans-serif;">PayPal Balance (or Linked Card)</p>
-              <p style="font-size: 0.75rem; color: #6c757d; margin: 0; font-family: sans-serif;">Instant Transfer</p>
-            </div>
-          </div>
-        </div>
-
-        <button type="button" onclick="completePayPalPayment()" style="width: 100%; background: #0070ba; color: white; padding: 0.75rem; border: none; border-radius: 20px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: background 0.2s; font-family: sans-serif;">
-          Complete Purchase
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="topic-overlay" id="topic-overlay" style="display: none;" onclick="closeAllTopicModals()"></div>
-
-    <!-- INLINED AND CACHE-PROOF JAVASCRIPT SYSTEM -->
-  <script>
-document.addEventListener('DOMContentLoaded', () => {
-  // --- FAQ Accordion Logic ---
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      faqItems.forEach(i => i.classList.remove('active'));
-      if (!isActive) {
-        item.classList.add('active');
-      }
-    });
-  });
-});
-
-// --- MOBILE MENU ---
-function toggleMobileMenu() {
-  const navMenu = document.getElementById('nav-menu');
-  const btn = document.getElementById('mobile-menu-btn');
-  if(navMenu && btn) {
-    navMenu.classList.toggle('open');
-    const icon = btn.querySelector('i');
-    if(navMenu.classList.contains('open')) {
-      icon.classList.replace('fa-bars', 'fa-xmark');
-    } else {
-      icon.classList.replace('fa-xmark', 'fa-bars');
-    }
-  }
-}
-
-// --- TOPIC MODALS ---
-function openTopicModal(modalId) {
-  closeAllTopicModals();
-  const modal = document.getElementById(modalId);
-  const overlay = document.getElementById('topic-overlay');
-  
-  if (modal && overlay) {
-    // Clone FAQ accordion items into FAQ modal if empty
-    if (modalId === 'modal-faq') {
-      const faqContainer = document.getElementById('modal-faq-accordion-container');
-      if (faqContainer && faqContainer.children.length === 0) {
-        const originalFaqs = document.querySelectorAll('#faq .faq-item');
-        originalFaqs.forEach(item => {
-          const clone = item.cloneNode(true);
-          clone.addEventListener('click', () => {
-            clone.classList.toggle('active');
-          });
-          faqContainer.appendChild(clone);
-        });
-      }
-    }
-    
-    // Clone Pricing cards into Pricing modal if empty
-    if (modalId === 'modal-pricing') {
-      const pricingContainer = document.getElementById('modal-pricing-grid-container');
-      if (pricingContainer && pricingContainer.children.length === 0) {
-        const originalPricing = document.querySelector('#pricing .pricing-grid');
-        if (originalPricing) {
-          const cloneGrid = originalPricing.cloneNode(true);
-          pricingContainer.appendChild(cloneGrid);
-        }
-      }
-    }
-    
-    modal.style.display = 'block';
-    overlay.style.display = 'block';
-    setTimeout(() => {
-      modal.classList.add('open');
-      overlay.classList.add('open');
-    }, 10);
-  }
-}
-
-function closeAllTopicModals() {
-  document.querySelectorAll('.topic-modal').forEach(m => {
-    m.classList.remove('open');
-    m.style.display = 'none';
-  });
-  const overlay = document.getElementById('topic-overlay');
-  if(overlay) {
-    overlay.classList.remove('open');
-    overlay.style.display = 'none';
-  }
-}
-
-// --- INLINE ORDER SUMMARY & CHECKOUT SYSTEM ---
-const planDetails = {
-  starter: {
-    name: "Starter License (1 Month)",
-    price: 49.00,
-    features: [
-      "1 Active MT5 Live Account",
-      "Unlimited Demo Accounts",
-      "Full EA Technical Features",
-      "Standard Discord Support"
-    ]
-  },
-  pro: {
-    name: "Pro License (1 Year)",
-    price: 149.00,
-    features: [
-      "3 Active MT5 Live Accounts",
-      "Unlimited Demo Accounts",
-      "Full EA Technical Features",
-      "Priority Developer Support",
-      "1 Year Free Upgrades"
-    ]
-  },
-  lifetime: {
-    name: "Lifetime License (Unlimited)",
-    price: 299.00,
-    features: [
-      "Unlimited Live MT5 Accounts",
-      "Unlimited Demo Accounts",
-      "Full EA Technical Features",
-      "1-on-1 Setup Assistance",
-      "Lifetime Free Upgrades"
-    ]
-  }
-};
-
-let currentOrder = {
-  planId: 'pro',
-  qty: 1,
-  paymentMethod: 'card'
-};
-
-function addToOrder(planId) {
-  currentOrder.planId = planId;
-  currentOrder.qty = 1;
-  
-  // Show checkout section
-  const checkoutSection = document.getElementById('inline-checkout-section');
-  if(checkoutSection) {
-    checkoutSection.style.display = 'block';
-  }
-  
-  updateOrderUI();
-  
-  // Scroll smoothly to order form
-  document.getElementById('inline-checkout-section').scrollIntoView({ behavior: 'smooth' });
-}
-
-function adjustQty(amount) {
-  currentOrder.qty += amount;
-  if(currentOrder.qty < 1) currentOrder.qty = 1;
-  updateOrderUI();
-}
-
-function removeOrder() {
-  const checkoutSection = document.getElementById('inline-checkout-section');
-  if(checkoutSection) {
-    checkoutSection.style.display = 'none';
-  }
-}
-
-function toggleDetails() {
-  const details = document.getElementById('summary-details-content');
-  if(details) {
-    if(details.style.display === 'none') {
-      details.style.display = 'block';
-    } else {
-      details.style.display = 'none';
-    }
-  }
-}
-
-function updateOrderUI() {
-  const plan = planDetails[currentOrder.planId];
-  
-  document.getElementById('summary-item-name').textContent = plan.name;
-  document.getElementById('summary-item-qty').textContent = currentOrder.qty;
-  
-  const unitPrice = plan.price * currentOrder.qty;
-  document.getElementById('summary-unit-price').textContent = '$' + unitPrice.toFixed(2);
-  document.getElementById('inline-total-display').textContent = '$' + unitPrice.toFixed(2);
-  
-  // Render features list
-  const listContainer = document.getElementById('summary-detail-list');
-  if(listContainer) {
-    listContainer.innerHTML = '';
-    plan.features.forEach(feat => {
-      const li = document.createElement('li');
-      li.innerHTML = `<i class="fa-solid fa-circle-check" style="color: var(--accent-color); margin-right: 0.5rem;"></i> ` + feat;
-      listContainer.appendChild(li);
-    });
-  }
-}
-
-function setInlinePayment(method) {
-  currentOrder.paymentMethod = method;
-  
-  const btnCard = document.getElementById('btn-tab-card');
-  const btnPaypal = document.getElementById('btn-tab-paypal');
-  const cardBox = document.getElementById('inline-card-fields-box');
-  const paypalBox = document.getElementById('inline-paypal-fields-box');
-  
-  const cardNum = document.getElementById('inline-card-number');
-  const cardExp = document.getElementById('inline-card-expiry');
-  const cardCvc = document.getElementById('inline-card-cvc');
-  
-  if(method === 'card') {
-    btnCard.classList.add('active');
-    btnPaypal.classList.remove('active');
-    cardBox.style.display = 'block';
-    paypalBox.style.display = 'none';
-    
-    if(cardNum) cardNum.required = true;
-    if(cardExp) cardExp.required = true;
-    if(cardCvc) cardCvc.required = true;
-  } else {
-    btnPaypal.classList.add('active');
-    btnCard.classList.remove('active');
-    cardBox.style.display = 'none';
-    paypalBox.style.display = 'block';
-    
-    if(cardNum) cardNum.required = false;
-    if(cardExp) cardExp.required = false;
-    if(cardCvc) cardCvc.required = false;
-  }
-}
-
-function submitInlineCheckout(e) {
-  e.preventDefault();
-  
-  const mt5Account = document.getElementById('inline-cust-mt5').value;
-  if(!mt5Account) return;
-  
-  const baseVal = parseInt(mt5Account) * 31;
-  const p1 = (baseVal % 10000).toString().padStart(4, '7');
-  const p2 = (Math.floor(baseVal / 3) % 10000).toString().padStart(4, '3');
-  const p3 = (Math.floor(baseVal / 7) % 10000).toString().padStart(4, '9');
-  const licenseKey = `FMP-${p1}-${p2}-${p3}`;
-  
-  // Hide form, show success
-  document.getElementById('inline-payment-form').style.display = 'none';
-  document.getElementById('inline-success-box').style.display = 'block';
-  
-  document.getElementById('inline-lic-key').textContent = licenseKey;
-  document.getElementById('inline-lic-account').textContent = mt5Account;
-}
-
-function submitInlinePayPal() {
-  const form = document.getElementById('inline-payment-form');
-  if(!form) return;
-  
-  if(!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
-  
-  const btn = document.getElementById('inline-paypal-button');
-  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Initializing...';
-  
-  setTimeout(() => {
-    btn.innerHTML = '<i class="fa-brands fa-paypal"></i> Pay with PayPal';
-    
-    // Set total in PayPal modal
-    const total = document.getElementById('inline-total-display').textContent;
-    const ppTotal = document.getElementById('pp-modal-total');
-    if(ppTotal) ppTotal.textContent = total;
-    
-    // Show PayPal Modal
-    closeAllTopicModals();
-    const ppModal = document.getElementById('modal-paypal-gateway');
-    const overlay = document.getElementById('topic-overlay');
-    if(ppModal && overlay) {
-      document.getElementById('paypal-login-screen').style.display = 'block';
-      document.getElementById('paypal-pay-screen').style.display = 'none';
-      
-      // Clear inputs
-      document.getElementById('pp-email').value = '';
-      document.getElementById('pp-password').value = '';
-      
-      ppModal.style.display = 'block';
-      overlay.style.display = 'block';
-      setTimeout(() => {
-        ppModal.classList.add('open');
-        overlay.classList.add('open');
-      }, 10);
-    }
-  }, 1000);
-}
-
-function closePayPalGateway() {
-  const ppModal = document.getElementById('modal-paypal-gateway');
-  const overlay = document.getElementById('topic-overlay');
-  if(ppModal && overlay) {
-    ppModal.classList.remove('open');
-    ppModal.style.display = 'none';
-    overlay.classList.remove('open');
-    overlay.style.display = 'none';
-  }
-}
-
-function submitPayPalLogin() {
-  const email = document.getElementById('pp-email').value;
-  const pwd = document.getElementById('pp-password').value;
-  
-  if(!email || !pwd) {
-    alert("Please enter your PayPal credentials.");
-    return;
-  }
-  
-  const loginBtn = document.querySelector('#paypal-login-screen button');
-  loginBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Logging in...';
-  loginBtn.disabled = true;
-  
-  setTimeout(() => {
-    loginBtn.innerHTML = 'Log In';
-    loginBtn.disabled = false;
-    // Transition to pay screen
-    document.getElementById('paypal-login-screen').style.display = 'none';
-    document.getElementById('paypal-pay-screen').style.display = 'block';
-  }, 1500);
-}
-
-function completePayPalPayment() {
-  const payBtn = document.querySelector('#paypal-pay-screen button');
-  payBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing payment...';
-  payBtn.disabled = true;
-  
-  setTimeout(() => {
-    payBtn.innerHTML = 'Complete Purchase';
-    payBtn.disabled = false;
-    closePayPalGateway();
-    
-    // Submit checkout form and generate license key
-    const mockEvent = { preventDefault: () => {} };
-    submitInlineCheckout(mockEvent);
-  }, 2000);
-}
-
-// --- MODAL CALCULATOR LOGIC ---
-const mCapitalInput = document.getElementById('modal-capital-input');
-const mDurationSlider = document.getElementById('modal-duration-slider');
-const mDurationVal = document.getElementById('modal-duration-val');
-const mProjectionVal = document.getElementById('modal-projection-val');
-const mTotalProfit = document.getElementById('modal-total-profit');
-const mTotalGrowth = document.getElementById('modal-total-growth');
-
-const mProfCons = document.getElementById('m-prof-cons');
-const mProfMod = document.getElementById('m-prof-mod');
-const mProfAgg = document.getElementById('m-prof-agg');
-
-let modalMonthlyRate = 4.2;
-
-function updateModalCalc() {
-  if (!mCapitalInput || !mDurationSlider || !mProjectionVal) return;
-  
-  let valStr = String(mCapitalInput.value).replace(/[^0-9.]/g, '');
-  const capital = parseFloat(valStr) || 0;
-  const duration = parseInt(mDurationSlider.value);
-  if (mDurationVal) mDurationVal.textContent = duration;
-  
-  const rateDec = modalMonthlyRate / 100;
-  const projected = capital * Math.pow(1 + rateDec, duration);
-  const profit = projected - capital;
-  const growthPct = capital > 0 ? (profit / capital) * 100 : 0;
-  
-  mProjectionVal.textContent = '$' + projected.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  if (mTotalProfit) mTotalProfit.textContent = '+$' + profit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  if (mTotalGrowth) mTotalGrowth.textContent = '+' + growthPct.toFixed(1) + '%';
-}
-
-if (mCapitalInput) {
-  mCapitalInput.addEventListener('input', updateModalCalc);
-  mCapitalInput.addEventListener('keyup', updateModalCalc);
-  mCapitalInput.addEventListener('change', updateModalCalc);
-}
-if (mDurationSlider) {
-  mDurationSlider.addEventListener('input', updateModalCalc);
-}
-
-if (mProfCons) {
-  mProfCons.addEventListener('click', () => {
-    setModalProfile(mProfCons, 4.2);
-  });
-}
-if (mProfMod) {
-  mProfMod.addEventListener('click', () => {
-    setModalProfile(mProfMod, 8.5);
-  });
-}
-if (mProfAgg) {
-  mProfAgg.addEventListener('click', () => {
-    setModalProfile(mProfAgg, 14.5);
-  });
-}
-
-function setModalProfile(btn, rate) {
-  if (mProfCons) mProfCons.classList.remove('active');
-  if (mProfMod) mProfMod.classList.remove('active');
-  if (mProfAgg) mProfAgg.classList.remove('active');
-  btn.classList.add('active');
-  modalMonthlyRate = rate;
-  updateModalCalc();
-}
-
-// Initial calculation run
-updateModalCalc();
-
-// --- DYNAMIC LAUNCH DISCOUNT TIMER ---
-function updateLaunchTimer() {
-  const now = new Date();
-  
-  // Set target to end of today (midnight)
-  const target = new Date();
-  target.setHours(23, 59, 59, 999);
-  
-  const diff = target - now;
-  if (diff <= 0) {
-    document.getElementById('timer-hours').textContent = "00";
-    document.getElementById('timer-mins').textContent = "00";
-    document.getElementById('timer-secs').textContent = "00";
-    return;
-  }
-  
-  const hours = Math.floor(diff / (1000 * 60 * 60));
-  const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const secs = Math.floor((diff % (1000 * 60)) / 1000);
-  
-  const hEl = document.getElementById('timer-hours');
-  const mEl = document.getElementById('timer-mins');
-  const sEl = document.getElementById('timer-secs');
-  
-  if (hEl && mEl && sEl) {
-    hEl.textContent = hours.toString().padStart(2, '0');
-    mEl.textContent = mins.toString().padStart(2, '0');
-    sEl.textContent = secs.toString().padStart(2, '0');
-  }
-  
-  const chEl = document.getElementById('checkout-timer-hours');
-  const cmEl = document.getElementById('checkout-timer-mins');
-  const csEl = document.getElementById('checkout-timer-secs');
-  if (chEl && cmEl && csEl) {
-    chEl.textContent = hours.toString().padStart(2, '0');
-    cmEl.textContent = mins.toString().padStart(2, '0');
-    csEl.textContent = secs.toString().padStart(2, '0');
-  }
-}
-
-setInterval(updateLaunchTimer, 1000);
-updateLaunchTimer();
-  </script>
-
-  <!-- Footer -->
-  <footer style="background: var(--bg-secondary); padding: 3rem 5%; text-align: center; border-top: 1px solid var(--border-color); margin-top: 4rem;">
-    <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
-      <a href="javascript:void(0)" onclick="openTopicModal('modal-faq')" style="color: var(--text-secondary); text-decoration: none;">FAQ</a>
-      <a href="javascript:void(0)" onclick="openTopicModal('modal-backtests')" style="color: var(--text-secondary); text-decoration: none;">Backtests</a>
-      <a href="javascript:void(0)" onclick="openTopicModal('modal-pricing')" style="color: var(--text-secondary); text-decoration: none;">Pricing</a>
-      <a href="javascript:void(0)" style="color: var(--text-secondary); text-decoration: none;">Terms of Service</a>
-      <a href="javascript:void(0)" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
-    </div>
-    <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Forex Master Pro EA. All Rights Reserved. Trading involves significant risk of loss.</p>
-  </footer>
-
+  <script src="script.js?v=3.0" defer></script>
 </body>
 </html>
