@@ -136,7 +136,7 @@ function setMenu(open) {
   menuBtn.setAttribute('aria-expanded', String(open));
   iconOpen.style.display = open ? 'none' : '';
   iconClose.style.display = open ? '' : 'none';
-  document.body.style.overflow = open ? 'hidden' : '';
+  document.body.classList.toggle('menu-open', open);
 }
 
 menuBtn.addEventListener('click', () => {
@@ -146,6 +146,12 @@ menuBtn.addEventListener('click', () => {
 navMenu.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => setMenu(false));
 });
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 960 && navMenu.classList.contains('open')) {
+    setMenu(false);
+  }
+}, { passive: true });
 
 /* ---------- Scroll reveal ---------- */
 const revealEls = document.querySelectorAll('.reveal');
