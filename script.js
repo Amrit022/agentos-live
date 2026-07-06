@@ -7,9 +7,9 @@
    MQL5 product page where the purchase is handled securely.
    Update MQL5_URL if your product listing ever changes.
    ------------------------------------------------------------ */
-const MQL5_URL = 'https://www.mql5.com/en/market/product/122176';
+const MQL5_URL = 'https://www.mql5.com/en/market/product/184184?source=Site+Market+MT5+Search+Rating006%3aForex+Master+Pro+EA';
 
-document.querySelectorAll('.buy-btn').forEach(btn => {
+document.querySelectorAll('.buy-btn, .price-link').forEach(btn => {
   btn.href = MQL5_URL;
   btn.target = '_blank';
   btn.rel = 'noopener';

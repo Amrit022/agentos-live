@@ -856,6 +856,19 @@ nav {
   line-height: 1;
 }
 
+.price-link {
+  display: inline-block;
+  color: var(--text-primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.price-link:hover {
+  color: var(--accent);
+  transform: scale(1.04);
+}
+
 .price .currency {
   font-size: 1.4rem;
   vertical-align: super;
