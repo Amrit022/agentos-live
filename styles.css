@@ -1540,6 +1540,97 @@ footer {
   padding-top: 1.75rem;
 }
 
+/* ---------- SEO content pages ---------- */
+
+.content-page {
+  padding-top: calc(var(--header-total) + 2.5rem);
+  padding-bottom: 4rem;
+}
+
+.content-page .article-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.content-page .article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.content-page h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 4.5vw, 2.6rem);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.content-page .lead {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+.content-page h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3vw, 1.55rem);
+  margin: 2.25rem 0 0.85rem;
+  color: var(--text-primary);
+}
+
+.content-page p,
+.content-page li {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  font-size: 0.97rem;
+}
+
+.content-page ul,
+.content-page ol {
+  padding-left: 1.25rem;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.content-page li { margin-bottom: 0.45rem; }
+
+.content-page a { color: var(--accent-2); }
+
+.content-page .article-cta {
+  margin-top: 2.5rem;
+  padding: 1.75rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  text-align: center;
+}
+
+.content-page .article-cta h2 { margin-top: 0; }
+
+.content-page .article-cta .cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.content-page .breadcrumb {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.content-page .breadcrumb a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.content-page .breadcrumb a:hover { color: var(--accent); }
+
 /* ============================================================
    Responsive — mobile-first polish across all devices
    ============================================================ */

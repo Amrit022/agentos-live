@@ -1,0 +1,30 @@
+Forex Master Pro EA v3.1 — Ultimate Edition
+Official website: https://www.agentosacademy.com
+
+Forex Master Pro is an institutional-grade, fully automated MetaTrader 5 Expert Advisor. It uses multi-indicator confluence — EMA Ribbon (9/21/50/200), RSI, MACD, and Bollinger Bands — to find high-probability trend-following pullback setups while strict risk management protects your capital.
+
+KEY FEATURES
+• Confluence Engine — trades only when all indicators align
+• Auto lot sizing — percentage-based risk (e.g. 0.5% per trade)
+• Virtual Circuit Breaker — stops trading at your drawdown limit (e.g. 5%)
+• Time Exit — closes stagnant trades to avoid swap fees
+• Break-Even & ATR Trailing Stop — locks profit, trails winners
+• 5 MT5 activations included with full purchase
+
+RECOMMENDED SETUP
+• Timeframes: M15, M30, H1
+• Pairs: EURUSD, GBPUSD, USDCAD, USDCHF, XAUUSD
+• Broker: Low-spread ECN (optimized for OctaFX)
+• Minimum balance: $100
+
+PRICING
+• Buy forever: $149 USD (5 activations)
+• Rent 1 month: $30 USD
+• Rent 3 months: $75 USD (save 17%)
+• Free demo — test in Strategy Tester, no credit card
+
+BACKTEST HIGHLIGHTS (historical, not guaranteed future results)
+• Win rate: ~72.4% | Profit factor: 1.85 | Max drawdown: ~4.2%
+
+Setup guide: https://www.agentosacademy.com/setup-guide.html
+Questions welcome in product comments — demo feedback appreciated!
