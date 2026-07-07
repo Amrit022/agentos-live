@@ -253,15 +253,11 @@ updateCalc();
   const track = document.getElementById('ticker-track');
   if (!track) return;
 
-  const STATIC_ITEMS = [
-    'Version 3.1 Live',
-    '5 Activations Included',
-    'Min. Balance $100'
-  ];
-
   function formatPrice(symbol, price) {
     if (price == null || Number.isNaN(price)) return '—';
-    return symbol === 'XAUUSD' ? price.toFixed(2) : price.toFixed(5);
+    if (symbol === 'XAUUSD') return price.toFixed(2);
+    if (symbol.endsWith('JPY')) return price.toFixed(3);
+    return price.toFixed(5);
   }
 
   function formatChange(pct) {
@@ -284,16 +280,8 @@ updateCalc();
     return span;
   }
 
-  function buildStaticSpan(text) {
-    const span = document.createElement('span');
-    span.textContent = text;
-    return span;
-  }
-
   function renderTicker(quotes) {
-    const items = [];
-    quotes.forEach(q => items.push(buildQuoteSpan(q)));
-    STATIC_ITEMS.forEach(t => items.push(buildStaticSpan(t)));
+    const items = quotes.map(q => buildQuoteSpan(q));
 
     track.innerHTML = '';
     const doubled = [...items, ...items];

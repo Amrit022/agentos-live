@@ -222,7 +222,7 @@ img {
 .ticker-track {
   display: flex;
   gap: 3rem;
-  animation: ticker 40s linear infinite;
+  animation: ticker 55s linear infinite;
   white-space: nowrap;
 }
 

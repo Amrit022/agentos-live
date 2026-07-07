@@ -11,8 +11,14 @@ app = Flask(__name__, static_folder='.', static_url_path='')
 SYMBOLS = [
     ('EURUSD', 'EURUSD=X'),
     ('GBPUSD', 'GBPUSD=X'),
+    ('USDJPY', 'USDJPY=X'),
+    ('AUDUSD', 'AUDUSD=X'),
     ('USDCAD', 'USDCAD=X'),
     ('USDCHF', 'USDCHF=X'),
+    ('NZDUSD', 'NZDUSD=X'),
+    ('EURGBP', 'EURGBP=X'),
+    ('EURJPY', 'EURJPY=X'),
+    ('GBPJPY', 'GBPJPY=X'),
     ('XAUUSD', 'GC=F'),
 ]
 
