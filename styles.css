@@ -1641,6 +1641,18 @@ footer {
 
 .content-page .breadcrumb a:hover { color: var(--accent); }
 
+.content-page .article-figure {
+  margin: 2rem 0;
+}
+
+.content-page .article-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 16px 48px rgba(2, 6, 18, 0.5);
+}
+
 /* ============================================================
    Responsive — mobile-first polish across all devices
    ============================================================ */
