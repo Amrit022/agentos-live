@@ -18,7 +18,9 @@ SYMBOLS = [
 
 NEWS_FEEDS = [
     'https://www.fxstreet.com/rss/news',
-    'https://www.dailyfx.com/feeds/market-news',
+    'https://www.forexlive.com/feed/news',
+    'https://feeds.finance.yahoo.com/rss/2.0/headline?s=EURUSD=X&region=US&lang=en-US',
+    'https://www.investing.com/rss/news_14.rss',
 ]
 
 CACHE = {}
@@ -127,7 +129,8 @@ def fetch_news():
             break
 
     data = {'items': merged[:15], 'cached_seconds': CACHE_TTL}
-    cache_set('news', data)
+    if merged:
+        cache_set('news', data)
     return data
 
 
