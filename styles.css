@@ -655,6 +655,8 @@ nav {
 .hero-image {
   position: relative;
   z-index: 1;
+  width: 100%;
+  height: auto;
   border-radius: 20px;
   border: 1px solid var(--border-strong);
   box-shadow: 0 30px 80px rgba(2, 6, 18, 0.7);
@@ -938,7 +940,15 @@ nav {
   align-items: center;
 }
 
+.performance-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
 .performance-chart img {
+  width: 100%;
+  height: auto;
   border-radius: var(--radius);
   border: 1px solid var(--border-strong);
   box-shadow: 0 24px 60px rgba(2, 6, 18, 0.6);
@@ -1935,7 +1945,7 @@ footer {
 
   .hero-grid { gap: 1.5rem; }
 
-  .hero-image-wrapper { max-width: 280px; }
+  .hero-image-wrapper { max-width: 100%; }
 
   .nav-links {
     padding-top: calc(var(--header-total) + 0.5rem);
