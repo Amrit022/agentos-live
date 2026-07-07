@@ -247,3 +247,134 @@ profileBtns.forEach(btn => {
 });
 
 updateCalc();
+
+/* ---------- Live forex ticker ---------- */
+(function initLiveTicker() {
+  const track = document.getElementById('ticker-track');
+  if (!track) return;
+
+  const STATIC_ITEMS = [
+    'Version 3.1 Live',
+    '5 Activations Included',
+    'Min. Balance $100'
+  ];
+
+  function formatPrice(symbol, price) {
+    if (price == null || Number.isNaN(price)) return '—';
+    return symbol === 'XAUUSD' ? price.toFixed(2) : price.toFixed(5);
+  }
+
+  function formatChange(pct) {
+    if (pct == null || Number.isNaN(pct)) return { text: '—', cls: 'flat' };
+    const sign = pct > 0 ? '+' : '';
+    const cls = pct > 0 ? 'up' : pct < 0 ? 'down' : 'flat';
+    return { text: `${sign}${pct.toFixed(2)}%`, cls };
+  }
+
+  function buildQuoteSpan(q) {
+    const span = document.createElement('span');
+    if (!q.price) {
+      span.textContent = `${q.symbol} — unavailable`;
+      return span;
+    }
+    const ch = formatChange(q.change_pct);
+    span.innerHTML =
+      `${q.symbol}<span class="ticker-price">${formatPrice(q.symbol, q.price)}</span>` +
+      `<em class="${ch.cls}">${ch.text}</em>`;
+    return span;
+  }
+
+  function buildStaticSpan(text) {
+    const span = document.createElement('span');
+    span.textContent = text;
+    return span;
+  }
+
+  function renderTicker(quotes) {
+    const items = [];
+    quotes.forEach(q => items.push(buildQuoteSpan(q)));
+    STATIC_ITEMS.forEach(t => items.push(buildStaticSpan(t)));
+
+    track.innerHTML = '';
+    const doubled = [...items, ...items];
+    doubled.forEach(node => track.appendChild(node.cloneNode(true)));
+  }
+
+  async function loadQuotes() {
+    try {
+      const res = await fetch('/api/quotes');
+      if (!res.ok) throw new Error('quotes unavailable');
+      const data = await res.json();
+      if (!data.quotes?.length) throw new Error('empty quotes');
+      renderTicker(data.quotes);
+    } catch {
+      track.innerHTML = '<span class="ticker-status">Live prices temporarily unavailable</span>';
+    }
+  }
+
+  loadQuotes();
+  setInterval(loadQuotes, 60000);
+})();
+
+/* ---------- Live news panel ---------- */
+(function initLiveNews() {
+  const toggleBtn = document.getElementById('news-toggle');
+  const closeBtn = document.getElementById('news-close');
+  const navLink = document.getElementById('nav-news-link');
+  const panel = document.getElementById('news-panel');
+  const list = document.getElementById('news-list');
+  if (!toggleBtn || !panel || !list) return;
+
+  let loaded = false;
+
+  function setOpen(open) {
+    panel.hidden = !open;
+    toggleBtn.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('news-open', open);
+    if (open && !loaded) loadNews();
+  }
+
+  async function loadNews() {
+    try {
+      const res = await fetch('/api/news');
+      if (!res.ok) throw new Error('news unavailable');
+      const data = await res.json();
+      const items = data.items || [];
+      if (!items.length) {
+        list.innerHTML = '<li class="news-empty">No headlines available right now.</li>';
+        return;
+      }
+      list.innerHTML = items.map(item => {
+        const title = item.url
+          ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a>`
+          : item.title;
+        const time = item.published
+          ? `<span class="news-time">${item.published}</span>`
+          : '';
+        return `<li>${title}${time}</li>`;
+      }).join('');
+      loaded = true;
+    } catch {
+      list.innerHTML = '<li class="news-empty">Could not load news. Try again in a moment.</li>';
+    }
+  }
+
+  toggleBtn.addEventListener('click', () => setOpen(panel.hidden));
+  closeBtn?.addEventListener('click', () => setOpen(false));
+  navLink?.addEventListener('click', e => {
+    e.preventDefault();
+    setMenu(false);
+    setOpen(true);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !panel.hidden) setOpen(false);
+  });
+
+  setInterval(() => {
+    if (loaded) {
+      loaded = false;
+      if (!panel.hidden) loadNews();
+    }
+  }, 300000);
+})();

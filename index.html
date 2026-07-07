@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=4.3">
+  <link rel="stylesheet" href="styles.css?v=4.4">
 
   <script type="application/ld+json">
   {
@@ -87,24 +87,27 @@
   <div class="glow-orb orb-3" aria-hidden="true"></div>
 
   <!-- Live ticker -->
-  <div class="ticker-bar" aria-hidden="true">
-    <div class="ticker-track">
-      <span>EURUSD <em class="up">+0.12%</em></span>
-      <span>GBPUSD <em class="down">-0.08%</em></span>
-      <span>USDCAD <em class="up">+0.05%</em></span>
-      <span>USDCHF <em class="down">-0.03%</em></span>
-      <span>XAUUSD <em class="up">+0.34%</em></span>
-      <span>Version 3.1 Live</span>
-      <span>5 Activations Included</span>
-      <span>Min. Balance $100</span>
-      <span>EURUSD <em class="up">+0.12%</em></span>
-      <span>GBPUSD <em class="down">-0.08%</em></span>
-      <span>USDCAD <em class="up">+0.05%</em></span>
-      <span>USDCHF <em class="down">-0.03%</em></span>
-      <span>XAUUSD <em class="up">+0.34%</em></span>
-      <span>Version 3.1 Live</span>
-      <span>5 Activations Included</span>
-      <span>Min. Balance $100</span>
+  <div class="ticker-bar" id="ticker-bar">
+    <div class="ticker-viewport">
+      <div class="ticker-track" id="ticker-track">
+        <span class="ticker-status">Loading live prices…</span>
+      </div>
+    </div>
+    <button type="button" class="ticker-news-btn" id="news-toggle" aria-expanded="false" aria-controls="news-panel">
+      <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
+      Live News
+    </button>
+  </div>
+
+  <div class="news-panel" id="news-panel" hidden>
+    <div class="news-panel-inner">
+      <div class="news-panel-header">
+        <h2>Live Forex News</h2>
+        <button type="button" class="news-close-btn" id="news-close" aria-label="Close news panel">&times;</button>
+      </div>
+      <ul class="news-list" id="news-list">
+        <li class="news-loading">Loading headlines…</li>
+      </ul>
     </div>
   </div>
 
@@ -127,6 +130,7 @@
           <li><a href="#performance">Performance</a></li>
           <li><a href="#calculator">Calculator</a></li>
           <li><a href="#faq">FAQ</a></li>
+          <li><a href="#" id="nav-news-link">Live News</a></li>
           <li class="nav-cta-item"><a href="#pricing" class="glow-btn nav-cta">Buy — $149</a></li>
         </ul>
       </nav>
@@ -634,6 +638,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=4.1" defer></script>
+  <script src="script.js?v=4.4" defer></script>
 </body>
 </html>
