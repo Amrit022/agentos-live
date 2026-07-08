@@ -64,7 +64,7 @@
         <li><strong>RSI</strong> — momentum not overextended</li>
         <li><strong>MACD</strong> — trend strength and crossover confirmation</li>
         <li><strong>Bollinger Bands</strong> — price at a logical pullback zone</li>
-        <li><strong>Stochastic Oscillator</strong> — momentum momentum shifts confirmed</li>
+        <li><strong>Stochastic Oscillator</strong> — momentum shifts and oversold/overbought reversals confirmed</li>
         <li><strong>Candle Pattern Recognition</strong> — Engulfing/Pin Bar continuation patterns</li>
       </ul>
       <p>The result: fewer trades, higher-quality setups, and less exposure to choppy ranging markets.</p>
@@ -72,7 +72,10 @@
       <h2>Risk management built in</h2>
       <ul>
         <li>Automatic lot sizing based on account % (e.g. 0.5% risk per trade)</li>
-        <li>Virtual circuit breaker — stops trading if floating drawdown exceeds your limit (e.g. 5%)</li>
+        <li>Auto-resetting circuit breaker — stops trading if floating drawdown exceeds your limit (e.g. 5%), then resumes automatically after a cooldown once equity recovers</li>
+        <li>Partial take profit — closes 50% at 1R, runs the rest to 3R</li>
+        <li>Smart recovery — reduces lot size after consecutive losses</li>
+        <li>ATR Volatility Regime Filter — skips dead or extremely chaotic markets</li>
         <li>Break-even and ATR trailing stop after profit target</li>
         <li>Time-based exit for stagnant trades (avoids swap fees)</li>
       </ul>
