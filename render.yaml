@@ -1,0 +1,11 @@
+# Static site — no spin-down / no "Connecting to Render" wait
+# Dashboard: New → Static Site → repo Amrit022/agentos-live → Publish directory: .
+# Attach custom domain: www.agentosacademy.com (+ redirect apex)
+
+services:
+  - type: web
+    name: agentos-live-static
+    runtime: static
+    rootDir: .
+    buildCommand: echo "static site ready"
+    staticPublishPath: .
