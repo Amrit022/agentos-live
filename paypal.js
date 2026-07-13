@@ -20,11 +20,11 @@
     if (!c.enabled || (!hasLinks(c) && !hasSdk(c))) return;
 
     const pricing = document.getElementById('pricing');
-    if (!pricing || document.getElementById('paypal')) return;
+    if (!pricing || document.getElementById('fmp-paypal')) return;
     const note = pricing.querySelector('.pricing-note');
     const wrap = document.createElement('div');
     wrap.className = 'paypal-alt reveal visible';
-    wrap.id = 'paypal';
+    wrap.id = 'fmp-paypal';
 
     let buttons = '';
     const L = c.links || {};
@@ -73,8 +73,14 @@
   }
 
   function loadSdk(c) {
-    if (window.paypal) {
+    if (window.paypal && typeof window.paypal.Buttons === 'function') {
       renderSdkButtons(c);
+      return;
+    }
+    // Avoid clobber: never use id="paypal" (browsers expose it as window.paypal)
+    const existing = document.querySelector('script[data-fmp-paypal-sdk]');
+    if (existing) {
+      existing.addEventListener('load', () => renderSdkButtons(c));
       return;
     }
     const s = document.createElement('script');
@@ -85,6 +91,7 @@
       encodeURIComponent(c.currency || 'USD') +
       '&intent=capture&components=buttons';
     s.async = true;
+    s.dataset.fmpPaypalSdk = '1';
     s.onload = () => renderSdkButtons(c);
     s.onerror = () => setStatus('PayPal could not load. Please refresh or buy via MQL5.', true);
     document.head.appendChild(s);
@@ -92,7 +99,7 @@
 
   function renderSdkButtons(c) {
     const host = document.getElementById('paypal-sdk-buttons');
-    if (!host || !window.paypal) {
+    if (!host || !window.paypal || typeof window.paypal.Buttons !== 'function') {
       setStatus('PayPal SDK unavailable. Please use MQL5 checkout.', true);
       return;
     }
