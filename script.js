@@ -450,17 +450,21 @@ updateCalc();
   async function loadNews() {
     list.innerHTML = '<li class="news-loading">Loading headlines…</li>';
     try {
-      const batches = await Promise.all(FEEDS.map(f => fetchFeed(f).catch(() => [])));
       const seen = new Set();
       const items = [];
-      batches.flat().forEach(item => {
-        const key = (item.title || '').trim().toLowerCase();
-        if (!key || seen.has(key)) return;
-        seen.add(key);
-        items.push(item);
-      });
+      // Sequential fetch — rss2json rate-limits parallel requests
+      for (const feed of FEEDS) {
+        const batch = await fetchFeed(feed).catch(() => []);
+        for (const item of batch) {
+          const key = (item.title || '').trim().toLowerCase();
+          if (!key || seen.has(key)) continue;
+          seen.add(key);
+          items.push(item);
+        }
+        if (items.length >= 12) break;
+      }
       if (!items.length) {
-        list.innerHTML = '<li class="news-empty">No headlines available right now.</li>';
+        list.innerHTML = '<li class="news-empty">No headlines available right now. Please try again in a minute.</li>';
         return;
       }
       list.innerHTML = items.slice(0, 18).map(item => {
@@ -490,10 +494,14 @@ updateCalc();
     if (e.key === 'Escape' && !panel.hidden) setOpen(false);
   });
 
+  // Prefetch headlines so the panel opens with content ready
+  setTimeout(() => {
+    if (!loaded) loadNews();
+  }, 1500);
+
   setInterval(() => {
-    if (loaded) {
-      loaded = false;
-      if (!panel.hidden) loadNews();
-    }
+    loaded = false;
+    if (!panel.hidden) loadNews();
+    else loadNews();
   }, 300000);
 })();
