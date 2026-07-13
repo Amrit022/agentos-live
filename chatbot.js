@@ -134,9 +134,10 @@
     const root = el('div', 'fmp-chat');
     root.innerHTML = `
       <button type="button" class="fmp-chat-launcher" aria-label="Open help chat" aria-expanded="false">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
           <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>
         </svg>
+        <span class="fmp-chat-launcher-label">Help</span>
         <span class="fmp-chat-pulse" aria-hidden="true"></span>
       </button>
       <div class="fmp-chat-panel" hidden role="dialog" aria-label="Forex Master Pro help chat">

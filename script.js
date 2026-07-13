@@ -248,10 +248,33 @@ profileBtns.forEach(btn => {
 
 updateCalc();
 
-/* ---------- Live forex ticker ---------- */
+/* ---------- Live forex ticker (static-site friendly) ---------- */
 (function initLiveTicker() {
   const track = document.getElementById('ticker-track');
   if (!track) return;
+
+  const PAIRS = [
+    { symbol: 'EURUSD', base: 'eur', quote: 'usd' },
+    { symbol: 'GBPUSD', base: 'gbp', quote: 'usd' },
+    { symbol: 'USDJPY', base: 'usd', quote: 'jpy' },
+    { symbol: 'AUDUSD', base: 'aud', quote: 'usd' },
+    { symbol: 'USDCAD', base: 'usd', quote: 'cad' },
+    { symbol: 'USDCHF', base: 'usd', quote: 'chf' },
+    { symbol: 'NZDUSD', base: 'nzd', quote: 'usd' },
+    { symbol: 'EURGBP', base: 'eur', quote: 'gbp' },
+    { symbol: 'EURJPY', base: 'eur', quote: 'jpy' },
+    { symbol: 'GBPJPY', base: 'gbp', quote: 'jpy' },
+    { symbol: 'XAUUSD', base: 'xau', quote: 'usd', metal: true }
+  ];
+
+  const RATE_URLS = [
+    'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json',
+    'https://latest.currency-api.pages.dev/v1/currencies/usd.json'
+  ];
+
+  function ymd(d) {
+    return d.toISOString().slice(0, 10);
+  }
 
   function formatPrice(symbol, price) {
     if (price == null || Number.isNaN(price)) return '—';
@@ -270,7 +293,7 @@ updateCalc();
   function buildQuoteSpan(q) {
     const span = document.createElement('span');
     if (!q.price) {
-      span.textContent = `${q.symbol} — unavailable`;
+      span.textContent = `${q.symbol} —`;
       return span;
     }
     const ch = formatChange(q.change_pct);
@@ -282,29 +305,97 @@ updateCalc();
 
   function renderTicker(quotes) {
     const items = quotes.map(q => buildQuoteSpan(q));
-
     track.innerHTML = '';
     const doubled = [...items, ...items];
     doubled.forEach(node => track.appendChild(node.cloneNode(true)));
   }
 
+  async function fetchJson(url, ms) {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), ms || 10000);
+    try {
+      const res = await fetch(url, { signal: ctrl.signal, cache: 'no-store' });
+      if (!res.ok) throw new Error('bad status');
+      return await res.json();
+    } finally {
+      clearTimeout(t);
+    }
+  }
+
+  async function loadUsdRates() {
+    let lastErr;
+    for (const url of RATE_URLS) {
+      try {
+        const data = await fetchJson(url, 9000);
+        if (data && data.usd) return data.usd;
+      } catch (e) {
+        lastErr = e;
+      }
+    }
+    throw lastErr || new Error('rates unavailable');
+  }
+
+  async function loadPrevUsdRates() {
+    const d = new Date();
+    d.setUTCDate(d.getUTCDate() - 1);
+    const day = ymd(d);
+    const urls = [
+      `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@${day}/v1/currencies/usd.json`,
+      `https://${day}.currency-api.pages.dev/v1/currencies/usd.json`
+    ];
+    for (const url of urls) {
+      try {
+        const data = await fetchJson(url, 7000);
+        if (data && data.usd) return data.usd;
+      } catch (_) { /* try next */ }
+    }
+    return null;
+  }
+
+  function pairPrice(usdMap, pair) {
+    if (!usdMap) return null;
+    if (pair.metal) {
+      const xau = Number(usdMap.xau);
+      return xau > 0 ? 1 / xau : null;
+    }
+    if (pair.base === 'usd') {
+      const q = Number(usdMap[pair.quote]);
+      return q > 0 ? q : null;
+    }
+    if (pair.quote === 'usd') {
+      const b = Number(usdMap[pair.base]);
+      return b > 0 ? 1 / b : null;
+    }
+    const b = Number(usdMap[pair.base]);
+    const q = Number(usdMap[pair.quote]);
+    if (b > 0 && q > 0) return q / b;
+    return null;
+  }
+
   async function loadQuotes() {
     try {
-      const res = await fetch('/api/quotes');
-      if (!res.ok) throw new Error('quotes unavailable');
-      const data = await res.json();
-      if (!data.quotes?.length) throw new Error('empty quotes');
-      renderTicker(data.quotes);
+      const [usd, prev] = await Promise.all([loadUsdRates(), loadPrevUsdRates()]);
+      const quotes = PAIRS.map(pair => {
+        const price = pairPrice(usd, pair);
+        const prevPrice = pairPrice(prev, pair);
+        let change_pct = null;
+        if (price != null && prevPrice != null && prevPrice !== 0) {
+          change_pct = ((price - prevPrice) / prevPrice) * 100;
+        }
+        return { symbol: pair.symbol, price, change_pct };
+      });
+      if (!quotes.some(q => q.price != null)) throw new Error('empty');
+      renderTicker(quotes);
     } catch {
       track.innerHTML = '<span class="ticker-status">Live prices temporarily unavailable</span>';
     }
   }
 
   loadQuotes();
-  setInterval(loadQuotes, 60000);
+  setInterval(loadQuotes, 120000);
 })();
 
-/* ---------- Live news panel ---------- */
+/* ---------- Live news panel (static-site friendly) ---------- */
 (function initLiveNews() {
   const toggleBtn = document.getElementById('news-toggle');
   const closeBtn = document.getElementById('news-close');
@@ -315,6 +406,12 @@ updateCalc();
 
   let loaded = false;
 
+  const FEEDS = [
+    'https://www.forexlive.com/feed/news',
+    'https://feeds.finance.yahoo.com/rss/2.0/headline?s=EURUSD=X&region=US&lang=en-US',
+    'https://www.fxstreet.com/rss/news'
+  ];
+
   function setOpen(open) {
     panel.hidden = !open;
     toggleBtn.setAttribute('aria-expanded', String(open));
@@ -322,22 +419,56 @@ updateCalc();
     if (open && !loaded) loadNews();
   }
 
-  async function loadNews() {
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  async function fetchFeed(rssUrl) {
+    const endpoint =
+      'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl);
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 10000);
     try {
-      const res = await fetch('/api/news');
-      if (!res.ok) throw new Error('news unavailable');
+      const res = await fetch(endpoint, { signal: ctrl.signal, cache: 'no-store' });
+      if (!res.ok) throw new Error('feed fail');
       const data = await res.json();
-      const items = data.items || [];
+      if (data.status !== 'ok' || !Array.isArray(data.items)) return [];
+      return data.items.map(item => ({
+        title: item.title,
+        url: item.link || item.url || '',
+        published: item.pubDate || ''
+      }));
+    } finally {
+      clearTimeout(t);
+    }
+  }
+
+  async function loadNews() {
+    list.innerHTML = '<li class="news-loading">Loading headlines…</li>';
+    try {
+      const batches = await Promise.all(FEEDS.map(f => fetchFeed(f).catch(() => [])));
+      const seen = new Set();
+      const items = [];
+      batches.flat().forEach(item => {
+        const key = (item.title || '').trim().toLowerCase();
+        if (!key || seen.has(key)) return;
+        seen.add(key);
+        items.push(item);
+      });
       if (!items.length) {
         list.innerHTML = '<li class="news-empty">No headlines available right now.</li>';
         return;
       }
-      list.innerHTML = items.map(item => {
+      list.innerHTML = items.slice(0, 18).map(item => {
         const title = item.url
-          ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a>`
-          : item.title;
+          ? `<a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a>`
+          : escapeHtml(item.title);
         const time = item.published
-          ? `<span class="news-time">${item.published}</span>`
+          ? `<span class="news-time">${escapeHtml(item.published)}</span>`
           : '';
         return `<li>${title}${time}</li>`;
       }).join('');
@@ -351,7 +482,7 @@ updateCalc();
   closeBtn?.addEventListener('click', () => setOpen(false));
   navLink?.addEventListener('click', e => {
     e.preventDefault();
-    setMenu(false);
+    if (typeof setMenu === 'function') setMenu(false);
     setOpen(true);
   });
 

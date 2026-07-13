@@ -2020,7 +2020,7 @@ footer {
 
 @media (max-width: 640px) {
   :root {
-    --ticker-height: 0px;
+    --ticker-height: 28px;
     --header-pad: 0.75rem;
   }
 
@@ -2081,7 +2081,15 @@ footer {
     font-size: 0.74rem;
   }
 
-  .ticker-bar { display: none; }
+  .ticker-bar {
+    display: flex;
+    font-size: 0.68rem;
+  }
+
+  .ticker-news-btn {
+    padding: 0 0.55rem;
+    font-size: 0.68rem;
+  }
 
   .glow-orb {
     width: 320px;
@@ -2196,18 +2204,35 @@ footer {
 }
 
 .fmp-chat-launcher {
-  width: 56px;
+  min-width: 56px;
   height: 56px;
-  border-radius: 50%;
-  border: 1px solid rgba(212, 168, 67, 0.45);
-  background: linear-gradient(145deg, #1a2338, #0a1020);
-  color: var(--gold-light);
-  display: grid;
-  place-items: center;
+  padding: 0 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 168, 67, 0.55);
+  background: linear-gradient(145deg, #f0c96a 0%, #d4a843 55%, #b8922e 100%);
+  color: #1a1205;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(16, 185, 129, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 24px rgba(212, 168, 67, 0.35);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   position: relative;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.fmp-chat-launcher svg { flex-shrink: 0; }
+
+.fmp-chat-launcher-label { letter-spacing: 0.02em; }
+
+.fmp-chat.is-open .fmp-chat-launcher-label { display: none; }
+.fmp-chat.is-open .fmp-chat-launcher {
+  width: 56px;
+  padding: 0;
+  border-radius: 50%;
 }
 
 .fmp-chat-launcher:hover {
