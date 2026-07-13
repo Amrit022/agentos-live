@@ -505,3 +505,44 @@ updateCalc();
     else loadNews();
   }, 300000);
 })();
+
+/* ============================================================
+   REVIEWS CAROUSEL NAVIGATION
+   ============================================================ */
+(function() {
+  const carousel = document.getElementById('reviews-carousel');
+  const prevBtn = document.getElementById('reviews-prev');
+  const nextBtn = document.getElementById('reviews-next');
+  if (!carousel || !prevBtn || !nextBtn) return;
+
+  const scrollAmount = 370 * 3; // 3 cards at a time
+
+  nextBtn.addEventListener('click', () => {
+    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+
+  prevBtn.addEventListener('click', () => {
+    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+
+  // Auto-scroll every 5 seconds
+  let autoScroll = setInterval(() => {
+    if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 50) {
+      carousel.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      carousel.scrollBy({ left: 370, behavior: 'smooth' });
+    }
+  }, 5000);
+
+  // Pause auto-scroll on hover
+  carousel.addEventListener('mouseenter', () => clearInterval(autoScroll));
+  carousel.addEventListener('mouseleave', () => {
+    autoScroll = setInterval(() => {
+      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 50) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: 370, behavior: 'smooth' });
+      }
+    }, 5000);
+  });
+})();
