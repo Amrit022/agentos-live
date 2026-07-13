@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=4.9">
+  <link rel="stylesheet" href="styles.css?v=5.0">
 
   <script type="application/ld+json">
   {
@@ -349,119 +349,6 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section id="how-it-works">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="badge">Setup Guide</span>
-        <h2>Live in 4 Simple Steps</h2>
-        <p>From purchase to automated trading on your MetaTrader 5 terminal — in under 10 minutes.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step-card reveal">
-          <div class="step-num">1</div>
-          <h4>Choose Your Plan</h4>
-          <p>Buy for $149, rent from $30/month, or download the free demo to test first.</p>
-        </div>
-        <div class="step-card reveal reveal-delay-1">
-          <div class="step-num">2</div>
-          <h4>Install in MT5</h4>
-          <p>Open MetaTrader 5 → File → Open Data Folder. Drop the <code>.ex5</code> file into <code>MQL5/Experts</code>.</p>
-        </div>
-        <div class="step-card reveal reveal-delay-2">
-          <div class="step-num">3</div>
-          <h4>Enable Algo Trading</h4>
-          <p>Click the "Algo Trading" button in the MT5 toolbar and refresh the Navigator panel.</p>
-        </div>
-        <div class="step-card reveal reveal-delay-3">
-          <div class="step-num">4</div>
-          <h4>Attach &amp; Trade</h4>
-          <p>Drag the EA onto your chart (M15/M30/H1), configure your risk settings, and let it run.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PERFORMANCE -->
-  <section class="performance" id="performance">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="badge">Backtest Reports</span>
-        <h2>Verified Performance Logs</h2>
-        <p>10-year historical reports modeled using real broker tick spreads and quality data.</p>
-      </div>
-      <div class="performance-grid">
-        <div class="performance-chart reveal">
-          <img src="assets/alpha-fx-banner-backtest.webp" alt="Alpha FX Trading Bot backtest statistics — 72.4% win rate, 1.85 profit factor, 4.2% max drawdown" width="1536" height="1024" loading="lazy">
-          <img src="assets/alpha-fx-banner-equity.webp" alt="Alpha FX Trading Bot 10-year equity growth curve from MetaTrader 5 backtest" width="1536" height="1024" loading="lazy">
-        </div>
-        <div class="performance-metrics">
-          <div class="metric-card reveal">
-            <p class="metric-label">Profit Factor</p>
-            <p class="metric-value">1.85</p>
-          </div>
-          <div class="metric-card highlight reveal reveal-delay-1">
-            <p class="metric-label">Max Drawdown</p>
-            <p class="metric-value accent">4.2%</p>
-          </div>
-          <div class="metric-card reveal reveal-delay-2">
-            <p class="metric-label">Win Rate</p>
-            <p class="metric-value">72.4%</p>
-          </div>
-          <div class="metric-card reveal reveal-delay-3">
-            <p class="metric-label">Sharpe Ratio</p>
-            <p class="metric-value">2.15</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CALCULATOR -->
-  <section id="calculator">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="badge">Growth Estimator</span>
-        <h2>See Your Potential Returns</h2>
-        <p>Adjust the parameters to estimate compounded growth — starting from as little as $100.</p>
-      </div>
-      <div class="calc-grid reveal">
-        <div class="calc-box">
-          <div class="calc-group">
-            <label for="capital-input">Starting Capital (USD) <span>$</span></label>
-            <input type="number" id="capital-input" class="calc-input" value="1000" min="100" max="1000000">
-          </div>
-          <div class="calc-group">
-            <label>Risk Profile Preset</label>
-            <div class="profile-selector">
-              <button class="profile-btn active" data-rate="4.2" type="button">Conservative</button>
-              <button class="profile-btn" data-rate="8.5" type="button">Moderate</button>
-              <button class="profile-btn" data-rate="14.5" type="button">Aggressive</button>
-            </div>
-          </div>
-          <div class="calc-group">
-            <label for="duration-slider">Horizon (Months): <span id="duration-val">12</span></label>
-            <input type="range" id="duration-slider" class="range-slider" min="1" max="36" value="12">
-          </div>
-        </div>
-        <div class="projection-box">
-          <h4>Projected Balance</h4>
-          <div class="projection-val" id="projection-val">$1,638.62</div>
-          <div class="projection-breakdown">
-            <div class="breakdown-item">
-              <p>Total Profit</p>
-              <p class="breakdown-num" id="total-profit">+$638.62</p>
-            </div>
-            <div class="breakdown-item">
-              <p>Growth</p>
-              <p class="breakdown-num accent" id="total-growth">+63.9%</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- PRICING -->
   <section class="pricing" id="pricing">
     <div class="container">
@@ -570,6 +457,119 @@
         <div class="cta-actions">
           <a href="https://www.mql5.com/en/market/product/184184" class="glow-btn buy-btn" data-plan="buy" target="_blank" rel="noopener">Buy Now — $149</a>
           <a href="https://www.mql5.com/en/market/product/184184" class="demo-btn buy-btn" data-plan="demo" target="_blank" rel="noopener">Try Free Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="badge">Setup Guide</span>
+        <h2>Live in 4 Simple Steps</h2>
+        <p>From purchase to automated trading on your MetaTrader 5 terminal — in under 10 minutes.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-num">1</div>
+          <h4>Choose Your Plan</h4>
+          <p>Buy for $149, rent from $30/month, or download the free demo to test first.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-num">2</div>
+          <h4>Install in MT5</h4>
+          <p>Open MetaTrader 5 → File → Open Data Folder. Drop the <code>.ex5</code> file into <code>MQL5/Experts</code>.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-num">3</div>
+          <h4>Enable Algo Trading</h4>
+          <p>Click the "Algo Trading" button in the MT5 toolbar and refresh the Navigator panel.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-num">4</div>
+          <h4>Attach &amp; Trade</h4>
+          <p>Drag the EA onto your chart (M15/M30/H1), configure your risk settings, and let it run.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERFORMANCE -->
+  <section class="performance" id="performance">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="badge">Backtest Reports</span>
+        <h2>Verified Performance Logs</h2>
+        <p>10-year historical reports modeled using real broker tick spreads and quality data.</p>
+      </div>
+      <div class="performance-grid">
+        <div class="performance-chart reveal">
+          <img src="assets/alpha-fx-banner-backtest.webp" alt="Alpha FX Trading Bot backtest statistics — 72.4% win rate, 1.85 profit factor, 4.2% max drawdown" width="1536" height="1024" loading="lazy">
+          <img src="assets/alpha-fx-banner-equity.webp" alt="Alpha FX Trading Bot 10-year equity growth curve from MetaTrader 5 backtest" width="1536" height="1024" loading="lazy">
+        </div>
+        <div class="performance-metrics">
+          <div class="metric-card reveal">
+            <p class="metric-label">Profit Factor</p>
+            <p class="metric-value">1.85</p>
+          </div>
+          <div class="metric-card highlight reveal reveal-delay-1">
+            <p class="metric-label">Max Drawdown</p>
+            <p class="metric-value accent">4.2%</p>
+          </div>
+          <div class="metric-card reveal reveal-delay-2">
+            <p class="metric-label">Win Rate</p>
+            <p class="metric-value">72.4%</p>
+          </div>
+          <div class="metric-card reveal reveal-delay-3">
+            <p class="metric-label">Sharpe Ratio</p>
+            <p class="metric-value">2.15</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section id="calculator">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="badge">Growth Estimator</span>
+        <h2>See Your Potential Returns</h2>
+        <p>Adjust the parameters to estimate compounded growth — starting from as little as $100.</p>
+      </div>
+      <div class="calc-grid reveal">
+        <div class="calc-box">
+          <div class="calc-group">
+            <label for="capital-input">Starting Capital (USD) <span>$</span></label>
+            <input type="number" id="capital-input" class="calc-input" value="1000" min="100" max="1000000">
+          </div>
+          <div class="calc-group">
+            <label>Risk Profile Preset</label>
+            <div class="profile-selector">
+              <button class="profile-btn active" data-rate="4.2" type="button">Conservative</button>
+              <button class="profile-btn" data-rate="8.5" type="button">Moderate</button>
+              <button class="profile-btn" data-rate="14.5" type="button">Aggressive</button>
+            </div>
+          </div>
+          <div class="calc-group">
+            <label for="duration-slider">Horizon (Months): <span id="duration-val">12</span></label>
+            <input type="range" id="duration-slider" class="range-slider" min="1" max="36" value="12">
+          </div>
+        </div>
+        <div class="projection-box">
+          <h4>Projected Balance</h4>
+          <div class="projection-val" id="projection-val">$1,638.62</div>
+          <div class="projection-breakdown">
+            <div class="breakdown-item">
+              <p>Total Profit</p>
+              <p class="breakdown-num" id="total-profit">+$638.62</p>
+            </div>
+            <div class="breakdown-item">
+              <p>Growth</p>
+              <p class="breakdown-num accent" id="total-growth">+63.9%</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -684,7 +684,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=4.7" defer></script>
+  <script src="script.js?v=4.8" defer></script>
   <script src="paypal-config.js?v=2" defer></script>
   <script src="paypal.js?v=3" defer></script>
   <script src="chatbot.js?v=2" defer></script>
