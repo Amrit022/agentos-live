@@ -2270,6 +2270,10 @@ footer {
   overflow: hidden;
 }
 
+.fmp-chat-panel[hidden] {
+  display: none !important;
+}
+
 .fmp-chat-head {
   display: flex;
   align-items: flex-start;
