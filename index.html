@@ -325,31 +325,44 @@
       <div class="section-header reveal">
         <span class="badge gold-badge">Telegram VIP Channel</span>
         <h2>Forex Master Pro VIP Signals</h2>
-        <p>Get automated 7-indicator confluence signals delivered live to your Telegram. Choose a plan, pay via UPI/GPay/PhonePe/Paytm, and get instant VIP channel access.</p>
+        <p>Select your plan below, pay via UPI / GPay / PhonePe / Paytm, and get instant access to our VIP Telegram Channel.</p>
       </div>
 
       <!-- Signals Info Grid -->
       <div class="vip-info-grid reveal">
         <div class="vip-plan-info">
-          <h3>VIP Signal Plans ($ USD)</h3>
-          <div class="vip-plan-row">
-            <div class="vip-plan-badge basic-badge">Basic Plan</div>
+          <h3>Select Your VIP Signal Plan (INR ₹)</h3>
+          <p class="select-instruction">Click on any plan card below to select it for payment:</p>
+
+          <div class="vip-plan-row selectable-plan" id="plan-basic" onclick="selectVipPlan('basic', 500, 'Basic VIP Plan')">
+            <div class="plan-radio-header">
+              <span class="vip-plan-badge basic-badge">Basic Plan</span>
+              <span class="select-indicator">Click to Select</span>
+            </div>
             <div class="vip-plan-detail">
-              <strong>$6 / month</strong>
+              <strong>₹500 / month</strong>
               <p>1–2 High-Quality Signals/day on EURUSD &amp; GBPUSD. Perfect for part-time traders.</p>
             </div>
           </div>
-          <div class="vip-plan-row highlight-row">
-            <div class="vip-plan-badge pro-badge">Pro VIP (Popular)</div>
+
+          <div class="vip-plan-row selectable-plan active-plan highlight-row" id="plan-pro" onclick="selectVipPlan('pro', 2500, 'Pro VIP Plan')">
+            <div class="plan-radio-header">
+              <span class="vip-plan-badge pro-badge">Pro VIP (Most Popular)</span>
+              <span class="select-indicator">Selected ✓</span>
+            </div>
             <div class="vip-plan-detail">
-              <strong>$30 / month</strong>
+              <strong>₹2,500 / month</strong>
               <p>4–6 Signals/day including Gold (XAUUSD) &amp; JPY pairs with live trailing stop updates.</p>
             </div>
           </div>
-          <div class="vip-plan-row">
-            <div class="vip-plan-badge prem-badge">Premium VIP</div>
+
+          <div class="vip-plan-row selectable-plan" id="plan-prem" onclick="selectVipPlan('prem', 5000, 'Premium VIP Plan')">
+            <div class="plan-radio-header">
+              <span class="vip-plan-badge prem-badge">Premium VIP</span>
+              <span class="select-indicator">Click to Select</span>
+            </div>
             <div class="vip-plan-detail">
-              <strong>$60 / full access</strong>
+              <strong>₹5,000 / full access</strong>
               <p>Maximum signals across Forex, Gold &amp; Crypto + 1-on-1 developer support &amp; EA source access.</p>
             </div>
           </div>
@@ -364,8 +377,8 @@
         <div class="upi-payment-box">
           <div class="upi-box-header">
             <span class="upi-tag">Instant Payment</span>
-            <h3>Pay via UPI / GPay / PhonePe / Paytm</h3>
-            <p>Scan the QR code or copy the UPI ID below to pay for your signal plan ($6, $30, or $60 USD equivalent).</p>
+            <h3 id="upi-box-title">Pay ₹2,500 for Pro VIP Plan</h3>
+            <p id="upi-box-desc">Scan the QR code below or click the payment button to launch GPay/PhonePe with ₹2,500 pre-filled.</p>
           </div>
 
           <div class="upi-apps-row">
@@ -375,31 +388,69 @@
             <span class="upi-app-pill">BHIM UPI</span>
           </div>
 
-          <!-- QR Code & Details -->
+          <!-- Dynamic Scannable QR Code & Details -->
           <div class="upi-qr-area">
-            <div class="qr-placeholder">
-              <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="5" y="5" width="3" height="3" fill="currentColor"/><rect x="16" y="5" width="3" height="3" fill="currentColor"/><rect x="5" y="16" width="3" height="3" fill="currentColor"/><path d="M14 14h3v3h-3z"/><path d="M18 18h3v3h-3z"/><path d="M14 18h3v3h-3z"/><path d="M18 14h3v3h-3z"/></svg>
-              <span>Scan QR to Pay</span>
+            <div class="qr-placeholder" style="background:#ffffff; padding: 6px; border-radius: 8px;">
+              <img id="upi-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=upi://pay?pa=7901857685@ptyes%26pn=ForexMasterPro%26am=2500%26cu=INR" alt="UPI QR Code" style="width: 120px; height: 120px; display: block;">
             </div>
 
             <div class="upi-id-box">
               <label>Official UPI ID:</label>
               <div class="upi-input-copy">
                 <input type="text" value="7901857685@ptyes" readonly id="upi-id-field">
-                <button type="button" onclick="navigator.clipboard.writeText('7901857685@ptyes'); alert('UPI ID copied to clipboard!');">Copy</button>
+                <button type="button" onclick="navigator.clipboard.writeText('7901857685@ptyes'); alert('UPI ID 7901857685@ptyes copied to clipboard!');">Copy</button>
               </div>
-              <small>Accepted on GPay, PhonePe, Paytm, BHIM &amp; all Indian payment apps</small>
+              <small id="selected-amount-note">Amount to Pay: <strong>₹2,500</strong></small>
+
+              <!-- Direct UPI Mobile App Pay Button -->
+              <a id="direct-upi-pay-btn" href="upi://pay?pa=7901857685@ptyes&pn=ForexMasterPro&am=2500&cu=INR" class="direct-upi-btn" style="margin-top: 0.6rem;">
+                ⚡ Pay ₹2,500 via GPay / PhonePe / Paytm
+              </a>
             </div>
           </div>
 
           <div class="upi-steps">
             <strong>Next Step After Payment:</strong>
-            <p>After completing payment on GPay/PhonePe/Paytm, send a screenshot of your payment to Telegram <a href="https://t.me/ForexMasterProVipBot" target="_blank" rel="noopener">@ForexMasterProVipBot</a> for instant channel approval!</p>
+            <p>After completing payment, send a screenshot of your receipt to Telegram <a href="https://t.me/ForexMasterProVipBot" target="_blank" rel="noopener">@ForexMasterProVipBot</a> or click the join link for instant channel approval!</p>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    function selectVipPlan(planId, amount, planTitle) {
+      // Remove active class from all
+      document.querySelectorAll('.selectable-plan').forEach(el => {
+        el.classList.remove('active-plan', 'highlight-row');
+        const badge = el.querySelector('.select-indicator');
+        if (badge) badge.innerText = 'Click to Select';
+      });
+
+      // Add active class to selected
+      const selectedEl = document.getElementById('plan-' + planId);
+      if (selectedEl) {
+        selectedEl.classList.add('active-plan', 'highlight-row');
+        const badge = selectedEl.querySelector('.select-indicator');
+        if (badge) badge.innerText = 'Selected ✓';
+      }
+
+      // Update text in UPI Box
+      document.getElementById('upi-box-title').innerText = 'Pay ₹' + amount.toLocaleString('en-IN') + ' for ' + planTitle;
+      document.getElementById('upi-box-desc').innerText = 'Scan the QR code below or click the payment button to launch GPay/PhonePe with ₹' + amount.toLocaleString('en-IN') + ' pre-filled.';
+      document.getElementById('selected-amount-note').innerHTML = 'Amount to Pay: <strong>₹' + amount.toLocaleString('en-IN') + '</strong>';
+
+      // Update QR Code Image
+      const upiUrl = 'upi://pay?pa=7901857685@ptyes%26pn=ForexMasterPro%26am=' + amount + '%26cu=INR';
+      document.getElementById('upi-qr-img').src = 'https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=' + upiUrl;
+
+      // Update Direct Pay Button
+      const upiDeepLink = 'upi://pay?pa=7901857685@ptyes&pn=ForexMasterPro&am=' + amount + '&cu=INR';
+      const btn = document.getElementById('direct-upi-pay-btn');
+      btn.href = upiDeepLink;
+      btn.innerText = '⚡ Pay ₹' + amount.toLocaleString('en-IN') + ' via GPay / PhonePe / Paytm';
+    }
+  </script>
 
   <!-- CTA Banner -->
   <section class="cta-banner">
